@@ -9,7 +9,11 @@ Welcome to Limnoria's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
+
+    use/index.rst
+    plugins/index.rst
+    core/index.rst
 
 Indices and tables
 ==================
