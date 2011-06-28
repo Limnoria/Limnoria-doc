@@ -4,173 +4,148 @@
 The Conditional plugin
 ======================
 
-.. _command-gt:
+Numeric comparison
+------------------
 
-gt <item1> <item2>
- 
- Does a string comparison on <item1> and <item2>. 
- Returns true if <item1> is greater than <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _command-conditional-nlt:
 
+conditional nlt <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Does a numeric comparison on *<item1>* and *<item2>*.
+Returns true if *<item1>* is less than *<item2>*.
 
-.. _command-nlt:
+.. _command-conditional-nne:
 
-nlt <item1> <item2>
- 
- Does a numeric comparison on <item1> and <item2>. 
- Returns true if <item1> is less than <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+conditional nne <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Does a numeric comparison on *<item1>* and *<item2>*.
+Returns true if they are not equal.
 
+.. _command-conditional-nle:
 
-.. _command-nne:
+conditional nle <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-nne <item1> <item2>
- 
- Does a numeric comparison on <item1> and <item2>. 
- Returns true if they are not equal.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Does a numeric comparison on *<item1>* and *<item2>*.
+Returns true if *<item1>* is less than or equal to *<item2>*.
 
+.. _command-conditional-nge:
 
+conditional nge <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _command-ge:
+Does a numeric comparison on *<item1>* and *<item2>*.
+Returns true if *<item1>* is greater than or equal to *<item2>*.
 
-ge <item1> <item2>
- 
- Does a string comparison on <item1> and <item2>. 
- Returns true if <item1> is greater than or equal to <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _command-conditional-nceq:
 
+conditional nceq <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Does a numeric comparison on *<item1>* and *<item2>*.
+Returns true if they are equal.
 
-.. _command-cor:
+.. _command-conditional-ngt:
 
-cor <cond1> [<cond2> ... <condN>]
- 
- Returns true if any one of conditions supplied evaluates to true.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+conditional ngt <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Does a numeric comparison on *<item1>* and *<item2>*.
+Returns true if they *<item1>* is greater than *<item2>*.
 
+String comparison
+-----------------
 
-.. _command-nle:
+.. _command-conditional-le:
 
-nle <item1> <item2>
- 
- Does a numeric comparison on <item1> and <item2>. 
- Returns true if <item1> is less than or equal to <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+conditional le <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Does a string comparison on *<item1>* and *<item2>*.
+Returns true if *<item1>* is less than or equal to *<item2>*.
 
+.. _command-conditional-ceq:
 
-.. _command-ceq:
+conditional ceq <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ceq <item1> <item2>
- 
- Does a string comparison on <item1> and <item2>. 
- Returns true if they are equal.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Does a string comparison on *<item1>* and *<item2>*.
+Returns true if they are equal.
 
+.. _command-conditional-gt:
 
+conditional gt <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _command-nge:
+Does a string comparison on *<item1>* and *<item2>*.
+Returns true if *<item1>* is greater than *<item2>*.
 
-nge <item1> <item2>
- 
- Does a numeric comparison on <item1> and <item2>. 
- Returns true if <item1> is greater than or equal to <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _command-conditional-ge:
 
+conditional ge <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Does a string comparison on *<item1>* and *<item2>*.
+Returns true if *<item1>* is greater than or equal to *<item2>*.
 
-.. _command-cxor:
+.. _command-conditional-ne:
 
-cxor <cond1> [<cond2> ... <condN>]
- 
- Returns true if only one of conditions supplied evaluates to true.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+conditional ne <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Does a string comparison on *<item1>* and *<item2>*.
+Returns true if they are not equal.
 
+.. _command-conditional-lt:
 
-.. _command-le:
+conditional lt <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-le <item1> <item2>
- 
- Does a string comparison on <item1> and <item2>. 
- Returns true if <item1> is less than or equal to <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Does a string comparison on *<item1>* and *<item2>*.
+Returns true if *<item1>* is less than *<item2>*.
 
+.. _command-conditional-match:
 
+conditional match <item1> <item2>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _command-cif:
+Determines if *<item1>* is a substring of *<item2>*.
+Returns true if *<item1>* is contained in *<item2>*.
 
-cif <condition> <ifcommand> <elsecommand>
- 
- Runs <ifcommand> if <condition> evaluates to true, runs <elsecommand>
- if it evaluates to false.
- 
- Use other logical operators defined in this plugin and command nesting
- to your advantage here.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Logical operators
+-----------------
 
+.. _command-conditional-cand:
 
+conditional cand <cond1> [<cond2> ... <condN>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _command-ne:
+Returns true if all conditions supplied evaluate to true.
 
-ne <item1> <item2>
- 
- Does a string comparison on <item1> and <item2>. 
- Returns true if they are not equal.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _command-conditional-cxor:
 
+conditional cxor <cond1> [<cond2> ... <condN>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Returns true if only one of conditions supplied evaluates to true.
 
-.. _command-cand:
+.. _command-conditional-cor:
 
-cand <cond1> [<cond2> ... <condN>]
- 
- Returns true if all conditions supplied evaluate to true.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+conditional cor <cond1> [<cond2> ... <condN>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Returns true if any one of conditions supplied evaluates to true.
 
+.. _command-conditional-cif:
 
-.. _command-nceq:
+conditional cif <condition> <ifcommand> <elsecommand>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-nceq <item1> <item2>
- 
- Does a numeric comparison on <item1> and <item2>. 
- Returns true if they are equal.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Runs *<ifcommand>* if *<condition>* evaluates to true, runs *<elsecommand>*
+if it evaluates to false.
 
-
-
-.. _command-ngt:
-
-ngt <item1> <item2>
- 
- Does a numeric comparison on <item1> and <item2>. 
- Returns true if they <item1> is greater than <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-
-.. _command-lt:
-
-lt <item1> <item2>
- 
- Does a string comparison on <item1> and <item2>. 
- Returns true if <item1> is less than <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-
-.. _command-match:
-
-match <item1> <item2>
- 
- Determines if <item1> is a substring of <item2>. 
- Returns true if <item1> is contained in <item2>.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
+Use other logical operators defined in this plugin and command nesting
+to your advantage here.
 

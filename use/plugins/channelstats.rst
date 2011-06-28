@@ -4,27 +4,19 @@
 The ChannelStats plugin
 =======================
 
-.. _command-stats:
+.. _command-channelstats-stats:
 
-stats [<channel>] [<name>]
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+channelstats stats [<channel>] [<name>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the statistics for *<name>* on *<channel>*. *<channel>* is only
 necessary if the message isn't sent on the channel itself. If *<name>*
 isn't given, it defaults to the user sending the command.
 
+.. _command-channelstats-rank:
 
-.. _command-die:
-
-die 
-^^^^
-
-
-
-.. _command-rank:
-
-rank [<channel>] <stat expression>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+channelstats rank [<channel>] <stat expression>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the ranking of users according to the given stat expression.
 Valid variables in the stat expression include 'msgs', 'chars',
@@ -32,13 +24,11 @@ Valid variables in the stat expression include 'msgs', 'chars',
 'kicks', 'kicked', 'topics', and 'modes'. Any simple mathematical
 expression involving those variables is permitted.
 
+.. _command-channelstats-channelstats:
 
-.. _command-channelstats:
-
-channelstats [<channel>]
-^^^^^^^^^^^^^^^^^^^^^^^^
+channelstats channelstats [<channel>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the statistics for *<channel>*. *<channel>* is only necessary if
 the message isn't sent on the channel itself.
-
 

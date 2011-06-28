@@ -4,119 +4,101 @@
 The MoobotFactoids plugin
 =========================
 
-.. _command-lock:
+Reading factoids
+----------------
 
-lock [<channel>] <factoid key>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _command-moobotfactoids-listauth:
 
-Locks the factoid with the given factoid key. Requires that the user
-be registered and have created the factoid originally. *<channel>* is
-only necessary if the message isn't sent in the channel itself.
-
-
-.. _command-listauth:
-
-listauth [<channel>] <author name>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+moobotfactoids listauth [<channel>] <author name>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Lists the keys of the factoids with the given author. Note that if an
 author has an integer name, you'll have to use that author's id to use
 this function (so don't use integer usernames!). *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
+.. _command-moobotfactoids-random:
 
-.. _command-random:
-
-random [<channel>]
-^^^^^^^^^^^^^^^^^^
+moobotfactoids random [<channel>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Displays a random factoid (along with its key) from the database.
 *<channel>* is only necessary if the message isn't sent in the channel
 itself.
 
+.. _command-moobotfactoids-literal:
 
-.. _command-unlock:
-
-unlock [<channel>] <factoid key>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Unlocks the factoid with the given factoid key. Requires that the
-user be registered and have locked the factoid. *<channel>* is only
-necessary if the message isn't sent in the channel itself.
-
-
-.. _command-literal:
-
-literal [<channel>] <factoid key>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+moobotfactoids literal [<channel>] <factoid key>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the literal factoid for the given factoid key. No parsing of
 the factoid value is done as it is with normal retrieval. *<channel>*
 is only necessary if the message isn't sent in the channel itself.
 
+.. _command-moobotfactoids-listvalues:
 
-.. _command-listvalues:
-
-listvalues [<channel>] <text>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+moobotfactoids listvalues [<channel>] <text>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Lists the keys of the factoids whose value contains the provided text.
 *<channel>* is only necessary if the message isn't sent in the channel
 itself.
 
+.. _command-moobotfactoids-factinfo:
 
-.. _command-reset:
-
-reset 
-^^^^^^
-
-
-
-.. _command-factinfo:
-
-factinfo [<channel>] <factoid key>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+moobotfactoids factinfo [<channel>] <factoid key>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the various bits of info on the factoid for the given key.
 *<channel>* is only necessary if the message isn't sent in the channel
 itself.
 
+.. _command-moobotfactoids-most:
 
-.. _command-most:
+moobotfactoids most [<channel>] {popular|authored|recent}
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-most [<channel>] {popular|authored|recent}
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Lists the most {popular|authored|recent} factoids. "popular" lists the
+Lists the most *{popular|authored|recent}* factoids. "popular" lists the
 most frequently requested factoids. "authored" lists the author with
 the most factoids. "recent" lists the most recently created factoids.
 *<channel>* is only necessary if the message isn't sent in the channel
 itself.
 
+.. _command-moobotfactoids-listkeys:
 
-.. _command-die:
-
-die 
-^^^^
-
-
-
-.. _command-remove:
-
-remove [<channel>] <factoid key>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Deletes the factoid with the given key. *<channel>* is only necessary
-if the message isn't sent in the channel itself.
-
-
-.. _command-listkeys:
-
-listkeys [<channel>] <text>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+moobotfactoids listkeys [<channel>] <text>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Lists the keys of the factoids whose key contains the provided text.
 *<channel>* is only necessary if the message isn't sent in the channel
 itself.
 
+Administration
+--------------
+
+.. _command-moobotfactoids-lock:
+
+moobotfactoids lock [<channel>] <factoid key>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Locks the factoid with the given factoid key. Requires that the user
+be registered and have created the factoid originally. *<channel>* is
+only necessary if the message isn't sent in the channel itself.
+
+.. _command-moobotfactoids-unlock:
+
+moobotfactoids unlock [<channel>] <factoid key>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Unlocks the factoid with the given factoid key. Requires that the
+user be registered and have locked the factoid. *<channel>* is only
+necessary if the message isn't sent in the channel itself.
+
+.. _command-moobotfactoids-remove:
+
+moobotfactoids remove [<channel>] <factoid key>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Deletes the factoid with the given key. *<channel>* is only necessary
+if the message isn't sent in the channel itself.
 

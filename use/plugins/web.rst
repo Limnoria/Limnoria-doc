@@ -4,73 +4,74 @@
 The Web plugin
 ==============
 
-.. _command-urlunquote:
+HTTP
+----
 
-urlunquote <text>
-^^^^^^^^^^^^^^^^^
+.. _command-web-urlunquote:
+
+web urlunquote <text>
+^^^^^^^^^^^^^^^^^^^^^
 
 Returns the text un-URL quoted.
 
+.. _command-web-urlquote:
 
-.. _command-netcraft:
-
-netcraft <hostname|ip>
-^^^^^^^^^^^^^^^^^^^^^^
-
-Returns Netcraft.com's determination of what operating system and
-webserver is running on the host given.
-
-
-.. _command-urlquote:
-
-urlquote <text>
-^^^^^^^^^^^^^^^
+web urlquote <text>
+^^^^^^^^^^^^^^^^^^^
 
 Returns the URL quoted form of the text.
 
+.. _command-web-size:
 
-.. _command-size:
-
-size <url>
-^^^^^^^^^^
+web size <url>
+^^^^^^^^^^^^^^
 
 Returns the Content-Length header of *<url>*. Only HTTP urls are valid,
 of course.
 
+HTML
+----
 
-.. _command-title:
+.. _command-web-title:
 
-title <url>
-^^^^^^^^^^^
+web title <url>
+^^^^^^^^^^^^^^^
 
 Returns the HTML *<title>*...*</title>* of a URL.
 
+.. _command-web-doctype:
 
-.. _command-doctype:
-
-doctype <url>
-^^^^^^^^^^^^^
+web doctype <url>
+^^^^^^^^^^^^^^^^^
 
 Returns the DOCTYPE string of *<url>*. Only HTTP urls are valid, of
 course.
 
+.. _command-web-headers:
 
-.. _command-headers:
-
-headers <url>
-^^^^^^^^^^^^^
+web headers <url>
+^^^^^^^^^^^^^^^^^
 
 Returns the HTTP headers of *<url>*. Only HTTP urls are valid, of
 course.
 
+Others
+------
 
-.. _command-fetch:
+.. _command-web-netcraft:
 
-fetch <url>
-^^^^^^^^^^^
+web netcraft <hostname|ip>
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns Netcraft.com's determination of what operating system and
+webserver is running on the host given.
+
+.. _command-web-fetch:
+
+web fetch <url>
+^^^^^^^^^^^^^^^
 
 Returns the contents of *<url>*, or as much as is configured in
-supybot.plugins.Web.fetch.maximum. If that configuration variable is
+:ref:`supybot.plugins.Web.fetch.maximum.` If that configuration variable is
 set to 0, this command will be effectively disabled.
-
 

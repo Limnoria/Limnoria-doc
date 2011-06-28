@@ -4,34 +4,24 @@
 The ShrinkUrl plugin
 ====================
 
-.. _command-xrl:
+.. _command-shrinkurl-xrl:
 
-xrl <url>
-^^^^^^^^^
+shrinkurl xrl <url>
+^^^^^^^^^^^^^^^^^^^
 
 Returns an xrl.us version of *<url>*.
 
+.. _command-shrinkurl-tiny:
 
-.. _command-die:
-
-die 
-^^^^
-
-
-
-.. _command-tiny:
-
-tiny <url>
-^^^^^^^^^^
+shrinkurl tiny <url>
+^^^^^^^^^^^^^^^^^^^^
 
 Returns a TinyURL.com version of *<url>*
 
+.. _command-shrinkurl-ln:
 
-.. _command-ln:
-
-ln <url>
-^^^^^^^^
+shrinkurl ln <url>
+^^^^^^^^^^^^^^^^^^
 
 Returns an ln-s.net version of *<url>*.
-
 

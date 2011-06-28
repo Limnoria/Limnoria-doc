@@ -4,47 +4,42 @@
 The Reply plugin
 ================
 
-.. _command-notice:
+.. _command-reply-notice:
 
-notice <text>
-^^^^^^^^^^^^^
+reply notice <text>
+^^^^^^^^^^^^^^^^^^^
 
 Replies with *<text>* in a notice. Use nested commands to your benefit
 here. If you want a private notice, nest the private command.
 
+.. _command-reply-private:
 
-.. _command-private:
-
-private <text>
-^^^^^^^^^^^^^^
+reply private <text>
+^^^^^^^^^^^^^^^^^^^^
 
 Replies with *<text>* in private. Use nested commands to your benefit
 here.
 
+.. _command-reply-replies:
 
-.. _command-replies:
-
-replies <str> [<str> ...]
-^^^^^^^^^^^^^^^^^^^^^^^^^
+reply replies <str> [<str> ...]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Replies with each of its arguments *<str>* in separate replies, depending
-the configuration of supybot.reply.oneToOne.
+the configuration of :ref:`supybot.reply.oneToOne.`
 
+.. _command-reply-action:
 
-.. _command-action:
-
-action <text>
-^^^^^^^^^^^^^
+reply action <text>
+^^^^^^^^^^^^^^^^^^^
 
 Replies with *<text>* as an action. use nested commands to your benefit
 here.
 
+.. _command-reply-reply:
 
-.. _command-reply:
-
-reply <text>
-^^^^^^^^^^^^
+reply reply <text>
+^^^^^^^^^^^^^^^^^^
 
 Replies with *<text>*. Equivalent to the alias, 'echo $nick: $1'.
-
 

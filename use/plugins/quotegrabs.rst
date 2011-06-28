@@ -4,71 +4,70 @@
 The QuoteGrabs plugin
 =====================
 
-.. _command-ungrab:
+Getting quotes
+--------------
 
-ungrab [<channel>] <number>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _command-quotegrabs-get:
 
-Removes the grab *<number>* (the last by default) on *<channel>*.
-*<channel>* is only necessary if the message isn't sent in the channel
-itself.
-
-
-.. _command-get:
-
-get [<channel>] <id>
-^^^^^^^^^^^^^^^^^^^^
+quotegrabs get [<channel>] <id>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Return the quotegrab with the given *<id>*. *<channel>* is only necessary
 if the message isn't sent in the channel itself.
 
+.. _command-quotegrabs-quote:
 
-.. _command-quote:
-
-quote [<channel>] <nick>
-^^^^^^^^^^^^^^^^^^^^^^^^
+quotegrabs quote [<channel>] <nick>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns *<nick>*'s latest quote grab in *<channel>*. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
+.. _command-quotegrabs-random:
 
-.. _command-random:
-
-random [<channel>] [<nick>]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+quotegrabs random [<channel>] [<nick>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns a randomly grabbed quote, optionally choosing only from those
 quotes grabbed for *<nick>*. *<channel>* is only necessary if the message
 isn't sent in the channel itself.
 
+.. _command-quotegrabs-list:
 
-.. _command-list:
-
-list [<channel>] <nick>
-^^^^^^^^^^^^^^^^^^^^^^^
+quotegrabs list [<channel>] <nick>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns a list of shortened quotes that have been grabbed for *<nick>*
 as well as the id of each quote. These ids can be used to get the
 full quote. *<channel>* is only necessary if the message isn't sent in
 the channel itself.
 
+.. _command-quotegrabs-search:
 
-.. _command-search:
-
-search [<channel>] <text>
-^^^^^^^^^^^^^^^^^^^^^^^^^
+quotegrabs search [<channel>] <text>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Searches for *<text>* in a quote. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
+(Un)quoting
+-----------
 
-.. _command-grab:
+.. _command-quotegrabs-ungrab:
 
-grab [<channel>] <nick>
-^^^^^^^^^^^^^^^^^^^^^^^
+quotegrabs ungrab [<channel>] <number>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Removes the grab *<number>* (the last by default) on *<channel>*.
+*<channel>* is only necessary if the message isn't sent in the channel
+itself.
+
+.. _command-quotegrabs-grab:
+
+quotegrabs grab [<channel>] <nick>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Grabs a quote from *<channel>* by *<nick>* for the quotegrabs table.
 *<channel>* is only necessary if the message isn't sent in the channel
 itself.
-
 

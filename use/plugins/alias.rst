@@ -4,31 +4,27 @@
 The Alias plugin
 ================
 
-.. _command-lock:
+Protecting
+----------
+
+.. _command-channel-lock:
 
 lock <alias>
 ^^^^^^^^^^^^
 
 Locks an alias so that no one else can change it.
 
-
-.. _command-unlock:
+.. _command-channel-unlock:
 
 unlock <alias>
 ^^^^^^^^^^^^^^
 
 Unlocks an alias so that people can define new aliases over it.
 
+Adding and removing
+-------------------
 
-.. _command-remove:
-
-remove <name>
-^^^^^^^^^^^^^
-
-Removes the given alias, if unlocked.
-
-
-.. _command-add:
+.. _command-channel-add:
 
 add <name> <alias>
 ^^^^^^^^^^^^^^^^^^
@@ -40,4 +36,10 @@ arguments. $1, $2, etc. can be used for required arguments. @1, @2,
 etc. can be used for optional arguments. $* simply means "all
 remaining arguments," and cannot be combined with optional arguments.
 
+.. _command-channel-remove:
+
+remove <name>
+^^^^^^^^^^^^^
+
+Removes the given alias, if unlocked.
 

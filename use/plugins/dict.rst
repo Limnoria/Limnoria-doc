@@ -4,40 +4,36 @@
 The Dict plugin
 ===============
 
-.. _command-synonym:
+.. _command-dict-synonym:
 
-synonym <word> [<word> ...]
-        Gets a random synonym from the Moby Thesaurus (moby-thes) database.
-        
-        If given many words, gets a random synonym for each of them.
-        
-        Quote phrases to have them treated as one lookup word.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+dict synonym <word> [<word> ...]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Gets a random synonym from the Moby Thesaurus (moby-thes) database.
 
+If given many words, gets a random synonym for each of them.
 
-.. _command-dict:
+Quote phrases to have them treated as one lookup word.
 
-dict [<dictionary>] <word>
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _command-dict-dict:
+
+dict dict [<dictionary>] <word>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Looks up the definition of *<word>* on the dictd server specified by
-the supybot.plugins.Dict.server config variable.
+the :ref:`supybot.plugins.Dict.server` config variable.
 
+.. _command-dict-random:
 
-.. _command-random:
-
-random
-^^^^^^
+dict random
+^^^^^^^^^^^
 
 Returns a random valid dictionary.
 
+.. _command-dict-dictionaries:
 
-.. _command-dictionaries:
-
-dictionaries
-^^^^^^^^^^^^
+dict dictionaries
+^^^^^^^^^^^^^^^^^
 
 Returns the dictionaries valid for the dict command.
-
 

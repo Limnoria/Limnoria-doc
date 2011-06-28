@@ -4,19 +4,11 @@
 The Nickometer plugin
 =====================
 
-.. _command-punish:
+.. _command-nickometer-nickometer:
 
-punish 
-^^^^^^^
-
-
-
-.. _command-nickometer:
-
-nickometer [<nick>]
-^^^^^^^^^^^^^^^^^^^
+nickometer nickometer [<nick>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Tells you how lame said nick is. If *<nick>* is not given, uses the
 nick of the person giving the command.
-
 

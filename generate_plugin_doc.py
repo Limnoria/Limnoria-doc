@@ -17,21 +17,25 @@ def main():
         supybot = __import__('supybot.plugins.%s.plugin' % pluginName)
         PluginClass = getattr(supybot.plugins, pluginName).plugin.Class
         filename = 'use/plugins/%s.rst' % pluginName.lower()
-        os.unlink(filename)
+        try:
+            os.unlink(filename)
+        except OSError:
+            pass
         with open(filename, 'a') as fd:
             fd.write('\n.. _plugin-%s:\n\nThe %s plugin\n' %
                      (pluginName.lower(), pluginName))
             fd.write('='*len('The %s plugin' % pluginName))
             fd.write('\n\n')
-            writeDoc(PluginClass, fd, '')
+            writeDoc(PluginClass, fd, pluginName.lower())
 
 def writeDoc(PluginClass, fd, prefix):
-    if prefix != '':
-        prefix += ' '
+    prefix += ' '
     for attributeName, attribute in PluginClass.__dict__.items():
         if not callable(attribute):
             continue
         if not validCommandName.match(attributeName):
+            continue
+        if attributeName == 'die':
             continue
         if isinstance(attribute, Commands):
             writeDoc(attribute, fd, prefix + attributeName)
@@ -39,7 +43,7 @@ def writeDoc(PluginClass, fd, prefix):
             if attribute.__doc__ is None:
                 attribute.__doc__ = ''
             syntax = attribute.__doc__.split('\n\n')[0].strip()
-            if syntax == 'takes no arguments':
+            if syntax == 'takes no arguments' or syntax == '' or syntax == '':
                 syntax = ''
             else:
                 syntax = ' ' + syntax
@@ -62,9 +66,13 @@ def parseHelpString(string):
     string = '\n\n'.join(string.split('\n\n')[1:])
     # Remove the starting and ending spaces
     string = '\n'.join([x.strip(' ') for x in string.split('\n')])
+    if string.endswith('\n'):
+        string = string[0:-1]
     # Put the argument names into italic
     string = re.sub(r'(<[^>]+>)', r'*\1*', string, re.M)
     string = re.sub(r'(--[^ ]+)', r'*\1*', string, re.M)
+    # Turn config variable names into refs
+    string = re.sub(r'(supybot.[a-zA-Z0-9.]+)', r':ref:`\1`', string, re.M)
     return string
 
 

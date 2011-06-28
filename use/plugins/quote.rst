@@ -4,12 +4,11 @@
 The Quote plugin
 ================
 
-.. _command-random:
+.. _command-quote-random:
 
-random [<channel>]
-^^^^^^^^^^^^^^^^^^
+quote random [<channel>]
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns a random quote from *<channel>*. *<channel>* is only necessary if
 the message isn't sent in the channel itself.
-
 

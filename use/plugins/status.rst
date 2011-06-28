@@ -4,67 +4,59 @@
 The Status plugin
 =================
 
-.. _command-status:
+.. _command-status-status:
 
-status
-^^^^^^
+status status
+^^^^^^^^^^^^^
 
 Returns the status of the bot.
 
+.. _command-status-cmd:
 
-.. _command-cmd:
-
-cmd
-^^^
+status cmd
+^^^^^^^^^^
 
 Returns some interesting command-related statistics.
 
+.. _command-status-commands:
 
-.. _command-commands:
-
-commands
-^^^^^^^^
+status commands
+^^^^^^^^^^^^^^^
 
 Returns a list of the commands offered by the bot.
 
+.. _command-status-uptime:
 
-.. _command-uptime:
-
-uptime
-^^^^^^
+status uptime
+^^^^^^^^^^^^^
 
 Returns the amount of time the bot has been running.
 
+.. _command-status-threads:
 
-.. _command-threads:
-
-threads
-^^^^^^^
+status threads
+^^^^^^^^^^^^^^
 
 Returns the current threads that are active.
 
+.. _command-status-net:
 
-.. _command-net:
-
-net
-^^^
+status net
+^^^^^^^^^^
 
 Returns some interesting network-related statistics.
 
+.. _command-status-server:
 
-.. _command-server:
-
-server
-^^^^^^
+status server
+^^^^^^^^^^^^^
 
 Returns the server the bot is on.
 
+.. _command-status-cpu:
 
-.. _command-cpu:
-
-cpu
-^^^
+status cpu
+^^^^^^^^^^
 
 Returns some interesting CPU-related statistics on the bot.
-
 

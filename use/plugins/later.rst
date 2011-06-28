@@ -4,37 +4,27 @@
 The Later plugin
 ================
 
-.. _command-die:
+.. _command-later-notes:
 
-die 
-^^^^
-
-
-
-.. _command-notes:
-
-notes [<nick>]
-^^^^^^^^^^^^^^
+later notes [<nick>]
+^^^^^^^^^^^^^^^^^^^^
 
 If *<nick>* is given, replies with what notes are waiting on *<nick>*,
 otherwise, replies with the nicks that have notes waiting for them.
 
+.. _command-later-remove:
 
-.. _command-remove:
-
-remove <nick>
-^^^^^^^^^^^^^
+later remove <nick>
+^^^^^^^^^^^^^^^^^^^
 
 Removes the notes waiting on *<nick>*.
 
+.. _command-later-tell:
 
-.. _command-tell:
-
-tell <nick> <text>
-^^^^^^^^^^^^^^^^^^
+later tell <nick> <text>
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Tells *<nick>* *<text>* the next time *<nick>* is in seen. *<nick>* can
 contain wildcard characters, and the first matching nick will be
 given the note.
-
 

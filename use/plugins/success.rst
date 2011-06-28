@@ -4,10 +4,3 @@
 The Success plugin
 ==================
 
-.. _command-die:
-
-die 
-^^^^
-
-
-

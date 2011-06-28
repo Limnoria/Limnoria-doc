@@ -4,34 +4,24 @@
 The BadWords plugin
 ===================
 
-.. _command-sub:
-
-sub 
-^^^^
-
-
-
-.. _command-list:
+.. _command-channel-list:
 
 list
 ^^^^
 
 Returns the list of words being censored.
 
-
-.. _command-remove:
+.. _command-channel-remove:
 
 remove <word> [<word> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Removes *<word>*s from the list of words being censored.
+Removes *<word>s* from the list of words being censored.
 
-
-.. _command-add:
+.. _command-channel-add:
 
 add <word> [<word> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Adds all *<word>*s to the list of words being censored.
-
+Adds all *<word>s* to the list of words being censored.
 

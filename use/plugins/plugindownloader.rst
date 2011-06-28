@@ -4,17 +4,17 @@
 The PluginDownloader plugin
 ===========================
 
-.. _command-install:
+.. _command-plugindownloader-install:
 
-install <repository> <plugin>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+plugindownloader install <repository> <plugin>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Downloads and installs the *<plugin>* from the *<repository>*.
 
-.. _command-repolist:
+.. _command-plugindownloader-repolist:
 
-repolist [<repository>]
-^^^^^^^^^^^^^^^^^^^^^^^
+plugindownloader repolist [<repository>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Displays the list of plugins in the *<repository>*.
 If *<repository>* is not given, returns a list of available

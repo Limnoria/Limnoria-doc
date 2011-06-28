@@ -4,20 +4,18 @@
 The Anonymous plugin
 ====================
 
-.. _command-do:
+.. _command-channel-do:
 
 do <channel> <action>
 ^^^^^^^^^^^^^^^^^^^^^
 
 Performs *<action>* in *<channel>*.
 
-
-.. _command-say:
+.. _command-channel-say:
 
 say <channel|nick> <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sends *<text>* to *<channel|nick>*. Can only send to *<nick>* if
-supybot.plugins.Anonymous.allowPrivateTarget is True.
-
+:ref:`supybot.plugins.Anonymous.allowPrivateTarget` is True.
 
