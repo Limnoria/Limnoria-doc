@@ -151,6 +151,8 @@ http://python.org, and follow the rest of the steps.
 Installation: Windows
 =====================
 
+.. highlight:: bat
+
 Install Python
 --------------
 
@@ -174,15 +176,11 @@ Once you have the code archive, extract it to some temporary directory, then
 open up a command prompt (Programs -> Run -> ``cmd``) and ``cd`` into the
 ``supybot`` directory which contains the extracted code. For example, if you
 have extracted the archive to ``C:\sometempdir\``, you would enter in the
-prompt:
-
-.. code-block:: bat
+prompt::
 
     cd "C:\sometempdir\supybot"
 
-Once there, run the installer to install, with the following command:
-
-.. code-block:: bat
+Once there, run the installer to install, with the following command::
 
     C:\Python27\python.exe setup.py install
 
@@ -228,8 +226,6 @@ Now to start the bot, run, still from within the ``C:\runbot`` directory::
     C:\Python27\python.exe C:\Python27\Scripts\supybot yourbotnick.conf
 
 And watch the magic!
-
-For a tutorial on using and managing the bot from here on, see the `Supybook`_.
 
 This guide has been mainly written by nanotube (Daniel Folkinshteyn), and is
 licensed under the Creative Commons Attribution ShareAlike 3.0 Unported license
