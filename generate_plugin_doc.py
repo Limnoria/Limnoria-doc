@@ -52,7 +52,7 @@ def writeDoc(PluginClass, fd, prefix):
             }
             args['decoration'] = '^'*len('%(prefix_with_trailing_space)s%(command)s%(syntax)s' %
                     args)
-            fd.write('.. command-%(prefix_dash)s%(command)s:\n\n'
+            fd.write('.. _command-%(prefix_dash)s%(command)s:\n\n'
                      '%(prefix_with_trailing_space)s%(command)s%(syntax)s\n'
                      '%(decoration)s\n\n'
                      '%(help_string)s\n\n' % args)

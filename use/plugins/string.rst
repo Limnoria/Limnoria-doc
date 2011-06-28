@@ -4,7 +4,7 @@
 The String plugin
 =================
 
-.. command-soundex:
+.. _command-soundex:
 
 soundex <string> [<length>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ Returns the Soundex hash to a given length. The length defaults to
 length, use 0.
 
 
-.. command-xor:
+.. _command-xor:
 
 xor <password> <text>
 ^^^^^^^^^^^^^^^^^^^^^
@@ -24,7 +24,7 @@ http://www.yoe.org/developer/xor.html for information about XOR
 encryption.
 
 
-.. command-re:
+.. _command-re:
 
 re <regexp> <text>
 ^^^^^^^^^^^^^^^^^^
@@ -35,7 +35,7 @@ s/regexp/replacement/flags, returns the result of applying such a
 regexp to *<text>*.
 
 
-.. command-levenshtein:
+.. _command-levenshtein:
 
 levenshtein <string1> <string2>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -44,7 +44,7 @@ Returns the levenshtein distance (also known as the "edit distance"
 between *<string1>* and *<string2>*)
 
 
-.. command-decode:
+.. _command-decode:
 
 decode <encoding> <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -54,7 +54,7 @@ available in the documentation of the Python codecs module:
 *<http://docs.python.org/library/codecs.html#standard-encodings>*.
 
 
-.. command-sha:
+.. _command-sha:
 
 sha <text>
 ^^^^^^^^^^
@@ -64,7 +64,7 @@ http://www.secure-hash-algorithm-md5-sha-1.co.uk/ for more information
 about SHA.
 
 
-.. command-chr:
+.. _command-chr:
 
 chr <number>
 ^^^^^^^^^^^^
@@ -72,7 +72,7 @@ chr <number>
 Returns the character associated with the 8-bit value *<number>*
 
 
-.. command-len:
+.. _command-len:
 
 len <text>
 ^^^^^^^^^^
@@ -80,7 +80,7 @@ len <text>
 Returns the length of *<text>*.
 
 
-.. command-encode:
+.. _command-encode:
 
 encode <encoding> <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,7 +90,7 @@ available in the documentation of the Python codecs module:
 *<http://docs.python.org/library/codecs.html#standard-encodings>*.
 
 
-.. command-ord:
+.. _command-ord:
 
 ord <letter>
 ^^^^^^^^^^^^

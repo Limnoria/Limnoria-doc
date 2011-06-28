@@ -4,7 +4,7 @@
 The Anonymous plugin
 ====================
 
-.. command-do:
+.. _command-do:
 
 do <channel> <action>
 ^^^^^^^^^^^^^^^^^^^^^
@@ -12,7 +12,7 @@ do <channel> <action>
 Performs *<action>* in *<channel>*.
 
 
-.. command-say:
+.. _command-say:
 
 say <channel|nick> <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -4,7 +4,7 @@
 The MoobotFactoids plugin
 =========================
 
-.. command-lock:
+.. _command-lock:
 
 lock [<channel>] <factoid key>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ be registered and have created the factoid originally. *<channel>* is
 only necessary if the message isn't sent in the channel itself.
 
 
-.. command-listauth:
+.. _command-listauth:
 
 listauth [<channel>] <author name>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ this function (so don't use integer usernames!). *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-random:
+.. _command-random:
 
 random [<channel>]
 ^^^^^^^^^^^^^^^^^^
@@ -35,7 +35,7 @@ Displays a random factoid (along with its key) from the database.
 itself.
 
 
-.. command-unlock:
+.. _command-unlock:
 
 unlock [<channel>] <factoid key>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,7 +45,7 @@ user be registered and have locked the factoid. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-literal:
+.. _command-literal:
 
 literal [<channel>] <factoid key>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,7 +55,7 @@ the factoid value is done as it is with normal retrieval. *<channel>*
 is only necessary if the message isn't sent in the channel itself.
 
 
-.. command-listvalues:
+.. _command-listvalues:
 
 listvalues [<channel>] <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -65,14 +65,14 @@ Lists the keys of the factoids whose value contains the provided text.
 itself.
 
 
-.. command-reset:
+.. _command-reset:
 
 reset 
 ^^^^^^
 
 
 
-.. command-factinfo:
+.. _command-factinfo:
 
 factinfo [<channel>] <factoid key>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,7 +82,7 @@ Returns the various bits of info on the factoid for the given key.
 itself.
 
 
-.. command-most:
+.. _command-most:
 
 most [<channel>] {popular|authored|recent}
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,14 +94,14 @@ the most factoids. "recent" lists the most recently created factoids.
 itself.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-remove:
+.. _command-remove:
 
 remove [<channel>] <factoid key>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -110,7 +110,7 @@ Deletes the factoid with the given key. *<channel>* is only necessary
 if the message isn't sent in the channel itself.
 
 
-.. command-listkeys:
+.. _command-listkeys:
 
 listkeys [<channel>] <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -4,7 +4,7 @@
 The ChannelStats plugin
 =======================
 
-.. command-stats:
+.. _command-stats:
 
 stats [<channel>] [<name>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,14 +14,14 @@ necessary if the message isn't sent on the channel itself. If *<name>*
 isn't given, it defaults to the user sending the command.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-rank:
+.. _command-rank:
 
 rank [<channel>] <stat expression>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -33,7 +33,7 @@ Valid variables in the stat expression include 'msgs', 'chars',
 expression involving those variables is permitted.
 
 
-.. command-channelstats:
+.. _command-channelstats:
 
 channelstats [<channel>]
 ^^^^^^^^^^^^^^^^^^^^^^^^

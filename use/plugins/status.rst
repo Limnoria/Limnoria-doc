@@ -4,7 +4,7 @@
 The Status plugin
 =================
 
-.. command-status:
+.. _command-status:
 
 status
 ^^^^^^
@@ -12,7 +12,7 @@ status
 Returns the status of the bot.
 
 
-.. command-cmd:
+.. _command-cmd:
 
 cmd
 ^^^
@@ -20,7 +20,7 @@ cmd
 Returns some interesting command-related statistics.
 
 
-.. command-commands:
+.. _command-commands:
 
 commands
 ^^^^^^^^
@@ -28,7 +28,7 @@ commands
 Returns a list of the commands offered by the bot.
 
 
-.. command-uptime:
+.. _command-uptime:
 
 uptime
 ^^^^^^
@@ -36,7 +36,7 @@ uptime
 Returns the amount of time the bot has been running.
 
 
-.. command-threads:
+.. _command-threads:
 
 threads
 ^^^^^^^
@@ -44,7 +44,7 @@ threads
 Returns the current threads that are active.
 
 
-.. command-net:
+.. _command-net:
 
 net
 ^^^
@@ -52,7 +52,7 @@ net
 Returns some interesting network-related statistics.
 
 
-.. command-server:
+.. _command-server:
 
 server
 ^^^^^^
@@ -60,7 +60,7 @@ server
 Returns the server the bot is on.
 
 
-.. command-cpu:
+.. _command-cpu:
 
 cpu
 ^^^

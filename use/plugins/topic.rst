@@ -4,7 +4,7 @@
 The Topic plugin
 ================
 
-.. command-restore:
+.. _command-restore:
 
 restore [<channel>]
 ^^^^^^^^^^^^^^^^^^^
@@ -13,7 +13,7 @@ Restores the topic to the last topic set by the bot. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-set:
+.. _command-set:
 
 set [<channel>] [<number>] <topic>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -23,7 +23,7 @@ sets the entire topic. *<channel>* is only necessary if the message
 isn't sent in the channel itself.
 
 
-.. command-shuffle:
+.. _command-shuffle:
 
 shuffle [<channel>]
 ^^^^^^^^^^^^^^^^^^^
@@ -32,7 +32,7 @@ Shuffles the topics in *<channel>*. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-lock:
+.. _command-lock:
 
 lock [<channel>]
 ^^^^^^^^^^^^^^^^
@@ -41,7 +41,7 @@ Locks the topic (sets the mode +t) in *<channel>*. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-replace:
+.. _command-replace:
 
 replace [<channel>] <number> <topic>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -49,7 +49,7 @@ replace [<channel>] <number> <topic>
 Replaces topic *<number>* with *<topic>*.
 
 
-.. command-topic:
+.. _command-topic:
 
 topic [<channel>]
 ^^^^^^^^^^^^^^^^^
@@ -58,7 +58,7 @@ Returns the topic for *<channel>*. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-unlock:
+.. _command-unlock:
 
 unlock [<channel>]
 ^^^^^^^^^^^^^^^^^^
@@ -67,7 +67,7 @@ Unlocks the topic (sets the mode +t) in *<channel>*. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-redo:
+.. _command-redo:
 
 redo [<channel>]
 ^^^^^^^^^^^^^^^^
@@ -76,7 +76,7 @@ Undoes the last undo. *<channel>* is only necessary if the message isn't
 sent in the channel itself.
 
 
-.. command-fit:
+.. _command-fit:
 
 fit [<channel>] <topic>
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -87,7 +87,7 @@ for the server, topics will be popped until there is enough room.
 itself.
 
 
-.. command-swap:
+.. _command-swap:
 
 swap [<channel>] <first topic number> <second topic number>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,7 +97,7 @@ Swaps the order of the first topic number and the second topic number.
 itself.
 
 
-.. command-reorder:
+.. _command-reorder:
 
 reorder [<channel>] <number> [<number> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -108,7 +108,7 @@ Reorders the topics from *<channel>* in the order of the specified
 itself.
 
 
-.. command-get:
+.. _command-get:
 
 get [<channel>] <number>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -118,7 +118,7 @@ index into the topics. *<channel>* is only necessary if the message
 isn't sent in the channel itself.
 
 
-.. command-undo:
+.. _command-undo:
 
 undo [<channel>]
 ^^^^^^^^^^^^^^^^
@@ -128,7 +128,7 @@ set it. *<channel>* is only necessary if the message isn't sent in the
 channel itself.
 
 
-.. command-add:
+.. _command-add:
 
 add [<channel>] <topic>
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -137,7 +137,7 @@ Adds *<topic>* to the topics for *<channel>*. *<channel>* is only necessary
 if the message isn't sent in the channel itself.
 
 
-.. command-change:
+.. _command-change:
 
 change [<channel>] <number> <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -149,7 +149,7 @@ s/regexp/replacement/flags. *<channel>* is only necessary if the message
 isn't sent in the channel itself.
 
 
-.. command-insert:
+.. _command-insert:
 
 insert [<channel>] <topic>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -159,7 +159,7 @@ currently on *<channel>*. *<channel>* is only necessary if the message
 isn't sent in the channel itself.
 
 
-.. command-default:
+.. _command-default:
 
 default [<channel>]
 ^^^^^^^^^^^^^^^^^^^
@@ -169,14 +169,14 @@ default topic for a channel may be configured via the configuration
 variable supybot.plugins.Topic.default.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-list:
+.. _command-list:
 
 list [<channel>]
 ^^^^^^^^^^^^^^^^
@@ -186,7 +186,7 @@ Mostly useful for topic reordering. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-remove:
+.. _command-remove:
 
 remove [<channel>] <number>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -197,7 +197,7 @@ to topics starting the from the end of the topic. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-separator:
+.. _command-separator:
 
 separator [<channel>] <separator>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

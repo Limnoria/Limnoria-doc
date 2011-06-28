@@ -4,7 +4,7 @@
 The Success plugin
 ==================
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^

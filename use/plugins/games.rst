@@ -4,7 +4,7 @@
 The Games plugin
 ================
 
-.. command-dice:
+.. _command-dice:
 
 dice <dice>d<sides>
 ^^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ For example, 2d6 will roll 2 six-sided dice; 10d10 will roll 10
 ten-sided dice.
 
 
-.. command-roulette:
+.. _command-roulette:
 
 roulette [spin]
 ^^^^^^^^^^^^^^^
@@ -23,7 +23,7 @@ Fires the revolver. If the bullet was in the chamber, you're dead.
 Tell me to spin the chambers and I will.
 
 
-.. command-eightball:
+.. _command-eightball:
 
 eightball [<question>]
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -31,7 +31,7 @@ eightball [<question>]
 Ask a question and the answer shall be provided.
 
 
-.. command-monologue:
+.. _command-monologue:
 
 monologue [<channel>]
 ^^^^^^^^^^^^^^^^^^^^^
@@ -42,7 +42,7 @@ without being interrupted by someone else (i.e. how long your current
 in the channel itself.
 
 
-.. command-coin:
+.. _command-coin:
 
 coin
 ^^^^

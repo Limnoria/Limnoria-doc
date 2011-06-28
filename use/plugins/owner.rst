@@ -4,7 +4,7 @@
 The Owner plugin
 ================
 
-.. command-load:
+.. _command-load:
 
 load [--deprecated] <plugin>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -15,7 +15,7 @@ installed directory and 'plugins' in the current directory.
 *--deprecated* is necessary if you wish to load deprecated plugins.
 
 
-.. command-rename:
+.. _command-rename:
 
 rename <plugin> <command> <new name>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -23,7 +23,7 @@ rename <plugin> <command> <new name>
 Renames *<command>* in *<plugin>* to the *<new name>*.
 
 
-.. command-enable:
+.. _command-enable:
 
 enable [<plugin>] <command>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -33,7 +33,7 @@ if given, only enables the *<command>* from *<plugin>*.  This command is
 the inverse of disable.
 
 
-.. command-defaultcapability:
+.. _command-defaultcapability:
 
 defaultcapability {add|remove} <capability>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -43,14 +43,14 @@ default capabilities given to users (the configuration variable
 supybot.capabilities stores these).
 
 
-.. command-reloadlocale:
+.. _command-reloadlocale:
 
 reloadlocale takes no argument
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Reloads the locale of the bot.
 
-.. command-ircquote:
+.. _command-ircquote:
 
 ircquote <string to be sent to the server>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -58,7 +58,7 @@ ircquote <string to be sent to the server>
 Sends the raw string given to the server.
 
 
-.. command-disable:
+.. _command-disable:
 
 disable [<plugin>] <command>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -70,7 +70,7 @@ a default capability of -plugin.command or -command (if you want to
 disable the command in all plugins).
 
 
-.. command-upkeep:
+.. _command-upkeep:
 
 upkeep [<level>]
 ^^^^^^^^^^^^^^^^
@@ -81,7 +81,7 @@ level is "high", which causes the bot to flush a lot of caches as well
 as do normal upkeep stuff.
 
 
-.. command-flush:
+.. _command-flush:
 
 flush
 ^^^^^
@@ -90,7 +90,7 @@ Runs all the periodic flushers in world.flushers.  This includes
 flushing all logs and all configuration changes to disk.
 
 
-.. command-unrename:
+.. _command-unrename:
 
 unrename <plugin>
 ^^^^^^^^^^^^^^^^^
@@ -99,14 +99,14 @@ Removes all renames in *<plugin>*.  The plugin will be reloaded after
 this command is run.
 
 
-.. command-reset:
+.. _command-reset:
 
 reset 
 ^^^^^^
 
 
 
-.. command-quit:
+.. _command-quit:
 
 quit [<text>]
 ^^^^^^^^^^^^^
@@ -116,7 +116,7 @@ the default quit message (supybot.plugins.Owner.quitMsg) will be used.
 If there is no default quitMsg set, your nick will be used.
 
 
-.. command-unload:
+.. _command-unload:
 
 unload <plugin>
 ^^^^^^^^^^^^^^^
@@ -126,7 +126,7 @@ of the currently loaded callbacks.  Obviously, the Owner plugin can't
 be unloaded.
 
 
-.. command-reload:
+.. _command-reload:
 
 reload <plugin>
 ^^^^^^^^^^^^^^^
@@ -135,7 +135,7 @@ Unloads and subsequently reloads the plugin by name; use the 'list'
 command to see a list of the currently loaded plugins.
 
 
-.. command-announce:
+.. _command-announce:
 
 announce <text>
 ^^^^^^^^^^^^^^^
@@ -144,7 +144,7 @@ Sends *<text>* to all channels the bot is currently on and not
 lobotomized in.
 
 
-.. command-defaultplugin:
+.. _command-defaultplugin:
 
 defaultplugin [--remove] <command> [<plugin>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -155,7 +155,7 @@ is given, returns the current default plugin set for *<command>*.  See
 also, supybot.commands.defaultPlugins.importantPlugins.
 
 
-.. command-logmark:
+.. _command-logmark:
 
 logmark <text>
 ^^^^^^^^^^^^^^

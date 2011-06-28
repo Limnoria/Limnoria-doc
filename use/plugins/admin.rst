@@ -4,7 +4,7 @@
 The Admin plugin
 ================
 
-.. command-channels:
+.. _command-channels:
 
 channels
 ^^^^^^^^
@@ -13,7 +13,7 @@ Returns the channels the bot is on. Must be given in private, in order
 to protect the secrecy of secret channels.
 
 
-.. command-part:
+.. _command-part:
 
 part [<channel>] [<reason>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -24,7 +24,7 @@ current channel. If *<reason>* is specified, use it as the part
 message.
 
 
-.. command-ignore-list:
+.. _command-ignore-list:
 
 ignore list
 ^^^^^^^^^^^
@@ -32,7 +32,7 @@ ignore list
 Lists the hostmasks that the bot is ignoring.
 
 
-.. command-ignore-remove:
+.. _command-ignore-remove:
 
 ignore remove <hostmask|nick>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -41,7 +41,7 @@ This will remove the persistent ignore on *<hostmask>* or the
 hostmask currently associated with *<nick>*.
 
 
-.. command-ignore-add:
+.. _command-ignore-add:
 
 ignore add <hostmask|nick> [<expires>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -52,7 +52,7 @@ specifying when (in "seconds from now") the ignore will expire; if
 it isn't given, the ignore will never automatically expire.
 
 
-.. command-join:
+.. _command-join:
 
 join <channel> [<key>]
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -61,7 +61,7 @@ Tell the bot to join the given channel. If *<key>* is given, it is used
 when attempting to join the channel.
 
 
-.. command-capability-add:
+.. _command-capability-add:
 
 capability add <name|hostmask> <capability>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -70,7 +70,7 @@ Gives the user specified by *<name>* (or the user to whom *<hostmask>*
 currently maps) the specified capability *<capability>*
 
 
-.. command-capability-remove:
+.. _command-capability-remove:
 
 capability remove <name|hostmask> <capability>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -79,7 +79,7 @@ Takes from the user specified by *<name>* (or the user to whom
 *<hostmask>* currently maps) the specified capability *<capability>*
 
 
-.. command-nick:
+.. _command-nick:
 
 nick [<nick>]
 ^^^^^^^^^^^^^

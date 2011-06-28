@@ -4,7 +4,7 @@
 The User plugin
 ===============
 
-.. command-username:
+.. _command-username:
 
 username <hostmask|nick>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13,7 +13,7 @@ Returns the username of the user specified by *<hostmask>* or *<nick>* if
 the user is registered.
 
 
-.. command-set-password:
+.. _command-set-password:
 
 set password [<name>] <old password> <new password>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ user (and the user whose password is being changed isn't that same
 owner user), then *<old password>* needn't be correct.
 
 
-.. command-set-secure:
+.. _command-set-secure:
 
 set secure <password> [<True|False>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -38,7 +38,7 @@ recognized. If a specific True/False value is not given, it
 inverts the current value.
 
 
-.. command-stats:
+.. _command-stats:
 
 stats
 ^^^^^
@@ -46,7 +46,7 @@ stats
 Returns some statistics on the user database.
 
 
-.. command-hostmask-hostmask:
+.. _command-hostmask-hostmask:
 
 hostmask hostmask [<nick>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,7 +55,7 @@ Returns the hostmask of *<nick>*. If *<nick>* isn't given, return the
 hostmask of the person giving the command.
 
 
-.. command-hostmask-list:
+.. _command-hostmask-list:
 
 hostmask list [<name>]
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -65,7 +65,7 @@ isn't specified, returns the hostmasks of the user calling the
 command.
 
 
-.. command-hostmask-add:
+.. _command-hostmask-add:
 
 hostmask add [<name>] [<hostmask>] [<password>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -80,7 +80,7 @@ must be sent to the bot privately (not on a channel) since it may
 contain a password.
 
 
-.. command-hostmask-remove:
+.. _command-hostmask-remove:
 
 hostmask remove <name> <hostmask> [<password>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -93,7 +93,7 @@ sent to the bot privately (not on a channel) since it may contain a
 password.
 
 
-.. command-unregister:
+.. _command-unregister:
 
 unregister <name> [<password>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -102,7 +102,7 @@ Unregisters *<name>* from the user database. If the user giving this
 command is an owner user, the password is not necessary.
 
 
-.. command-register:
+.. _command-register:
 
 register <name> <password>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -116,7 +116,7 @@ This command (and all other commands that include a password) must be
 sent to the bot privately, not in a channel.
 
 
-.. command-list:
+.. _command-list:
 
 list [--capability=<capability>] [<glob>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -125,7 +125,7 @@ Returns the valid registered usernames matching *<glob>*. If *<glob>* is
 not given, returns all registered usernames.
 
 
-.. command-capabilities:
+.. _command-capabilities:
 
 capabilities [<name>]
 ^^^^^^^^^^^^^^^^^^^^^
@@ -135,7 +135,7 @@ isn't specified, returns the capabilities of the user calling the
 command.
 
 
-.. command-unidentify:
+.. _command-unidentify:
 
 unidentify
 ^^^^^^^^^^
@@ -146,7 +146,7 @@ have added hostmasks to your user that can cause the bot to continue to
 recognize you.
 
 
-.. command-identify:
+.. _command-identify:
 
 identify <name> <password>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -156,7 +156,7 @@ commands that include a password) must be sent to the bot privately,
 not in a channel.
 
 
-.. command-whoami:
+.. _command-whoami:
 
 whoami
 ^^^^^^
@@ -164,7 +164,7 @@ whoami
 Returns the name of the user calling the command.
 
 
-.. command-changename:
+.. _command-changename:
 
 changename <name> <new name> [<password>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

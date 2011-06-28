@@ -4,7 +4,7 @@
 The Alias plugin
 ================
 
-.. command-lock:
+.. _command-lock:
 
 lock <alias>
 ^^^^^^^^^^^^
@@ -12,7 +12,7 @@ lock <alias>
 Locks an alias so that no one else can change it.
 
 
-.. command-unlock:
+.. _command-unlock:
 
 unlock <alias>
 ^^^^^^^^^^^^^^
@@ -20,7 +20,7 @@ unlock <alias>
 Unlocks an alias so that people can define new aliases over it.
 
 
-.. command-remove:
+.. _command-remove:
 
 remove <name>
 ^^^^^^^^^^^^^
@@ -28,7 +28,7 @@ remove <name>
 Removes the given alias, if unlocked.
 
 
-.. command-add:
+.. _command-add:
 
 add <name> <alias>
 ^^^^^^^^^^^^^^^^^^

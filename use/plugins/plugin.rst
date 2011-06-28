@@ -4,7 +4,7 @@
 The Plugin plugin
 =================
 
-.. command-help:
+.. _command-help:
 
 help <plugin>
 ^^^^^^^^^^^^^
@@ -13,7 +13,7 @@ Returns a useful description of how to use *<plugin>*, if the plugin has
 one.
 
 
-.. command-contributors:
+.. _command-contributors:
 
 contributors <plugin> [<nick>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -24,7 +24,7 @@ be listed. Note: The *<nick>* is the part inside of the parentheses
 in the people listing.
 
 
-.. command-plugin:
+.. _command-plugin:
 
 plugin <command>
 ^^^^^^^^^^^^^^^^
@@ -35,7 +35,7 @@ If it is not uniquely determined, returns list of all plugins that
 contain *<command>*.
 
 
-.. command-author:
+.. _command-author:
 
 author <plugin>
 ^^^^^^^^^^^^^^^
@@ -44,7 +44,7 @@ Returns the author of *<plugin>*.  This is the person you should talk to
 if you have ideas, suggestions, or other comments about a given plugin.
 
 
-.. command-list:
+.. _command-list:
 
 list
 ^^^^
@@ -52,7 +52,7 @@ list
 Returns a list of the currently loaded plugins.
 
 
-.. command-plugins:
+.. _command-plugins:
 
 plugins <command>
 ^^^^^^^^^^^^^^^^^

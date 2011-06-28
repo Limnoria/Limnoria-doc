@@ -4,7 +4,7 @@
 The Praise plugin
 =================
 
-.. command-praise:
+.. _command-praise:
 
 praise [<channel>] [<id>] <who|what> [for <reason>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

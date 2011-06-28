@@ -4,7 +4,7 @@
 The URL plugin
 ==============
 
-.. command-stats:
+.. _command-stats:
 
 stats [<channel>]
 ^^^^^^^^^^^^^^^^^
@@ -13,7 +13,7 @@ Returns the number of URLs in the URL database. *<channel>* is only
 required if the message isn't sent in the channel itself.
 
 
-.. command-last:
+.. _command-last:
 
 last [<channel>] [--{from,with,without,near,proto} <value>] [--nolimit]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

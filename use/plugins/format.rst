@@ -4,7 +4,7 @@
 The Format plugin
 =================
 
-.. command-upper:
+.. _command-upper:
 
 upper <text>
 ^^^^^^^^^^^^
@@ -12,7 +12,7 @@ upper <text>
 Returns *<text>* uppercased.
 
 
-.. command-bold:
+.. _command-bold:
 
 bold <text>
 ^^^^^^^^^^^
@@ -20,7 +20,7 @@ bold <text>
 Returns *<text>* bolded.
 
 
-.. command-format:
+.. _command-format:
 
 format <format string> [<arg> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -30,7 +30,7 @@ sure always to use %s, not %d or %f or whatever, because all the args
 are strings.
 
 
-.. command-color:
+.. _command-color:
 
 color <foreground> [<background>] <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,7 +39,7 @@ Returns *<text>* with foreground color *<foreground>* and background color
 *<background>* (if given)
 
 
-.. command-repr:
+.. _command-repr:
 
 repr <text>
 ^^^^^^^^^^^
@@ -47,7 +47,7 @@ repr <text>
 Returns the text surrounded by double quotes.
 
 
-.. command-replace:
+.. _command-replace:
 
 replace <substring to translate> <substring to replace it with> <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -56,7 +56,7 @@ Replaces all non-overlapping occurrences of *<substring to translate>*
 with *<substring to replace it with>* in *<text>*.
 
 
-.. command-capitalize:
+.. _command-capitalize:
 
 capitalize <text>
 ^^^^^^^^^^^^^^^^^
@@ -64,7 +64,7 @@ capitalize <text>
 Returns *<text>* capitalized.
 
 
-.. command-underline:
+.. _command-underline:
 
 underline <text>
 ^^^^^^^^^^^^^^^^
@@ -72,7 +72,7 @@ underline <text>
 Returns *<text>* underlined.
 
 
-.. command-lower:
+.. _command-lower:
 
 lower <text>
 ^^^^^^^^^^^^
@@ -80,7 +80,7 @@ lower <text>
 Returns *<text>* lowercased.
 
 
-.. command-cut:
+.. _command-cut:
 
 cut <size> <text>
 ^^^^^^^^^^^^^^^^^
@@ -90,7 +90,7 @@ excess of *<size>*. If *<size>* is a negative number, it chops that many
 characters off the end of *<text>*.
 
 
-.. command-join:
+.. _command-join:
 
 join <separator> <string 1> [<string> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,7 +98,7 @@ join <separator> <string 1> [<string> ...]
 Joins all the arguments together with *<separator>*.
 
 
-.. command-reverse:
+.. _command-reverse:
 
 reverse <text>
 ^^^^^^^^^^^^^^
@@ -106,7 +106,7 @@ reverse <text>
 Returns *<text>* in reverse-video.
 
 
-.. command-title:
+.. _command-title:
 
 title <text>
 ^^^^^^^^^^^^
@@ -114,7 +114,7 @@ title <text>
 Returns *<text>* titlecased.
 
 
-.. command-field:
+.. _command-field:
 
 field <number> <text>
 ^^^^^^^^^^^^^^^^^^^^^
@@ -123,7 +123,7 @@ Returns the *<number>*th space-separated field of *<text>*. I.e., if text
 is "foo bar baz" and *<number>* is 2, "bar" is returned.
 
 
-.. command-concat:
+.. _command-concat:
 
 concat <string 1> <string 2>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -133,7 +133,7 @@ thing as join "", since if *<string 2>* contains spaces, they won't be
 removed by concat.
 
 
-.. command-translate:
+.. _command-translate:
 
 translate <chars to translate> <chars to replace those with> <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

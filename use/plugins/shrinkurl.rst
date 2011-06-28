@@ -4,7 +4,7 @@
 The ShrinkUrl plugin
 ====================
 
-.. command-xrl:
+.. _command-xrl:
 
 xrl <url>
 ^^^^^^^^^
@@ -12,14 +12,14 @@ xrl <url>
 Returns an xrl.us version of *<url>*.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-tiny:
+.. _command-tiny:
 
 tiny <url>
 ^^^^^^^^^^
@@ -27,7 +27,7 @@ tiny <url>
 Returns a TinyURL.com version of *<url>*
 
 
-.. command-ln:
+.. _command-ln:
 
 ln <url>
 ^^^^^^^^

@@ -4,28 +4,28 @@
 The ChannelLogger plugin
 ========================
 
-.. command-timestamp:
+.. _command-timestamp:
 
 timestamp 
 ^^^^^^^^^^
 
 
 
-.. command-flush:
+.. _command-flush:
 
 flush 
 ^^^^^^
 
 
 
-.. command-reset:
+.. _command-reset:
 
 reset 
 ^^^^^^
 
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^

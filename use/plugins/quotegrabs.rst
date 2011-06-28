@@ -4,7 +4,7 @@
 The QuoteGrabs plugin
 =====================
 
-.. command-ungrab:
+.. _command-ungrab:
 
 ungrab [<channel>] <number>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ Removes the grab *<number>* (the last by default) on *<channel>*.
 itself.
 
 
-.. command-get:
+.. _command-get:
 
 get [<channel>] <id>
 ^^^^^^^^^^^^^^^^^^^^
@@ -23,7 +23,7 @@ Return the quotegrab with the given *<id>*. *<channel>* is only necessary
 if the message isn't sent in the channel itself.
 
 
-.. command-quote:
+.. _command-quote:
 
 quote [<channel>] <nick>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -32,7 +32,7 @@ Returns *<nick>*'s latest quote grab in *<channel>*. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-random:
+.. _command-random:
 
 random [<channel>] [<nick>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -42,7 +42,7 @@ quotes grabbed for *<nick>*. *<channel>* is only necessary if the message
 isn't sent in the channel itself.
 
 
-.. command-list:
+.. _command-list:
 
 list [<channel>] <nick>
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -53,7 +53,7 @@ full quote. *<channel>* is only necessary if the message isn't sent in
 the channel itself.
 
 
-.. command-search:
+.. _command-search:
 
 search [<channel>] <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,7 +62,7 @@ Searches for *<text>* in a quote. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-grab:
+.. _command-grab:
 
 grab [<channel>] <nick>
 ^^^^^^^^^^^^^^^^^^^^^^^

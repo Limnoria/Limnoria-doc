@@ -4,7 +4,7 @@
 The Channel plugin
 ==================
 
-.. command-unmoderate:
+.. _command-unmoderate:
 
 unmoderate [<channel>]
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ send messages to the channel. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-devoice:
+.. _command-devoice:
 
 devoice [<channel>] [<nick> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -24,7 +24,7 @@ the nicks given. If no nicks are given, removes voice from the person
 sending the message.
 
 
-.. command-lobotomy-list:
+.. _command-lobotomy-list:
 
 lobotomy list
 ^^^^^^^^^^^^^
@@ -32,7 +32,7 @@ lobotomy list
 Returns the channels in which this bot is lobotomized.
 
 
-.. command-lobotomy-remove:
+.. _command-lobotomy-remove:
 
 lobotomy remove [<channel>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -43,7 +43,7 @@ bot, making it respond to requests made in the channel again.
 itself.
 
 
-.. command-lobotomy-add:
+.. _command-lobotomy-add:
 
 lobotomy add [<channel>]
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -54,7 +54,7 @@ channel. *<channel>* is only necessary if the message isn't sent in
 the channel itself.
 
 
-.. command-deop:
+.. _command-deop:
 
 deop [<channel>] [<nick> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -64,7 +64,7 @@ privileges from all the nicks given. If no nicks are given, removes
 operator privileges from the person sending the message.
 
 
-.. command-nicks:
+.. _command-nicks:
 
 nicks [<channel>] [--count]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,7 +74,7 @@ message isn't sent in the channel itself. Returns only the number of
 nicks if *--count* option is provided.
 
 
-.. command-limit:
+.. _command-limit:
 
 limit [<channel>] [<limit>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,7 +84,7 @@ removes the channel limit. *<channel>* is only necessary if the message
 isn't sent in the channel itself.
 
 
-.. command-moderate:
+.. _command-moderate:
 
 moderate [<channel>]
 ^^^^^^^^^^^^^^^^^^^^
@@ -94,7 +94,7 @@ send messages to the channel. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-unban:
+.. _command-unban:
 
 unban [<channel>] [<hostmask>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,7 +106,7 @@ unexpectedly (or accidentally) banned from the channel. *<channel>* is
 only necessary if the message isn't sent in the channel itself.
 
 
-.. command-kick:
+.. _command-kick:
 
 kick [<channel>] <nick>[, <nick>, ...] [<reason>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -117,7 +117,7 @@ uses the nick of the person making the command as the reason.
 itself.
 
 
-.. command-enable:
+.. _command-enable:
 
 enable [<channel>] [<plugin>] [<command>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -129,7 +129,7 @@ provided, all commands in the given plugin will be enabled. *<channel>*
 is only necessary if the message isn't sent in the channel itself.
 
 
-.. command-invite:
+.. _command-invite:
 
 invite [<channel>] <nick>
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,7 +139,7 @@ to join *<channel>*. *<channel>* is only necessary if the message isn't
 sent in the channel itself.
 
 
-.. command-dehalfop:
+.. _command-dehalfop:
 
 dehalfop [<channel>] [<nick> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -149,7 +149,7 @@ privileges from all the nicks given. If no nicks are given, removes
 half-operator privileges from the person sending the message.
 
 
-.. command-alert:
+.. _command-alert:
 
 alert [<channel>] <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,7 +158,7 @@ Sends *<text>* to all the users in *<channel>* who have the *<channel>*,op
 capability.
 
 
-.. command-disable:
+.. _command-disable:
 
 disable [<channel>] [<plugin>] [<command>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -170,7 +170,7 @@ given plugin will be disabled. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-key:
+.. _command-key:
 
 key [<channel>] [<key>]
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,7 +180,7 @@ the keyword requirement to join *<channel>*. *<channel>* is only necessary
 if the message isn't sent in the channel itself.
 
 
-.. command-ignore-list:
+.. _command-ignore-list:
 
 ignore list [<channel>]
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -190,7 +190,7 @@ Lists the hostmasks that the bot is ignoring on the given channel.
 channel itself.
 
 
-.. command-ignore-remove:
+.. _command-ignore-remove:
 
 ignore remove [<channel>] <hostmask>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -200,7 +200,7 @@ persistent ignore on *<hostmask>* in the channel. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-ignore-add:
+.. _command-ignore-add:
 
 ignore add [<channel>] <nick|hostmask> [<expires>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -214,7 +214,7 @@ it isn't given, the ignore will never automatically expire.
 channel itself.
 
 
-.. command-cycle:
+.. _command-cycle:
 
 cycle [<channel>]
 ^^^^^^^^^^^^^^^^^
@@ -224,7 +224,7 @@ If you have the #channel,op capability, this will cause the bot to
 if the message isn't sent in the channel itself.
 
 
-.. command-capability-set:
+.. _command-capability-set:
 
 capability set [<channel>] <capability> [<capability> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -234,7 +234,7 @@ capability *<capability>* for all users in the channel. *<channel>* is
 only necessary if the message isn't sent in the channel itself.
 
 
-.. command-capability-setdefault:
+.. _command-capability-setdefault:
 
 capability setdefault [<channel>] {True|False}
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,7 +245,7 @@ capabilities to be the value you give. *<channel>* is only necessary
 if the message isn't sent in the channel itself.
 
 
-.. command-capability-list:
+.. _command-capability-list:
 
 capability list [<channel>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -254,7 +254,7 @@ Returns the capabilities present on the *<channel>*. *<channel>* is
 only necessary if the message isn't sent in the channel itself.
 
 
-.. command-capability-remove:
+.. _command-capability-remove:
 
 capability remove [<channel>] <name|hostmask> <capability> [<capability> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -265,7 +265,7 @@ maps) the capability *<capability>* in the channel. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-capability-add:
+.. _command-capability-add:
 
 capability add [<channel>] <nick|username> <capability> [<capability> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -276,7 +276,7 @@ the capability *<capability>* in the channel. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-capability-unset:
+.. _command-capability-unset:
 
 capability unset [<channel>] <capability> [<capability> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -287,7 +287,7 @@ channel default capability will take precedence. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-kban:
+.. _command-kban:
 
 kban [<channel>] [--{exact,nick,user,host}] <nick> [<seconds>] [<reason>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -303,7 +303,7 @@ the kick.
 itself.
 
 
-.. command-halfop:
+.. _command-halfop:
 
 halfop [<channel>] [<nick> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -314,7 +314,7 @@ will give you halfops. *<channel>* is only necessary if the message isn't
 sent in the channel itself.
 
 
-.. command-mode:
+.. _command-mode:
 
 mode [<channel>] <mode> [<arg> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -324,7 +324,7 @@ Sets the mode in *<channel>* to *<mode>*, sending the arguments given.
 itself.
 
 
-.. command-ban-list:
+.. _command-ban-list:
 
 ban list [<channel>]
 ^^^^^^^^^^^^^^^^^^^^
@@ -333,7 +333,7 @@ If you have the #channel,op capability, this will show you the
 current persistent bans on #channel.
 
 
-.. command-ban-remove:
+.. _command-ban-remove:
 
 ban remove [<channel>] <hostmask>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -343,7 +343,7 @@ persistent ban on *<hostmask>*. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-ban-add:
+.. _command-ban-add:
 
 ban add [<channel>] <nick|hostmask> [<expires>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -359,7 +359,7 @@ expire; if none is given, the ban will never automatically expire.
 channel itself.
 
 
-.. command-voice:
+.. _command-voice:
 
 voice [<channel>] [<nick> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -370,7 +370,7 @@ voice you. *<channel>* is only necessary if the message isn't sent in the
 channel itself.
 
 
-.. command-op:
+.. _command-op:
 
 op [<channel>] [<nick> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

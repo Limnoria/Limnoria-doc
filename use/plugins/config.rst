@@ -4,7 +4,7 @@
 The Config plugin
 =================
 
-.. command-help:
+.. _command-help:
 
 help <name>
 ^^^^^^^^^^^
@@ -12,7 +12,7 @@ help <name>
 Returns the description of the configuration variable *<name>*.
 
 
-.. command-default:
+.. _command-default:
 
 default <name>
 ^^^^^^^^^^^^^^
@@ -20,7 +20,7 @@ default <name>
 Returns the default value of the configuration variable *<name>*.
 
 
-.. command-list:
+.. _command-list:
 
 list <group>
 ^^^^^^^^^^^^
@@ -32,7 +32,7 @@ it can be separately configured for each channel using the 'channel'
 command in this plugin, it is preceded by an '#' sign.
 
 
-.. command-search:
+.. _command-search:
 
 search <word>
 ^^^^^^^^^^^^^
@@ -40,7 +40,7 @@ search <word>
 Searches for *<word>* in the current configuration variables.
 
 
-.. command-reload:
+.. _command-reload:
 
 reload
 ^^^^^^
@@ -49,7 +49,7 @@ Reloads the various configuration files (user database, channel
 database, registry, etc.).
 
 
-.. command-export:
+.. _command-export:
 
 export <filename>
 ^^^^^^^^^^^^^^^^^
@@ -61,7 +61,7 @@ command will export a "sanitized" configuration file suitable for
 showing publicly.
 
 
-.. command-channel:
+.. _command-channel:
 
 channel [<channel>] <name> [<value>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,7 +71,7 @@ to *<value>* for *<channel>*. Otherwise, returns the current channel
 configuration value of *<name>*. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
-.. command-config:
+.. _command-config:
 
 config <name> [<value>]
 ^^^^^^^^^^^^^^^^^^^^^^^

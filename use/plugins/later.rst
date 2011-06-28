@@ -4,14 +4,14 @@
 The Later plugin
 ================
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-notes:
+.. _command-notes:
 
 notes [<nick>]
 ^^^^^^^^^^^^^^
@@ -20,7 +20,7 @@ If *<nick>* is given, replies with what notes are waiting on *<nick>*,
 otherwise, replies with the nicks that have notes waiting for them.
 
 
-.. command-remove:
+.. _command-remove:
 
 remove <nick>
 ^^^^^^^^^^^^^
@@ -28,7 +28,7 @@ remove <nick>
 Removes the notes waiting on *<nick>*.
 
 
-.. command-tell:
+.. _command-tell:
 
 tell <nick> <text>
 ^^^^^^^^^^^^^^^^^^

@@ -4,7 +4,7 @@
 The Misc plugin
 ===============
 
-.. command-last:
+.. _command-last:
 
 last [--{from,in,on,with,without,regexp} <value>] [--nolimit]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -18,7 +18,7 @@ the messages that can be found. By default, the channel this command is
 given in is searched.
 
 
-.. command-help:
+.. _command-help:
 
 help [<plugin>] [<command>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -27,7 +27,7 @@ This command gives a useful description of what *<command>* does.
 *<plugin>* is only necessary if the command is in more than one plugin.
 
 
-.. command-list:
+.. _command-list:
 
 list [--private] [<plugin>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -37,7 +37,7 @@ given, lists the public plugins available. If *--private* is given,
 lists the private plugins.
 
 
-.. command-ping:
+.. _command-ping:
 
 ping
 ^^^^
@@ -45,7 +45,7 @@ ping
 Checks to see if the bot is alive.
 
 
-.. command-source:
+.. _command-source:
 
 source
 ^^^^^^
@@ -53,7 +53,7 @@ source
 Returns a URL saying where to get Supybot.
 
 
-.. command-version:
+.. _command-version:
 
 version
 ^^^^^^^
@@ -61,7 +61,7 @@ version
 Returns the version of the current bot.
 
 
-.. command-apropos:
+.. _command-apropos:
 
 apropos <string>
 ^^^^^^^^^^^^^^^^
@@ -70,7 +70,7 @@ Searches for *<string>* in the commands currently offered by the bot,
 returning a list of the commands containing that string.
 
 
-.. command-tell:
+.. _command-tell:
 
 tell <nick> <text>
 ^^^^^^^^^^^^^^^^^^
@@ -79,7 +79,7 @@ Tells the *<nick>* whatever *<text>* is. Use nested commands to your
 benefit here.
 
 
-.. command-more:
+.. _command-more:
 
 more [<nick>]
 ^^^^^^^^^^^^^

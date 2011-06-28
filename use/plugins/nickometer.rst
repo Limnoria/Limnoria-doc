@@ -4,14 +4,14 @@
 The Nickometer plugin
 =====================
 
-.. command-punish:
+.. _command-punish:
 
 punish 
 ^^^^^^^
 
 
 
-.. command-nickometer:
+.. _command-nickometer:
 
 nickometer [<nick>]
 ^^^^^^^^^^^^^^^^^^^

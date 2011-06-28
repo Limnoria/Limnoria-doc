@@ -4,7 +4,7 @@
 The Utilities plugin
 ====================
 
-.. command-ignore:
+.. _command-ignore:
 
 ignore requires no arguments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13,7 +13,7 @@ Does nothing. Useful sometimes for sequencing commands when you don't
 care about their non-error return values.
 
 
-.. command-shuffle:
+.. _command-shuffle:
 
 shuffle <arg> [<arg> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -21,7 +21,7 @@ shuffle <arg> [<arg> ...]
 Shuffles the arguments given.
 
 
-.. command-success:
+.. _command-success:
 
 success [<text>]
 ^^^^^^^^^^^^^^^^
@@ -33,7 +33,7 @@ course, will break out of this command. *<text>*, if given, will be
 appended to the end of the success message.
 
 
-.. command-echo:
+.. _command-echo:
 
 echo <text>
 ^^^^^^^^^^^
@@ -44,7 +44,7 @@ $botnick, $channel, $user, $host, $today, $now, and $randomDate are all
 handled appropriately.
 
 
-.. command-sample:
+.. _command-sample:
 
 sample <num> <arg> [<arg> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -52,7 +52,7 @@ sample <num> <arg> [<arg> ...]
 Randomly chooses *<num>* items out of the arguments given.
 
 
-.. command-countargs:
+.. _command-countargs:
 
 countargs <arg> [<arg> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -60,7 +60,7 @@ countargs <arg> [<arg> ...]
 Counts the arguments given.
 
 
-.. command-last:
+.. _command-last:
 
 last <text> [<text> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -70,7 +70,7 @@ nested commands to run, but only the output of the last one to be
 returned.
 
 
-.. command-apply:
+.. _command-apply:
 
 apply <command> <text>
 ^^^^^^^^^^^^^^^^^^^^^^

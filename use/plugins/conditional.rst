@@ -4,7 +4,7 @@
 The Conditional plugin
 ======================
 
-.. command-gt:
+.. _command-gt:
 
 gt <item1> <item2>
  
@@ -14,7 +14,7 @@ gt <item1> <item2>
 
 
 
-.. command-nlt:
+.. _command-nlt:
 
 nlt <item1> <item2>
  
@@ -24,7 +24,7 @@ nlt <item1> <item2>
 
 
 
-.. command-nne:
+.. _command-nne:
 
 nne <item1> <item2>
  
@@ -34,7 +34,7 @@ nne <item1> <item2>
 
 
 
-.. command-ge:
+.. _command-ge:
 
 ge <item1> <item2>
  
@@ -44,7 +44,7 @@ ge <item1> <item2>
 
 
 
-.. command-cor:
+.. _command-cor:
 
 cor <cond1> [<cond2> ... <condN>]
  
@@ -53,7 +53,7 @@ cor <cond1> [<cond2> ... <condN>]
 
 
 
-.. command-nle:
+.. _command-nle:
 
 nle <item1> <item2>
  
@@ -63,7 +63,7 @@ nle <item1> <item2>
 
 
 
-.. command-ceq:
+.. _command-ceq:
 
 ceq <item1> <item2>
  
@@ -73,7 +73,7 @@ ceq <item1> <item2>
 
 
 
-.. command-nge:
+.. _command-nge:
 
 nge <item1> <item2>
  
@@ -83,7 +83,7 @@ nge <item1> <item2>
 
 
 
-.. command-cxor:
+.. _command-cxor:
 
 cxor <cond1> [<cond2> ... <condN>]
  
@@ -92,7 +92,7 @@ cxor <cond1> [<cond2> ... <condN>]
 
 
 
-.. command-le:
+.. _command-le:
 
 le <item1> <item2>
  
@@ -102,7 +102,7 @@ le <item1> <item2>
 
 
 
-.. command-cif:
+.. _command-cif:
 
 cif <condition> <ifcommand> <elsecommand>
  
@@ -115,7 +115,7 @@ cif <condition> <ifcommand> <elsecommand>
 
 
 
-.. command-ne:
+.. _command-ne:
 
 ne <item1> <item2>
  
@@ -125,7 +125,7 @@ ne <item1> <item2>
 
 
 
-.. command-cand:
+.. _command-cand:
 
 cand <cond1> [<cond2> ... <condN>]
  
@@ -134,7 +134,7 @@ cand <cond1> [<cond2> ... <condN>]
 
 
 
-.. command-nceq:
+.. _command-nceq:
 
 nceq <item1> <item2>
  
@@ -144,7 +144,7 @@ nceq <item1> <item2>
 
 
 
-.. command-ngt:
+.. _command-ngt:
 
 ngt <item1> <item2>
  
@@ -154,7 +154,7 @@ ngt <item1> <item2>
 
 
 
-.. command-lt:
+.. _command-lt:
 
 lt <item1> <item2>
  
@@ -164,7 +164,7 @@ lt <item1> <item2>
 
 
 
-.. command-match:
+.. _command-match:
 
 match <item1> <item2>
  

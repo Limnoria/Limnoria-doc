@@ -4,7 +4,7 @@
 The Ctcp plugin
 ===============
 
-.. command-version:
+.. _command-version:
 
 version [<channel>] [--nicks]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

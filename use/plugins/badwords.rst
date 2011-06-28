@@ -4,14 +4,14 @@
 The BadWords plugin
 ===================
 
-.. command-sub:
+.. _command-sub:
 
 sub 
 ^^^^
 
 
 
-.. command-list:
+.. _command-list:
 
 list
 ^^^^
@@ -19,7 +19,7 @@ list
 Returns the list of words being censored.
 
 
-.. command-remove:
+.. _command-remove:
 
 remove <word> [<word> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -27,7 +27,7 @@ remove <word> [<word> ...]
 Removes *<word>*s from the list of words being censored.
 
 
-.. command-add:
+.. _command-add:
 
 add <word> [<word> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^

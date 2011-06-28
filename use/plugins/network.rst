@@ -4,7 +4,7 @@
 The Network plugin
 ==================
 
-.. command-driver:
+.. _command-driver:
 
 driver [<network>]
 ^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ necessary if the message isn't sent on the network to which this
 command is to apply.
 
 
-.. command-connect:
+.. _command-connect:
 
 connect [--ssl] <network> [<host[:port]>] [<password>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -26,7 +26,7 @@ provided, it will be sent to the server in a PASS command. If *--ssl* is
 provided, an SSL connection will be attempted.
 
 
-.. command-reconnect:
+.. _command-reconnect:
 
 reconnect [<network>] [<quit message>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -38,7 +38,7 @@ on. If no quit message is given, uses the configured one
 command.
 
 
-.. command-networks:
+.. _command-networks:
 
 networks
 ^^^^^^^^
@@ -46,7 +46,7 @@ networks
 Returns the networks to which the bot is currently connected.
 
 
-.. command-latency:
+.. _command-latency:
 
 latency [<network>]
 ^^^^^^^^^^^^^^^^^^^
@@ -56,7 +56,7 @@ if the message isn't sent on the network to which this command is to
 apply.
 
 
-.. command-disconnect:
+.. _command-disconnect:
 
 disconnect [<network>] [<quit message>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -67,7 +67,7 @@ message. *<network>* is only necessary if the network is different
 from the network the command is sent on.
 
 
-.. command-whois:
+.. _command-whois:
 
 whois [<network>] <nick>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +77,7 @@ only necessary if the network is different than the network the command
 is sent on.
 
 
-.. command-command:
+.. _command-command:
 
 command <network> <command> [<arg> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -4,7 +4,7 @@
 The Note plugin
 ===============
 
-.. command-unsend:
+.. _command-unsend:
 
 unsend <id>
 ^^^^^^^^^^^
@@ -13,7 +13,7 @@ Unsends the note with the id given.  You must be the
 author of the note, and it must be unread.
 
 
-.. command-search:
+.. _command-search:
 
 search [--{regexp} <value>] [--sent] [<glob>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -23,7 +23,7 @@ given, its associated value is taken as a regexp and matched against
 the notes.  If *--sent* is specified, only search sent notes.
 
 
-.. command-reply:
+.. _command-reply:
 
 reply <id> <text>
 ^^^^^^^^^^^^^^^^^
@@ -31,14 +31,14 @@ reply <id> <text>
 Sends a note in reply to *<id>*.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-list:
+.. _command-list:
 
 list [--{old,sent}] [--{from,to} <user>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -49,7 +49,7 @@ read notes.  If *--sent* is given, list notes that you have sent.  If
 *--to* is specified, only lists notes sent by you to *<user>*.
 
 
-.. command-send:
+.. _command-send:
 
 send <recipient>,[<recipient>,[...]] <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -58,7 +58,7 @@ Sends a new note to the user specified.  Multiple recipients may be
 specified by separating their names by commas.
 
 
-.. command-next:
+.. _command-next:
 
 next
 ^^^^
@@ -66,7 +66,7 @@ next
 Retrieves your next unread note, if any.
 
 
-.. command-note:
+.. _command-note:
 
 note <id>
 ^^^^^^^^^

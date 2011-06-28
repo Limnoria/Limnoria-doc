@@ -4,7 +4,7 @@
 The Filter plugin
 =================
 
-.. command-undup:
+.. _command-undup:
 
 undup <text>
 ^^^^^^^^^^^^
@@ -12,7 +12,7 @@ undup <text>
 Returns *<text>*, with all consecutive duplicated letters removed.
 
 
-.. command-unhexlify:
+.. _command-unhexlify:
 
 unhexlify <hexstring>
 ^^^^^^^^^^^^^^^^^^^^^
@@ -21,7 +21,7 @@ Returns the string corresponding to *<hexstring>*. Obviously,
 *<hexstring>* must be a string of hexadecimal digits.
 
 
-.. command-stripcolor:
+.. _command-stripcolor:
 
 stripcolor <text>
 ^^^^^^^^^^^^^^^^^
@@ -29,7 +29,7 @@ stripcolor <text>
 Returns *<text>* stripped of all color codes.
 
 
-.. command-unbinary:
+.. _command-unbinary:
 
 unbinary <text>
 ^^^^^^^^^^^^^^^
@@ -38,7 +38,7 @@ Returns the character representation of binary *<text>*.
 Assumes ASCII, 8 digits per character.
 
 
-.. command-hebrew:
+.. _command-hebrew:
 
 hebrew <text>
 ^^^^^^^^^^^^^
@@ -48,7 +48,7 @@ named 'hebrew' it's because I (jemfinch) thought of it in Hebrew class,
 and printed Hebrew often elides the vowels.)
 
 
-.. command-colorize:
+.. _command-colorize:
 
 colorize <text>
 ^^^^^^^^^^^^^^^
@@ -56,7 +56,7 @@ colorize <text>
 Returns *<text>* with each character randomly colorized.
 
 
-.. command-binary:
+.. _command-binary:
 
 binary <text>
 ^^^^^^^^^^^^^
@@ -64,7 +64,7 @@ binary <text>
 Returns the binary representation of *<text>*.
 
 
-.. command-leet:
+.. _command-leet:
 
 leet <text>
 ^^^^^^^^^^^
@@ -72,7 +72,7 @@ leet <text>
 Returns the l33tspeak version of *<text>*
 
 
-.. command-lithp:
+.. _command-lithp:
 
 lithp <text>
 ^^^^^^^^^^^^
@@ -80,7 +80,7 @@ lithp <text>
 Returns the lisping version of *<text>*
 
 
-.. command-morse:
+.. _command-morse:
 
 morse <text>
 ^^^^^^^^^^^^
@@ -88,7 +88,7 @@ morse <text>
 Gives the Morse code equivalent of a given string.
 
 
-.. command-outfilter:
+.. _command-outfilter:
 
 outfilter [<channel>] [<command>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,7 +98,7 @@ given, unsets the outFilter. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-spellit:
+.. _command-spellit:
 
 spellit <text>
 ^^^^^^^^^^^^^^
@@ -106,7 +106,7 @@ spellit <text>
 Returns *<text>*, phonetically spelled out.
 
 
-.. command-rainbow:
+.. _command-rainbow:
 
 rainbow <text>
 ^^^^^^^^^^^^^^
@@ -114,7 +114,7 @@ rainbow <text>
 Returns *<text>* colorized like a rainbow.
 
 
-.. command-aol:
+.. _command-aol:
 
 aol <text>
 ^^^^^^^^^^
@@ -122,7 +122,7 @@ aol <text>
 Returns *<text>* as if an AOLuser had said it.
 
 
-.. command-hexlify:
+.. _command-hexlify:
 
 hexlify <text>
 ^^^^^^^^^^^^^^
@@ -131,7 +131,7 @@ Returns a hexstring from the given string; a hexstring is a string
 composed of the hexadecimal value of each character in the string
 
 
-.. command-unmorse:
+.. _command-unmorse:
 
 unmorse <Morse code text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,7 +139,7 @@ unmorse <Morse code text>
 Does the reverse of the morse command.
 
 
-.. command-squish:
+.. _command-squish:
 
 squish <text>
 ^^^^^^^^^^^^^
@@ -147,7 +147,7 @@ squish <text>
 Removes all the spaces from *<text>*.
 
 
-.. command-reverse:
+.. _command-reverse:
 
 reverse <text>
 ^^^^^^^^^^^^^^
@@ -155,7 +155,7 @@ reverse <text>
 Reverses *<text>*.
 
 
-.. command-azn:
+.. _command-azn:
 
 azn <text>
 ^^^^^^^^^^
@@ -163,7 +163,7 @@ azn <text>
 Returns *<text>* with the l's made into r's and r's made into l's.
 
 
-.. command-gnu:
+.. _command-gnu:
 
 gnu <text>
 ^^^^^^^^^^
@@ -171,7 +171,7 @@ gnu <text>
 Returns *<text>* as GNU/RMS would say it.
 
 
-.. command-jeffk:
+.. _command-jeffk:
 
 jeffk <text>
 ^^^^^^^^^^^^
@@ -179,7 +179,7 @@ jeffk <text>
 Returns *<text>* as if JeffK had said it himself.
 
 
-.. command-shrink:
+.. _command-shrink:
 
 shrink <text>
 ^^^^^^^^^^^^^
@@ -189,7 +189,7 @@ supybot.plugins.Filter.shrink.minimum being shrunken (i.e., like
 "internationalization" becomes "i18n").
 
 
-.. command-uniud:
+.. _command-uniud:
 
 uniud <text>
 ^^^^^^^^^^^^
@@ -198,7 +198,7 @@ Returns *<text>* rotated 180 degrees. Only really works for ASCII
 printable characters.
 
 
-.. command-scramble:
+.. _command-scramble:
 
 scramble <text>
 ^^^^^^^^^^^^^^^

@@ -4,7 +4,7 @@
 The Factoids plugin
 ===================
 
-.. command-info:
+.. _command-info:
 
 info [<channel>] <key>
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -14,14 +14,14 @@ Gives information about the factoid(s) associated with *<key>*.
 itself.
 
 
-.. command-learn:
+.. _command-learn:
 
 learn 
 ^^^^^^
 
 
 
-.. command-forget:
+.. _command-forget:
 
 forget [<channel>] <key> [<number>|*]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -38,7 +38,7 @@ a factoid (key), it shall be removed from the database.
 the message isn't sent in the channel itself.
 
 
-.. command-random:
+.. _command-random:
 
 random [<channel>]
 ^^^^^^^^^^^^^^^^^^
@@ -47,7 +47,7 @@ Returns a random factoid from the database for *<channel>*. *<channel>*
 is only necessary if the message isn't sent in the channel itself.
 
 
-.. command-rank:
+.. _command-rank:
 
 rank [<channel>] [--plain] [--alpha] [<number>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -66,7 +66,7 @@ alphabetically, instead of by rank.
 itself.
 
 
-.. command-unlock:
+.. _command-unlock:
 
 unlock [<channel>] <key>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,7 +76,7 @@ removed or added to. *<channel>* is only necessary if the message isn't
 sent in the channel itself.
 
 
-.. command-search:
+.. _command-search:
 
 search [<channel>] [--values] [--{regexp} <value>] [<glob> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,7 +86,7 @@ it associated value is taken as a regexp and matched against the keys.
 If *--values* is given, search the value space instead of the keyspace.
 
 
-.. command-whatis:
+.. _command-whatis:
 
 whatis [<channel>] [--raw] <key> [<number>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,7 +98,7 @@ given, no variable substitution will take place on the factoid.
 itself.
 
 
-.. command-alias:
+.. _command-alias:
 
 alias [<channel>] <oldkey> <newkey> [<number>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -111,7 +111,7 @@ The same action can be accomplished by using the 'learn' function with
 a new key but an existing (verbatim) factoid content.
 
 
-.. command-change:
+.. _command-change:
 
 change [<channel>] <key> <number> <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -120,7 +120,7 @@ Changes the factoid #*<number>* associated with *<key>* according to
 *<regexp>*.
 
 
-.. command-lock:
+.. _command-lock:
 
 lock [<channel>] <key>
 ^^^^^^^^^^^^^^^^^^^^^^

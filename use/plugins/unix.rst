@@ -4,7 +4,7 @@
 The Unix plugin
 ===============
 
-.. command-fortune:
+.. _command-fortune:
 
 fortune
 ^^^^^^^
@@ -12,7 +12,7 @@ fortune
 Returns a fortune from the *nix fortune program.
 
 
-.. command-errno:
+.. _command-errno:
 
 errno <error number or code>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -20,7 +20,7 @@ errno <error number or code>
 Returns the number of an errno code, or the errno code of a number.
 
 
-.. command-spell:
+.. _command-spell:
 
 spell <word>
 ^^^^^^^^^^^^
@@ -30,7 +30,7 @@ shown are sorted from best to worst in terms of being a likely match
 for the spelling of *<word>*.
 
 
-.. command-pid:
+.. _command-pid:
 
 pid
 ^^^
@@ -38,7 +38,7 @@ pid
 Returns the current pid of the process for this Supybot.
 
 
-.. command-call:
+.. _command-call:
 
 call <command to call with any arguments> 
         Calls any command available on the system, and returns its output.
@@ -51,7 +51,7 @@ call <command to call with any arguments>
 
 
 
-.. command-wtf:
+.. _command-wtf:
 
 wtf [is] <something>
 ^^^^^^^^^^^^^^^^^^^^
@@ -61,7 +61,7 @@ appeared in NetBSD 1.5. In most *nices, it's available in some sort
 of 'bsdgames' package.
 
 
-.. command-crypt:
+.. _command-crypt:
 
 crypt <password> [<salt>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -72,7 +72,7 @@ prepending '$1$' to your salt will cause crypt to return an MD5sum
 based crypt rather than the standard DES based crypt.
 
 
-.. command-progstats:
+.. _command-progstats:
 
 progstats
 ^^^^^^^^^
@@ -80,7 +80,7 @@ progstats
 Returns various unix-y information on the running supybot process.
 
 
-.. command-ping:
+.. _command-ping:
 
 ping [--c <count>] [--i <interval>] [--t <ttl>] [--W <timeout>] <host or ip>
  Sends an ICMP echo request to the specified host.

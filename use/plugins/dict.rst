@@ -4,7 +4,7 @@
 The Dict plugin
 ===============
 
-.. command-synonym:
+.. _command-synonym:
 
 synonym <word> [<word> ...]
         Gets a random synonym from the Moby Thesaurus (moby-thes) database.
@@ -16,7 +16,7 @@ synonym <word> [<word> ...]
 
 
 
-.. command-dict:
+.. _command-dict:
 
 dict [<dictionary>] <word>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ Looks up the definition of *<word>* on the dictd server specified by
 the supybot.plugins.Dict.server config variable.
 
 
-.. command-random:
+.. _command-random:
 
 random
 ^^^^^^
@@ -33,7 +33,7 @@ random
 Returns a random valid dictionary.
 
 
-.. command-dictionaries:
+.. _command-dictionaries:
 
 dictionaries
 ^^^^^^^^^^^^

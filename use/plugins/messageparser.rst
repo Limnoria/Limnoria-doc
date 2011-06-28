@@ -4,7 +4,7 @@
 The MessageParser plugin
 ========================
 
-.. command-show:
+.. _command-show:
 
 show [<channel>] [--id] <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -15,7 +15,7 @@ itself.
 If option *--id* specified, will retrieve by regexp id, not content.
 
 
-.. command-lock:
+.. _command-lock:
 
 lock [<channel>] <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ removed or overwritten to. *<channel>* is only necessary if the message isn't
 sent in the channel itself.
 
 
-.. command-rank:
+.. _command-rank:
 
 rank [<channel>]
 ^^^^^^^^^^^^^^^^
@@ -36,7 +36,7 @@ rankListLength registry value. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 
-.. command-unlock:
+.. _command-unlock:
 
 unlock [<channel>] <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -46,7 +46,7 @@ removed or overwritten. *<channel>* is only necessary if the message isn't
 sent in the channel itself.
 
 
-.. command-vacuum:
+.. _command-vacuum:
 
 vacuum [<channel>]
 ^^^^^^^^^^^^^^^^^^
@@ -59,7 +59,7 @@ First check if user has the required capability specified in plugin
 config requireVacuumCapability.
 
 
-.. command-info:
+.. _command-info:
 
 info [<channel>] [--id] <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -70,7 +70,7 @@ itself.
 If option *--id* specified, will retrieve by regexp id, not content.
 
 
-.. command-list:
+.. _command-list:
 
 list [<channel>]
 ^^^^^^^^^^^^^^^^
@@ -80,7 +80,7 @@ Lists regexps present in the triggers database.
 itself. Regexp ID listed in paretheses.
 
 
-.. command-remove:
+.. _command-remove:
 
 remove [<channel>] [--id] <regexp>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -91,7 +91,7 @@ the message isn't sent in the channel itself.
 If option *--id* specified, will retrieve by regexp id, not content.
 
 
-.. command-add:
+.. _command-add:
 
 add [<channel>] <regexp> <action>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

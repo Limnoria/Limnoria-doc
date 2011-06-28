@@ -4,7 +4,7 @@
 The Lart plugin
 ===============
 
-.. command-lart:
+.. _command-lart:
 
 lart [<channel>] [<id>] <who|what> [for <reason>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

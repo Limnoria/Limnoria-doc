@@ -4,7 +4,7 @@
 The Protector plugin
 ====================
 
-.. command-demote:
+.. _command-demote:
 
 demote 
 ^^^^^^^

@@ -4,7 +4,7 @@
 The Scheduler plugin
 ====================
 
-.. command-repeat:
+.. _command-repeat:
 
 repeat <name> <seconds> <command>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -15,14 +15,14 @@ thereafter). *<name>* is a name by which the command can be
 unscheduled.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-list:
+.. _command-list:
 
 list
 ^^^^
@@ -30,7 +30,7 @@ list
 Lists the currently scheduled events.
 
 
-.. command-add:
+.. _command-add:
 
 add <seconds> <command>
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -42,7 +42,7 @@ command was given in (with no prefixed nick, a consequence of using
 echo). Do pay attention to the quotes in that example.
 
 
-.. command-remove:
+.. _command-remove:
 
 remove <id>
 ^^^^^^^^^^^

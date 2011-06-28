@@ -4,7 +4,7 @@
 The Herald plugin
 =================
 
-.. command-get:
+.. _command-get:
 
 get [<channel>] [<user|nick>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -15,14 +15,14 @@ is not given, defaults to the user giving the command. *<channel>*
 is only necessary if the message isn't sent in the channel itself.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-remove:
+.. _command-remove:
 
 remove [<channel>] [<user|nick>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -34,7 +34,7 @@ is not given, defaults to the user giving the command.
 itself.
 
 
-.. command-default:
+.. _command-default:
 
 default [<channel>] [--remove|<msg>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,7 +45,7 @@ current default herald. *<channel>* is only necessary if the message
 isn't sent in the channel itself.
 
 
-.. command-add:
+.. _command-add:
 
 add [<channel>] <user|nick> <msg>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,7 +55,7 @@ currently identified or recognized as) to *<msg>*. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-change:
+.. _command-change:
 
 change [<channel>] [<user|nick>] <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

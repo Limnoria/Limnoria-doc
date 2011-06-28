@@ -4,7 +4,7 @@
 The Time plugin
 ===============
 
-.. command-ctime:
+.. _command-ctime:
 
 ctime [<seconds since epoch>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13,7 +13,7 @@ Returns the ctime for *<seconds since epoch>*, or the current ctime if
 no *<seconds since epoch>* is given.
 
 
-.. command-seconds:
+.. _command-seconds:
 
 seconds [<years>y] [<weeks>w] [<days>d] [<hours>h] [<minutes>m] [<seconds>s]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ Useful for scheduling events at a given number of seconds in the
 future.
 
 
-.. command-time:
+.. _command-time:
 
 time [<format>] [<seconds since epoch>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,7 +35,7 @@ given, uses the configurable format for the current channel. If no
 *<seconds since epoch>* time is given, the current time is used.
 
 
-.. command-elapsed:
+.. _command-elapsed:
 
 elapsed <seconds>
 ^^^^^^^^^^^^^^^^^
@@ -44,7 +44,7 @@ Returns a pretty string that is the amount of time represented by
 *<seconds>*.
 
 
-.. command-at:
+.. _command-at:
 
 at <time string>
 ^^^^^^^^^^^^^^^^
@@ -54,14 +54,14 @@ Returns the number of seconds since epoch *<time string>* is.
 and see if it will work.
 
 
-.. command-tztime:
+.. _command-tztime:
 
 tztime <region>/<city>
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Takes a city and its region, and returns the locale time.
 
-.. command-until:
+.. _command-until:
 
 until <time string>
 ^^^^^^^^^^^^^^^^^^^

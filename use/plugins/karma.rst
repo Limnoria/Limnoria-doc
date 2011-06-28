@@ -4,7 +4,7 @@
 The Karma plugin
 ================
 
-.. command-load:
+.. _command-load:
 
 load [<channel>] <filename>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ data directory. *<channel>* is only necessary if the message isn't sent
 in the channel itself.
 
 
-.. command-dump:
+.. _command-dump:
 
 dump [<channel>] <filename>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -24,14 +24,14 @@ data directory. *<channel>* is only necessary if the message isn't sent
 in the channel itself.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-clear:
+.. _command-clear:
 
 clear [<channel>] <name>
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,7 +39,7 @@ clear [<channel>] <name>
 Resets the karma of *<name>* to 0.
 
 
-.. command-most:
+.. _command-most:
 
 most [<channel>] {increased,decreased,active}
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -49,7 +49,7 @@ Returns the most increased, the most decreased, or the most active
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-karma:
+.. _command-karma:
 
 karma [<channel>] [<thing> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

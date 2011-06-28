@@ -4,7 +4,7 @@
 The News plugin
 ===============
 
-.. command-old:
+.. _command-old:
 
 old [<channel>] [<id>]
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -14,14 +14,14 @@ given, returns all the old news items in reverse order. *<channel>* is
 only necessary if the message isn't sent in the channel itself.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-remove:
+.. _command-remove:
 
 remove [<channel>] <id>
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -30,7 +30,7 @@ Removes the news item with *<id>* from *<channel>*. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-add:
+.. _command-add:
 
 add [<channel>] <expires> <subject>: <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -41,7 +41,7 @@ now. *<channel>* is only necessary if the message isn't sent in the
 channel itself.
 
 
-.. command-news:
+.. _command-news:
 
 news [<channel>] [<id>]
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -52,7 +52,7 @@ news items. *<channel>* is only necessary if the message isn't sent in
 the channel itself.
 
 
-.. command-change:
+.. _command-change:
 
 change [<channel>] <id> <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

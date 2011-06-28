@@ -4,7 +4,7 @@
 The Seen plugin
 ===============
 
-.. command-user:
+.. _command-user:
 
 user [<channel>] <name>
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -16,7 +16,7 @@ that it could be any nick recognized as user *<name>* that was seen.
 itself.
 
 
-.. command-seen:
+.. _command-seen:
 
 seen [<channel>] <nick>
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -26,7 +26,7 @@ saying. *<channel>* is only necessary if the message isn't sent on the
 channel itself. *<nick>* may contain * as a wildcard.
 
 
-.. command-any:
+.. _command-any:
 
 any [<channel>] [--user <name>] [<nick>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,7 +39,7 @@ and returns the last time user was active in *<channel>*. *<channel>* is
 only necessary if the message isn't sent on the channel itself.
 
 
-.. command-last:
+.. _command-last:
 
 last [<channel>]
 ^^^^^^^^^^^^^^^^
@@ -48,14 +48,14 @@ Returns the last thing said in *<channel>*. *<channel>* is only necessary
 if the message isn't sent in the channel itself.
 
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-since:
+.. _command-since:
 
 since [<channel>] <nick>
 ^^^^^^^^^^^^^^^^^^^^^^^^

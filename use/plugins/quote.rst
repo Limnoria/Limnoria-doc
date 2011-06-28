@@ -4,7 +4,7 @@
 The Quote plugin
 ================
 
-.. command-random:
+.. _command-random:
 
 random [<channel>]
 ^^^^^^^^^^^^^^^^^^

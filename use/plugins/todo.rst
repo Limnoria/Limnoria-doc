@@ -4,14 +4,14 @@
 The Todo plugin
 ===============
 
-.. command-die:
+.. _command-die:
 
 die 
 ^^^^
 
 
 
-.. command-search:
+.. _command-search:
 
 search [--{regexp} <value>] [<glob> <glob> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -21,7 +21,7 @@ its associated value is taken as a regexp and matched against the
 tasks.
 
 
-.. command-remove:
+.. _command-remove:
 
 remove <task id> [<task id> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -29,7 +29,7 @@ remove <task id> [<task id> ...]
 Removes *<task id>* from your personal todo list.
 
 
-.. command-add:
+.. _command-add:
 
 add [--priority=<num>] <text>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,7 +39,7 @@ priority argument allows you to set a task as a high or low priority.
 Any integer is valid.
 
 
-.. command-setpriority:
+.. _command-setpriority:
 
 setpriority <id> <priority>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -47,7 +47,7 @@ setpriority <id> <priority>
 Sets the priority of the todo with the given id to the specified value.
 
 
-.. command-todo:
+.. _command-todo:
 
 todo [<username>] [<task id>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -57,7 +57,7 @@ will return a list of task ids that that user has added to their todo
 list.
 
 
-.. command-change:
+.. _command-change:
 
 change <task id> <regexp>
 ^^^^^^^^^^^^^^^^^^^^^^^^^

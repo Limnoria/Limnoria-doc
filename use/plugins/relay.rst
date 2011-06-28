@@ -4,7 +4,7 @@
 The Relay plugin
 ================
 
-.. command-nicks:
+.. _command-nicks:
 
 nicks [<channel>]
 ^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ the bot is connected to. *<channel>* is only necessary if the message
 isn't sent on the channel itself.
 
 
-.. command-part:
+.. _command-part:
 
 part <channel>
 ^^^^^^^^^^^^^^
@@ -24,7 +24,7 @@ will part from the channel on all networks in which it is on the
 channel.
 
 
-.. command-join:
+.. _command-join:
 
 join [<channel>]
 ^^^^^^^^^^^^^^^^

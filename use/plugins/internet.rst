@@ -4,7 +4,7 @@
 The Internet plugin
 ===================
 
-.. command-whois:
+.. _command-whois:
 
 whois <domain>
 ^^^^^^^^^^^^^^
@@ -12,7 +12,7 @@ whois <domain>
 Returns WHOIS information on the registration of *<domain>*.
 
 
-.. command-dns:
+.. _command-dns:
 
 dns <host|ip>
 ^^^^^^^^^^^^^
@@ -20,7 +20,7 @@ dns <host|ip>
 Returns the ip of *<host>* or the reverse DNS hostname of *<ip>*.
 
 
-.. command-hexip:
+.. _command-hexip:
 
 hexip <ip>
 ^^^^^^^^^^

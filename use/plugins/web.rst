@@ -4,7 +4,7 @@
 The Web plugin
 ==============
 
-.. command-urlunquote:
+.. _command-urlunquote:
 
 urlunquote <text>
 ^^^^^^^^^^^^^^^^^
@@ -12,7 +12,7 @@ urlunquote <text>
 Returns the text un-URL quoted.
 
 
-.. command-netcraft:
+.. _command-netcraft:
 
 netcraft <hostname|ip>
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -21,7 +21,7 @@ Returns Netcraft.com's determination of what operating system and
 webserver is running on the host given.
 
 
-.. command-urlquote:
+.. _command-urlquote:
 
 urlquote <text>
 ^^^^^^^^^^^^^^^
@@ -29,7 +29,7 @@ urlquote <text>
 Returns the URL quoted form of the text.
 
 
-.. command-size:
+.. _command-size:
 
 size <url>
 ^^^^^^^^^^
@@ -38,7 +38,7 @@ Returns the Content-Length header of *<url>*. Only HTTP urls are valid,
 of course.
 
 
-.. command-title:
+.. _command-title:
 
 title <url>
 ^^^^^^^^^^^
@@ -46,7 +46,7 @@ title <url>
 Returns the HTML *<title>*...*</title>* of a URL.
 
 
-.. command-doctype:
+.. _command-doctype:
 
 doctype <url>
 ^^^^^^^^^^^^^
@@ -55,7 +55,7 @@ Returns the DOCTYPE string of *<url>*. Only HTTP urls are valid, of
 course.
 
 
-.. command-headers:
+.. _command-headers:
 
 headers <url>
 ^^^^^^^^^^^^^
@@ -64,7 +64,7 @@ Returns the HTTP headers of *<url>*. Only HTTP urls are valid, of
 course.
 
 
-.. command-fetch:
+.. _command-fetch:
 
 fetch <url>
 ^^^^^^^^^^^

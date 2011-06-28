@@ -4,14 +4,14 @@
 The Services plugin
 ===================
 
-.. command-disabled:
+.. _command-disabled:
 
 disabled 
 ^^^^^^^^^
 
 
 
-.. command-identify:
+.. _command-identify:
 
 identify
 ^^^^^^^^
@@ -19,7 +19,7 @@ identify
 Identifies with NickServ using the current nick.
 
 
-.. command-nicks:
+.. _command-nicks:
 
 nicks
 ^^^^^
@@ -28,7 +28,7 @@ Returns the nicks that this plugin is configured to identify and ghost
 with.
 
 
-.. command-unban:
+.. _command-unban:
 
 unban [<channel>]
 ^^^^^^^^^^^^^^^^^
@@ -39,14 +39,14 @@ are, if you need this command, you're not sending it in the channel
 itself.
 
 
-.. command-reset:
+.. _command-reset:
 
 reset 
 ^^^^^^
 
 
 
-.. command-invite:
+.. _command-invite:
 
 invite [<channel>]
 ^^^^^^^^^^^^^^^^^^
@@ -57,7 +57,7 @@ are, if you need this command, you're not sending it in the channel
 itself.
 
 
-.. command-password:
+.. _command-password:
 
 password <nick> [<password>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -66,7 +66,7 @@ Sets the NickServ password for *<nick>* to *<password>*. If *<password>* is
 not given, removes *<nick>* from the configured nicks.
 
 
-.. command-ghost:
+.. _command-ghost:
 
 ghost [<nick>]
 ^^^^^^^^^^^^^^
@@ -75,7 +75,7 @@ Ghosts the bot's given nick and takes it. If no nick is given,
 ghosts the bot's configured nick and takes it.
 
 
-.. command-voice:
+.. _command-voice:
 
 voice [<channel>]
 ^^^^^^^^^^^^^^^^^
@@ -84,7 +84,7 @@ Attempts to get voiced by ChanServ in *<channel>*. *<channel>* is only
 necessary if the message isn't sent in the channel itself.
 
 
-.. command-op:
+.. _command-op:
 
 op [<channel>]
 ^^^^^^^^^^^^^^
