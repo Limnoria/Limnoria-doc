@@ -59,8 +59,8 @@ ping takes no arguments
     I think it is clear enough.
 
 join <channel> [<key>]
-    This is the help for :ref:`command-channel-join`.
-
+    This is the help for :ref:`command-admin-join`.
+    
     It requires a channel name, and the channel key is optional.
 
     This two commands are ok::
@@ -69,7 +69,7 @@ join <channel> [<key>]
         join #limnoria MySecretKey
 
 utilities last <text> [<text> ...]
-    This is the help for :ref:`command-utitilies-last`.
+    This is the help for :ref:`command-utilities-last`.
     By the way, there is another ``last`` command in the `Misc` plugin, which
     doesn't do the same thing, that's why you need to give the plugin name.
 

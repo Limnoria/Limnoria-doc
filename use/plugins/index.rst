@@ -26,6 +26,7 @@ Channel-specific plugins
     :maxdepth: 3
 
     automode.rst
+    attackprotector.rst
     badwords.rst
     channellogger.rst
     channelstats.rst
@@ -34,6 +35,7 @@ Channel-specific plugins
     karma.rst
     lart.rst
     limiter.rst
+    linkrelay.rst
     moobotfactoids.rst
     protector.rst
     topic.rst
@@ -69,10 +71,13 @@ Internal tools
     dunno.rst
     format.rst
     messageparser.rst
+    packages.rst
     plugindownloader.rst
     reply.rst
     scheduler.rst
     success.rst
+    sudo.rst
+    trigger.rst
     utilities.rst
 
 Fun
@@ -83,10 +88,13 @@ Fun
 
     filter.rst
     games.rst
+    megahal.rst
     nickometer.rst
     praise.rst
     quote.rst
     quotegrabs.rst
+    timebomb.rst
+    trivia.rst
 
 Other plugins
 =============
@@ -96,11 +104,14 @@ Other plugins
 
     dict.rst
     google.rst
+    github.rst
+    gui.rst
     internet.rst
     math.rst
     status.rst
     time.rst
     todo.rst
+    twitter.rst
     unix.rst
     url.rst
     web.rst

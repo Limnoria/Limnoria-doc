@@ -260,10 +260,6 @@ given plugin will be disabled. *<channel>* is only necessary if the
 message isn't sent in the channel itself.
 
 Ignores
-
-.. _command-channel-cycle:
-
-cycle [<channel>]
 -------
 
 .. _command-channel-ignore-list:

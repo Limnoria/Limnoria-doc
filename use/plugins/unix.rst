@@ -56,7 +56,7 @@ based crypt rather than the standard DES based crypt.
 unix progstats
 ^^^^^^^^^^^^^^
 
-Returns various unix-y information on the running :ref:`supybot process.`
+Returns various unix-y information on the running supybot process.
 
 .. _command-unix-ping:
 

@@ -7,7 +7,7 @@ The Admin plugin
 Capabilities
 ------------
 
-.. _command-channel-capability-add:
+.. _command-admin-capability-add:
 
 capability add <name|hostmask> <capability>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -15,7 +15,7 @@ capability add <name|hostmask> <capability>
 Gives the user specified by *<name>* (or the user to whom *<hostmask>*
 currently maps) the specified capability *<capability>*
 
-.. _command-channel-capability-remove:
+.. _command-admin-capability-remove:
 
 capability remove <name|hostmask> <capability>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -26,7 +26,7 @@ Takes from the user specified by *<name>* (or the user to whom
 Channels
 --------
 
-.. _command-channel-channels:
+.. _command-admin-channels:
 
 channels
 ^^^^^^^^
@@ -34,7 +34,7 @@ channels
 Returns the channels the bot is on. Must be given in private, in order
 to protect the secrecy of secret channels.
 
-.. _command-channel-join:
+.. _command-admin-join:
 
 join <channel> [<key>]
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -42,7 +42,7 @@ join <channel> [<key>]
 Tell the bot to join the given channel. If *<key>* is given, it is used
 when attempting to join the channel.
 
-.. _command-channel-part:
+.. _command-admin-part:
 
 part [<channel>] [<reason>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,14 +55,14 @@ message.
 Ignores
 -------
 
-.. _command-channel-ignore-list:
+.. _command-admin-ignore-list:
 
 ignore list
 ^^^^^^^^^^^
 
 Lists the hostmasks that the bot is ignoring.
 
-.. _command-channel-ignore-remove:
+.. _command-admin-ignore-remove:
 
 ignore remove <hostmask|nick>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -70,7 +70,7 @@ ignore remove <hostmask|nick>
 This will remove the persistent ignore on *<hostmask>* or the
 hostmask currently associated with *<nick>*.
 
-.. _command-channel-ignore-add:
+.. _command-admin-ignore-add:
 
 ignore add <hostmask|nick> [<expires>]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -83,7 +83,7 @@ it isn't given, the ignore will never automatically expire.
 Miscellaneous
 -------------
 
-.. _command-channel-nick:
+.. _command-admin-nick:
 
 nick [<nick>]
 ^^^^^^^^^^^^^

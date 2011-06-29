@@ -14,6 +14,7 @@ Contents:
     use/index.rst
     plugins/index.rst
     core/index.rst
+    contribute/index.rst
 
 Indices and tables
 ==================
