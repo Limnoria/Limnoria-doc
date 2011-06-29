@@ -17,6 +17,7 @@ Main plugins
     network.rst
     owner.rst
     plugin.rst
+    user.rst
 
 Channel-specific plugins
 ========================
