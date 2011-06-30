@@ -115,3 +115,4 @@ Other plugins
     unix.rst
     url.rst
     web.rst
+    wikipedia.rst
