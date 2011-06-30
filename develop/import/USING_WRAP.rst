@@ -1,5 +1,7 @@
-Using commands.wrap to parse your command's arguments.
-------------------------------------------------------
+*****************************************************
+Using commands.wrap to parse your command's arguments
+*****************************************************
+
 This document illustrates how to use the new 'wrap' function present in Supybot
 0.80 to handle argument parsing and validation for your plugin's commands.
 

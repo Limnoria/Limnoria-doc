@@ -1,5 +1,6 @@
+**********************
 Advanced Plugin Config
-----------------------
+**********************
 This tutorial covers some of the more advanced plugin config features available
 to Supybot plugin authors.
 

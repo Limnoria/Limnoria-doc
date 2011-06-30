@@ -1,6 +1,6 @@
-================
+****************
 Style Guidelines
-================
+****************
 
 **Note:** Code not following these style guidelines fastidiously is likely
 (*very* likely) not to be accepted into the Supybot core.

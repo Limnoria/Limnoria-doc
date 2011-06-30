@@ -12,8 +12,8 @@ Contents:
     :maxdepth: 2
 
     use/index.rst
-    plugins/index.rst
-    core/index.rst
+    develop/plugins.rst
+    develop/core.rst
     contribute/index.rst
 
 Indices and tables

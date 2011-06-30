@@ -1,6 +1,6 @@
-============================
+****************************
 Using Supybot's utils module
-============================
+****************************
 Supybot provides a wealth of utilities for plugin writers in the supybot.utils
 module, this tutorial describes these utilities and shows you how to use them.
 

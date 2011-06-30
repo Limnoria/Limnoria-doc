@@ -1,5 +1,6 @@
+***********************
 Advanced Plugin Testing
------------------------
+***********************
   The complete guide to writing tests for your plugins.
 
 Why Write Tests?
