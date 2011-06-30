@@ -1,9 +1,9 @@
-============================
+****************************
 Getting Started with Supybot
-============================
+****************************
 
 Introduction
-------------
+============
 
 Ok, so you've decided to try out Supybot.  That's great!  The more people who
 use Supybot, the more people can submit bugs and help us to make it the best
@@ -14,7 +14,7 @@ manually install) before reading any further.  Now we'll give you a whirlwind
 tour as to how you can get Supybot setup and use Supybot effectively.
 
 Initial Setup
--------------
+=============
 
 Now that you have Supybot installed, you'll want to get it running.  The first
 thing you'll want to do is run supybot-wizard.  Before running supybot-wizard,
@@ -25,7 +25,7 @@ called botname.conf.  In order to get the bot running, run ``supybot
 botname.conf``.
 
 Listing Commands
-----------------
+================
 
 Ok, so let's assume your bot connected to the server and joined the channels
 you told it to join.  For now we'll assume you named your bot 'supybot' (you
@@ -70,7 +70,7 @@ Config plugin's list command, then you'd need to say::
 Rather than just 'list'.
 
 Making Supybot Recognize You
-----------------------------
+============================
 
 If you ran the wizard, then it is almost certainly the case that you already
 added an owner user for yourself.  If not, however, you can add one via the
@@ -114,7 +114,7 @@ currently using to my user's list of recognized hostmasks.  I'm only required
 to give mypassword if I'm not already identified with the bot.
 
 Loading Plugins
----------------
+===============
 
 Let's take a look at loading other plugins.  If you didn't use supybot-wizard,
 though, you might do well to try it before playing around with loading plugins
@@ -131,7 +131,7 @@ you'll have to list the directory the plugins are in (using whatever command
 is appropriate for your operating system, either 'ls' or 'dir').
 
 Getting More From Your Supybot
-------------------------------
+==============================
 
 Another command you might find yourself needing somewhat often is the 'more'
 command.  The IRC protocol limits messages to 512 bytes, 60 or so of which
@@ -167,7 +167,7 @@ which, his "chunks" now belong to you.  So, you would just need to say `more`
 to continue seeing chunks from jemfinch's initial command.
 
 Final Word
-----------
+==========
 
 You should now have a solid foundation for using Supybot.  You can use the
 `list` command to see what plugins your bot has loaded and what commands are

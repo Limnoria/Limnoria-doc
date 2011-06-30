@@ -1,6 +1,6 @@
-==========================
+**************************
 Frequently Asked Questions
-==========================
+**************************
 
 How do I make my Supybot connect to multiple servers?
 
