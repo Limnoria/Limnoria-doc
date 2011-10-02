@@ -71,7 +71,7 @@ informations)::
 
             # registering the callback
             callback = SupystoryServerCallback() # create an instance of the callback
-            httpserver.hook('webstats', callback) # register the callback at `/webstats`
+            httpserver.hook('supystory', callback) # register the callback at `/supystory`
 
 By the way, don't forget to unhook your callback when unloading your plugin,
 unless what it will be impossible to reload the plugin! Append this code to
