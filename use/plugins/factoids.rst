@@ -131,3 +131,82 @@ Locks the factoid(s) associated with *<key>* so that they cannot be
 removed or added to. *<channel>* is only necessary if the message isn't
 sent in the channel itself.
 
+
+
+.. _plugin-factoids-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Factoids.format:
+
+supybot.plugins.Factoids.format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: $key could be $value.
+
+Determines the format of the response given when a factoid's value is requested. All the standard substitutes apply, in addition to "$key" for the factoid's key and "$value" for the factoid's value.
+
+.. _supybot.plugins.Factoids.keepRankInfo:
+
+supybot.plugins.Factoids.keepRankInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether we keep updating the usage count for each factoid, for popularity ranking.
+
+.. _supybot.plugins.Factoids.learnSeparator:
+
+supybot.plugins.Factoids.learnSeparator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: as
+
+Determines what separator must be used in the learn command. Defaults to 'as' -- learn <key> as <value>. Users might feel more comfortable with 'is' or something else, so it's configurable.
+
+.. _supybot.plugins.Factoids.rankListLength:
+
+supybot.plugins.Factoids.rankListLength
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 20
+
+Determines the number of factoid keys returned by the factrank command.
+
+.. _supybot.plugins.Factoids.replyApproximateSearchKeys:
+
+supybot.plugins.Factoids.replyApproximateSearchKeys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+If you try to look up a nonexistent factoid, this setting make the bot try to find some possible matching keys through several approximate matching algorithms and return a list of matching keys, before giving up.
+
+.. _supybot.plugins.Factoids.replyWhenInvalidCommand:
+
+supybot.plugins.Factoids.replyWhenInvalidCommand
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether the bot will reply to invalid commands by searching for a factoid; basically making the whatis unnecessary when you want all factoids for a given key.
+
+.. _supybot.plugins.Factoids.showFactoidIfOnlyOneMatch:
+
+supybot.plugins.Factoids.showFactoidIfOnlyOneMatch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether the bot will reply with the single matching factoid if only one factoid matches when using the search command.
+
+.. _supybot.plugins.Factoids.public:
+
+supybot.plugins.Factoids.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

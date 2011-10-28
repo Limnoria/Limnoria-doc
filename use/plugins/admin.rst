@@ -91,3 +91,19 @@ nick [<nick>]
 Changes the bot's nick to *<nick>*. If no nick is given, returns the
 bot's current nick.
 
+
+
+.. _plugin-admin-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Admin.public:
+
+supybot.plugins.Admin.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

@@ -25,3 +25,19 @@ internet hexip <ip>
 
 Returns the hexadecimal IP for that IP.
 
+
+
+.. _plugin-internet-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Internet.public:
+
+supybot.plugins.Internet.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

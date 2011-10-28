@@ -99,3 +99,73 @@ messageparser list [<channel>]
 Lists regexps present in the triggers database.
 *<channel>* is only necessary if the message isn't sent in the channel
 itself. Regexp ID listed in paretheses.
+
+
+.. _plugin-messageparser-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.MessageParser.enable:
+
+supybot.plugins.MessageParser.enable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether the message parser is enabled. If enabled, will trigger on regexps added to the regexp db.
+
+.. _supybot.plugins.MessageParser.keepRankInfo:
+
+supybot.plugins.MessageParser.keepRankInfo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether we keep updating the usage count for each regexp, for popularity ranking.
+
+.. _supybot.plugins.MessageParser.listSeparator:
+
+supybot.plugins.MessageParser.listSeparator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: , 
+
+Determines the separator used between regexps when shown by the list command.
+
+.. _supybot.plugins.MessageParser.rankListLength:
+
+supybot.plugins.MessageParser.rankListLength
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 20
+
+Determines the number of regexps returned by the triggerrank command.
+
+.. _supybot.plugins.MessageParser.requireManageCapability:
+
+supybot.plugins.MessageParser.requireManageCapability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: admin; channel,op
+
+Determines the capabilities required (if any) to manage the regexp database, including add, remove, lock, unlock. Use 'channel,capab' for channel-level capabilities. Note that absence of an explicit anticapability means user has capability.
+
+.. _supybot.plugins.MessageParser.requireVacuumCapability:
+
+supybot.plugins.MessageParser.requireVacuumCapability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: admin
+
+Determines the capability required (if any) to vacuum the database.
+
+.. _supybot.plugins.MessageParser.public:
+
+supybot.plugins.MessageParser.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

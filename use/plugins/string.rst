@@ -97,3 +97,55 @@ string len <text>
 
 Returns the length of *<text>*.
 
+
+
+.. _plugin-string-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.String.levenshtein:
+
+supybot.plugins.String.levenshtein
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.String.levenshtein.max:
+
+supybot.plugins.String.levenshtein.max
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 256
+
+Determines the maximum size of a string given to the levenshtein command. The levenshtein command uses an O(m*n) algorithm, which means that with strings of length 256, it can take 1.5 seconds to finish; with strings of length 384, though, it can take 4 seconds to finish, and with strings of much larger lengths, it takes more and more time. Using nested commands, strings can get quite large, hence this variable, to limit the size of arguments passed to the levenshtein command.
+
+.. _supybot.plugins.String.re:
+
+supybot.plugins.String.re
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.String.re.timeout:
+
+supybot.plugins.String.re.timeout
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 0.1
+
+Determines the maximum time, in seconds, that a regular expression is given to execute before being terminated. Since there is a possibility that user input for the re command can cause it to eat up large amounts of ram or cpu time, it's a good idea to keep this low. Most normal regexps should not take very long at all.
+
+.. _supybot.plugins.String.public:
+
+supybot.plugins.String.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

@@ -62,3 +62,19 @@ point arithmetic is used in order to prevent a user from being able to
 crash to the bot with something like '10**10**10**10'. One consequence
 is that large values such as '10**24' might not be exact.
 
+
+
+.. _plugin-math-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Math.public:
+
+supybot.plugins.Math.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

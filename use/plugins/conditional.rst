@@ -149,3 +149,19 @@ if it evaluates to false.
 Use other logical operators defined in this plugin and command nesting
 to your advantage here.
 
+
+
+.. _plugin-conditional-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Conditional.public:
+
+supybot.plugins.Conditional.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

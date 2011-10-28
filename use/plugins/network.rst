@@ -85,3 +85,19 @@ Disconnects from the network represented by the network *<network>*.
 If *<quit message>* is given, quits the network with the given quit
 message. *<network>* is only necessary if the network is different
 from the network the command is sent on.
+
+
+.. _plugin-network-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Network.public:
+
+supybot.plugins.Network.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

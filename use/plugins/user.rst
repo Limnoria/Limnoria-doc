@@ -159,3 +159,19 @@ Changes your current user database name to the new name given.
 This message must be sent to the bot privately (not on a channel) since
 it may contain a password.
 
+
+
+.. _plugin-user-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.User.public:
+
+supybot.plugins.User.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

@@ -56,3 +56,73 @@ karma dump [<channel>] <filename>
 Dumps the Karma database for *<channel>* to *<filename>* in the bot's
 data directory. *<channel>* is only necessary if the message isn't sent
 in the channel itself.
+
+
+.. _plugin-karma-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Karma.allowSelfRating:
+
+supybot.plugins.Karma.allowSelfRating
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: False
+
+Determines whether users can adjust the karma of their nick.
+
+.. _supybot.plugins.Karma.allowUnaddressedKarma:
+
+supybot.plugins.Karma.allowUnaddressedKarma
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: False
+
+Determines whether the bot will increase/decrease karma without being addressed.
+
+.. _supybot.plugins.Karma.mostDisplay:
+
+supybot.plugins.Karma.mostDisplay
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 25
+
+Determines how many karma things are shown when the most command is called.
+
+.. _supybot.plugins.Karma.rankingDisplay:
+
+supybot.plugins.Karma.rankingDisplay
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 3
+
+Determines how many highest/lowest karma things are shown when karma is called with no arguments.
+
+.. _supybot.plugins.Karma.response:
+
+supybot.plugins.Karma.response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: False
+
+Determines whether the bot will reply with a success message when something's karma is increased or decreased.
+
+.. _supybot.plugins.Karma.simpleOutput:
+
+supybot.plugins.Karma.simpleOutput
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: False
+
+Determines whether the bot will output shorter versions of the karma output when requesting a single thing's karma.
+
+.. _supybot.plugins.Karma.public:
+
+supybot.plugins.Karma.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

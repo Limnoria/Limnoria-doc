@@ -363,3 +363,28 @@ in *<channel>* if it has been disabled. If *<plugin>* is provided,
 *<command>* will be enabled only for that plugin. If only *<plugin>* is
 provided, all commands in the given plugin will be enabled. *<channel>*
 is only necessary if the message isn't sent in the channel itself.
+
+
+.. _plugin-channel-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Channel.alwaysRejoin:
+
+supybot.plugins.Channel.alwaysRejoin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether the bot will always try to rejoin a channel whenever it's kicked from the channel.
+
+.. _supybot.plugins.Channel.public:
+
+supybot.plugins.Channel.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

@@ -151,3 +151,28 @@ owner logmark <text>
 Logs *<text>* to the global Supybot log at critical priority.  Useful for
 marking logfiles for later searching.
 
+
+
+.. _plugin-owner-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Owner.public:
+
+supybot.plugins.Owner.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+
+.. _supybot.plugins.Owner.quitMsg:
+
+supybot.plugins.Owner.quitMsg
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+Determines what quit message will be used by default. If the quit command is called without a quit message, this will be used. If this value is empty, the nick of the person giving the quit command will be used.
+

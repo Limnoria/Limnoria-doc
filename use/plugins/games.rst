@@ -50,3 +50,19 @@ Returns the number of consecutive lines you've sent in *<channel>*
 without being interrupted by someone else (i.e. how long your current
 'monologue' is). *<channel>* is only necessary if the message isn't sent
 in the channel itself.
+
+
+.. _plugin-games-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Games.public:
+
+supybot.plugins.Games.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

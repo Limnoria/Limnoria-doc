@@ -199,3 +199,73 @@ filter jeffk <text>
 
 Returns *<text>* as if JeffK had said it himself.
 
+
+
+.. _plugin-filter-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Filter.shrink:
+
+supybot.plugins.Filter.shrink
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.Filter.shrink.minimum:
+
+supybot.plugins.Filter.shrink.minimum
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 4
+
+Determines the minimum number of a letters in a word before it will be shrunken by the shrink command/filter.
+
+.. _supybot.plugins.Filter.spellit:
+
+supybot.plugins.Filter.spellit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.Filter.spellit.replaceLetters:
+
+supybot.plugins.Filter.spellit.replaceLetters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether or not to replace letters in the output of spellit.
+
+.. _supybot.plugins.Filter.spellit.replaceNumbers:
+
+supybot.plugins.Filter.spellit.replaceNumbers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether or not to replace numbers in the output of spellit.
+
+.. _supybot.plugins.Filter.spellit.replacePunctuation:
+
+supybot.plugins.Filter.spellit.replacePunctuation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether or not to replace punctuation in the output of spellit.
+
+.. _supybot.plugins.Filter.public:
+
+supybot.plugins.Filter.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

@@ -102,3 +102,37 @@ moobotfactoids remove [<channel>] <factoid key>
 Deletes the factoid with the given key. *<channel>* is only necessary
 if the message isn't sent in the channel itself.
 
+
+
+.. _plugin-moobotfactoids-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.MoobotFactoids.mostCount:
+
+supybot.plugins.MoobotFactoids.mostCount
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 10
+
+Determines how many items are shown when the 'most' command is called.
+
+.. _supybot.plugins.MoobotFactoids.showFactoidIfOnlyOneMatch:
+
+supybot.plugins.MoobotFactoids.showFactoidIfOnlyOneMatch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether or not the factoid value will be shown when a listkeys search returns only one factoid key.
+
+.. _supybot.plugins.MoobotFactoids.public:
+
+supybot.plugins.MoobotFactoids.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

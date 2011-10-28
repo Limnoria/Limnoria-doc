@@ -193,3 +193,82 @@ topic separator [<channel>] <separator>
 
 Sets the topic separator for *<channel>* to *<separator>* Converts the
 current topic appropriately.
+
+
+.. _plugin-topic-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Topic.default:
+
+supybot.plugins.Topic.default
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+Determines what the default topic for the channel is. This is used by the default command to set this topic.
+
+.. _supybot.plugins.Topic.format:
+
+supybot.plugins.Topic.format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: $topic ($nick)
+
+Determines what format is used to add topics in the topic. All the standard substitutes apply, in addition to "$topic" for the topic itself.
+
+.. _supybot.plugins.Topic.recognizeTopiclen:
+
+supybot.plugins.Topic.recognizeTopiclen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether the bot will recognize the TOPICLEN value sent to it by the server and thus refuse to send TOPICs longer than the TOPICLEN. These topics are likely to be truncated by the server anyway, so this defaults to True.
+
+.. _supybot.plugins.Topic.requireManageCapability:
+
+supybot.plugins.Topic.requireManageCapability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: channel,op; channel,halfop
+
+Determines the capabilities required (if any) to make any topic changes, (everything except for read-only operations). Use 'channel,capab' for channel-level capabilities. Note that absence of an explicit anticapability means user has capability.
+
+.. _supybot.plugins.Topic.separator:
+
+supybot.plugins.Topic.separator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value:  || 
+
+Determines what separator is used between individually added topics in the channel topic.
+
+.. _supybot.plugins.Topic.undo:
+
+supybot.plugins.Topic.undo
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.Topic.undo.max:
+
+supybot.plugins.Topic.undo.max
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 10
+
+Determines the number of previous topics to keep around in case the undo command is called.
+
+.. _supybot.plugins.Topic.public:
+
+supybot.plugins.Topic.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

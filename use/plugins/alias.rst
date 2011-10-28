@@ -43,3 +43,28 @@ remove <name>
 
 Removes the given alias, if unlocked.
 
+
+
+.. _plugin-alias-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Alias.aliases:
+
+supybot.plugins.Alias.aliases
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.Alias.public:
+
+supybot.plugins.Alias.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

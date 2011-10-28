@@ -37,3 +37,37 @@ dict dictionaries
 
 Returns the dictionaries valid for the dict command.
 
+
+
+.. _plugin-dict-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Dict.default:
+
+supybot.plugins.Dict.default
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+Determines the default dictionary the bot will ask for definitions in. If this value is '*' (without the quotes) the bot will use all dictionaries to define words.
+
+.. _supybot.plugins.Dict.public:
+
+supybot.plugins.Dict.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+
+.. _supybot.plugins.Dict.server:
+
+supybot.plugins.Dict.server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: dict.org
+
+Determines what server the bot will retrieve definitions from.
+

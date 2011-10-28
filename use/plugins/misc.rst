@@ -89,3 +89,82 @@ misc apropos <string>
 
 Searches for *<string>* in the commands currently offered by the bot,
 returning a list of the commands containing that string.
+
+
+.. _plugin-misc-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Misc.last:
+
+supybot.plugins.Misc.last
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.Misc.last.nested:
+
+supybot.plugins.Misc.last.nested
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.Misc.last.nested.includeNick:
+
+supybot.plugins.Misc.last.nested.includeNick
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: False
+
+Determines whether or not the nick will be included in the output of last when it is part of a nested command
+
+.. _supybot.plugins.Misc.last.nested.includeTimestamp:
+
+supybot.plugins.Misc.last.nested.includeTimestamp
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: False
+
+Determines whether or not the timestamp will be included in the output of last when it is part of a nested command
+
+.. _supybot.plugins.Misc.listPrivatePlugins:
+
+supybot.plugins.Misc.listPrivatePlugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether the bot will list private plugins with the list command if given the --private switch. If this is disabled, non-owner users should be unable to see what private plugins are loaded.
+
+.. _supybot.plugins.Misc.listUnloadedPlugins:
+
+supybot.plugins.Misc.listUnloadedPlugins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether the bot will list unloaded plugins with the list command if given the --unloaded switch. If this is disabled, non-owner users should be unable to see what unloaded plugins are available.
+
+.. _supybot.plugins.Misc.public:
+
+supybot.plugins.Misc.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+
+.. _supybot.plugins.Misc.timestampFormat:
+
+supybot.plugins.Misc.timestampFormat
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: [%H:%M:%S]
+
+Determines the format string for timestamps in the Misc.last command. Refer to the Python documentation for the time module to see what formats are accepted. If you set this variable to the empty string, the timestamp will not be shown.
+

@@ -136,3 +136,19 @@ format underline <text>
 
 Returns *<text>* underlined.
 
+
+
+.. _plugin-format-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Format.public:
+
+supybot.plugins.Format.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

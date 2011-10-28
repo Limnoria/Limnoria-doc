@@ -60,3 +60,19 @@ plugin plugins <command>
 
 Returns the names of all plugins that contain *<command>*.
 
+
+
+.. _plugin-plugin-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Plugin.public:
+
+supybot.plugins.Plugin.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

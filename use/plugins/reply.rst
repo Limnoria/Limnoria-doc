@@ -43,3 +43,19 @@ reply reply <text>
 
 Replies with *<text>*. Equivalent to the alias, 'echo $nick: $1'.
 
+
+
+.. _plugin-reply-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Reply.public:
+
+supybot.plugins.Reply.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

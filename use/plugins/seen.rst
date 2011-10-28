@@ -51,3 +51,19 @@ seen since [<channel>] <nick>
 
 Returns the messages since *<nick>* last left the channel.
 
+
+
+.. _plugin-seen-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Seen.public:
+
+supybot.plugins.Seen.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

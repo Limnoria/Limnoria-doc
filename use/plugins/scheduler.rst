@@ -39,3 +39,19 @@ scheduler remove <id>
 
 Removes the event scheduled with id *<id>* from the schedule.
 
+
+
+.. _plugin-scheduler-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Scheduler.public:
+
+supybot.plugins.Scheduler.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

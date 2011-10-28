@@ -57,3 +57,19 @@ regular expression *<regexp>*. *<regexp>* should be of the form
 s/text/replacement/flags. *<channel>* is only necessary if the message
 isn't sent on the channel itself.
 
+
+
+.. _plugin-news-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.News.public:
+
+supybot.plugins.News.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

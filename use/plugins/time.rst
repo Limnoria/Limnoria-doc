@@ -69,3 +69,28 @@ time tztime <region>/<city>
 Takes a city and its region, and returns the locale time.
 
 .. _command-time-until:
+
+
+.. _plugin-time-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Time.format:
+
+supybot.plugins.Time.format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: %I:%M %p, %B %d, %Y
+
+Determines the format string for timestamps. Refer to the Python documentation for the time module to see what formats are accepted. If you set this variable to the empty string, the timestamp will not be shown.
+
+.. _supybot.plugins.Time.public:
+
+supybot.plugins.Time.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

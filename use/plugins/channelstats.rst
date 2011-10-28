@@ -32,3 +32,46 @@ channelstats channelstats [<channel>]
 Returns the statistics for *<channel>*. *<channel>* is only necessary if
 the message isn't sent on the channel itself.
 
+
+
+.. _plugin-channelstats-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.ChannelStats.frowns:
+
+supybot.plugins.ChannelStats.frowns
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: [':|', ':-/', ':-\\', ':\\', ':/', ':(', ':-(', ":'("]
+
+Determines what words (i.e., pieces of text with no spaces in them ) are considered 'frowns' for the purposes of stats-keeping.
+
+.. _supybot.plugins.ChannelStats.selfStats:
+
+supybot.plugins.ChannelStats.selfStats
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether the bot will keep channel statistics on itself, possibly skewing the channel stats (especially in cases where the bot is relaying between channels on a network).
+
+.. _supybot.plugins.ChannelStats.smileys:
+
+supybot.plugins.ChannelStats.smileys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: [':)', ';)', ';]', ':-)', ':-D', ':D', ':P', ':p', '(=', '=)']
+
+Determines what words (i.e., pieces of text with no spaces in them) are considered 'smileys' for the purposes of stats-keeping.
+
+.. _supybot.plugins.ChannelStats.public:
+
+supybot.plugins.ChannelStats.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

@@ -58,3 +58,28 @@ todo change <task id> <regexp>
 
 Modify the task with the given id using the supplied regexp.
 
+
+
+.. _plugin-todo-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Todo.allowThirdpartyReader:
+
+supybot.plugins.Todo.allowThirdpartyReader
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: False
+
+Determines whether users can read the todo-list of another user.
+
+.. _supybot.plugins.Todo.public:
+
+supybot.plugins.Todo.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

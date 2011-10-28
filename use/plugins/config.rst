@@ -80,3 +80,19 @@ If you want to show someone your configuration file, but you don't
 want that person to be able to see things like passwords, etc., this
 command will export a "sanitized" configuration file suitable for
 showing publicly.
+
+
+.. _plugin-config-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Config.public:
+
+supybot.plugins.Config.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

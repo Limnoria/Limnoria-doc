@@ -70,3 +70,19 @@ utilities apply <command> <text>
 
 Tokenizes *<text>* and calls *<command>* with the resulting arguments.
 
+
+
+.. _plugin-utilities-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Utilities.public:
+
+supybot.plugins.Utilities.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+
