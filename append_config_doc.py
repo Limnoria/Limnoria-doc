@@ -29,7 +29,7 @@ def main():
         filename = 'use/plugins/%s.rst' % pluginName.lower()
         configRoot = 'supybot.plugins.%s' % pluginName
         with open(filename, 'a') as fd:
-            fd.write('\n.. _plugin-%s-config:\n\nConfiguration\n' %
+            fd.write('\n\n.. _plugin-%s-config:\n\nConfiguration\n' %
                      (pluginName.lower()))
             # I'm too lazy to count it by myself:
             fd.write('-'*len('Configuration'))
@@ -58,7 +58,7 @@ def writeDoc(baseConfigNode, fd, prefix):
                 'help': configVar._help}
         fd.write('.. _%(fullpath)s:\n\n%(fullpath)s\n%(decoration)s\n\n'
                 '%(default_value)s\n\n'
-                '%(help)s' % args)
+                '%(help)s\n\n' % args)
         if '@' in variablePrefix:
             writeDoc(configVar, fd, fullPath)
 
