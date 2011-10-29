@@ -40,3 +40,46 @@ Announce the commits of the GitHub repository called
 *<owner>*/*<name>* in the *<channel>*.
 *<channel>* defaults to the current channel.
 
+
+
+.. _plugin-github-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.GitHub.api:
+
+supybot.plugins.GitHub.api
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.GitHub.api.url:
+
+supybot.plugins.GitHub.api.url
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: http://github.com/api/v2/json
+
+The URL of the GitHub API to use. You probably don't need to edit it, but I let it there, just in case.
+
+.. _supybot.plugins.GitHub.announces:
+
+supybot.plugins.GitHub.announces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+You shouldn't edit this configuration variable yourself, unless you know what you do. Use '@Github announce add' or '@Github announce remove' instead.
+
+.. _supybot.plugins.GitHub.public:
+
+supybot.plugins.GitHub.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

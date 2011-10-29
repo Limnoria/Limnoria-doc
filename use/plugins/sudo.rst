@@ -4,18 +4,27 @@
 The Sudo plugin
 ===============
 
-.. WARNING::
-
-    Use this plugin carefully. It may be dangerous with a bad configuration.
-
-.. include:: unofficial.inc
-
 .. _command-sudo-sudo:
 
 sudo sudo <commande> [<arg1> [<arg2> ...]]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Runs the command fellowing the Sudo rules.
+Runs the command following the Sudo rules.
+
+.. _command-sudo-remove:
+
+sudo remove <id>
+^^^^^^^^^^^^^^^^
+
+Remove a Sudo rule.
+
+.. _command-sudo-fakehostmask:
+
+sudo fakehostmask <hostmask> <command>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Runs *<command>* as if you were wearing the *<hostmask>*. Of course, usage
+of the command is restricted to the owner.
 
 .. _command-sudo-add:
 
@@ -31,10 +40,19 @@ If *<priority>* is not given, it defaults to 0.
 The *<hostmask>* defaults to your hostmask.
 The *<hostmask>* is only needed if you set an 'allow' rule.
 
-.. _command-sudo-remove:
 
-sudo remove <id>
-^^^^^^^^^^^^^^^^
 
-Remove a Sudo rule.
+.. _plugin-sudo-config:
+
+Configuration
+-------------
+
+.. _supybot.plugins.Sudo.public:
+
+supybot.plugins.Sudo.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
 

@@ -4,12 +4,73 @@
 The Trigger plugin
 ==================
 
-.. include:: unofficial.inc
 
-This plugin allows you to run commands triggered by an event.
 
-If you want, for example, trigger a kick when a user join without giving
-him the :ref:`op capability <capability-op>`, you need the `Sudo plugin
-<plugin-sudo>`.
+.. _plugin-trigger-config:
 
-`plugin-conditional` may also be useful here.
+Configuration
+-------------
+
+.. _supybot.plugins.Trigger.triggers:
+
+supybot.plugins.Trigger.triggers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+.. _supybot.plugins.Trigger.triggers.join:
+
+supybot.plugins.Trigger.triggers.join
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+Command triggered by %s
+
+.. _supybot.plugins.Trigger.triggers.notice:
+
+supybot.plugins.Trigger.triggers.notice
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+Command triggered by %s
+
+.. _supybot.plugins.Trigger.triggers.part:
+
+supybot.plugins.Trigger.triggers.part
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+Command triggered by %s
+
+.. _supybot.plugins.Trigger.triggers.privmsg:
+
+supybot.plugins.Trigger.triggers.privmsg
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+Command triggered by %s
+
+.. _supybot.plugins.Trigger.triggers.connect:
+
+supybot.plugins.Trigger.triggers.connect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: 
+
+Command triggered on connect. This shouldn't be a Supybot command, but an IRC command (as given to ircquote).
+
+.. _supybot.plugins.Trigger.public:
+
+supybot.plugins.Trigger.public
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Default value: True
+
+Determines whether this plugin is publicly visible.
+

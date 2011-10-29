@@ -39,6 +39,7 @@ Channel-specific plugins
     moobotfactoids.rst
     protector.rst
     topic.rst
+    webstats.rst
 
 
 Utilities
@@ -49,6 +50,8 @@ Utilities
 
     anonymous.rst
     ctcp.rst
+    debian.rst
+    goodfrench.rst
     later.rst
     news.rst
     nickcapture.rst
@@ -57,8 +60,10 @@ Utilities
     rss.rst
     seen.rst
     services.rst
+    seeks.rst
     shrinkurl.rst
     string.rst
+    wikitrans.rst
 
 Internal tools
 ===============
@@ -67,11 +72,8 @@ Internal tools
     :maxdepth: 3
 
     alias.rst
-    conditional.rst
     dunno.rst
     format.rst
-    messageparser.rst
-    packages.rst
     plugindownloader.rst
     reply.rst
     scheduler.rst
@@ -80,12 +82,27 @@ Internal tools
     trigger.rst
     utilities.rst
 
+Scripting/programming
+=====================
+
+.. toctree::
+    :maxdepth: 3
+
+    brainfuck.rst
+    conditional.rst
+    messageparser.rst
+    supyml.rst
+    supysandbox.rst
+
 Fun
 ===
 
 .. toctree::
     :maxdepth: 3
 
+    coffee.rst
+    erepublik.rst
+    eureka.rst
     filter.rst
     games.rst
     megahal.rst
