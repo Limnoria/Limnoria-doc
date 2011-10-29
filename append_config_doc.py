@@ -18,14 +18,16 @@ class ConfigPlugin(Config.Config):
 # Commands instances are converted into SynchronizedAndFirewalled
 from supybot.callbacks import SynchronizedAndFirewalled as Commands
 
-sys.path.append('/home/progval/workspace/Supybot/Limnoria/plugins')
+sys.path.append('/home/progval/workspace/Supybot/Supybot-plugins')
 
 def main():
     pluginNames = sys.argv[1:]
     for pluginName in pluginNames:
-        supybot = __import__('supybot.plugins.%s.config' % pluginName)
-        pluginConfig = getattr(getattr(supybot.plugins, pluginName).config,
-                pluginName) # combo!
+        #supybot = __import__('supybot.plugins.%s.config' % pluginName)
+        supybot = __import__('%s.config' % pluginName)
+        #pluginConfig = getattr(getattr(supybot.plugins, pluginName).config,
+        #        pluginName) # combo!
+        pluginConfig = getattr(supybot.config, pluginName)
         filename = 'use/plugins/%s.rst' % pluginName.lower()
         configRoot = 'supybot.plugins.%s' % pluginName
         with open(filename, 'a') as fd:

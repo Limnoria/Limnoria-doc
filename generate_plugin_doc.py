@@ -11,11 +11,13 @@ from supybot.callbacks import SynchronizedAndFirewalled as Commands
 
 validCommandName = re.compile('^[a-z]+$')
 
+sys.path.append('/home/progval/workspace/Supybot/Supybot-plugins')
+
 def main():
     pluginNames = sys.argv[1:]
     for pluginName in pluginNames:
-        supybot = __import__('supybot.plugins.%s.plugin' % pluginName)
-        PluginClass = getattr(supybot.plugins, pluginName).plugin.Class
+        supybot = __import__('%s.plugin' % pluginName)
+        PluginClass = supybot.plugin.Class
         filename = 'use/plugins/%s.rst' % pluginName.lower()
         try:
             os.unlink(filename)
