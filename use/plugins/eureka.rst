@@ -4,6 +4,8 @@
 The Eureka plugin
 =================
 
+.. include:: unofficial.inc
+
 Start and stop
 --------------
 

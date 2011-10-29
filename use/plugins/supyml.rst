@@ -4,6 +4,8 @@
 The SupyML plugin
 =================
 
+.. include:: unofficial.inc
+
 Command
 -------
 

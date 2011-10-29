@@ -5,6 +5,8 @@ The AttackProtector plugin
 ==========================
 
 
+.. include:: unofficial.inc
+
 
 .. _plugin-attackprotector-config:
 

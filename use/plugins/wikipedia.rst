@@ -4,6 +4,8 @@
 The Wikipedia plugin
 ====================
 
+.. include:: unofficial.inc
+
 .. _command-wikipedia-wiki:
 
 wikipedia wiki <search term>

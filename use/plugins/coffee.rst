@@ -4,6 +4,8 @@
 The Coffee plugin
 =================
 
+.. include:: unofficial.inc
+
 .. _command-coffee-coffee:
 
 coffee coffee

@@ -4,6 +4,8 @@
 The WikiTrans plugin
 ====================
 
+.. include:: unofficial.inc
+
 Command
 -------
 

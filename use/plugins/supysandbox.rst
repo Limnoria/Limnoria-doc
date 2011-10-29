@@ -4,6 +4,8 @@
 The SupySandbox plugin
 ======================
 
+.. include:: unofficial.inc
+
 Command
 -------
 

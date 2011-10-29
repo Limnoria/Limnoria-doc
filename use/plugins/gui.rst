@@ -4,6 +4,8 @@
 The GUI plugin
 ==============
 
+.. include:: unofficial.inc
+
 
 
 .. _plugin-gui-config:

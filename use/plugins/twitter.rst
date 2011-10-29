@@ -4,6 +4,8 @@
 The Twitter plugin
 ==================
 
+.. include:: unofficial.inc
+
 Tweets
 --------
 

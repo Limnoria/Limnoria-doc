@@ -4,6 +4,8 @@
 The Sudo plugin
 ===============
 
+.. include:: unofficial.inc
+
 Commands
 --------
 

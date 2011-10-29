@@ -4,6 +4,8 @@
 The WebStats plugin
 ===================
 
+.. include:: unofficial.inc
+
 
 
 .. _plugin-webstats-config:

@@ -4,6 +4,8 @@
 The Trigger plugin
 ==================
 
+.. include:: unofficial.inc
+
 
 
 .. _plugin-trigger-config:

@@ -4,6 +4,8 @@
 The Brainfuck plugin
 ====================
 
+.. include:: unofficial.inc
+
 Commands
 --------
 

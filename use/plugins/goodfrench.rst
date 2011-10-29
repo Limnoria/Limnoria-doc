@@ -4,6 +4,8 @@
 The GoodFrench plugin
 =====================
 
+.. include:: unofficial.inc
+
 Command
 -------
 

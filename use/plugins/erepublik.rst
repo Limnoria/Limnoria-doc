@@ -4,6 +4,8 @@
 The ERepublik plugin
 ====================
 
+.. include:: unofficial.inc
+
 Commands
 --------
 

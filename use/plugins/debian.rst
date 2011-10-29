@@ -4,6 +4,8 @@
 The Debian plugin
 =================
 
+.. include:: unofficial.inc
+
 Commands
 --------
 

@@ -4,6 +4,8 @@
 The GitHub plugin
 =================
 
+.. include:: unofficial.inc
+
 Main commands
 -------------
 

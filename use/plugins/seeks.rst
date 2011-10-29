@@ -4,6 +4,8 @@
 The Seeks plugin
 ================
 
+.. include:: unofficial.inc
+
 Command
 -------
 

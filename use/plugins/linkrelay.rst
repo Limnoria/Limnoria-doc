@@ -4,6 +4,8 @@
 The LinkRelay plugin
 ====================
 
+.. include:: unofficial.inc
+
 Manage relays
 -------------
 
