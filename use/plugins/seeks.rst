@@ -4,6 +4,9 @@
 The Seeks plugin
 ================
 
+Command
+-------
+
 .. _command-seeks-search:
 
 seeks search <query>

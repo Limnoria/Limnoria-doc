@@ -4,6 +4,9 @@
 The ShrinkUrl plugin
 ====================
 
+Commands
+--------
+
 .. _command-shrinkurl-xrl:
 
 shrinkurl xrl <url>

@@ -4,12 +4,8 @@
 The Debian plugin
 =================
 
-.. _command-debian-bold:
-
-debian bold
-^^^^^^^^^^^
-
-
+Commands
+--------
 
 .. _command-debian-file:
 
@@ -42,7 +38,7 @@ debian incoming [--{regexp,arch} <value>] [<glob> ...]
 
 Checks debian incoming for a matching package name.  The arch
 parameter defaults to i386; *--regexp* returns only those package names
-that match a given regexp, and normal matches use standard *nix
+that match a given regexp, and normal matches use standard \*nix
 globbing.
 
 .. _command-debian-version:

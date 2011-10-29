@@ -4,6 +4,9 @@
 The Brainfuck plugin
 ====================
 
+Commands
+--------
+
 .. _command-brainfuck-brainfuck:
 
 brainfuck brainfuck [--recover] [--input <characters>] <command>

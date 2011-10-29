@@ -4,6 +4,9 @@
 The Anonymous plugin
 ====================
 
+Commands
+--------
+
 .. _command-channel-do:
 
 do <channel> <action>

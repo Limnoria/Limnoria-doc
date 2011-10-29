@@ -4,6 +4,9 @@
 The URL plugin
 ==============
 
+Commands
+--------
+
 .. _command-url-stats:
 
 url stats [<channel>]

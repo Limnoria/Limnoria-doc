@@ -4,6 +4,9 @@
 The Dict plugin
 ===============
 
+Commands
+--------
+
 .. _command-dict-synonym:
 
 dict synonym <word> [<word> ...]

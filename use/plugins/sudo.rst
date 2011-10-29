@@ -4,6 +4,9 @@
 The Sudo plugin
 ===============
 
+Commands
+--------
+
 .. _command-sudo-sudo:
 
 sudo sudo <commande> [<arg1> [<arg2> ...]]

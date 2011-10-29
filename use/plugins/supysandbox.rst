@@ -4,22 +4,15 @@
 The SupySandbox plugin
 ======================
 
+Command
+-------
+
 .. _command-supysandbox-sandbox:
 
 supysandbox sandbox <code>
+^^^^^^^^^^^^^^^^^^^^^^^^^^
         
-        Runs Python code safely thanks to pysandbox
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-
-.. _command-supysandbox-runtests:
-
-supysandbox runtests
-^^^^^^^^^^^^^^^^^^^^
-
-
-
+Runs Python code safely thanks to pysandbox
 
 
 .. _plugin-supysandbox-config:

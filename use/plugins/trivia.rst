@@ -8,6 +8,9 @@ The trivia game.
 
 .. include:: unofficial.inc
 
+Command
+-------
+
 .. _command-trivia-strivia:
 
 trivia strivia [<channel>]

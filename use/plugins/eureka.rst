@@ -4,28 +4,16 @@
 The Eureka plugin
 =================
 
-.. _command-eureka-adjust:
+Start and stop
+--------------
 
-eureka adjust [<channel>] <nick> <number>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _command-eureka-start:
 
-Increase or decrease the score of *<nick>* on the *<channel>*.
-If *<channel>* is not given, it defaults to the current channel.
+eureka start [<channel>]
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _command-eureka-resume:
-
-eureka resume [<channel>]
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Resume the Eureka on the given *<channel>*. If *<channel>* is not given,
+Start the Eureka on the given *<channel>*. If *<channel>* is not given,
 it defaults to the current channel.
-
-.. _command-eureka-skip:
-
-eureka skip [<channel>]
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Give up with this question, and switch to the next one.
 
 .. _command-eureka-stop:
 
@@ -35,21 +23,6 @@ eureka stop [<channel>]
 Stop the Eureka on the given *<channel>*. If *<channel>* is not given,
 it defaults to the current channel.
 
-.. _command-eureka-clue:
-
-eureka clue [<channel>]
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Give the next clue.
-
-.. _command-eureka-scores:
-
-eureka scores [<channel>]
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Return the scores on the *<channel>*. If *<channel>* is not given, it
-defaults to the current channel.
-
 .. _command-eureka-pause:
 
 eureka pause [<channel>]
@@ -58,13 +31,49 @@ eureka pause [<channel>]
 Pause the Eureka on the given *<channel>*. If *<channel>* is not given,
 it defaults to the current channel.
 
-.. _command-eureka-start:
+.. _command-eureka-resume:
 
-eureka start [<channel>]
-^^^^^^^^^^^^^^^^^^^^^^^^
+eureka resume [<channel>]
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Start the Eureka on the given *<channel>*. If *<channel>* is not given,
+Resume the Eureka on the given *<channel>*. If *<channel>* is not given,
 it defaults to the current channel.
+
+Moderation
+----------
+
+.. _command-eureka-adjust:
+
+eureka adjust [<channel>] <nick> <number>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Increase or decrease the score of *<nick>* on the *<channel>*.
+If *<channel>* is not given, it defaults to the current channel.
+
+.. _command-eureka-skip:
+
+eureka skip [<channel>]
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Give up with this question, and switch to the next one.
+
+.. _command-eureka-clue:
+
+eureka clue [<channel>]
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Give the next clue.
+
+Scores
+------
+
+.. _command-eureka-scores:
+
+eureka scores [<channel>]
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Return the scores on the *<channel>*. If *<channel>* is not given, it
+defaults to the current channel.
 
 .. _command-eureka-score:
 
@@ -85,9 +94,6 @@ Configuration
 
 supybot.plugins.Eureka.format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-
 
 
 .. _supybot.plugins.Eureka.format.score:

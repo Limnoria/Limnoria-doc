@@ -4,6 +4,9 @@
 The Quote plugin
 ================
 
+Command
+-------
+
 .. _command-quote-random:
 
 quote random [<channel>]

@@ -4,6 +4,9 @@
 The Seen plugin
 ===============
 
+Commands
+--------
+
 .. _command-seen-user:
 
 seen user [<channel>] <name>

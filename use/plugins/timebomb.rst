@@ -8,6 +8,9 @@ The timebomb game.
 
 .. include:: unofficial.inc
 
+Commands
+--------
+
 .. _command-timebomb-cutwire:
 
 timebomb cutwire <colored wire>

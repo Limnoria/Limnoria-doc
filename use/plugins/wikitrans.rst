@@ -4,6 +4,9 @@
 The WikiTrans plugin
 ====================
 
+Command
+-------
+
 .. _command-wikitrans-translate:
 
 wikitrans translate <from language> <to language> <word>

@@ -4,6 +4,9 @@
 The BadWords plugin
 ===================
 
+Commands
+--------
+
 .. _command-channel-list:
 
 list

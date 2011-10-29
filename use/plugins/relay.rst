@@ -4,6 +4,9 @@
 The Relay plugin
 ================
 
+Commands
+--------
+
 .. _command-relay-nicks:
 
 relay nicks [<channel>]
@@ -12,15 +15,6 @@ relay nicks [<channel>]
 Returns the nicks of the people in the channel on the various networks
 the bot is connected to. *<channel>* is only necessary if the message
 isn't sent on the channel itself.
-
-.. _command-relay-part:
-
-relay part <channel>
-^^^^^^^^^^^^^^^^^^^^
-
-Ceases relaying between the channel *<channel>* on all networks. The bot
-will part from the channel on all networks in which it is on the
-channel.
 
 .. _command-relay-join:
 
@@ -33,6 +27,15 @@ required even if the bot is in the channel on both networks; he won't
 relay between those channels unless he's told to join both
 channels. If *<channel>* is not given, starts relaying on the channel
 the message was sent in.
+
+.. _command-relay-part:
+
+relay part <channel>
+^^^^^^^^^^^^^^^^^^^^
+
+Ceases relaying between the channel *<channel>* on all networks. The bot
+will part from the channel on all networks in which it is on the
+channel.
 
 
 

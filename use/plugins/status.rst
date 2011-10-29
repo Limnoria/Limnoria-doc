@@ -4,6 +4,9 @@
 The Status plugin
 =================
 
+Commands
+--------
+
 .. _command-status-status:
 
 status status

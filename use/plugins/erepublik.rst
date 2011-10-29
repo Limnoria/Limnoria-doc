@@ -4,6 +4,9 @@
 The ERepublik plugin
 ====================
 
+Commands
+--------
+
 .. _command-erepublik-info:
 
 erepublik info <name|id>

@@ -4,6 +4,9 @@
 The PluginDownloader plugin
 ===========================
 
+Commands
+--------
+
 .. _command-plugindownloader-install:
 
 plugindownloader install <repository> <plugin>

@@ -4,6 +4,9 @@
 The SupyML plugin
 =================
 
+Command
+-------
+
 .. _command-supyml-eval:
 
 supyml eval [--warnings] <SupyML script>

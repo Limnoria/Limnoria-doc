@@ -4,6 +4,9 @@
 The GoodFrench plugin
 =====================
 
+Command
+-------
+
 .. _command-goodfrench-detect:
 
 goodfrench detect <texte>

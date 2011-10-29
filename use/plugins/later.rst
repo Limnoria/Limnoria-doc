@@ -4,6 +4,9 @@
 The Later plugin
 ================
 
+Commands
+--------
+
 .. _command-later-notes:
 
 later notes [<nick>]

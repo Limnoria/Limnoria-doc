@@ -4,31 +4,8 @@
 The Twitter plugin
 ==================
 
-.. _command-twitter-friendslist:
-
-twitter friendslist [<channel>] [<user>]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Replies with the friends (i.e. people who one subscribes to) of the
-*<user>*. If *<user>* is not given, it defaults to the *<channel>*'s account.
-If *<channel>* is not given, it defaults to the current channel.
-
-.. _command-twitter-unfollow:
-
-twitter unfollow [<channel>] <user>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Unfollow a specified *<user>*
-If *<channel>* is not given, it defaults to the current channel.
-
-.. _command-twitter-replies:
-
-twitter replies [<channel>] [--since <oldest>]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Replies with the replies timeline.
-If *<channel>* is not given, it defaults to the current channel.
-If given, *--since* takes a tweet ID, used as a boundary
+Tweets
+--------
 
 .. _command-twitter-timeline:
 
@@ -44,13 +21,14 @@ If given, *--count* takes an integer, that stands for the number of
 tweets to display.
 If *--noretweet* is given, only native user's tweet will be displayed.
 
-.. _command-twitter-follow:
+.. _command-twitter-replies:
 
-twitter follow [<channel>] <user>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+twitter replies [<channel>] [--since <oldest>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Follow a specified *<user>*
+Replies with the replies timeline.
 If *<channel>* is not given, it defaults to the current channel.
+If given, *--since* takes a tweet ID, used as a boundary
 
 .. _command-twitter-post:
 
@@ -76,6 +54,34 @@ twitter delete [<channel>] <id>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Delete a specified status with id *<id>*
+If *<channel>* is not given, it defaults to the current channel.
+
+Friends
+-------
+
+.. _command-twitter-friendslist:
+
+twitter friendslist [<channel>] [<user>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Replies with the friends (i.e. people who one subscribes to) of the
+*<user>*. If *<user>* is not given, it defaults to the *<channel>*'s account.
+If *<channel>* is not given, it defaults to the current channel.
+
+.. _command-twitter-unfollow:
+
+twitter unfollow [<channel>] <user>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Unfollow a specified *<user>*
+If *<channel>* is not given, it defaults to the current channel.
+
+.. _command-twitter-follow:
+
+twitter follow [<channel>] <user>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Follow a specified *<user>*
 If *<channel>* is not given, it defaults to the current channel.
 
 

@@ -4,6 +4,9 @@
 The GitHub plugin
 =================
 
+Main commands
+-------------
+
 .. _command-github-repo-info:
 
 github repo info <owner> <repository> [--enable <feature> <feature> ...] [--disable <feature> <feature>]
@@ -21,6 +24,9 @@ github repo search <searched string> [--page <id>] [--language <language>]
 Searches the string in the repository names database. You can
 specify the page *<id>* of the results, and restrict the search
 to a particular programming *<language>*.
+
+Announces
+---------
 
 .. _command-github-announce-remove:
 

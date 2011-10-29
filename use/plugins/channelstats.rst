@@ -4,6 +4,9 @@
 The ChannelStats plugin
 =======================
 
+Commands
+--------
+
 .. _command-channelstats-stats:
 
 channelstats stats [<channel>] [<name>]
@@ -44,7 +47,7 @@ Configuration
 supybot.plugins.ChannelStats.frowns
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Default value: [':|', ':-/', ':-\\', ':\\', ':/', ':(', ':-(', ":'("]
+Default value: [':\|', ':-/', ':-\\', ':\\', ':/', ':(', ':-(', ":'("]
 
 Determines what words (i.e., pieces of text with no spaces in them ) are considered 'frowns' for the purposes of stats-keeping.
 

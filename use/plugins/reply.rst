@@ -4,6 +4,9 @@
 The Reply plugin
 ================
 
+Commands
+--------
+
 .. _command-reply-notice:
 
 reply notice <text>

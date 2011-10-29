@@ -4,6 +4,9 @@
 The Internet plugin
 ===================
 
+Commands
+--------
+
 .. _command-internet-whois:
 
 internet whois <domain>

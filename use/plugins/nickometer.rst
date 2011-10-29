@@ -4,6 +4,9 @@
 The Nickometer plugin
 =====================
 
+Command
+-------
+
 .. _command-nickometer-nickometer:
 
 nickometer nickometer [<nick>]

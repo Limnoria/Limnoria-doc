@@ -4,13 +4,8 @@
 The Utilities plugin
 ====================
 
-.. _command-utilities-ignore:
-
-utilities ignore requires no arguments
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Does nothing. Useful sometimes for sequencing commands when you don't
-care about their non-error return values.
+Random
+------
 
 .. _command-utilities-shuffle:
 
@@ -18,6 +13,24 @@ utilities shuffle <arg> [<arg> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Shuffles the arguments given.
+
+.. _command-utilities-sample:
+
+utilities sample <num> <arg> [<arg> ...]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Randomly chooses *<num>* items out of the arguments given.
+
+Programming/nesting
+-------------------
+
+.. _command-utilities-ignore:
+
+utilities ignore requires no arguments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Does nothing. Useful sometimes for sequencing commands when you don't
+care about their non-error return values.
 
 .. _command-utilities-success:
 
@@ -40,19 +53,19 @@ string(s) given to it; $nick (or $who), $randomNick, $randomInt,
 $botnick, $channel, $user, $host, $today, $now, and $randomDate are all
 handled appropriately.
 
-.. _command-utilities-sample:
-
-utilities sample <num> <arg> [<arg> ...]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Randomly chooses *<num>* items out of the arguments given.
-
 .. _command-utilities-countargs:
 
 utilities countargs <arg> [<arg> ...]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Counts the arguments given.
+
+.. _command-utilities-apply:
+
+utilities apply <command> <text>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Tokenizes *<text>* and calls *<command>* with the resulting arguments.
 
 .. _command-utilities-last:
 
@@ -62,13 +75,6 @@ utilities last <text> [<text> ...]
 Returns the last argument given. Useful when you'd like multiple
 nested commands to run, but only the output of the last one to be
 returned.
-
-.. _command-utilities-apply:
-
-utilities apply <command> <text>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Tokenizes *<text>* and calls *<command>* with the resulting arguments.
 
 
 

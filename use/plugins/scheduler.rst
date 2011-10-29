@@ -4,6 +4,9 @@
 The Scheduler plugin
 ====================
 
+Commands
+--------
+
 .. _command-scheduler-repeat:
 
 scheduler repeat <name> <seconds> <command>
