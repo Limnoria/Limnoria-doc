@@ -4,6 +4,9 @@
 The User plugin
 ===============
 
+Registration and hostmasks
+--------------------------
+
 .. _command-user-username:
 
 user username <hostmask|nick>
@@ -34,13 +37,6 @@ that user in addition to the password being correct. When the
 secure flag is set, the user *must* identify before he can be
 recognized. If a specific True/False value is not given, it
 inverts the current value.
-
-.. _command-user-stats:
-
-user stats
-^^^^^^^^^^
-
-Returns some statistics on the user database.
 
 .. _command-user-hostmask-hostmask:
 
@@ -106,23 +102,6 @@ user, or use the identify command to identify just for a session.
 This command (and all other commands that include a password) must be
 sent to the bot privately, not in a channel.
 
-.. _command-user-list:
-
-user list [--capability=<capability>] [<glob>]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Returns the valid registered usernames matching *<glob>*. If *<glob>* is
-not given, returns all registered usernames.
-
-.. _command-user-capabilities:
-
-user capabilities [<name>]
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Returns the capabilities of the user specified by *<name>*; if *<name>*
-isn't specified, returns the capabilities of the user calling the
-command.
-
 .. _command-user-unidentify:
 
 user unidentify
@@ -142,13 +121,6 @@ Identifies the user as *<name>*. This command (and all other
 commands that include a password) must be sent to the bot privately,
 not in a channel.
 
-.. _command-user-whoami:
-
-user whoami
-^^^^^^^^^^^
-
-Returns the name of the user calling the command.
-
 .. _command-user-changename:
 
 user changename <name> <new name> [<password>]
@@ -159,6 +131,41 @@ Changes your current user database name to the new name given.
 This message must be sent to the bot privately (not on a channel) since
 it may contain a password.
 
+Capabilities
+------------
+
+.. _command-user-capabilities:
+
+user capabilities [<name>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the capabilities of the user specified by *<name>*; if *<name>*
+isn't specified, returns the capabilities of the user calling the
+command.
+
+Other commands
+
+.. _command-user-stats:
+
+user stats
+^^^^^^^^^^
+
+Returns some statistics on the user database.
+
+.. _command-user-list:
+
+user list [--capability=<capability>] [<glob>]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the valid registered usernames matching *<glob>*. If *<glob>* is
+not given, returns all registered usernames.
+
+.. _command-user-whoami:
+
+user whoami
+^^^^^^^^^^^
+
+Returns the name of the user calling the command.
 
 
 .. _plugin-user-config:
