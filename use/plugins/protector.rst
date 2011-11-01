@@ -4,6 +4,7 @@
 The Protector plugin
 ====================
 
+Enforces channel capabilities (op/voice).
 
 
 .. _plugin-protector-config:
