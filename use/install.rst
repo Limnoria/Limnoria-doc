@@ -85,11 +85,11 @@ If you don't have root access, or want a local install
 You can install Supybot in a local directory by using the ``--prefix`` option
 when running ``setup.py``.  E.g.::
 
-    python setup.py install --prefix=$HOME/packages
+    python setup.py install --user
 
-to install into a ``packages`` directory inside your home directory. You'll now
-have a ``$HOME/packages/bin`` directory containing Supybot programs ('supybot',
-``supybot-wizard``, etc.) and a ''$HOME/packages/lib'' directory containing the
+to install into a ``.local`` directory inside your home directory. You'll now
+have a ``$HOME/.local/bin`` directory containing Supybot programs ('supybot',
+``supybot-wizard``, etc.) and a ''$HOME/.local/lib'' directory containing the
 Supybot libraries. 
 
 It is also recommended that you setup a proper PYTHONPATH environment variable
@@ -98,13 +98,13 @@ tcsh, etc.). This will tell python where to find the supybot python module.
 
 For bash::
 
-    export PYTHONPATH=$HOME/packages/lib/python2.x/site-packages
+    export PYTHONPATH=$HOME/.local/lib/python2.x/site-packages
 
 For (t)csh:
 
 .. code-block:: csh
 
-    setenv PYTHONPATH $HOME/packages/lib/python2.x/site-packages
+    setenv PYTHONPATH $HOME/.local/lib/python2.x/site-packages
 
 Be sure to replace "2.x" by your Python version (probably either 2.6 or 2.7)
 
