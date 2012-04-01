@@ -92,22 +92,6 @@ have a ``$HOME/.local/bin`` directory containing Supybot programs ('supybot',
 ``supybot-wizard``, etc.) and a ''$HOME/.local/lib'' directory containing the
 Supybot libraries. 
 
-It is also recommended that you setup a proper PYTHONPATH environment variable
-in your shell's init file (e.g., the ``~/.bashrc`` for bash, ``~/.tcshrc`` for
-tcsh, etc.). This will tell python where to find the supybot python module.
-
-For bash::
-
-    export PYTHONPATH=$HOME/.local/lib/python2.x/site-packages
-
-For (t)csh:
-
-.. code-block:: csh
-
-    setenv PYTHONPATH $HOME/.local/lib/python2.x/site-packages
-
-Be sure to replace "2.x" by your Python version (probably either 2.6 or 2.7)
-
 Configure Supybot
 -----------------
 
