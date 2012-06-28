@@ -6,16 +6,20 @@
 Installing Limnoria
 *******************
 
-This is the "easy to follow" guide to installing supybot. The installation
+This is the "easy to follow" guide to installing Limnoria. The installation
 documentation provided with the supybot distribution is really quite good
 already, but since people keep coming to IRC, asking a repeating pattern of
 questions, we thought it would be a good idea to expand it a bit to make it
 a little more of a "foolproof guide".
 
+.. note::
+
+    Limnoria is a modified version of Supybot.
+
 Dependencies
 ============
 
-Here's the list of recommended software to run Supybot:
+Here's the list of recommended software to run Supybot/Limnoria:
 
 * Supybot is written in Python, and requires `Python`_
   2.4 or greater (but not Python 3).
@@ -48,15 +52,15 @@ You may also install "manually" by downloading the source archive from
 http://python.org, and compiling it. That is outside the scope of this guide,
 however.
 
-Install Supybot
----------------
+Install Limnoria
+----------------
 
 We are now ready to install supybot itself. Most distributions have a supybot
 package in the repositories. This is probably the easiest way to install. If
 that is what you want to do, that's fine, and you're ready to move on to the
 next section. :)
 
-However, supybot tends to be actively developed, and it's best to grab the
+However, Limnoria tends to be actively developed, and it's best to grab the
 latest codebase. Easiest way to do that is to clone the repository with
 running::
 
