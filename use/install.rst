@@ -66,6 +66,11 @@ running::
 
     git clone git://github.com/ProgVal/Limnoria.git
 
+Additionaly, if you want to use the 'testing' version (it is more up to date,
+but not yet totally tested), you can run this command::
+
+    git checkout testing
+
 You can also click the "Downloads" button at the `Limnoria repository`_. Then,
 extract the tarball/zipball to some temporary directory, and ``cd`` into the
 ``supybot`` directory which contains the extracted code.
