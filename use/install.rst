@@ -71,10 +71,14 @@ but not yet totally tested), you can run this command::
 
     git checkout testing
 
-You can also click the "Downloads" button at the `Limnoria repository`_. Then,
-extract the tarball/zipball to some temporary directory, and ``cd`` into the
-``supybot`` directory which contains the extracted code.
+You can also: 
 
+* Download a .deb package at `ProgVal's build repo`_.
+* Click the "Downloads" button at the `Limnoria repository`_. Then,
+  extract the tarball/zipball to some temporary directory, and ``cd`` into the
+  ``supybot`` directory which contains the extracted code.
+
+.. _ProgVal's build repo: http://builds.progval.net/
 .. _Limnoria repository: https://github.com/ProgVal/Limnoria 
 
 If you have root access
