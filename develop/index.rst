@@ -22,4 +22,5 @@ Other docs:
 .. toctree::
     :maxdepth: 0
 
+    callbacks.rst
     httpserver.rst
