@@ -214,3 +214,5 @@ man_pages = [
     ('index', 'limnoria', u'Limnoria Documentation',
      [u'The Limnoria/Gribble/Supybot contributors'], 1)
 ]
+
+autodoc_default_flags = ['show-inheritance']
