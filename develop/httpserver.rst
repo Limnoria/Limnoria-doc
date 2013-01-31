@@ -135,7 +135,7 @@ Here is the code of the callback... pretty much simple, as ever::
                 elif path == '/gribble':
                      response = 'Thanks to Gribble, we have many bug fixes and SQLite 3 support'
                 elif path == '/limnoria':
-                     response = 'Because of Limnoria, you need to internationalize your plugins and read this f*cking do.'
+                     response = 'Because of Limnoria, you need to internationalize your plugins and read this f*cking doc.'
                 else:
                      response = None
                 if response is None:
