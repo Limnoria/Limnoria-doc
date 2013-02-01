@@ -10,7 +10,6 @@ The Supybot user guide
     install.rst
     getting_started.rst
     plugins/index.rst
-    third_party.rst
     ../import/CAPABILITIES.rst
     ../import/FAQ.rst
     httpserver.rst
