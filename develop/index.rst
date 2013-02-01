@@ -7,7 +7,7 @@ Developping plugins for Limnoria
 Doc provided with Supybot:
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     ../import/PLUGIN_TUTORIAL.rst
     ../import/USING_WRAP.rst

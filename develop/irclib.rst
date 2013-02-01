@@ -4,13 +4,10 @@
 supybot.irclib
 **************
 
-Most used classes
-=================
-
 .. _supybot-irclib-irc:
 
-supybot.irclib.Irc
-------------------
+Irc
+===
 
 It is usually the `irc` object given to plugin commands.
 
@@ -18,11 +15,27 @@ It is usually the `irc` object given to plugin commands.
     :members:
     :inherited-members:
 
+    .. attribute:: zombie
+
+        Whether or not this object represents a living IRC connection.
+
+        :type: bool
+
+    .. attribute:: network
+
+        The name of the network this object is connected to.
+
+        :type: str
+
+    .. attribute:: startedAt
+
+        :type: float
+
 
 .. _supybot-irclib-ircstate:
 
-supybot.irclib.IrcState
------------------------
+IrcState
+========
 
 Used mainly as the `state` attribute of :py:class:`supybot.irclib.Irc` objects.
 
@@ -33,8 +46,8 @@ Used mainly as the `state` attribute of :py:class:`supybot.irclib.Irc` objects.
 
 .. _supybot-irclib-channelstate:
 
-supybot.irclib.ChannelState
----------------------------
+ChannelState
+============
 
 Used mainly as the `channels['#chan']` attribute of
 :py:class:`supybot.irclib.Irc` objects.
@@ -42,3 +55,10 @@ Used mainly as the `channels['#chan']` attribute of
 .. autoclass:: supybot.irclib.ChannelState
     :members:
     :inherited-members:
+
+Other classes
+=============
+
+.. automodule:: supybot.irclib
+    :members:
+    :exclude-members: Irc, IrcState, ChannelState

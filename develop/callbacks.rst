@@ -4,15 +4,36 @@
 supybot.callbacks
 *****************
 
-Most used classes
-=================
-
 .. _supybot-callbacks-plugin:
 
-supybot.callbacks-plugin
-------------------------
+Plugin
+======
 
 .. autoclass:: supybot.callbacks.Plugin
     :members:
     :inherited-members:
 
+.. _supybot-callbacks-pluginregexp:
+
+PluginRegexp
+============
+
+.. autoclass:: supybot.callbacks.PluginRegexp
+    :members:
+    :inherited-members:
+
+.. _supybot-callbacks-tokenize:
+
+tokenize
+========
+
+.. autofunction:: supybot.callbacks.tokenize
+
+
+Other classes
+=============
+
+.. automodule:: supybot.callbacks
+    :members:
+    :undoc-members:
+    :exclude-members: Plugin, tokenize

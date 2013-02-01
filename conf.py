@@ -216,3 +216,4 @@ man_pages = [
 ]
 
 autodoc_default_flags = ['show-inheritance']
+primary_domain = 'py'
