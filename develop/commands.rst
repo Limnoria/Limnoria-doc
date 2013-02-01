@@ -4,17 +4,9 @@
 supybot.commands
 ****************
 
-.. _supybot-commands-wrap:
-
-wrap
-====
-
-.. autofunction:: supybot.commands.wrap
-
-Other classes
-=============
-
-.. automodule:: supybot.callbacks
+.. automodule:: supybot.commands
+    :members:
     :undoc-members:
-    :exclude-members: wrap
 
+    .. autoclass:: supybot.commands.context
+        :members:
