@@ -24,5 +24,6 @@ Other docs:
 
     callbacks.rst
     irclib.rst
+    commands.rst
     ircmsgs.rst
     httpserver.rst
