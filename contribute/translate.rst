@@ -66,7 +66,7 @@ or to publish your changes).
 First, you need to tell Git what files you want to be committed (let's say
 you are the Finnish translator, so you updated Alias's fi.po)::
 
-    git add plugins/Alias/locale/fi.po
+    git add plugins/Alias/locales/fi.po
 
 Then, you can commit your files. Depending on what you made, you can use
 one of this commands (not all of them!)::
@@ -128,9 +128,9 @@ archive, I can't read them because is a f*cking proprietary format).
 
 I prefer that you choose this architecture:
 
-* FirstPlugin/locale/it.po
-* SecondPlugin/locale/it.po
-* ThirdPlugin/locale/it.po
+* FirstPlugin/locales/it.po
+* SecondPlugin/locales/it.po
+* ThirdPlugin/locales/it.po
 
 Because I can extract everything with one click.
 
