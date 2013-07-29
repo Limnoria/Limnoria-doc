@@ -1,8 +1,8 @@
 .. _develop-plugins:
 
-################################
-Developping plugins for Limnoria
-################################
+###############################
+Developing plugins for Limnoria
+###############################
 
 Doc provided with Supybot:
 
