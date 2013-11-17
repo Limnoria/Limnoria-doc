@@ -22,11 +22,13 @@ Dependencies
 Here's the list of recommended software to run Supybot/Limnoria:
 
 * Supybot is written in Python, and requires `Python`_
-  2.4 or greater (but not Python 3).
+  2.6 or greater.
 * `Twisted`_ framework 1.2.0 or greater (optional, you probably don't need it).
+* `SQLAlchemy`_ If you want the Aka plugin (and probably other plugins in the future)
 
 .. _Python: http://www.python.org/
 .. _Twisted: http://twistedmatrix.com/
+.. _SQLAlchemy: http://www.sqlalchemy.org/
 
 Installation: UNIX/Linux/BSD
 ============================
