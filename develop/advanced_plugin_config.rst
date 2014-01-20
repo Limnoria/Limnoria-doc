@@ -249,6 +249,7 @@ Custom Registry Types
   plugin config variables.
 
 Why Create Custom Registry Types?
+---------------------------------
 
 For most configuration, the provided types in the registry module are
 sufficient. However, for some configuration variables it's not only convenient
@@ -257,6 +258,7 @@ types allows for tighter restrictions on the values that get set and for
 greater error-checking than is possible with the provided types.
 
 What Defines a Registry Type?
+-----------------------------
 
 First and foremost, it needs to subclass one of the existing registry types
 from the registry module, whether it be one of the ones in the previous section
@@ -267,6 +269,7 @@ type, customized value-setting (transforming the data you get into something
 else if wanted), etc.
 
 Creating Your First Custom Registry Type
+----------------------------------------
 
 As stated above, priority number one is that you subclass one of the types in
 the registry module. Basically, you just subclass one of those and then
@@ -291,6 +294,7 @@ gotten an invalid value is to call self.error(). Finally, we call the parent
 class's setValue to actually set the value.
 
 What Else Can I Customize?
+--------------------------
 
 Well, the error string and the setValue function are the most useful things
 that are available for customization, but there are other things. For examples,
@@ -298,6 +302,7 @@ look at the actual built-in registry types defined in registry.py (in the src
 directory distributed with the bot).
 
 What Subclasses Can I Use?
+--------------------------
 
 Chances are one of the built-in types in the previous section will be
 sufficient, but there are a few others of note which deserve mention:
@@ -322,6 +327,7 @@ sufficient, but there are a few others of note which deserve mention:
   section below.
 
 Using My Custom Registry Type
+-----------------------------
 
 Using your new registry type is relatively straightforward. Instead of using
 whatever registry built-in you might have used before, now use your own custom
