@@ -193,3 +193,8 @@ or so, and if this happens after you've edited your configuration files
 but before you reload your changes, you could lose the changes you made.
 To prevent this, set the `supybot.flush` value to 'Off' while editing
 the files, and no automatic flushing will occur.
+
+If you cannot access the bot on IRC and your bot is running on a POSIX
+system, you can also send it a SIGHUP signal; it is exactly the same
+as ``config reload`` (note that the Config plugin has to be loaded to
+do that).
