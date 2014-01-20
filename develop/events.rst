@@ -11,6 +11,10 @@ All methods here are defined in ``supybot-callbacks-plugin``. You may
 override them if you need, but make sure you call the parent's one
 unless you actually don't want to do it.
 
+In case multiple plugins implement the same special methods, the order
+they are called depends on the ``callAfter`` and ``callBefore``
+(lists of plugin names) attributes of the plugins, if they are set.
+
 Commands and numerics
 =====================
 
