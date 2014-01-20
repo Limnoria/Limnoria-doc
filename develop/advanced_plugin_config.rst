@@ -222,6 +222,35 @@ api keys, …)::
         registry.SpaceSeparatedListOfStrings('', """Contains the list of air
             targets.""", private=True))
 
+
+Accessing the configuration registry
+------------------------------------
+
+Of course, you can access the variables in your plugins.
+
+If it is a variable created by your plugin, you can do it like this
+(if the configuration variable's name is `air`)::
+
+    self.registryValue('air')
+
+and it will return data of the right type (in this case, a list of string,
+as we declarated it above as a `registry.SpaceSeparatedListOfStrings`).
+
+If it is a channel-specific variable, you can get the value on `#channel`
+like this (if the variable is not defined on this channel, it defaults
+to the global one)::
+
+    self.registryValue('air', '#channel')
+
+
+You can also set configuration variables (either globally or for a single
+channel)::
+
+    self.setRegistryValue('air', value=['foo', 'bar'])
+    self.setRegistryValue('air', value=['foo', 'bar'], channel=channel)
+
+    self.registryValue('air')
+
 The Built-in Registry Types
 ===========================
   A rundown of all of the built-in registry types available for use with config
