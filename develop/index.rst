@@ -23,6 +23,7 @@ Specific documentation
     :maxdepth: 2
 
     using_utils.rst
+    capabilities.rst
     events.rst
     httpserver.rst
 
@@ -36,3 +37,4 @@ Library reference
     irclib.rst
     commands.rst
     ircmsgs.rst
+    ircdb.rst
