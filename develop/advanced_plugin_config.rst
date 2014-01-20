@@ -249,8 +249,6 @@ channel)::
     self.setRegistryValue('air', value=['foo', 'bar'])
     self.setRegistryValue('air', value=['foo', 'bar'], channel=channel)
 
-    self.registryValue('air')
-
 The Built-in Registry Types
 ===========================
   A rundown of all of the built-in registry types available for use with config
