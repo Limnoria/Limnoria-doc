@@ -32,8 +32,17 @@ operator. The format function uses the following string formatting characters.
 * p - pluralize (takes a string)
 * q - quoted (takes a string)
 * n - n items (takes a 2-tuple of (n, item) or a 3-tuple of (n, between, item))
+* S - a human-readable size (takes an int)
 * t - time, formatted (takes an int)
+* T - time delta, formatted (takes an int)
 * u - url, wrapped in braces
+* v - void, takes one or many arguments, but doesn't display it
+  (useful for translation)
+
+.. note::
+    Until stock Supybot and Gribble merge them, %S, %T, and %v are only
+    available in Limnoria.
+
 
 Here are a few examples to help elaborate on the above descriptions::
 
