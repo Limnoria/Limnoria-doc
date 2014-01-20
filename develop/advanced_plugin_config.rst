@@ -125,6 +125,7 @@ Using Config Groups
   A brief overview of how to use config groups to organize config variables
 
 Supybot's Hierarchical Configuration
+------------------------------------
 
 Supybot's configuration is inherently hierarchical, as you've probably already
 figured out in your use of the bot. Naturally, it makes sense to allow plugin
@@ -146,7 +147,7 @@ find that we do this in a handful of spots yet we use the "values as groups"
 feature quite a bit.
 
 Creating a Config Group
-=======================
+-----------------------
 
 As stated before, config variables themselves are groups, so you can create a
 group simply by creating a configuration variable::
@@ -177,7 +178,7 @@ course, the group name. So now we have WorldDom.attackTargets (or, fully,
 supybot.plugins.WorldDom.attackTargets).
 
 Adding Values to a Group
-========================
+------------------------
 
 Actually, you've already done this several times, just never to a custom group
 of your own. You've always added config values to your plugin's config group.
@@ -192,6 +193,34 @@ And now we have a nice list of air targets! You'll notice that the first
 argument is WorldDom.attackTargets, our new group. Make sure that the
 conf.registerGroup call is made before this one or else you'll get a nasty
 AttributeError.
+
+Variations
+----------
+
+Channel-specific values
+^^^^^^^^^^^^^^^^^^^^^^^
+
+A very handy feature is channel-specific variables, which allows bot
+administrators to set a global value (as for non-channel-specific values
+AND another value for specific channels).
+
+The syntax is pretty much like the previous one, except we use
+`registerChannelValue` instead of `registerGlobalValue`::
+
+    conf.registerChannelValue(WorldDom.attackTargets, 'air',
+        registry.SpaceSeparatedListOfStrings('', """Contains the list of air
+                                                    targets."""))
+
+Private values
+^^^^^^^^^^^^^^
+
+Variable type also take an optional argument, for setting a configuration
+variable to private (useful for passwords, authentication tokens,
+api keys, …)::
+
+    conf.registerChannelValue(WorldDom.attackTargets, 'air',
+        registry.SpaceSeparatedListOfStrings('', """Contains the list of air
+            targets.""", private=True))
 
 The Built-in Registry Types
 ===========================
