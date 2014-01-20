@@ -23,6 +23,19 @@ and a :ref:`IrcMsg object <supybot-ircmsgs>`.
 
 To get a list of all possible messages, check IRC RFCs.
 
+Filters
+=======
+
+The ``inFilter`` and ``outFilter`` methods allow you to “intercept”
+messages between the bot and the network and to alter them.
+
+``inFilter`` gets messages just after they are parsed from network;
+and its return value is fed to the bot.
+``outFilter`` does the opposite: it get any message the bot is about
+the send, and returns a message (which may be the same) that will
+be sent instead.
+
+
 .. _commands_handling:
 
 Commands handling
