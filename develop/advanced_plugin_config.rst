@@ -351,3 +351,53 @@ Note that we initialize it just the same as we do any other registry type, with
 two arguments: the default value, and then the description of the config
 variable.
 
+Configuration hooks
+===================
+
+.. note::
+    Until stock Supybot or Gribble merge this feature, this section
+    only applies to Limnoria.
+
+It is possible to get a function called when a configuration variable is
+changed. While this is usually not useful (you get the value whenever you
+need it), some plugins do use it, for instance for caching results or
+for pre-fetching data.
+
+Let's say you want to write a plugin that prints `nick changed` in the logs
+when `supybot.nick` is edited. You can do it like this::
+
+    class LogNickChange(callbacks.Plugin):
+        """Some useless plugin."""
+
+        def __init__(self, irc):
+            self.__parent = super(LogNickChange, self)
+            self.__parent.__init__(irc)
+            conf.supybot.nick.addCallback(self._configCallback)
+
+        def _configCallback(self, name=None):
+            self.log.info('nick changed')
+
+As not all Supybot versions support it (yet), it can be a good idea to
+show a warning instead of crashing on those versions::
+
+    class LogNickChange(callbacks.Plugin):
+        """Some useless plugin."""
+
+        def __init__(self, irc):
+            self.__parent = super(LogNickChange, self)
+            self.__parent.__init__(irc)
+            try:
+                conf.supybot.nick.addCallback(self._configCallback)
+            except registry.NonExistentRegistryEntry:
+                self.log.error('Your version of Supybot is not compatible '
+                               'with configuration hooks, but this plugin '
+                               'requires them to work.')
+
+        def _configCallback(self, name=None):
+            self.log.info('nick changed')
+
+.. note::
+    For the moment, the `name` parameter is never given when the callback is
+    called. However, in the future, it will be set to the name of the variable
+    that has been changed (useful if you want to use the same callback for
+    multiple variable), so it is better to allow this parameter.
