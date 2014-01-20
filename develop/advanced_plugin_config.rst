@@ -249,6 +249,17 @@ channel)::
     self.setRegistryValue('air', value=['foo', 'bar'])
     self.setRegistryValue('air', value=['foo', 'bar'], channel=channel)
 
+
+
+You can also access other configuration variables (or your own if you want)
+via the ``supybot.conf`` module::
+
+    conf.supybot.plugins.WorldDom.air()
+    conf.supybot.plugins.WorldDom.get('air')()
+    conf.supybot.plugins.WorldDom.air.get('#channel')()
+    conf.supybot.plugins.WorldDom.air.setValue(['foo'])
+    conf.supybot.plugins.WorldDom.air.get('#channel').setValue(['foo'])
+
 The Built-in Registry Types
 ===========================
   A rundown of all of the built-in registry types available for use with config
