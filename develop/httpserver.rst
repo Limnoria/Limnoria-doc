@@ -258,3 +258,6 @@ are the only 'big' pages), like this::
                 handler.end_headers() # We won't send more headers
                 handler.wfile.write(response)
 
+Then, the user can change the template by copying
+`data/web/supystory/index.html.example` to
+`data/web/supystory/index.html` and editing it. (Same for `error.html`.)
