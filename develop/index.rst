@@ -4,20 +4,31 @@
 Developing plugins for Limnoria
 ###############################
 
-Doc provided with Supybot:
+Generic documentation
+~~~~~~~~~~~~~~~~~~~~~
 
 .. toctree::
     :maxdepth: 1
 
-    ../import/PLUGIN_TUTORIAL.rst
-    ../import/USING_WRAP.rst
-    ../import/STYLE.rst
-    ../import/CONFIGURATION.rst
-    ../import/USING_UTILS.rst
-    ../import/ADVANCED_PLUGIN_CONFIG.rst
-    ../import/ADVANCED_PLUGIN_TESTING.rst
+    plugin_tutorial.rst
+    using_wrap.rst
+    style.rst
+    using_wrap.rst
+    style.rst
+    advanced_plugin_config.rst
+    advanced_plugin_testing.rst
 
-Other docs:
+Specific documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. toctree::
+    :maxdepth: 2
+
+    using_utils.rst
+    httpserver.rst
+
+Library reference
+~~~~~~~~~~~~~~~~~
 
 .. toctree::
     :maxdepth: 2
@@ -26,4 +37,3 @@ Other docs:
     irclib.rst
     commands.rst
     ircmsgs.rst
-    httpserver.rst
