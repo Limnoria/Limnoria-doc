@@ -38,3 +38,18 @@ rewrite, please notify me whether it works or not):
                 RewriteRule ^/webstats/(.*)$ /$1
         </Location>
     </VirtualHost>
+
+Templates
+=========
+
+Among plugins which use the http server, some use the standard templates
+system which allows you to edit page templates in a standard way (for other
+plugins, check their documentation).
+
+Templates are located in the `data/web/` folder. There is a folder per plugin
+(and a `generic` folder, which holds generic pages), and all file names end
+with `.example`, which is the default template provided by the plugin.
+To customize it, rename it to remove `.example` (for instance:
+``mv fooplugin/foopage.html.example fooplugin/foopage.html``) and edit it
+(either do it intuitively or check the plugin documentation to see how
+it handles its templates).
