@@ -5,23 +5,20 @@ Using Limnoria's HTTP server in your plugins
 Introduction
 ============
 
-Having a HTTP server in an IRC may be baffling, because it seems to be useless.
-Yes, you are right, it is useless in most of the cases. But it may be cool.
+Limnoria provides an HTTP server to plugins. This is not relevant for most
+plugins, but some of them have to start a server (either for serving a website
+or for being remotely called).
+The HTTP server provided by Limnoria aims at starting a single server for
+all of them, which means less used port and less resources usage.
 
-Some plugins (WebStats, Github, and UfrPaste are the only one, as far as I
-know) have their own embedded HTTP server. Unfortunately, a HTTP need a port,
-and consumes a few resources (CPU/memory). So, if you want many of these plugins,
-it becomes embarrassing.
-Last pro for this server: a plugin that use this HTTP server is really tinier,
-as shown in `this commit`_ (note that the path of the httpserver is no more
-*supybot.utils.httpserver* but *supybot.httpserver*)
+Some example plugins are `Factoids`_, `WebStats`_, `GitHub`_, UfrPaste, and
+`WebDoc`_
 
-.. _this commit: https://github.com/ProgVal/Supybot-plugins/commit/220146ea
+.. _Factoids: https://github.com/ProgVal/Limnoria/tree/master/plugins/Factoids
+.. _WebStats: https://github.com/ProgVal/Limnoria/tree/master/plugins/WebStats
+.. _GitHub: https://github.com/ProgVal/Limnoria/tree/master/plugins/GitHub
+.. _WebDoc: https://github.com/ProgVal/Limnoria/tree/master/plugins/WebDoc
 
-Anyway, if you are on this page, this is probably because you want to use this
-HTTP server, so I don't need to convince you.
-Before reading further, be sure you have a Limnoria (or any Supybot fork that
-merged this HTTP server).
 
 Using the HTTP server in a plugin
 =================================
@@ -31,8 +28,8 @@ Let's try to make a basic dictionary about Supybot! We'll call it Supystory.
 We want to get plain text information about Supybot, Gribble, and Limnoria when
 accessing http://localhost:8080/supystory/supybot,
 http://localhost:8080/supystory/gribble, and
-http://localhost:8080/supystory/limnoria, and an HTML error page if the page
-is not found
+http://localhost:8080/supystory/limnoria, an index page, and an HTML error page
+if the page is not found
 
 Importing the HTTP server
 -------------------------
@@ -40,7 +37,6 @@ Importing the HTTP server
 On only have to add this line::
 
     import supybot.httpserver as httpserver.
-
 
 Creating a callback
 -------------------
@@ -131,18 +127,36 @@ Here is the code of the callback... pretty much simple, as ever::
 
             def doGet(self, handler, path):
                 if path == '/supybot':
-                     response = 'Supybot is the best IRC bot ever.'
+                     response = b'Supybot is the best IRC bot ever.'
                 elif path == '/gribble':
-                     response = 'Thanks to Gribble, we have many bug fixes and SQLite 3 support'
+                     response = b'Thanks to Gribble, we have many bug fixes and SQLite 3 support'
                 elif path == '/limnoria':
-                     response = 'Because of Limnoria, you need to internationalize your plugins and read this f*cking doc.'
-                else:
-                     response = None
-                if response is None:
-                     handler.send_response(404) # Not found, as described by the HTTP protocol
+                     response = b'Thanks to Limnoria, you can to internationalize your plugins and write a web server.'
+                elif path == '' or path == '/':
+                     handler.send_response(200) # Found
                      handler.send_header('Content-type', 'text/html') # This is the MIME for HTML data
                      handler.end_headers() # We won't send more headers
-                     handler.wfile.write("""
+                     handler.wfile.write(b"""
+                     <html>
+                      <head>
+                       <title>Supystory</title>
+                      </head>
+                      <body>
+                       <h1>Supystory</h1>
+                       <p>
+                        Here are some links you can visit:
+                        <a href="./supybot">Supybot</a>
+                        <a href="./gribble">Gribble</a>
+                        <a href="./limnoria">Limnoria</a>
+                       </p>
+                      </body>
+                     </html>""")
+                     return
+                else:
+                     handler.send_response(404) # Not found
+                     handler.send_header('Content-type', 'text/html') # This is the MIME for HTML data
+                     handler.end_headers() # We won't send more headers
+                     handler.wfile.write(b"""
                      <html>
                       <head>
                        <title>Error</title>
@@ -157,13 +171,90 @@ Here is the code of the callback... pretty much simple, as ever::
                        </p>
                       </body>
                      </html>""")
-                else:
-                     handler.send_response(404) # Not found, as described by the HTTP protocol
-                     handler.send_header('Content-type', 'text/plain') # This is the MIME for plain text
+                     return
+                handler.send_response(200)
+                handler.send_header('Content-type', 'text/plain') # This is the MIME for plain text
+                handler.end_headers() # We won't send more headers
+                handler.wfile.write(response)
+
+
+Using templates
+---------------
+
+You may also want to allow your plugin's users to customize the web pages
+without editing the source code of the plugin itself.
+
+Limnoria provides a template facility, which takes a file name, returns the
+content of a file from the file system if it exists (the user-defined template),
+and a default one otherwise (the developer's default template).
+does not exist.
+
+In our case, we will do it only for the home page and the error page (which
+are the only 'big' pages), like this::
+
+        DEFAULT_TEMPLATES = {
+            'supystory/index.html': """
+        <html>
+            <head>
+                <title>Supystory</title>
+            </head>
+            <body>
+                <h1>Supystory</h1>
+                <p>
+                    Here are some links you can visit:
+                    <a href="./supybot">Supybot</a>
+                    <a href="./gribble">Gribble</a>
+                    <a href="./limnoria">Limnoria</a>
+                </p>
+            </body>
+        </html>""",
+            'supystory/error.html': """
+        <html>
+            <head>
+                <title>Error</title>
+            </head>
+            <body>
+                <h1>404 Not found</h1>
+                <p>
+                    The document could not be found. Try one of this links:
+                    <a href="./supybot">Supybot</a>
+                    <a href="./gribble">Gribble</a>
+                    <a href="./limnoria">Limnoria</a>
+                </p>
+            </body>
+        </html>"""
+        }
+
+        httpserver.set_default_templates(DEFAULT_TEMPLATES)
+
+
+
+        class SupystoryServerCallback(httpserver.SupyHTTPServerCallback):
+            name = 'Supystory'
+            defaultResponse = """
+            This plugin handles only GET request, please don't use other requests."""
+
+            def doGet(self, handler, path):
+                if path == '/supybot':
+                     response = b'Supybot is the best IRC bot ever.'
+                elif path == '/gribble':
+                     response = b'Thanks to Gribble, we have many bug fixes and SQLite 3 support'
+                elif path == '/limnoria':
+                     response = b'Thanks to Limnoria, you can to internationalize your plugins and write a web server.'
+                elif path == '' or path == '/':
+                     handler.send_response(200) # Found
+                     handler.send_header('Content-type', 'text/html') # This is the MIME for HTML data
                      handler.end_headers() # We won't send more headers
-                     handler.wfile.write(response)
+                     handler.wfile.write(httpserver.get_template('supystory/index.html').encode('utf8'))
+                     return
+                else:
+                     handler.send_response(404) # Not found
+                     handler.send_header('Content-type', 'text/html') # This is the MIME for HTML data
+                     handler.end_headers() # We won't send more headers
+                     handler.wfile.write(httpserver.get_template('supystory/error.html').encode('utf8'))
+                     return
+                handler.send_response(200)
+                handler.send_header('Content-type', 'text/plain') # This is the MIME for plain text
+                handler.end_headers() # We won't send more headers
+                handler.wfile.write(response)
 
-That's all !
-
-You may not understand everything (I know I don't speak English very well);
-come on #limnoria at Freenode and ask for help of make suggestions!
