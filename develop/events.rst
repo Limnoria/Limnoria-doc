@@ -36,12 +36,32 @@ Commands handling
     As for all the documentation, feel free to contact me to
     correct/enhance it.
 
-* isCommandMethod takes a command name as a string (which may contain
+* ``isCommandMethod`` takes a command name as a string (which may contain
   spaces) and returns a boolean telling if the plugin provides this command.
-* listCommands returns a list of command names as strings (which may
+* ``listCommands`` returns a list of command names as strings (which may
   contain spaces)
-* getCommand takes a potential command name as a list of strings, and
+* ``getCommand`` takes a potential command name as a list of strings, and
   returns a truncated list corresponding to the name of a command provided
   by the plugin. If no command match, it returns an empty list.
-* getCommandMethod takes a command name as a list of strings and
+* ``getCommandMethod`` takes a command name as a list of strings and
   returns the corresponding method/function.
+* ``callCommand`` gets a command name as a list of strings, an irc object,
+  an msg object, and extra arguments (with `*args` and `**kwargs`),
+  calls ``getCommandMethod`` to get the command method, and calls it
+  with the arguments.
+  It also calls the functions in ``pre_command_callback``.
+
+Pre-command-call callbacks
+--------------------------
+
+.. note::
+    Until stock Supybot and Gribble merge this feature, this section
+    only applies to Limnoria
+
+If you want a function of your plugin to be called before every command call,
+you can add it to the ``pre_command_callback`` attribute of your plugin
+(actually, it is a static class attribute, so make sure you *add* it to the
+list and don't touch other items of the list).
+
+At every command call, *all* callbacks are called, and if *any* of them
+returns ``True``, the command is not called.
