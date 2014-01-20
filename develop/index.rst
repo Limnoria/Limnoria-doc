@@ -13,8 +13,6 @@ Generic documentation
     plugin_tutorial.rst
     using_wrap.rst
     style.rst
-    using_wrap.rst
-    style.rst
     advanced_plugin_config.rst
     advanced_plugin_testing.rst
 
