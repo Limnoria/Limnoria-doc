@@ -1,9 +1,9 @@
-***************
-Catching events
-***************
+***********************************
+Special methods and catching events
+***********************************
 
-This page is a non-exhaustive list of catchable
-events via plugin methods (other events include
+This page is a non-exhaustive list of special plugin method names and
+events catchable via those methods (other events include
 :ref:`configuration hooks <configuration-hooks>` and
 :ref:`HTTP server callbacks <http_plugins>`)
 
@@ -18,3 +18,8 @@ Those command take two commands: an :ref:`Irc object <supybot-irclib-irc>`
 and a :ref:`IrcMsg object <supybot-ircmsgs>`.
 
 To get a list of all possible messages, check IRC RFCs.
+
+.. _commands_handling:
+
+Commands handling
+=================

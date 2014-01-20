@@ -377,3 +377,28 @@ supybot.utils.iter - iterable utilities
   predicate p
 
 * choice(iterable) - Returns a random element from the iterable
+
+
+supybot.dynamicScope / dynamic - accessing variables in the stack
+-----------------------------------------------------------------
+
+This feature is not in `supybot.utils` but still deserves to be documented
+as a utility.
+
+Althrough you should avoid using this feature as long as you can, it is
+sometimes necessary to access variables the Supybot API does not provide you.
+
+For instance, the `Aka` plugin provides per-channel aliases by overriding
+:ref:`getCommandMethod <commands_handling>`. However, the channel where the
+command is called is not passed to this functions, so when writing `Aka` I
+could either add this parameter (and thus break all plugins all plugins
+already overriding this method) or use this hack. I choosed this hack.
+
+How does it work? This is quite simple: ``dynamic.channel`` is a shortcut
+for ``supybot.dynamicScope.DynamicScope.__getattr__('channel')``, which
+browse the call stack backwards, looking for a variable named ``channel``,
+and then returns is as far as it finds it (and returns ``None`` if there
+is no such variale).
+
+Note that you don't have to import ``dynamicScope``, the ``dynamic`` object
+is automatically set as a global variable when Supybot starts.
