@@ -418,6 +418,8 @@ Note that we initialize it just the same as we do any other registry type, with
 two arguments: the default value, and then the description of the config
 variable.
 
+.. _configuration-hooks:
+
 Configuration hooks
 ===================
 

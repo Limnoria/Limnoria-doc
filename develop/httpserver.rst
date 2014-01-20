@@ -1,3 +1,5 @@
+.. _http_plugins:
+
 ********************************************
 Using Limnoria's HTTP server in your plugins
 ********************************************

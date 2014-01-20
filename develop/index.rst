@@ -23,6 +23,7 @@ Specific documentation
     :maxdepth: 2
 
     using_utils.rst
+    events.rst
     httpserver.rst
 
 Library reference
