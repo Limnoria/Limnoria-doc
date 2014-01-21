@@ -45,8 +45,11 @@ be sent instead.
 Commands handling
 =================
 
+Command dispatching
+-------------------
+
 .. note::
-    I wrote this section with the little knowledge I have of the
+    I wrote this subsection with the little knowledge I have of the
     commands handling (all I know comes from hacks I made to write
     the Aka plugin), so keep in mind some informations might
     be wrong.
@@ -82,3 +85,17 @@ list and don't touch other items of the list).
 
 At every command call, *all* callbacks are called, and if *any* of them
 returns ``True``, the command is not called.
+
+Other command-related events
+----------------------------
+
+* all ``invalidCommand`` methods get called (with an Irc object, an IrcMsg
+  objet, and a list of token) when a user calls a command that no plugin
+  provides.
+
+
+Regular expression triggered events
+===================================
+
+The :class:`supybot.callbacks.PluginRegexp` class provides some utilities
+for creating plugins that act on regular expression matching.
