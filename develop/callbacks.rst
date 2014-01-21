@@ -20,7 +20,7 @@ PluginRegexp
 
 .. autoclass:: supybot.callbacks.PluginRegexp
     :members:
-    :inherited-members:
+    :exclude-members: Proxy
 
 .. _supybot-callbacks-tokenize:
 
@@ -36,4 +36,4 @@ Other classes
 .. automodule:: supybot.callbacks
     :members:
     :undoc-members:
-    :exclude-members: Plugin, tokenize
+    :exclude-members: Plugin, PluginRegexp, tokenize
