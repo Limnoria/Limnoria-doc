@@ -200,6 +200,37 @@ testing for some reason, we could just do this::
 And now you can be assured that supybot.commands.nested is going to be off for
 all of your test methods in this test case class.
 
+Temporaly setting a configuration variable
+------------------------------------------
+
+Sometimes we want to change a configuration variable only in a test (or in
+a part of a test), and keep the original value for other tests. The
+historical way to do it is::
+
+    import supybot.conf as conf
+
+    class MyPluginTestCase(PluginTestCase):
+        def testThisThing(self):
+            original_value conf.supybot.commands.nested()
+            conf.supybot.commands.nested.setValue(False)
+            try:
+                # stuff
+            finally:
+                conf.supybot.commands.nested.setValue(original_value)
+
+But there is a more compact syntax, using context managers::
+
+    import supybot.conf as conf
+
+    class MyPluginTestCase(PluginTestCase):
+        def testThisThing(self):
+            with conf.supybot.commands.nested.context(False):
+                # stuff
+
+.. note::
+    Until stock Supybot or Gribble merge the second syntax, only Limnoria
+    will support it.
+
 Plugin Test Methods
 ===================
   The full list of test methods and how to use them.
