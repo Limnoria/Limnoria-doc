@@ -24,7 +24,7 @@ Make sure you always call the parent's ``__init__``.
 
 When a plugin is unloaded (or is to be reloaded), the ``die``
 method is called (with no parameter).
-Also make sure you always call the parent's ``__init__``.
+Also make sure you always call the parent's ``die``.
 
 Commands and numerics
 =====================
