@@ -15,6 +15,17 @@ In case multiple plugins implement the same special methods, the order
 they are called depends on the ``callAfter`` and ``callBefore``
 (lists of plugin names) attributes of the plugins, if they are set.
 
+Loading and unloading
+=====================
+
+The ``__init__`` method gets called with an Irc object as a parameter
+when a plugin is loaded (or has just been reloaded).
+Make sure you always call the parent's ``__init__``.
+
+When a plugin is unloaded (or is to be reloaded), the ``die``
+method is called (with no parameter).
+Also make sure you always call the parent's ``__init__``.
+
 Commands and numerics
 =====================
 
