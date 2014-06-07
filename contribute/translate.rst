@@ -6,7 +6,7 @@
 Translating Limnoria
 ********************
 
-I already write a `guide on how to translate`_ plugins.
+I already wrote a `guide on how to translate`_ plugins.
 So, this page will only explain how to translate the core and push your
 translations to Limnoria.
 
@@ -35,12 +35,15 @@ I won't have this write access).
 Then, open a console, and write (replace *YourName* by the name of your
 GitHub account)::
 
-    git clone git@github.com:YourName/Limnoria.git
+    git clone git@github.com:YourName/Limnoria.git --branch=testing
 
 This will create a new directory, called *Limnoria*, where all the code and
 project history are copied. Now, cd to the directory::
 
     cd Limnoria/
+
+The things below affect to you only if you didn't specify the branch in 
+the git clone command.
 
 Then, you need to checkout the *testing* branch. What does that mean? It means
 that there is differents stages in Limnoria: all changes are made in testing,
@@ -49,7 +52,7 @@ So, checking out *testing* means Git will use the code in *testing*, you
 will translate strings that are in *testing*, and changes you make will be
 in *testing*. Now, do it::
 
-    git checkout testing
+    git checkout testing 
 
 Git will reply you that it understood what you mean by *testing*.
 
@@ -84,9 +87,9 @@ Internet yet. To send it, run::
 
     git push
 
-Simple, isn't?
+Simple, isn't it?
 
-Now, go back on GitHub, on your forked repository, and click the *Pull request*
+Now, go back to GitHub and your forked repository, and click the *Pull request*
 button. Then, set *testing* on the both side, and run *Update Commit Range*.
 I will by mailed that you asked me to merge your changes, and I will do it
 soon.
@@ -99,12 +102,12 @@ As you may know, I do some updates in Limnoria repository. ;)
 You need to have the latest version of the *messages.pot* files. So, you
 need to teach Git how to get this updates::
 
-    git remote add progval git://github.com/ProgVal/Limnoria.git
+    git remote add upstream git://github.com/ProgVal/Limnoria.git
 
 Now, every time you want to download updates, run::
 
-    git fetch progval
-    git merge progval/testing
+    git fetch upstream
+    git merge upstream/testing
 
 Another way: mailing me your translations
 =========================================
@@ -114,17 +117,19 @@ translation guide and send me your .po files by mail.
 
 You can choose either one of this way to do it.
 
-Mkaysi's way
+Mikaela's way
 ------------
 
-Send the fi.po (or whatever the name is)files one by one as an attachment.
+Send the fi.po (or whatever the name is) files one by one as an attachment.
 Don't forget to tell me what plugin it is.
+
+I (Mikaela) have moved to git long time ago though.
 
 skizzhg's way
 -------------
 
 Do many translations. Put them in a tarball/zipball/whatever (but not a RAR
-archive, I can't read them because is a f*cking proprietary format).
+archive, I can't read them because is a proprietary format).
 
 I prefer that you choose this architecture:
 
