@@ -60,9 +60,9 @@ Install Limnoria
 Easy to follow install guide
 ----------------------------
 
-This guide requires `pip` (usually in package python-pip) and `git`.
+This guide requires `pip`_ (usually in package python-pip) and `git`_.
 
-*Windows users: `pip` also works on Windows and you need `msysgit` in 
+*Windows users: `pip`_ also works on Windows and you need `msysgit`_ in 
 which setup you should specify to have UNIX tools in PATH.*
 
 .. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
@@ -72,7 +72,7 @@ which setup you should specify to have UNIX tools in PATH.*
 Global installation
 ^^^^^^^^^^^^^^^^^^^
 
-You can either run these as root or prepend ``sudo `` in front of every 
+You can either run these as root or prepend ``sudo`` in front of every 
 message.
 
 First we Limnoria's requirements:
