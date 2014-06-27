@@ -76,13 +76,13 @@ You can either run these as root or prepend ``sudo`` in front of every
 message.
 
 In case you want to use the testing branch which might be more up-to date 
-**but less tested**, replace ``master`` with ``testing in the commands.
+**but less tested**, replace ``master`` with ``testing`` in the commands.
 
-First we install Limnoria's requirements: ::
+First we install Limnoria's requirements::
 
     pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt 
 
-And then Limnoria itself: ::
+And then Limnoria itself::
 
     pip install git+https://github.com/ProgVal/Limnoria.git@master
 
