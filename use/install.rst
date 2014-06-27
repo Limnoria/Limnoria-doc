@@ -61,6 +61,7 @@ In the next section of this guide we will use `pip`_, which is a generic
 way of installing Python software
 
 However, you can use any of these alternatives:
+
 * Download a .deb package at `ProgVal's build repo`_.
 * Use `git`_ to clone the `Limnoria repository`_ and run
   ``python setup.py install`` or ``python setup.py install --user``.
@@ -68,17 +69,12 @@ However, you can use any of these alternatives:
   extract the zipball to some temporary directory, and ``cd`` into the
   ``supybot`` directory which contains the extracted code.
 
-.. _ProgVal's build repo: http://builds.progval.net/
-.. _Limnoria repository: https://github.com/ProgVal/Limnoria
-
-With pip
---------
-
-This guide uses `pip`_ (usually in package python-pip) and `git`_.
-
 **Windows users:** `pip`_ also works on Windows and you need `msysgit`_ in 
 which setup you should specify to have UNIX tools in PATH.
 
+
+.. _ProgVal's build repo: http://builds.progval.net/
+.. _Limnoria repository: https://github.com/ProgVal/Limnoria
 .. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
 .. _git: http://git-scm.com/
 .. _msysgit: https://msysgit.github.io/
