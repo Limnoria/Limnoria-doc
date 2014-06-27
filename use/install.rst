@@ -57,6 +57,20 @@ however.
 Install Limnoria
 ----------------
 
+In the next section of this guide we will use `pip`_, which is a generic
+way of installing Python software
+
+However, you can use any of these alternatives:
+* Download a .deb package at `ProgVal's build repo`_.
+* Use `git`_ to clone the `Limnoria repository`_ and run
+  ``python setup.py install`` or ``python setup.py install --user``.
+* Click the "Downloads" button at the `Limnoria repository`_. Then,
+  extract the zipball to some temporary directory, and ``cd`` into the
+  ``supybot`` directory which contains the extracted code.
+
+.. _ProgVal's build repo: http://builds.progval.net/
+.. _Limnoria repository: https://github.com/ProgVal/Limnoria
+
 With pip
 --------
 
@@ -105,58 +119,6 @@ Upgrading
 
 To upgrade Limnoria, simply add ``--upgrade`` to the end of both commands.
 
-With git
---------
-
-We are now ready to install supybot itself. Most distributions have a supybot
-package in the repositories. This is probably the easiest way to install. If
-that is what you want to do, that's fine, and you're ready to move on to the
-next section. :)
-
-However, Limnoria tends to be actively developed, and it's best to grab the
-latest codebase. Easiest way to do that is to clone the repository with
-running::
-
-    git clone git://github.com/ProgVal/Limnoria.git
-
-Additionaly, if you want to use the 'testing' version (it is more up to date,
-but not yet totally tested), you can run this command::
-
-    git checkout testing
-
-You can also: 
-
-* Download a .deb package at `ProgVal's build repo`_.
-* Click the "Downloads" button at the `Limnoria repository`_. Then,
-  extract the tarball/zipball to some temporary directory, and ``cd`` into the
-  ``supybot`` directory which contains the extracted code.
-
-.. _ProgVal's build repo: http://builds.progval.net/
-.. _Limnoria repository: https://github.com/ProgVal/Limnoria 
-
-If you have root access
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Run, as root::
-
-    python setup.py install
-
-If all goes according to plan, the supybot python module will be installed to
-somewhere like ``/usr/lib/python2.x/site-packages``, and a few supybot scripts
-will be installed to somewhere like ``/usr/bin`` or ``/usr/local/bin``.
-
-If you don't have root access, or want a local install
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can install Supybot in a local directory by using the ``--prefix`` option
-when running ``setup.py``.  E.g.::
-
-    python setup.py install --user
-
-to install into a ``.local`` directory inside your home directory. You'll now
-have a ``$HOME/.local/bin`` directory containing Supybot programs ('supybot',
-``supybot-wizard``, etc.) and a ''$HOME/.local/lib'' directory containing the
-Supybot libraries. 
 
 Configure Supybot
 -----------------
