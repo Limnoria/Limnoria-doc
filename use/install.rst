@@ -57,10 +57,10 @@ however.
 Install Limnoria
 ----------------
 
-Easy to follow install guide
-----------------------------
+With pip
+--------
 
-This guide requires `pip`_ (usually in package python-pip) and `git`_.
+This guide uses `pip`_ (usually in package python-pip) and `git`_.
 
 **Windows users:** `pip`_ also works on Windows and you need `msysgit`_ in 
 which setup you should specify to have UNIX tools in PATH.
@@ -74,6 +74,9 @@ Global installation
 
 You can either run these as root or prepend ``sudo`` in front of every 
 message.
+
+In case you want to use the testing branch which might be more up-to date 
+**but less tested**, replace ``master`` with ``testing in the commands.
 
 First we install Limnoria's requirements: ::
 
@@ -97,8 +100,13 @@ You might need to add $HOME/.local/bin to your PATH.::
     echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
-Other methods
--------------
+Upgrading
+^^^^^^^^^
+
+To upgrade Limnoria, simply add ``--upgrade`` to the end of both commands.
+
+With git
+--------
 
 We are now ready to install supybot itself. Most distributions have a supybot
 package in the repositories. This is probably the easiest way to install. If
