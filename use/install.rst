@@ -75,7 +75,7 @@ Global installation
 You can either run these as root or prepend ``sudo`` in front of every 
 message.
 
-First we Limnoria's requirements: ::
+First we install Limnoria's requirements: ::
 
     pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt 
 
