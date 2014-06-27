@@ -57,6 +57,49 @@ however.
 Install Limnoria
 ----------------
 
+Easy to follow install guide
+----------------------------
+
+This guide requires `pip` (usually in package python-pip) and `git`.
+
+*Windows users: `pip` also works on Windows and you need `msysgit` in 
+which setup you should specify to have UNIX tools in PATH.*
+
+.. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
+.. _git: http://git-scm.com/
+.. _msysgit: https://msysgit.github.io/
+
+Global installation
+^^^^^^^^^^^^^^^^^^^
+
+You can either run these as root or prepend ``sudo `` in front of every 
+message.
+
+First we Limnoria's requirements:
+
+    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt 
+
+And then Limnoria itself:
+
+    pip install git+https://github.com/ProgVal/Limnoria.git@master
+
+Local installation
+^^^^^^^^^^^^^^^^^^
+
+Simply add ``--user`` to the end of both commands. First we install 
+requirements and then Limnoria itself.
+
+    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user
+    pip install git+https://github.com/ProgVal/Limnoria.git@master --user
+
+You might need to add $HOME/.local/bin to your PATH.
+
+    echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
+    source ~/.$(echo $SHELL|cut -d/ -f3)rc
+
+Other methods
+-------------
+
 We are now ready to install supybot itself. Most distributions have a supybot
 package in the repositories. This is probably the easiest way to install. If
 that is what you want to do, that's fine, and you're ready to move on to the
