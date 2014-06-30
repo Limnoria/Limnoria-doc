@@ -4,7 +4,10 @@ install:
     - "sudo pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt"
     - "sudo pip install -r requirements.txt"
 # command to run tests
-script: sphinx-build -nW -b html -d _build/doctrees . _build/html
+script: 
+    - "./generate_plugin_doc.py"
+    - "./append_config_doc.py"
+    - "sphinx-build -nW -b html -d _build/doctrees . _build/html"
 # Flags used here, not in `make html`:
 #  -n   Run in nit-picky mode. Currently, this generates warnings for all missing references.
 #  -W   Turn warnings into errors. This means that the build stops at the first warning and sphinx-build exits with exit status 1.
