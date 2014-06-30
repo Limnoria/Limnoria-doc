@@ -90,11 +90,11 @@ In case you want to use the testing branch which might be more up-to date
 
 First we install Limnoria's requirements::
 
-    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt 
+    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
 
 And then Limnoria itself::
 
-    pip install git+https://github.com/ProgVal/Limnoria.git@master
+    pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
 Local installation
 ^^^^^^^^^^^^^^^^^^
@@ -102,19 +102,13 @@ Local installation
 Simply add ``--user`` to the end of both commands. First we install 
 requirements and then Limnoria itself.::
 
-    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user
-    pip install git+https://github.com/ProgVal/Limnoria.git@master --user
+    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
+    pip install git+https://github.com/ProgVal/Limnoria.git@master --user --upgrade
 
 You might need to add $HOME/.local/bin to your PATH.::
 
     echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
-
-Upgrading
-^^^^^^^^^
-
-To upgrade Limnoria, simply add ``--upgrade`` to the end of both commands.
-
 
 Configure Supybot
 -----------------
