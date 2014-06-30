@@ -1,2 +1,2 @@
 sphinx
-pip install git+https://github.com/ProgVal/Limnoria.git@testing
+git+https://github.com/ProgVal/Limnoria.git@testing
