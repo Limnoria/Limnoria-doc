@@ -12,5 +12,4 @@ The Supybot user guide
     configuration.rst
     capabilities.rst
     faq.rst
-    plugins/index.rst
     httpserver.rst
