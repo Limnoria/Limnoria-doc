@@ -3,4 +3,4 @@ You need the Sphinx documentation generator to do that.
 A generated doc is available at
 
 * http://supybot.aperio.fr/
-* http://limnoria-doc.readthedocs.org/ 
+* https://limnoria-doc.readthedocs.org/ 
