@@ -37,4 +37,3 @@ Library reference
     irclib.rst
     commands.rst
     ircmsgs.rst
-    ircdb.rst

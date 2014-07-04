@@ -118,7 +118,7 @@ translation guide and send me your .po files by mail.
 You can choose either one of this way to do it.
 
 Mikaela's way
-------------
+-------------
 
 Send the fi.po (or whatever the name is) files one by one as an attachment.
 Don't forget to tell me what plugin it is.
