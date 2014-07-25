@@ -163,23 +163,27 @@ using the `Config` plugin's ``list`` command, channel-specific values are
 preceeded by a '#' character to indicate such (similar to how '@' is
 used to indicate a group of values).
 
-..
-    Editing the Configuration Values by Hand
-    ----------------------------------------
-    Some people might like editing their registry file directly rather than
-    manipulating all these things through the bot.  For those people, we
-    offer the ``config reload`` command, which reloads both registry
-    configuration and user/channel/ignore database configuration.
 
-    Just edit the interesting files and then give the bot the ``config
-    reload`` command and it'll work as expected.  Do note, however, that
-    Supybot flushes his configuration files and database to disk every hour
-    or so, and if this happens after you've edited your configuration files
-    but before you reload your changes, you could lose the changes you made.
-    To prevent this, set the `supybot.flush` value to 'Off' while editing
-    the files, and no automatic flushing will occur.
+Editing the Configuration Values by Hand
+----------------------------------------
 
-    If you cannot access the bot on IRC and your bot is running on a POSIX
-    system, you can also send it a SIGHUP signal; it is exactly the same
-    as ``config reload`` (note that the Config plugin has to be loaded to
-    do that).
+NOTE: **We don't recommend this and you shouln't ever do this, you should 
+do everything with the commands in the Config plugin.**
+
+Some people might like editing their registry file directly rather than
+manipulating all these things through the bot.  For those people, we
+offer the ``config reload`` command, which reloads both registry
+configuration and user/channel/ignore database configuration.
+
+Just edit the interesting files and then give the bot the ``config
+reload`` command and it'll work as expected.  Do note, however, that
+Supybot flushes his configuration files and database to disk every hour
+or so, and if this happens after you've edited your configuration files
+but before you reload your changes, you could lose the changes you made.
+To prevent this, set the `supybot.flush` value to 'Off' while editing
+the files, and no automatic flushing will occur.
+
+If you cannot access the bot on IRC and your bot is running on a POSIX
+system, you can also send it a SIGHUP signal; it is exactly the same
+as ``config reload`` (note that the Config plugin has to be loaded to
+do that).
