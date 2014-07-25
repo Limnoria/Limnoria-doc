@@ -22,8 +22,6 @@ Configuration Registry
 ----------------------
 Now, if you're used to the Windows registry, don't worry, Supybot's
 registry is completely different.  For one, it's completely plain text.
-There's no binary database sensitive to corruption, it's not necessary
-to use another program to edit it--all you need is a simple text editor.
 But there is at least one good idea in Windows' registry: hierarchical
 configuration.
 
@@ -54,14 +52,8 @@ example, let's say you wanted to see what configuration values were
 under the `supybot` (the base group) hierarchy.  You would simply issue
 this command::
 
-  <jemfinch|lambda> @config list supybot
-  <supybot> jemfinch|lambda: @abuse, @capabilities, @commands,
-            @databases, @debug, @directories, @drivers, @log, @networks,
-            @nick, @plugins, @protocols, @replies, @reply,
-            alwaysJoinOnInvite, channels, defaultIgnore,
-            defaultSocketTimeout, externalIP, flush,
-            followIdentificationThroughNickChanges, ident, pidFile,
-            snarfThrottle, upkeepInterval, and user
+    <Mikaela> @config list supybot
+    <Limnoria> #alwaysJoinOnInvite, @abuse, @capabilities, @commands, @databases, @debug, @directories, @drivers, @log, @networks, @nick, @plugins, @protocols, @replies, @reply, @servers, defaultIgnore, defaultSocketTimeout, externalIP, flush, followIdentificationThroughNickChanges, ident, language, pidFile, snarfThrottle, upkeepInterval, and user
 
 These are all the configuration groups and values which are under the
 base `supybot` group.  Actually, their full names would each have a
@@ -131,8 +123,7 @@ variable is, use the ``config default`` command::
 Thus, to reset a configuration variable to its default value, you can
 simply say::
 
-  <jemfinch|lambda> @config supybot.reply.whenAddressedBy.chars [config
-                    default supybot.reply.whenAddressedBy.chars]
+  <jemfinch|lambda> @config setdefault supybot.reply.whenAddressedBy.chars 
   <supybot> jemfinch|lambda: The operation succeeded.
   <jemfinch|lambda> @note that this does nothing
 
@@ -144,18 +135,11 @@ Now, let's say you want to find all configuration variables that might
 be even remotely related to opping.  For that, you'll want the ``config
 search`` command.  Check this out::
 
-  <jemfinch|lamda> @config search op
-  <supybot> jemfinch|lambda: supybot.plugins.Enforcer.autoOp,
-            supybot.plugins.Enforcer.autoHalfop,
-            supybot.plugins.Enforcer.takeRevenge.onOps,
-            supybot.plugins.Enforcer.cycleToGetOps,
-            supybot.plugins.Topic, supybot.plugins.Topic.public,
-            supybot.plugins.Topic.separator,
-            supybot.plugins.Topic.format,
-            supybot.plugins.Topic.recognizeTopiclen,
-            supybot.plugins.Topic.default,
-            supybot.plugins.Topic.undo.max,
-            supybot.plugins.Relay.topicSync
+    <Mikaela> @config search op
+    <Limnoria> supybot.plugins.AutoMode.op, supybot.plugins.AutoMode.halfop, supybot.plugins.ChannelStatus.topic, supybot.plugins.LinkRelay.topicSync, supybot.plugins.NoLatin1.operator, supybot.plugins.Services.ChanServ.op, supybot.plugins.Services.ChanServ.halfop, supybot.plugins.Topic, supybot.plugins.Topic.public, supybot.plugins.Topic.separator, supybot.plugins.Topic.format, (1 more message)
+    <Mikaela> @more
+    <@Limnoria> supybot.plugins.Topic.recognizeTopiclen, supybot.plugins.Topic.default, supybot.plugins.Topic.alwaysSetOnJoin, supybot.plugins.Topic.undo, supybot.plugins.Topic.undo.max, and supybot.plugins.Topic.requireManageCapability
+    
 
 Sure, it showed all the topic-related stuff in there, but it also showed
 you all the op-related stuff, too.  Do note, however, that you can only
@@ -179,22 +163,23 @@ using the `Config` plugin's ``list`` command, channel-specific values are
 preceeded by a '#' character to indicate such (similar to how '@' is
 used to indicate a group of values).
 
-Editing the Configuration Values by Hand
-----------------------------------------
-Some people might like editing their registry file directly rather than
-manipulating all these things through the bot.  For those people, we
-offer the ``config reload`` command, which reloads both registry
-configuration and user/channel/ignore database configuration.
+..
+    Editing the Configuration Values by Hand
+    ----------------------------------------
+    Some people might like editing their registry file directly rather than
+    manipulating all these things through the bot.  For those people, we
+    offer the ``config reload`` command, which reloads both registry
+    configuration and user/channel/ignore database configuration.
 
-Just edit the interesting files and then give the bot the ``config
-reload`` command and it'll work as expected.  Do note, however, that
-Supybot flushes his configuration files and database to disk every hour
-or so, and if this happens after you've edited your configuration files
-but before you reload your changes, you could lose the changes you made.
-To prevent this, set the `supybot.flush` value to 'Off' while editing
-the files, and no automatic flushing will occur.
+    Just edit the interesting files and then give the bot the ``config
+    reload`` command and it'll work as expected.  Do note, however, that
+    Supybot flushes his configuration files and database to disk every hour
+    or so, and if this happens after you've edited your configuration files
+    but before you reload your changes, you could lose the changes you made.
+    To prevent this, set the `supybot.flush` value to 'Off' while editing
+    the files, and no automatic flushing will occur.
 
-If you cannot access the bot on IRC and your bot is running on a POSIX
-system, you can also send it a SIGHUP signal; it is exactly the same
-as ``config reload`` (note that the Config plugin has to be loaded to
-do that).
+    If you cannot access the bot on IRC and your bot is running on a POSIX
+    system, you can also send it a SIGHUP signal; it is exactly the same
+    as ``config reload`` (note that the Config plugin has to be loaded to
+    do that).
