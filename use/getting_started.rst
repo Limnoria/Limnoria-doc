@@ -84,7 +84,9 @@ yes and then give yourself the 'owner' capability, restart the bot and you'll
 be ready to load some plugins!
 
 Now, in order for the bot to recognize you as your owner user, you'll have to
-identify with the bot.  Open up a query window in your irc client ('/query'
+identify with the bot.
+
+Open up a query window in your irc client ('/query'
 should do it; if not, just know that you can't identify in a channel because
 it requires sending your password to the bot).  Then type this::
 
@@ -114,6 +116,67 @@ hostmask of a given nick, but if given no arguments, it returns the hostmask
 of the person giving the command. So the command above adds the hostmask I'm
 currently using to my user's list of recognized hostmasks.  I'm only required
 to give mypassword if I'm not already identified with the bot.
+
+Limnoria
+--------
+
+Limnoria has two additional methods to identify. GPG and NickAuth.
+
+GPG
+^^^
+
+First you must associate your GPG key with your Limnoria account. The gpg 
+add command takes two arguments, key id and key server.
+
+My key is 0x0C207F07B2F32B67 and it's on keyserver pool.sks-keyservers.net 
+so and now I add it to my bot::
+
+    <Mikaela> +gpg add 0x0C207F07B2F32B67 pool.sks-keyservers.net
+    <Yvzabevn> 1 key imported, 0 unchanged, 0 not imported.
+
+Now I can get token to sign so I can identify::
+
+    <Guest45020> +gpg gettoken
+    <Yvzabevn> Your token is: {03640620-97ea-4fdf-b0c3-ce8fb62f2dc5}. Please sign it with your GPG key, paste it somewhere, and call the 'auth' command with the URL to the (raw) file containing the signature.
+
+Then I follow the instructions and sign my token in terminal::
+
+    echo "{03640620-97ea-4fdf-b0c3-ce8fb62f2dc5}"|gpg --clearsign|pastebinit -b sprunge.us
+
+Note that I used the application "pastebinit" which sends the output 
+directly to pastebin. If you don't have it, remove the "|pastebinit" part 
+and copy-paste your signature to any pastebin. I used sprunge.us, because 
+it only has plain text.
+
+And last I give the bot link to the plain text signature::
+
+    <Guest45020> +gpg auth http://sprunge.us/DUdd     
+    <Yvzabevn> You are now authenticated as Mikaela.
+
+NickAuth
+^^^^^^^^
+
+This requires you to load the NickAuth plugin (see next section of this 
+page for loading plugins).
+
+NickAuth allows you to identify to the bot using your NickServ account. 
+First I add my NickServ accountname which I can see with "/whois Mikaela Mikaela" (because my current nick is Mikaela). It gives me something like::
+
+    [Mikaela] is logged in as Mikaela
+
+Now I tell the bot add my NickServ account Mikaela to my bot user on 
+freenode. The syntax is [<network>] <bot-username> <NickServ-account>::
+
+    <Mikaela> +nickauth nick add freenode Mikaela Mikaela
+    <Yvzabevn> OK.
+
+Next time when I identify to NickServ I can use the NickAuth Auth command 
+to also identify to the bot::
+
+    <Guest45020> +whoami
+    <Yvzabevn> I don't recognize you. You can messsage me either of these two commands: "user identify <username> <password>" to log in or "user register <username> <password>" to register.
+    <Guest45020> +nickauth auth
+    <Yvzabevn> You are now authenticated as Mikaela.
 
 Loading Plugins
 ===============
