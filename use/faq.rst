@@ -119,10 +119,10 @@ Why won't Supybot respond to private messages?
   your Supybot is:
 
   * Your Supybot is not registered with NickServ, you are registered,
-    and you have set the +E user mode for yourself.
+    and you have set the +R user mode for yourself.
 
   * or you have registered your Supybot with NickServ, you aren't
-    registered, and your Supybot has the +E user mode set.
+    registered, and your Supybot has the +R user mode set.
 
 Can users with the "admin" capability change configuration?
 
@@ -156,10 +156,14 @@ How do I find out channel modes?
 
 Can Supybot connect through a proxy server?
 
-  Supybot is not designed to be allowed to connect to an IRC server via
-  a proxy server, however there are transparent proxy server helpers
-  like tsocks_ that are designed to proxy-enable all network
-  applications, and Supybot does work with these.
+  Limnoria can connect to specific network using socks proxy, simply set 
+  the configuration variable `supybot.networks.<network>.socksproxy`. For
+  specifying proxy which is used for HTTP requests, set the configuration
+  variable `supybot.protocols.http.proxy`.
+  
+  Supybot also works with transparent proxy server helpers like tsocks_ 
+  that are designed to proxy-enable all network applications, and Supybot
+  does work with these.
 
 Why can't Supybot find the plugin I want to load?
 
@@ -167,8 +171,8 @@ Why can't Supybot find the plugin I want to load?
   the foo plugin?
 
   First, make sure you are typing the plugin name correctly.  ``@load
-  foo`` is not the same as ``@load Foo`` [#plugindir]_.  If that is not
-  the problem, 
+  foo`` may not be the same as ``@load Foo`` depending on your Supybot
+  version  [#plugindir]_.  If that is not the problem, 
 
 .. [#plugindir] Yes, it used to be the same, but then we moved to using
    directories for plugins instead of a single file.  Apparently, that
@@ -176,7 +180,7 @@ Why can't Supybot find the plugin I want to load?
 
 I've found a bug, what do I do?
 
-  Submit your bug on `Sourceforge`_ through our `project page`_.
+  Submit your bug at our `issue tracker`_.
 
 Is Python installed?
 
@@ -196,6 +200,5 @@ Is Python installed?
 .. _website: http://supybot.com/
 .. _blocks: http://freenode.net/faq.shtml#blockingmessages
 .. _tsocks: http://tsocks.sourceforge.net
-.. _Sourceforge: http://sourceforge.net/
-.. _project page: http://sourceforge.net/projects/supybot
+.. _issue_tracker: https://github.com/ProgVal/Limnoria/issues
 .. _download it: http://python.org/download/
