@@ -58,7 +58,7 @@ called by the handler.
 Here is how to do it::
 
     class SupystoryServerCallback(httpserver.SupyHTTPServerCallback):
-        name = 'WebStats'
+        name = 'Supystory'
 
 Now, you have to register the callback, because the HTTP server does not know
 what subdirectory it should assign to your callback. Do it with adding a
