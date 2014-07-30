@@ -21,9 +21,9 @@ Some example plugins are `Factoids`_, `WebStats`_, `GitHub`_, UfrPaste, and
 `WebDoc`_
 
 .. _Factoids: https://github.com/ProgVal/Limnoria/tree/master/plugins/Factoids
-.. _WebStats: https://github.com/ProgVal/Limnoria/tree/master/plugins/WebStats
-.. _GitHub: https://github.com/ProgVal/Limnoria/tree/master/plugins/GitHub
-.. _WebDoc: https://github.com/ProgVal/Limnoria/tree/master/plugins/WebDoc
+.. _WebStats: https://github.com/ProgVal/Supybot-plugins/tree/master/WebStats
+.. _GitHub: https://github.com/ProgVal/Supybot-plugins/tree/master/GitHub
+.. _WebDoc: https://github.com/ProgVal/Supybot-plugins/tree/master/WebDoc
 
 
 Using the HTTP server in a plugin
@@ -143,8 +143,10 @@ Here is the code of the callback... pretty much simple, as ever::
                      handler.send_header('Content-type', 'text/html') # This is the MIME for HTML data
                      handler.end_headers() # We won't send more headers
                      handler.wfile.write(b"""
+                     <!DOCTYPE html>
                      <html>
                       <head>
+                       <meta charset="UTF-8">
                        <title>Supystory</title>
                       </head>
                       <body>
@@ -163,8 +165,10 @@ Here is the code of the callback... pretty much simple, as ever::
                      handler.send_header('Content-type', 'text/html') # This is the MIME for HTML data
                      handler.end_headers() # We won't send more headers
                      handler.wfile.write(b"""
+                     <!DOCTYPE html>
                      <html>
                       <head>
+                       <meta charset="UTF-8"> 
                        <title>Error</title>
                       </head>
                       <body>
@@ -200,8 +204,10 @@ are the only 'big' pages), like this::
 
         DEFAULT_TEMPLATES = {
             'supystory/index.html': """
+        <!DOCTYPE html>
         <html>
             <head>
+                <meta charset="UTF-8">
                 <title>Supystory</title>
             </head>
             <body>
@@ -215,8 +221,10 @@ are the only 'big' pages), like this::
             </body>
         </html>""",
             'supystory/error.html': """
+        <!DOCTYPE html>
         <html>
             <head>
+                <meta charset="UTF-8">
                 <title>Error</title>
             </head>
             <body>
