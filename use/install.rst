@@ -82,19 +82,19 @@ which setup you should specify to have UNIX tools in PATH.
 Global installation
 ^^^^^^^^^^^^^^^^^^^
 
-You can either run these as root or prepend ``sudo`` in front of every 
-message.
+If you are logged in as root, you can remove ``sudo`` from the install 
+commands.
 
 In case you want to use the testing branch which might be more up-to date 
 **but less tested**, replace ``master`` with ``testing`` in the commands.
 
 First we install Limnoria's requirements::
 
-    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
+    sudo pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
 
 And then Limnoria itself::
 
-    pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
+    sudo pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
 Local installation
 ^^^^^^^^^^^^^^^^^^
