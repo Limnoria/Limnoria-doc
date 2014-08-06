@@ -141,12 +141,14 @@ Now I can get token to sign so I can identify::
 
 Then I follow the instructions and sign my token in terminal::
 
-    echo "{03640620-97ea-4fdf-b0c3-ce8fb62f2dc5}"|gpg --clearsign|pastebinit -b sprunge.us
+    echo "{03640620-97ea-4fdf-b0c3-ce8fb62f2dc5}"|gpg --clearsign|curl -F 'sprunge=<-' http://sprunge.us
 
-Note that I used the application "pastebinit" which sends the output 
-directly to pastebin. If you don't have it, remove the "|pastebinit" part 
-and copy-paste your signature to any pastebin. I used sprunge.us, because 
-it only has plain text.
+Note that I sent the output to curl with flags to directly send the 
+clearsigned content to sprunge.us pastebin. Curl should be installed on
+most of distributions and comes with msysgit. If you remove the curl part,
+you get the output to terminal and can pastebin it to any pastebin of 
+your choice. Sprunge.us has only plain text and is easy so I used it in
+this example.
 
 And last I give the bot link to the plain text signature::
 
