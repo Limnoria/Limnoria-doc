@@ -62,7 +62,7 @@ way of installing Python software
 
 However, you can use any of these alternatives:
 
-* Download a .deb package at `ProgVal's build repo`_.
+* Download a .deb or .rpm package at `ProgVal's build repo`_.
 * Use `git`_ to clone the `Limnoria repository`_ and run
   ``python setup.py install`` or ``python setup.py install --user``.
 * Click the "Downloads" button at the `Limnoria repository`_. Then,
@@ -70,10 +70,11 @@ However, you can use any of these alternatives:
   ``supybot`` directory which contains the extracted code.
 
 **Windows users:** `pip`_ also works on Windows and you need `msysgit`_ in 
-which setup you should specify to have UNIX tools in PATH.
+which setup you should specify to have UNIX tools in PATH. Also note that
+you should run cmd.exe with Administrator rights and remove ``sudo`` from
+the beginning of global installation commands.
 
-
-.. _ProgVal's build repo: http://builds.progval.net/
+.. _ProgVal's build repo: http://builds.progval.net/limnoria/
 .. _Limnoria repository: https://github.com/ProgVal/Limnoria
 .. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
 .. _git: http://git-scm.com/
@@ -96,6 +97,9 @@ And then Limnoria itself::
 
     sudo pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
+If pip gives error immediately instead of doing anything and you have git
+installd, try upgrading pip with ``sudo pip install pip --upgrade``.
+
 Local installation
 ^^^^^^^^^^^^^^^^^^
 
@@ -109,6 +113,9 @@ You might need to add $HOME/.local/bin to your PATH.::
 
     echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
+
+If pip gives error immediately instead of doing anything and you have git$
+installd, try upgrading pip with ``pip install pip --upgrade --user``.$
 
 Configure Supybot
 -----------------
