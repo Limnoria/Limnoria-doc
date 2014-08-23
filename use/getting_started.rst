@@ -162,7 +162,7 @@ This requires you to load the NickAuth plugin (see next section of this
 page for loading plugins).
 
 NickAuth allows you to identify to the bot using your NickServ account. 
-First I add my NickServ accountname which I can see with "/whois Mikaela Mikaela" (because my current nick is Mikaela). It gives me something like::
+First I add my NickServ account name which I can see with "/whois Mikaela Mikaela" (because my current nick is Mikaela). It gives me something like::
 
     [Mikaela] is logged in as Mikaela
 
@@ -194,105 +194,104 @@ SASL
 
 Note that SASL isn't supported on all networks. You can easily test if it's
 supported with ``/msg SaslServ help`` and if you get response, SASL is
-probably supprted, if you don't get reply or get error about no such nick,
+probably supported, if you don't get reply or get error about no such nick,
 SASL isn't supported.
 
 SASL is widely agreed as the best method to identify to services as it
-identifies you before anyone (else than IRC operators) can see that you are
-connected. To enable SASL, simply::
+identifies you before anyone (other than IRC operators) can see that you 
+are connected. To enable SASL, simply::
 
     config networks.<network>.sasl.username AccountName
     config networks.<network>.sasl.password P455w0rd
 
 where you of course replace AccountName and P455w0rd with your actual
-NickServ accountname and password. Remember to replace ``<network>`` with
+NickServ account name and password. Remember to replace ``<network>`` with
 the real network name like ``freenode``.
 
 CertFP
 ------
 
-You can test if CertFP is supported by services simply by 
-``/msg NickServ cert``. If you get error about "Insufficient parameters for
-CERT", CertFP is supported and if you get error about unknown command, it's
-not supported.
+You can test if CertFP is supported by services simply by doing
+``/msg NickServ cert``. If you get an error about "Insufficient parameters
+for CERT", CertFP is supported, and if you get an error about unknown
+command, it's not supported.
 
-CertFP identifies you to services using client (SSL) certificate and
-naturally requires SSL connection. It doesn't identify you as soon as SASL,
-but unlike SASL, it identifies you even when Services return from netsplit
-unlike any other mechanism. First you must generate certificate and
-the easiest method is probably using OpenSSL which you should have even on
-Windows if you installed with pip.::
+CertFP identifies you to services using a client (SSL) certificate and
+naturally requires an SSL connection. It doesn't identify you as soon as
+SASL, but unlike SASL, it identifies you even when services return from a
+netsplit, unlike any other mechanism. 
 
-    openssl req -nodes -newkey rsa:4096 -keyout BOT.pem -x509 -days 3650 -out BOT.pem -subj "/CN=BOT"
+First you must generate a certificate, and the easiest method is probably 
+using OpenSSL which you should have even on Windows if you installed with pip::
 
-Now you should have file BOT.pem in the directory where you ran the command
-presumably at your home directory and you only need to tell your bot where
-to find it and tell NickServ that it belongs to you. Note that you can
-and should replace ``BOT`` with accountname of your bot.
+    openssl req -nodes -newkey rsa:4096 -keyout <BOT>.pem -x509 -days 3650 -out <BOT>.pem -subj "/CN=<BOT>"
 
-You have two choices: using the same certificate on all networks:::
+Now you should have a ``<BOT>.pem`` file in the directory where you ran 
+the command, presumably your home directory and you only tell your 
+bot where to find it and tell NickServ that it belongs to you. 
+Note that you should replace ``<BOT>`` with the account name of your bot.
 
-    config protocols.irc.certfile /home/<username>/BOT.pem
+You have two choices, using the same certificate on all networks::
 
-or only on one or more network where it's manually configured
+    config protocols.irc.certfile /home/<username>/<BOT>.pem
 
-    config networks.<network>.certfile /home/<username>/BOT.pem
+or only on one or more network where it's manually configured::
 
-And last you must inform the services which is your certificate
-fingerprint which you can find out with::
+    config networks.<network>.certfile /home/<username>/<BOT>.pem
 
-    openssl x509 -sha1 -noout -fingerprint -in BOT.pem | sed -e 's/^.*=//;s/://g;y/ABCDEF/abcdef/'
+And lastly, you must tell the services what is your certificate
+fingerprint, which you can find out with::
 
-This results to something like ``05dd01fedc1b821b796d0d785160f03e32f53fa8``
-which you tell to services with ``/msg NickServ cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8`` or if your bot has different NickServ account::
+    openssl x509 -sha1 -noout -fingerprint -in BOT.pem | tr -d ':' | tr 'A-Z' 'a-z'
+
+This results in something like
+``05dd01fedc1b821b796d0d785160f03e32f53fa8`` which you tell your bot to
+tell services::
 
     owner ircquote PRIVMSG NickServ :cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8
 
+Or if your bot identifies as you, you can do that by yourself with::
+
+    /msg NickServ cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8 
+
+
 Remember to replace ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` with your
-own fingerprint! Next time you connect, your bot should get identified
+own fingerprint! Next time your bot connects, it should get identified
 automatically.
-
-Opening the certificate a little
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-``openssl req -nodes -newkey rsa:4096 -keyout BOT.pem -x509 -days 3650 -ou    t BOT.pem -subj "/CN=BOT"$``
-
-This command generates passwordless SSL certificate which is RSA key with
-4096 bits and saves it to file BOT.pem. It's valid for 3650 days which
-means ten years and you must generate a new certificate after that even if
-it's recommended to do it sooner. Your certificate will have CN, CommonName
-which shows whom it has been generated for BOT.
 
 Server password
 ---------------
 
 Many networks support identifying using ``username:password`` as server
-password. If this is the case with your network (anything that uses
-Charybdis-like IRCd), this shold work for you. Note that this identifies
-you after SASL so your real host might be seen.::
+password. If this is the case with your network (anything that uses a
+charybdis-like IRCd), this should work for you. Note that this identifies
+you after SASL so, your real host might be seen. To do this, simply::
 
     config networks.<network>.password username:password
 
 Replace ``<network>`` with the name of network, for example ``freenode``
 and username:password with your real username and password.
 
-ZNC users: since ZNC 1.0 ZNC identification format has been
-``username/network:password``
+ZNC users: since ZNC 1.0, ZNC's identification format has been
+``username/network:password``.
 
 Services plugin
 ---------------
 
-Services plugin comes with Supybot and should be easy way to identify
-yourself, but SASL and username:password as server password are recommended
-over it. First start by loading Services with ``load Services`` and then
-tell it what are your NickServ and ChanServ called as.::
+The Services plugin comes with Supybot and should be an easy way to 
+identify your bot, but SASL and ``username:password`` as server password 
+are recommended over it. Start by loading Services with:: 
+
+    load Services 
+
+and then tell it what NickServ and ChanServ are called::
 
     config plugins.services.nickserv NickServ
     config plugins.services.chanserv ChanServ
 
-Remember to replace NickServ/ChanServ with their real names if they have
-different name on any network. Note that they must have same name on all
-networks and you must have same password on all networks.
+Remember to replace NickServ/ChanServ with their real names if they have a
+different name on any network. Note that they must have the same name on
+all networks, and you must have the same password on all networks.
 
 Now you can set your password::
 
@@ -302,11 +301,11 @@ makes the bot attempt identifying as Bot using password P455w0rd. Replace
 them with your real nickname and password. Note that if you have multiple
 nicknames, you must run ``services password`` for them all.
 
-If your bot happens to get other nickname than configured one, it doesn't
-know to identify. You might be able to avoid this issue by loading
-NickCapture, ``load NickCapture`` which attempts to regain the primary nick
-when it's possible and when it regains the primary nick the identification
-should work.
+If your bot happens to get a nickname that isn't configured, it won't
+know how to identify. You might be able to avoid this issue by loading
+NickCapture, (``load NickCapture``) which attempts to regain the primary
+nick, when it's possible, and when it regains the primary nick, the
+identification should work.
 
 Loading Plugins
 ===============
