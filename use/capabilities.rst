@@ -120,6 +120,102 @@ happen if someone gave the bot the command 're [format join "" s/./ [dict go]
 'dict go' (14,896 characters!) with the entire output of 'dict go', resulting
 in 221MB of memory allocated!  And that's not even the worst example!
 
+Managing capabilities
+---------------------
+
+User Capabilities
+^^^^^^^^^^^^^^^^^
+
+User capabilities are controlled with the ``admin capability <add|remove>``
+and ``channel capability <add|remove>``. Their difference is that the 
+first one is only restricted to those who have the admin capability.
+
+To make user1 admin, I would run::
+
+    admin capability add user1 admin
+
+If the bot joins on a channel where there should be ops who should't have
+power over any other channel, I would run::
+
+    channel capability add #channel user2 op
+
+Note that admins cannot give anyone capability which they don't have by
+themselves first, so user1 couldn't use ``channel capability add`` unless
+they were made #channel,op first. The command::
+
+    admin capability add user2 #channel,op
+
+has the same effect as ``channel capability add``, but it requires user
+to have the admin capability in addition to #channel,op.
+
+If there is abusive user who shouldn't have op capability but still does
+for one reason or another, I could run either::
+
+    channel capability add user3 -op
+
+or::
+
+    channel capability remove user3 op
+
+Anticapabilities are checked before normal capabilities so the first
+command would work even if user3 still had the op capability. Removing
+capability which isn't given to user or channel adds anti-capability
+automatically.
+
+User capabilities can be viewed with ``user capabilities`` command.
+
+Channel
+^^^^^^^
+
+Channel capabilities affect everyone on the current channel including
+unidentified users. They are controlled with the ``channel capability <set|unset>`` commands.
+
+If I wanted to make everyone on the channel able to voice themselves or get
+automatically voiced by the AutoMode plugin, I would start by unsetting the
+default anticapability and setting the capability.::
+
+    channel capability unset -voice
+    channel capability set voice
+
+Now anyone on the channel can voice themselves or if AutoMode plugin is
+configured to voice voiced people, the will automatically get voiced on
+join.
+
+If there was unwanted plugin or plugin which output was causing spam, Games
+for example, I could add anticapability for it and prevent the whole plugin
+from being used.::
+
+    channel capability set -Games
+
+Note that I didn't specify any separate command after Games.
+
+Default
+^^^^^^^
+
+Default capabilities affect everyone whether they are identified or not.
+They are controlled by the ``owner defaultcapability <add|remove>`` command
+and they arecommonly used for preventing users from adding/removing akas,
+using Unix Progstats which disabling is asked about in supybot-wizard or
+registering to the bot using anticapabilities.::
+
+    defaultcapability add -aka.add
+    defaultcapability add -aka.remove
+    defaultcapability add -user.register
+    defaultcapability add -unix.progstats
+
+To undo this I would simply do the opposite.::
+
+    defaultcapability remove -aka.add
+    defaultcapability remove -aka.remove
+    defaultcapability remove -user.register
+    defaultcapability remove -unix.progstats
+
+Defaultcapabilities can be restored with two commands from the First is
+only in Limnoria at the time of writing::
+
+    config setdefault capabilities
+    config capabilities [config default capabilities]
+
 Final Word
 ----------
 
