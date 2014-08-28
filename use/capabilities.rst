@@ -72,7 +72,7 @@ itself, '-bar'.  If so, it errors right then and there, telling the user that
 he lacks the 'bar' capability.  If the user doesn't have that anticapability,
 then the bot checks to see if the user issued the command over a channel, and
 if so, checks to see if the user has the antichannelcapability for that
-command, '#baz,-bar'.  If so, again, he tells the user that he lacks the 'bar'
+command, '#baz,-bar'.  If so, again, it tells the user that they lack the 'bar'
 capability.  If neither of these anticapabilities are present, then the bot
 just responds to the user like normal.
 
@@ -96,8 +96,8 @@ reserved for people with the next capability.
 People who are to administer channels with the bot should have the
 '#channel,op' capability--whatever channel they are to administrate, they
 should have that channel capability for 'op'.  For example, since I want
-inkedmn to be an administrator in #supybot, I'll give him the '#supybot,op'
-capability.  This is in addition to his 'admin' capability, since the 'admin'
+inkedmn to be an administrator in #supybot, I'll give them the '#supybot,op'
+capability.  This is in addition to their 'admin' capability, since the 'admin'
 capability doesn't give the person having it control over channels.
 '#channel,op' is used for such things as giving/receiving ops, kickbanning
 people, lobotomizing the bot, ignoring users in the channel, and managing the
@@ -133,6 +133,6 @@ From an user's perspective, capabilities remove a lot of the mystery and
 esotery of bot control, in addition to giving a bot owner absolutely
 finegrained control over what users are allowed to do with the bot.
 Additionally, defaults can be set by the bot owner for both individual channels
-and for the bot as a whole, letting an end-user set the policy he wants the bot
-to follow for users that haven't yet registered in his user database.  It's
+and for the bot as a whole, letting an end-user set the policy they want the bot
+to follow for users that haven't yet registered in their user database.  It's
 really a revolution!
