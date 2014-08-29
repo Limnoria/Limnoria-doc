@@ -172,8 +172,14 @@ freenode. The syntax is [<network>] <bot-username> <NickServ-account>::
     <Mikaela> +nickauth nick add freenode Mikaela Mikaela
     <Yvzabevn> OK.
 
-Next time when I identify to NickServ I can use the NickAuth Auth command 
-to also identify to the bot::
+Next time when I identify to NickServ I will get identified automatically
+if the bot sees that I was identified when I joined. This requires server
+to support extended-join and WHOX. Most of modern networks support
+them, but if your bot is using some bouncer, it might not support them.
+
+Automatic identification doesn't work always even when it's supported, but
+when it fails, I can always use the NickAuth Auth command to identify to
+the bot::
 
     <Guest45020> +whoami
     <Yvzabevn> I don't recognize you. You can messsage me either of these two commands: "user identify <username> <password>" to log in or "user register <username> <password>" to register.
