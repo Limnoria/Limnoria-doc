@@ -86,8 +86,8 @@ Global installation
 If you are logged in as root, you can remove ``sudo`` from the install 
 commands.
 
-In case you want to use the testing branch which might be more up-to date 
-**but less tested**, replace ``master`` with ``testing`` in the commands.
+*In case you want to use the testing branch which might be more up-to 
+date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.*
 
 First we install Limnoria's requirements::
 
