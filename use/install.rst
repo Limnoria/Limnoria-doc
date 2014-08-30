@@ -114,8 +114,8 @@ You might need to add $HOME/.local/bin to your PATH.::
     echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
-If pip gives error immediately instead of doing anything and you have git$
-installd, try upgrading pip with ``pip install pip --upgrade --user``.$
+If pip gives error immediately instead of doing anything and you have git
+installd, try upgrading pip with ``pip install pip --upgrade --user``.
 
 Configure Supybot
 -----------------
