@@ -117,6 +117,41 @@ of the person giving the command. So the command above adds the hostmask I'm
 currently using to my user's list of recognized hostmasks.  I'm only required
 to give mypassword if I'm not already identified with the bot.
 
+It might often be better to specify the hostmask by yourself instead of 
+nesting the hostmask command as the hostmask command gives your exact
+hostmask of that moment meaning ``nick!ident@host`` which means that you
+will get unidentified if you change your nickname.
+
+I (Mikaela) often specify hostmasks in two other forms depending on the
+situation which I go through in next subtopics.
+
+Wildcard nick
+^^^^^^^^^^^^^
+
+In case my username and host stay the same or there aren't bots on same
+server which could get identified as me to other bots, I use::
+
+    user hostmask add myuser *!myident@myhost
+
+I only recommend this if there is ident server configured and the IRC
+network checks for it.
+
+Host only
+^^^^^^^^^
+
+In case I am the only one who has the same host (cloaks/vhosts on many
+networks which have account in them, (for example freenode) or server where
+no one else has access and no bots share it either), I use::
+
+    user hostmask add myuser *!*@mycloak
+
+Mycloak at freenode is usually in format ``unaffiliated/accountname``. You
+can usually request hostmasks using HostServ, ``/msg HostServ help``, or
+asking on help channel of your IRC network, in case of freenode that is
+#freenode. OFTC is exception to this and uses 
+``/msg NickServ set cloak on``, but whatever your network users, you can 
+ask it on their help channel.
+
 Limnoria
 --------
 
