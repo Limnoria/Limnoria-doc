@@ -53,9 +53,9 @@ It's that simple! Well, that part of making the minimal plugin is that simple.
 You should now have a directory with a few files in it, so let's take a look at
 each of those files and see what they're used for.
 
-README.txt
+README.md
 ==========
-In :file:`README.txt` you put exactly what the boilerplate text says to put in
+Open the file with notepad just as if it was a .txt file. In `README.md` you put exactly what the boilerplate text says to put in
 there:
 
     Insert a description of your plugin here, with any notes, etc. about
@@ -68,7 +68,7 @@ describe individual commands or anything like that, as those are defined within
 the plugin code itself as you'll see later. You also don't need to acknowledge
 any of the developers of the plugin as those too are handled elsewhere.
 
-For our Random plugin, let's make :file:`README.txt` say this:
+For our Random plugin, let's make :file:`README.md` say this:
 
     This plugin contains commands relating to random numbers, and
     includes: a simple random number generator, the ability to pick a
