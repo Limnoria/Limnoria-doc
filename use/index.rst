@@ -10,6 +10,7 @@ The Supybot user guide
     install.rst
     getting_started.rst
     configuration.rst
+    identifying_to_services.rst
     capabilities.rst
     faq.rst
     httpserver.rst
