@@ -13,3 +13,4 @@ The Supybot user guide
     capabilities.rst
     faq.rst
     httpserver.rst
+    supybot-botchk.rst
