@@ -167,7 +167,7 @@ used to indicate a group of values).
 Editing the Configuration Values by Hand
 ----------------------------------------
 
-NOTE: **We don't recommend this and you shouln't ever do this, you should 
+NOTE: **We don't recommend this and you shouldn't ever do this, you should 
 do everything with the commands in the Config plugin.**
 
 Some people might like editing their registry file directly rather than
