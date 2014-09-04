@@ -91,14 +91,14 @@ date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.*
 
 First we install Limnoria's requirements::
 
-    sudo pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
+    sudo python -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
 
 And then Limnoria itself::
 
-    sudo pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
+    sudo python -m pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
 If pip gives error immediately instead of doing anything and you have git
-installd, try upgrading pip with ``sudo pip install pip --upgrade``.
+installd, try upgrading pip with ``sudo python -m pip install pip --upgrade``.
 
 Local installation
 ^^^^^^^^^^^^^^^^^^
@@ -106,8 +106,8 @@ Local installation
 Simply add ``--user`` to the end of both commands. First we install 
 requirements and then Limnoria itself.::
 
-    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
-    pip install git+https://github.com/ProgVal/Limnoria.git@master --user --upgrade
+    python -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
+    python -m pip install git+https://github.com/ProgVal/Limnoria.git@master --user --upgrade
 
 You might need to add $HOME/.local/bin to your PATH.::
 
@@ -115,7 +115,7 @@ You might need to add $HOME/.local/bin to your PATH.::
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
 If pip gives error immediately instead of doing anything and you have git
-installd, try upgrading pip with ``pip install pip --upgrade --user``.
+installd, try upgrading pip with ``python -m pip install pip --upgrade --user``.
 
 Configure Supybot
 -----------------
