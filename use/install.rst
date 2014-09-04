@@ -98,7 +98,7 @@ And then Limnoria itself::
     sudo python -m pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
 If pip gives error immediately instead of doing anything and you have git
-installd, try upgrading pip with ``sudo python -m pip install pip --upgrade``.
+installed, try upgrading pip with ``sudo python -m pip install pip --upgrade``.
 
 Local installation
 ^^^^^^^^^^^^^^^^^^
@@ -115,7 +115,7 @@ You might need to add $HOME/.local/bin to your PATH.::
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
 If pip gives error immediately instead of doing anything and you have git
-installd, try upgrading pip with ``python -m pip install pip --upgrade --user``.
+installed, try upgrading pip with ``python -m pip install pip --upgrade --user``.
 
 Configure Supybot
 -----------------
