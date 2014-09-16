@@ -63,7 +63,7 @@ or only on one or more network where it's manually configured::
 And lastly, you must tell the services what is your certificate
 fingerprint, which you can find out with::
 
-    openssl x509 -sha1 -noout -fingerprint -in BOT.pem | tr -d ':' | tr 'A-Z' 'a-z'
+    openssl x509 -sha1 -noout -fingerprint -in <BOT>.pem | tr -d ':' | tr 'A-Z' 'a-z'
 
 This results in something like
 ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` which you tell your bot to
