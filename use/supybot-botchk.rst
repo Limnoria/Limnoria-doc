@@ -37,8 +37,9 @@ which happens by adding the following lines::
 
     # Replace en_US.utf8 with your own locale! You should see list of
     # available locales with `locale` command, just use something which
-    # ends with "utf8".
-    LC_ALL=en_US.utf8
+    # ends with "utf8" or "UTF-8" (the latter is required on some operating
+    # systems like OS X).
+    LC_ALL=en_US.UTF-8
     
     # Specifying timezone is optional, but you probably want to do it if
     # your system is on different timezone. Replace ``UTC`` with 
@@ -57,7 +58,7 @@ If you needed to use diferent environment for other bot, you could specify
 that on the same line. For example, my other bot uses en_US.utf8 as locale
 and UTC as timezone::
 
-    */5 * * * * LC_ALL=en_US.utf8 TZ=UTC supybot-botchk --botdir=/home/<username>/<bot2>/ --pidfile=/home/<username>/<bot2>/<bot2>.pid --conffile=/home/<username>/<bot2>/<bot2>.conf
+    */5 * * * * LC_ALL=en_US.UTF-8 TZ=UTC supybot-botchk --botdir=/home/<username>/<bot2>/ --pidfile=/home/<username>/<bot2>/<bot2>.pid --conffile=/home/<username>/<bot2>/<bot2>.conf
 
 Note that environment doesn't need to be specified on supybot-botchk line
 unless it differs from globally specified environment which we added as the
