@@ -83,6 +83,12 @@ the beginning of global installation commands.
 Global installation
 ^^^^^^^^^^^^^^^^^^^
 
+You should install pip. It's usually included in distributions as
+``python3-pip``. It can also be installed manually::
+
+    wget https://bootstrap.pypa.io/get-pip.py
+    sudo python3 get-pip.py
+
 If you are logged in as root, you can remove ``sudo`` from the install 
 commands.
 
@@ -91,23 +97,23 @@ date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.*
 
 First we install Limnoria's requirements::
 
-    sudo pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
+    sudo pip3 install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
 
 And then Limnoria itself::
 
-    sudo pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
+    sudo pip3 install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
 If pip gives error immediately instead of doing anything and you have git
-installd, try upgrading pip with ``sudo pip install pip --upgrade``.
+installed, try upgrading pip with ``sudo pip3 install pip --upgrade``.
 
 Local installation
 ^^^^^^^^^^^^^^^^^^
 
-Simply add ``--user`` to the end of both commands. First we install 
+Simply add ``--user`` to the end of both commands. First we install
 requirements and then Limnoria itself.::
 
-    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
-    pip install git+https://github.com/ProgVal/Limnoria.git@master --user --upgrade
+    pip3 install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
+    pip3 install git+https://github.com/ProgVal/Limnoria.git@master --user --upgrade
 
 You might need to add $HOME/.local/bin to your PATH.::
 
@@ -115,7 +121,7 @@ You might need to add $HOME/.local/bin to your PATH.::
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
 If pip gives error immediately instead of doing anything and you have git
-installd, try upgrading pip with ``pip install pip --upgrade --user``.
+installed, try upgrading pip with ``pip3 install pip --upgrade --user``.
 
 Configure Supybot
 -----------------
