@@ -45,6 +45,20 @@ not):
         </Location>
     </VirtualHost>
 
+It's also possible to use Nginx in front of Supybot's HTTP server. Create a new site ``/etc/nginx/sites-enabled/bot``:
+
+.. code-block:: nginx
+
+    server {
+        listen 80;
+        listen [::]:80;
+        server_name stats.yourdomain.org;
+
+    location / {
+        proxy_pass http://localhost:8080/;
+        }
+    }
+
 Templates
 =========
 
