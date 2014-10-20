@@ -14,7 +14,7 @@ SASL PLAIN
 
 *To use SASL EXTERNAL, you must only configure CertFP and it's attempted automatically.*
 SASL PLAIN is identifying using username and password, SASL EXTERNAL is identifying by
-using CertFP fingerprint which is explained later on this document. It doesn't need
+using CertFP which is explained later on this document. It doesn't need
 username or password to be configured.
 
 Note that SASL isn't supported on all networks. You can easily test if it's
