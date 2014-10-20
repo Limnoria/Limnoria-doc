@@ -4,14 +4,18 @@
 Identifying the bot to services
 *******************************
 
-The different methods are listed in order which I (Mikaela) recommend. You
-can use all of these methods or only some of them. I (Mikaela) personally
-use SASL, CertFP and Server password.
+The different methods listed here are in the order how they are usually recommended
+by network operators.
 
 Please also note that SASL and CertFP are only supported on Limnoria.
 
-SASL
-----
+SASL PLAIN
+----------
+
+*To use SASL EXTERNAL, you must only configure CertFP and it's attempted automatically.*
+SASL PLAIN is identifying using username and password, SASL EXTERNAL is identifying by
+using CertFP fingerprint which is explained later on this document. It doesn't need
+username or password to be configured.
 
 Note that SASL isn't supported on all networks. You can easily test if it's
 supported with ``/msg SaslServ help`` and if you get response, SASL is
