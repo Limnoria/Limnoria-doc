@@ -50,8 +50,13 @@ It's also possible to use Nginx in front of Supybot's HTTP server. Create a new 
 .. code-block:: nginx
 
     server {
+        # Note that your default server should specify these ports
         listen 80;
         listen [::]:80;
+        # If your default server also has https configured, uncomment
+        # the following two listen lines to enable it for this vhost.
+        #listen 443;
+        #listen [::]:443;
         server_name stats.yourdomain.org;
 
     location / {
