@@ -73,7 +73,7 @@ This results in something like
 ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` which you tell your bot to
 tell services::
 
-    owner ircquote PRIVMSG NickServ :cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8
+    owner ircquote NickServ cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8
 
 Or if your bot identifies as you, you can do that by yourself with::
 
