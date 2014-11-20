@@ -200,7 +200,7 @@ testing for some reason, we could just do this::
 And now you can be assured that supybot.commands.nested is going to be off for
 all of your test methods in this test case class.
 
-Temporaly setting a configuration variable
+Temporarily setting a configuration variable
 ------------------------------------------
 
 Sometimes we want to change a configuration variable only in a test (or in
@@ -211,7 +211,7 @@ historical way to do it is::
 
     class MyPluginTestCase(PluginTestCase):
         def testThisThing(self):
-            original_value conf.supybot.commands.nested()
+            original_value = conf.supybot.commands.nested()
             conf.supybot.commands.nested.setValue(False)
             try:
                 # stuff
