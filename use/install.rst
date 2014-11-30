@@ -165,79 +165,85 @@ Installation: Windows
 Install Python
 --------------
 
-Download the latest Python 2 installer from http://python.org, (Python 2.7, as
-of Mars 6, 2011) and run it to install Python.
+Download the latest **Python 3** installer from https://www.python.org, 
+3.4.2, as of 2014-11-30) and run it to install Python.
 
-The rest of this document will assume that you have Python 2.7, and thus that
-your install directory is ''C:\Python27''.
+Installing Python is mostly clicking next, but in the next screen remember
+the destination directory where you installed Python. These instructions
+refer to it as ``C:\Python34\`` which is the current name on 2014-11-30.
+
+Then you are asked to customize your installation. Click the drive on left
+side of "Python" text and select "Entire feature will be installed on
+local hard drive".
+
+Now Python installs itself which may take several minutes.
+
+Python should be now installed and you can check that the "python" command
+points to correct python. Open ``cmd.exe`` (press the Windows button on
+your keyboard and type "cmd.exe") and  run ``where python``
+and the toppernmost entry should be ``C:\Python34\python.exe``.
+
+Install git
+-----------
+
+In order to install the latest Limnoria from the git repository, you need
+git in your %PATH%. You can get it from http://git-scm.com/.
+
+In the "Adjusting your PATH environment", select the last option, "Use Git
+and optional Unix tools from the Windows Command Prompt" or you will have
+issues in the next step.
 
 Install Supybot
 ---------------
 
-We are now ready to install Supybot itself. First, you need to grab the latest
-code snapshot of Supybot. Easiest way to do that is to  click the "Downloads"
-button at the `Limnoria repository`_.
+Now we are ready to install Limnoria and it's requirements. Open 
+``cmd.exe`` as **Administrator** (right click it in the previous place)
+and run::
 
-If you downloaded the code archive, extract it to some temporary directory,
-and ``cd`` into the ``supybot`` directory which contains the extracted code.
+    python -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
+    python -m pip git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
-Once you have the code archive, extract it to some temporary directory, then
-open up a command prompt (Programs -> Run -> ``cmd``) and ``cd`` into the
-``supybot`` directory which contains the extracted code. For example, if you
-have extracted the archive to ``C:\sometempdir\``, you would enter in the
-prompt::
+We are now ready to configure Supybot. Supybot creates quite a few
+auxiliary files/directories to store its runtime data. It is thus
+recommended to create an empty directory from which you'll be running
+supybot, to keep all the data in a nice dedicated location. 
+For example, you may create a ``C:\Users\<username>\runbot`` for this
+purpose. 
 
-    cd "C:\sometempdir\supybot"
+Now you open cmd.exe as **normal user**, and create and cd into your runbot
+directory::
 
-Once there, run the installer to install, with the following command::
-
-    C:\Python27\python.exe setup.py install
-
-This will place some supybot scripts under ``C:\Python27\Scripts\``, and the
-supybot python module under ``C:\Python27\Lib\site-packages``.
-
-.. _Limnoria repository: https://github.com/ProgVal/Limnoria
-
-Configure Supybot
------------------
-
-We are now ready to configure Supybot. Supybot creates quite a few auxiliary
-files/directories to store its runtime data. It is thus recommended to create
-an empty directory from which you'll be running supybot, to keep all the data
-in a nice dedicated location. For example, you may create a 'C:\runbot' for
-this purpose. 
-
-Now you open a command prompt, and ``cd`` to your ``C:\runbot`` directory::
-
-    cd "C:\runbot"
+    mkdir runbot
+    cd runbot
 
 and from within it run ``supybot-wizard``::
 
-    C:\Python27\python.exe C:\Python27\Scripts\supybot-wizard
+    python C:\Python34\Scripts\supybot-wizard
 
-which will walk you through a series of questions to generate the bot config
-file. 
+which will walk you through a series of questions to generate the bot
+config file. 
 
-One thing to make sure to do in the wizard, to make your life easier down the
-line, is to select *y* for the *Would you like to add an owner user for
-your bot?* question, and actually create the owner user. Remember that
+One thing to make sure to do in the wizard, to make your life easier down
+the line, is to select *y* for the *Would you like to add an owner user 
+for your bot?* question, and actually create the owner user. Remember that
 password, so that you can later ''identify'' with the bot on IRC and
 administer it.
 
 Once you generate the config file, which will be named ``yourbotnick.conf``
-(where ``yourbotnick`` is the nick you have chosen for your bot in the wizard),
-it will be placed in your ``runbot`` directory. (As long as you leave the
-default answer to the *Where would you like to create these directories?*
-question.) 
+(where ``yourbotnick`` is the nick you have chosen for your bot in the 
+wizard), it will be placed in your ``runbot`` directory. (As long as you
+leave the default answer to the *Where would you like to create these 
+directories?* question.) 
 
-Now to start the bot, run, still from within the ``C:\runbot`` directory::
+Now to start the bot, run, still from within the
+``C:\users\<username>\runbot`` directory::
 
-    C:\Python27\python.exe C:\Python27\Scripts\supybot yourbotnick.conf
+    python C:\Python34\Scripts\supybot yourbotnick.conf
 
 And watch the magic!
 
-This guide has been mainly written by nanotube (Daniel Folkinshteyn), and is
-licensed under the Creative Commons Attribution ShareAlike 3.0 Unported license
-and/or the GNU Free Documentation License v 1.3 or later.
+This guide has been mainly written by nanotube (Daniel Folkinshteyn), and
+is licensed under the Creative Commons Attribution ShareAlike 3.0 Unported
+license and/or the GNU Free Documentation License v 1.3 or later.
 
 .. _Supybook: http://supybook.fealdia.org/
