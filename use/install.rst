@@ -201,7 +201,7 @@ Now we are ready to install Limnoria and it's requirements. Open
 and run::
 
     python -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
-    python -m pip git+https://github.com/ProgVal/Limnoria.git@master --upgrade
+    python -m pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
 We are now ready to configure Supybot. Supybot creates quite a few
 auxiliary files/directories to store its runtime data. It is thus
