@@ -22,6 +22,30 @@ moment, but I accept pull requests.
 As you are a translator, you don't need to know all the technical details
 about development, so I write a simplified doc here.
 
+Preparing git
+-------------
+
+First you should install git. It's usually package ``git`` in your OS, or
+you can download it from `their homepage`_ or download GitHub client for
+`Windows`_ or `OS X`_
+
+Then you should tell GitHub who you are and what is your email address.
+This information is attached to commits and GitHub uses it to get your
+gravatar::
+
+    git config --global user.name "Real Name or Nickname here"
+    git config --global user.email "someone@example.com"
+
+If you are going to use the ``https``, you probably want git to remember
+your GitHub password for some time so you don't have to write it
+continuosly::
+
+    git config --global credential.helper cache
+    git config --global credential.helper "cache --timeout=3600"
+
+This would make git remember your password for hour. It can be changed
+by changing 3600 to any other amount of seconds.
+
 Cloning the repository
 ----------------------
 
@@ -35,14 +59,18 @@ I won't have this write access).
 Then, open a console, and write (replace *YourName* by the name of your
 GitHub account)::
 
-    git clone git@github.com:YourName/Limnoria.git --branch=testing
+    git clone https://github.com/<YourName>/Limnoria.git --branch=testing
+
+If you are experienced with git, you can
+``git clone git@github.com:<YourName>/Limnoria.git --branch=testing``
+instead.
 
 This will create a new directory, called *Limnoria*, where all the code and
 project history are copied. Now, cd to the directory::
 
     cd Limnoria/
 
-The things below affect to you only if you didn't specify the branch in 
+The things below affect to you only if you didn't specify the branch in
 the git clone command.
 
 Then, you need to checkout the *testing* branch. What does that mean? It means
@@ -141,3 +169,6 @@ Because I can extract everything with one click.
 
 .. _GitHub: https://github.com/
 .. _Limnoria repository: https://github.com/ProgVal/Limnoria
+.. _their homepage: http://git-scm.com/
+.. _Windows: https://windows.github.com/
+.. _OS X: https://mac.github.com/
