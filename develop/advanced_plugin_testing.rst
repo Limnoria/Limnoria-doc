@@ -201,7 +201,7 @@ And now you can be assured that supybot.commands.nested is going to be off for
 all of your test methods in this test case class.
 
 Temporarily setting a configuration variable
-------------------------------------------
+--------------------------------------------
 
 Sometimes we want to change a configuration variable only in a test (or in
 a part of a test), and keep the original value for other tests. The
