@@ -84,6 +84,38 @@ Remember to replace ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` with your
 own fingerprint! Next time your bot connects, it should get identified
 automatically.
 
+SASL ECDSA-NIST256P-CHALLENGE
+-----------------------------
+
+First you must ECDSA key for the bot to use::
+
+    openssl ecparam -name prime256v1 -genkey -out <bot>_ecdsa.pem
+
+and get the public key using::
+
+    ecdsatool pubkey <bot>_ecdsa.pem
+
+**NOTE!** You might need to compile ecdsatool from source. There is also
+issue of Limnoria not working with ecdsatool generated keys. For more
+information about that, see
+
+* Source for ecdsatool: https://github.com/atheme/ecdsatool
+* Bug report about ecdatool keys not working https://github.com/atheme/ecdsatool/issues/5
+* Limnoria issue on the subject: https://github.com/ProgVal/Limnoria/issues/990
+
+After generating the key, you must tell your bot to use it and tell
+services about it (just like with CertFP/SASL EXTERNAL)::
+
+    config supybot.networks.<network>.sasl.username AccountName
+    config supybot.networks.<network>.sasl.ecdsa_key /home/<username>/<BOT>_ecdsa.pem
+    ircquote nickserv set pubkey PUBKEY_WHICH_YOU_GOT_WITH_ECDSATOOL_EARLIER
+In case the network that you are on doesn't have the ``set pubkey``
+command, the older way is::
+
+    ircquote nickserv set property pubkey PUBKEY_WHICH_YOU_GOT_WITH_ECDSATOOL_EARLIER
+
+and after reconnecting, the bot should successfully identify using SASL ECDSA-NIST256P-CHALLENGE.
+
 Server password
 ---------------
 
