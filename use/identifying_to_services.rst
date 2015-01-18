@@ -109,11 +109,6 @@ services about it (just like with CertFP/SASL EXTERNAL)::
     config supybot.networks.<network>.sasl.username AccountName
     config supybot.networks.<network>.sasl.ecdsa_key /home/<username>/<BOT>_ecdsa.pem
     ircquote nickserv set pubkey PUBKEY_WHICH_YOU_GOT_WITH_ECDSATOOL_EARLIER
-In case the network that you are on doesn't have the ``set pubkey``
-command, the older way is::
-
-    ircquote nickserv set property pubkey PUBKEY_WHICH_YOU_GOT_WITH_ECDSATOOL_EARLIER
-
 and after reconnecting, the bot should successfully identify using SASL ECDSA-NIST256P-CHALLENGE.
 
 Server password
