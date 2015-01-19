@@ -93,23 +93,21 @@ First you must ECDSA key for the bot to use::
 
 and get the public key using::
 
-    ecdsatool pubkey <bot>_ecdsa.pem
+    openssl ec -noout -text -conv_form compressed -in <bot>_ecdsa.pem | grep '^pub:' -A 3 | tail -n 3 | tr -d ' \n:' | xxd -r -p | base64
 
-**NOTE!** You might need to compile ecdsatool from source. There is also
-issue of Limnoria not working with ecdsatool generated keys. For more
-information about that, see
-
-* Source for ecdsatool: https://github.com/atheme/ecdsatool
-* Bug report about ecdatool keys not working https://github.com/atheme/ecdsatool/issues/5
-* Limnoria issue on the subject: https://github.com/ProgVal/Limnoria/issues/990
-
-After generating the key, you must tell your bot to use it and tell
+After getting the public key, you must tell your bot to use it and tell
 services about it (just like with CertFP/SASL EXTERNAL)::
 
     config supybot.networks.<network>.sasl.username AccountName
     config supybot.networks.<network>.sasl.ecdsa_key /home/<username>/<BOT>_ecdsa.pem
-    ircquote nickserv set pubkey PUBKEY_WHICH_YOU_GOT_WITH_ECDSATOOL_EARLIER
-and after reconnecting, the bot should successfully identify using SASL ECDSA-NIST256P-CHALLENGE.
+    ircquote nickserv set pubkey PUBKEY_WHICH_YOU_GOT_EARLIER
+
+and after reconnecting, the bot should successfully identify using SASL
+ECDSA-NIST256P-CHALLENGE.
+
+*NOTE:* You can use ``ecdsa pubkey`` to get the public key, but you cannot
+generate the key pair using it as pyecdsa doesn't support ecdsatool
+generated keys.
 
 Server password
 ---------------
