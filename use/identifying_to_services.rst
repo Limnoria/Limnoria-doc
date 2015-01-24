@@ -9,6 +9,34 @@ by network operators.
 
 Please also note that SASL and CertFP are only supported on Limnoria.
 
+Registering to services
+-----------------------
+
+You can safely jump over this section if your bot is already registered to
+services.
+
+First start by checking what is the syntax for registering with
+``/msg nickserv help register``. It returns you something like this (Atheme
+7.2.4)::
+
+    NickServ: Syntax: REGISTER <password> <email-address>
+
+Assuming that that is the syntax, we can register the bot with::
+
+    owner ircquote nickserv register bot@example.com
+
+Note that the email address must be correct. Next check that
+``/msg nickserv info bot`` doesn't say something about being unverified. If
+it does, go to the email address and run::
+
+    owner ircquote nickserv VERIFY REGISTER nick <code from the email>
+
+Now your bot should be successfully registered and you can move to setting
+up automatic identifying below. If you need to identify to services now,
+``/msg nickserv help identify`` and following the syntax (I am still
+assuming that you are on Atheme 7.2.4)
+``owner ircquote nickserv identify username password``.
+
 SASL PLAIN
 ----------
 
