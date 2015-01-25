@@ -221,6 +221,29 @@ Is Python installed?
   probably already have it installed.  If it doesn't, well, now you have
   Python installed.
 
+Can I make Supybot silent, but still working on channel (as titlesnarfer or something)?
+=======================================================================================
+
+With lobotomy, the bot stops doing everything on the channel. If you want
+it to not reply to commands, but still work as titlesnarfer or similar, you
+can configure it to not respond to anything.
+
+Globally::
+
+    config supybot.reply.whenAddressedBy.chars ""
+    config supybot.reply.whenAddressedBy.nicks ""
+    config supybot.reply.whenAddressedBy.strings ""
+    config supybot.reply.whenAddressedBy.nick False
+    config supybot.reply.whenAddressedBy.nick.atEnd False
+
+Or just for one channel::
+
+    config channel #channel supybot.reply.whenAddressedBy.chars ""
+    config channel #channel supybot.reply.whenAddressedBy.nicks ""
+    config channel #channel supybot.reply.whenAddressedBy.strings ""
+    config channel #channel supybot.reply.whenAddressedBy.nick False
+    config channel #channel supybot.reply.whenAddressedBy.nick.atEnd False
+
 .. _plugin index: http://supybot.com/plugins.html
 .. _website: http://supybot.com/
 .. _blocks: http://freenode.net/faq.shtml#blockingmessages
