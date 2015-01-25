@@ -419,7 +419,7 @@ checkCapability, capability
 
     Checks to make sure that the caller has the specified capability.
 
-checkChannelCapability", capability
+checkChannelCapability, capability
     Checks to make sure that the caller has the specified capability on the
     channel the command is called in.
 
