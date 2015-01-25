@@ -16,7 +16,7 @@ Why does my bot not recognize me or tell me that I don't have the 'owner' capabi
   that works) or add your hostmask to your user record (``help hostmask
   add`` to see how that works) for it to know that you're you.
 
-  You may wish to note that `hostmask add` can accept a password; rather
+  You may wish to note that ``hostmask add`` can accept a password; rather
   than identify, you can send the command::
 
     hostmask add myOwnerUser [hostmask] myOwnerUserPassword
@@ -103,8 +103,8 @@ Is there a way to load all the plugins Supybot has?
   all loaded? Probably just annoy people :)
 
   You can also install user-contributed plugins using the PluginDownloader
-  plugin (``load PluginDownloader``). The `repolist` command can list
-  repositories and their contents, and the `install` command installs
+  plugin (``load PluginDownloader``). The ``repolist`` command can list
+  repositories and their contents, and the ``install`` command installs
   plugins.
 
 Is there a command that can tell me what capability another command requires?
@@ -134,7 +134,7 @@ Why won't Supybot respond to private messages?
 
   The most likely cause is that your bot has a mode blocking messages
   from unregistered users. Around Sept. 2005, for example, Freenode added
-  a user mode where registered users could set `+R`, which `blocks`_
+  a user mode where registered users could set ``+R``, which `blocks`_
   private messages from unregistered users. So, the reason you aren't
   seeing a response from your Supybot is likely:
 
@@ -159,7 +159,7 @@ How can I make my Supybot log my IRC channel?
   `ChannelLogger` plugin, which is included in the main distribution.
 
 How do I get channel modes when writing a plugin?
-================================
+=================================================
 
   I want to know who's an op in a certain channel, or who's voiced, or
   what the modes on the channel are.  How do I do that?
