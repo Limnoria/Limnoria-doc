@@ -12,11 +12,11 @@ Why does my bot not recognize me or tell me that I don't have the 'owner' capabi
 
   Because you've not given it anything to recognize you from!
 
-  You'll need to identify with the bot (``help identify`` to see how
+  You'll need to identify to the bot (``help identify`` to see how
   that works) or add your hostmask to your user record (``help hostmask
   add`` to see how that works) for it to know that you're you.
 
-  You may wish to note that addhostmask can accept a password; rather
+  You may wish to note that ``hostmask add`` can accept a password; rather
   than identify, you can send the command::
 
     hostmask add myOwnerUser [hostmask] myOwnerUserPassword
@@ -46,9 +46,9 @@ My bot can't handle nicks with brackets in them!
 
   You should quote arguments (using double quotes, like this:
   ``"foo[bar]"``) that have brackets in them that you don't wish to be
-  evaluated as nested commands. Otherwise, you can turn off nested
+  evaluated as nested commands. Alternatively, you can turn off nested
   commands by setting `supybot.commands.nested` to False, or change the
-  brackets that nest commands, by setting
+  brackets that nest commands by setting
   `supybot.commands.nested.brackets` to some other value (like ``<>``,
   which can't occur in IRC nicks).
 
@@ -81,10 +81,10 @@ What does 'lobotomized' mean?
 =============================
 
   I see this word in commands and in my `channels.conf`, but I don't
-  know what it means. What does Supybot mean when it says "lobotomized"?
+  know what it means. What does Supybot mean when it says lobotomized?
 
   A lobotomy is an operation that removes the frontal lobe of the brain,
-  the part that does most of a person's thinking. To "lobotomize" a bot
+  the part that does most of a person's thinking. To lobotomize a bot
   is to tell it to stop thinking--thus, a lobotomized bot will not
   respond to anything said by anyone other than its owner in whichever
   channels it is lobotomized.
@@ -102,8 +102,10 @@ Is there a way to load all the plugins Supybot has?
   what would a bot do with `Factoids`, `MoobotFactoids`, and `Infobot`
   all loaded? Probably just annoy people :)
 
-  If you want to know more about the plugins that are available, check
-  out our `plugin index`_ at our `website`_.
+  You can also install user-contributed plugins using the PluginDownloader
+  plugin (``load PluginDownloader``). The ``repolist`` command can list
+  repositories and their contents, and the ``install`` command installs
+  plugins.
 
 Is there a command that can tell me what capability another command requires?
 =============================================================================
@@ -130,19 +132,19 @@ Why doesn't `Karma` seem to work for me?
 Why won't Supybot respond to private messages?
 ==============================================
 
-  The most likely cause is that you are running your bot on the Freenode
-  network. Around Sept. 2005, Freenode added a user mode which
-  registered user could set that `blocks`_ private messages from
-  unregistered users.  So, the reason you aren't seeing a response from
-  your Supybot is:
+  The most likely cause is that your bot has a mode blocking messages
+  from unregistered users. Around Sept. 2005, for example, Freenode added
+  a user mode where registered users could set ``+R``, which `blocks`_
+  private messages from unregistered users. So, the reason you aren't
+  seeing a response from your Supybot is likely:
 
   * Your Supybot is not registered with NickServ, you are registered,
     and you have set the +R user mode for yourself.
 
-  * or you have registered your Supybot with NickServ, you aren't
+  * or: you have registered your Supybot with NickServ, you aren't
     registered, and your Supybot has the +R user mode set.
 
-Can users with the "admin" capability change configuration?
+Can users with the admin capability change the configuration?
 ===========================================================
 
   Currently, no.  Feel free to make your case to us as to why a certain
@@ -156,8 +158,8 @@ How can I make my Supybot log my IRC channel?
   To log all the channels your Supybot is in, simply load the
   `ChannelLogger` plugin, which is included in the main distribution.
 
-How do I find out channel modes?
-================================
+How do I get channel modes when writing a plugin?
+=================================================
 
   I want to know who's an op in a certain channel, or who's voiced, or
   what the modes on the channel are.  How do I do that?
@@ -244,8 +246,6 @@ Or just for one channel::
     config channel #channel supybot.reply.whenAddressedBy.nick False
     config channel #channel supybot.reply.whenAddressedBy.nick.atEnd False
 
-.. _plugin index: http://supybot.com/plugins.html
-.. _website: http://supybot.com/
 .. _blocks: http://freenode.net/faq.shtml#blockingmessages
 .. _tsocks: http://tsocks.sourceforge.net
 .. _issue tracker: https://github.com/ProgVal/Limnoria/issues
