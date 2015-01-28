@@ -16,7 +16,7 @@ The HTTP server comes with a couple of additional variables:
   will  bind. Defaults to empty.
 * :ref:`supybot.servers.http.keepAlive`: Determines whether the HTTP server
   will run even if has nothing to serve. Defaults to False, because the 
-  HTTPd might require changing the port, if it is already taken.
+  daemon might require changing the port, if it is already taken.
 * :ref:`supybot.servers.http.port`: The port the bot will bind. May not 
   work if the number is below 1024. Defaults to 8080 (alternative HTTP port).
 
@@ -39,7 +39,7 @@ with the rewrite, please notify me whether it works or not):
     <VirtualHost 0.0.0.0:80>
         ServerName stats.yourdomain.org
         <Location />
-                ProxyPass HTTP://localhost:8080/webstats/
+                ProxyPass http://localhost:8080/webstats/
                 SetEnv force-proxy-request-1.0 1
                 SetEnv proxy-nokeepalive 1
                 RewriteEngine On
@@ -55,14 +55,14 @@ Here is an example of the Nginx configuration.  Create a new site ``/etc/nginx/s
         # Note that your default server should specify these ports
         listen 80;
         listen [::]:80;
-        # If your default server also has HTTPs configured, uncomment
+        # If your default server also has HTTPS configured, uncomment
         # the following two listen lines to enable it for this vhost.
         #listen 443;
         #listen [::]:443;
         server_name stats.yourdomain.org;
 
     location / {
-        proxy_pass HTTP://localhost:8080/;
+        proxy_pass http://localhost:8080/;
         }
     }
 
@@ -76,7 +76,7 @@ with it already).
 Templates
 =========
 
-Among plugins which use the HTTP server, some use the standard templates
+Among the plugins which use the HTTP server, some use the standard templates
 system which allows you to edit page templates in a standard way (for other
 plugins, check their documentation).
 
