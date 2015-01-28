@@ -5,7 +5,7 @@ Using the HTTP server
 Configuration
 =============
 
-The HTTP comes with a couple of additional variables:
+The HTTP server comes with a couple of additional variables:
 
 * :ref:`supybot.servers.http.favicon`: Path to the file which is shown to 
   browsers as favicon.
@@ -14,9 +14,9 @@ The HTTP comes with a couple of additional variables:
   127.0.0.1 (restricted to local connections). Defaults to 0.0.0.0
 * :ref:`supybot.servers.http.hosts6`: The IPv6 addresses where the bot 
   will  bind. Defaults to empty.
-* :ref:`supybot.servers.http.keepAlive`: Determines weather the HTTP server
+* :ref:`supybot.servers.http.keepAlive`: Determines whether the HTTP server
   will run even if has nothing to serve. Defaults to False, because the 
-  HTTPd might require to change the port, if it is already taken.
+  daemon might require changing the port, if it is already taken.
 * :ref:`supybot.servers.http.port`: The port the bot will bind. May not 
   work if the number is below 1024. Defaults to 8080 (alternative HTTP port).
 
@@ -24,13 +24,15 @@ The HTTP comes with a couple of additional variables:
 Using the server
 ================
 
-At the root of the server, you will find a list of the plugins that have a Web
-interface, and a link to them. Each plugin has its own subdirectory(ies).
+At the root of the server, you will find a list of the plugins that
+have a Web interface, and a link to them. Each plugin has one or more
+subdirectories of its own.
 
-You may also want to have Apache in front of Supybot's HTTP server, if 
-you want to use subdomains. Here is an example of configuration 
-(I didn't test it with the rewrite, please notify me whether it works or 
-not):
+You may also want to run Apache httpd or Nginx in front of Supybot's HTTP
+server, if you want to use subdomains or load balancing.
+
+Here is an example of Apache httpd configuration (I didn't test it
+with the rewrite, please notify me whether it works or not):
 
 .. code-block:: apache
 
@@ -45,7 +47,7 @@ not):
         </Location>
     </VirtualHost>
 
-It's also possible to use Nginx in front of Supybot's HTTP server. Create a new site ``/etc/nginx/sites-enabled/bot``:
+Here is an example of the Nginx configuration.  Create a new site ``/etc/nginx/sites-enabled/bot``:
 
 .. code-block:: nginx
 
@@ -53,7 +55,7 @@ It's also possible to use Nginx in front of Supybot's HTTP server. Create a new 
         # Note that your default server should specify these ports
         listen 80;
         listen [::]:80;
-        # If your default server also has https configured, uncomment
+        # If your default server also has HTTPS configured, uncomment
         # the following two listen lines to enable it for this vhost.
         #listen 443;
         #listen [::]:443;
@@ -64,10 +66,17 @@ It's also possible to use Nginx in front of Supybot's HTTP server. Create a new 
         }
     }
 
+Note that any HTTP server which can provide a reverse proxy service
+can be configured to act as an intermediary or front end for the
+Limnoria HTTP server.  Configuring these alternatives is left as an
+exercise to the system administrator (who ought to be familiar enough
+with it already).
+
+
 Templates
 =========
 
-Among plugins which use the http server, some use the standard templates
+Among the plugins which use the HTTP server, some use the standard templates
 system which allows you to edit page templates in a standard way (for other
 plugins, check their documentation).
 
