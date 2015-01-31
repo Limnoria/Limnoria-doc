@@ -7,7 +7,8 @@ Identifying the bot to services
 The different methods listed here are in the order how they are usually recommended
 by network operators.
 
-Please also note that SASL and CertFP are only supported on Limnoria.
+Please also note that SASL and CertFP are only fully supported on Limnoria. Gribble
+has imported partial SASL support (only PLAIN).
 
 Registering to services
 -----------------------
