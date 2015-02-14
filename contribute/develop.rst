@@ -33,7 +33,12 @@ branch, commit, push/pull, add/rm, log, show, reset, revert).
 I learnt how to use Git with an ebook, also available as a real book:
 `Pro Git`_.
 
+Our prefered way of contributing is through GitHub pull requests to
+`Limnoria's repository`_. Please send your pull requests to the `testing`
+branch.
+
 .. _Pro Git: http://progit.org/book/
+.. _Limnoria's repo: https://github.com/ProgVal/Limnoria/
 
 Code style
 ==========
