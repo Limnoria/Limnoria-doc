@@ -60,11 +60,11 @@ Install Limnoria
 In the next section of this guide we will use `pip`_, which is a generic
 way of installing Python software
 
-However, you can use any of these alternatives:
+However, you can use any of these **alternatives**:
 
 * Download a .deb or .rpm package at `ProgVal's build repo`_.
-* Use `git`_ to clone the `Limnoria repository`_ and run
-  ``python setup.py install`` or ``python setup.py install --user``.
+* Use `git`_ to clone the `Limnoria repository`_ and follow the
+  instructions in `Limnoria's README.md`_.
 * Click the "Downloads" button at the `Limnoria repository`_. Then,
   extract the zipball to some temporary directory, and ``cd`` into the
   ``supybot`` directory which contains the extracted code.
@@ -79,6 +79,7 @@ the beginning of global installation commands.
 .. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
 .. _git: http://git-scm.com/
 .. _msysgit: https://msysgit.github.io/
+.. _Limnoria's README.md: https://github.com/ProgVal/Limnoria/blob/testing/README.md#installing-from-cloned-repo
 
 Global installation
 ^^^^^^^^^^^^^^^^^^^
