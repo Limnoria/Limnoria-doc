@@ -156,8 +156,18 @@ you after SASL so, your real host might be seen. To do this, simply::
 Replace ``<network>`` with the name of network, for example ``freenode``
 and username:password with your real username and password.
 
-ZNC users: since ZNC 1.0, ZNC's identification format has been
-``username/network:password``.
+ZNC
+^^^
+
+If you wish to connect your bot to ZNC, the recommended way is::
+
+    config networks.<network>.ident <username>@<identifier>/<network>
+    config networks.<network>.password <password>
+
+The identifier is free text to describe which client your Limnoria is. It
+came with ZNC 1.6.0 and is completely optional. ``<network>`` again has
+been there since ZNC 1.0 which is very old and has multiple security issues
+that have been fixed since then. You should always run the latest release.
 
 Services plugin
 ---------------
