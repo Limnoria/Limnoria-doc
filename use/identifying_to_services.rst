@@ -46,10 +46,12 @@ SASL PLAIN is identifying using username and password, SASL EXTERNAL is identify
 using CertFP which is explained later on this document. It doesn't need
 username or password to be configured.
 
-Note that SASL isn't supported on all networks. You can easily test if it's
-supported with ``/msg SaslServ help`` and if you get response, SASL is
-probably supported, if you don't get reply or get error about no such nick,
-SASL isn't supported.
+Note that SASL isn't supported on all networks. As the only way to check
+if SASL is supported is either ``/quote CAP LS`` (which usually gets eaten
+by bouncers) or connecting to the network and seeing if it works, we
+recommend always configuring SASL and whoising the bot to see if it worked.
+If it didn't work, you might want to ask the network operators about their
+SASL support and request them to start supporting it.
 
 SASL is widely agreed as the best method to identify to services as it
 identifies you before anyone (other than IRC operators) can see that you 
