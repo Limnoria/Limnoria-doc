@@ -40,6 +40,19 @@ branch.
 .. _Pro Git: http://progit.org/book/
 .. _Limnoria's repo: https://github.com/ProgVal/Limnoria/
 
+Where to start
+==============
+
+If you are not an experienced Python and/or Limnoria developper, you
+can start with solving `issues tagged as easy`_. I believe they are
+likely to be easy to solve even without a lot of experience.
+
+If you need help solving an issue (tagged as easy or not) or want
+to find an issue that matches your skills, please ask on IRC, we will
+be glad to help you.
+
+.. _issues tagged as easy: https://github.com/ProgVal/Limnoria/issues?q=label%3Aeasy
+
 Code style
 ==========
 
