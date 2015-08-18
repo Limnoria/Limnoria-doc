@@ -99,7 +99,7 @@ And then Limnoria itself::
     sudo pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
 
 If pip gives error immediately instead of doing anything and you have git
-installd, try upgrading pip with ``sudo pip install pip --upgrade``.
+installed, try upgrading pip with ``sudo pip install pip --upgrade``.
 
 Local installation
 ^^^^^^^^^^^^^^^^^^
