@@ -42,8 +42,6 @@ with the rewrite, please notify me whether it works or not):
                 ProxyPass http://localhost:8080/webstats/
                 SetEnv force-proxy-request-1.0 1
                 SetEnv proxy-nokeepalive 1
-                RewriteEngine On
-                RewriteRule ^/webstats/(.*)$ /$1
         </Location>
     </VirtualHost>
 
