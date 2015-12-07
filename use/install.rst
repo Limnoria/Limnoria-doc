@@ -74,7 +74,7 @@ which setup you should specify to have UNIX tools in PATH. Also note that
 you should run cmd.exe with Administrator rights and remove ``sudo`` from
 the beginning of global installation commands.
 
-.. _ProgVal's build repo: http://builds.progval.net/limnoria/
+.. _ProgVal's build repo: https://builds.progval.net/limnoria/
 .. _Limnoria repository: https://github.com/ProgVal/Limnoria
 .. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
 .. _git: http://git-scm.com/
