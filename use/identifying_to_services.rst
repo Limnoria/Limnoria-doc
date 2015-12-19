@@ -67,11 +67,6 @@ the real network name like ``freenode``.
 CertFP
 ------
 
-Please note that there is a bug
-(https://github.com/ProgVal/Limnoria/issues/1052) that requires you to
-configure ``networks.<network>.sasl.username`` before SASL EXTERNAL is
-attempted.
-
 You can test if CertFP is supported by services simply by doing
 ``/msg NickServ cert``. If you get an error about "Insufficient parameters
 for CERT", CertFP is supported, and if you get an error about unknown
