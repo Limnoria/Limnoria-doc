@@ -90,7 +90,8 @@ commands.
 *In case you want to use the testing branch which might be more up-to 
 date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.*
 
-First we install Limnoria's requirements::
+First we install Limnoria's optional dependencies (you can skip this
+step, but some features won't be available)::
 
     sudo pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
 
@@ -105,7 +106,8 @@ Local installation
 ^^^^^^^^^^^^^^^^^^
 
 Simply add ``--user`` to the end of both commands. First we install 
-requirements and then Limnoria itself.::
+requirements (you can skip it, but some features won't be available)
+and then Limnoria itself.::
 
     pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
     pip install limnoria --user --upgrade
