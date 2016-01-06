@@ -96,7 +96,7 @@ First we install Limnoria's requirements::
 
 And then Limnoria itself::
 
-    sudo pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
+    sudo pip install limnoria --upgrade
 
 If pip gives error immediately instead of doing anything and you have git
 installed, try upgrading pip with ``sudo pip install pip --upgrade``.
@@ -108,15 +108,15 @@ Simply add ``--user`` to the end of both commands. First we install
 requirements and then Limnoria itself.::
 
     pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
-    pip install git+https://github.com/ProgVal/Limnoria.git@master --user --upgrade
+    pip install limnoria --user --upgrade
 
 You might need to add $HOME/.local/bin to your PATH.::
 
     echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
-If pip gives error immediately instead of doing anything and you have git
-installd, try upgrading pip with ``pip install pip --upgrade --user``.
+If pip gives error immediately instead of doing anything,
+try upgrading pip with ``pip install pip --upgrade --user``.
 
 Configure Supybot
 -----------------
@@ -202,7 +202,7 @@ Now we are ready to install Limnoria and it's requirements. Open
 and run::
 
     python -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
-    python -m pip install git+https://github.com/ProgVal/Limnoria.git@master --upgrade
+    python -m pip install limnoria --upgrade
 
 We are now ready to configure Supybot. Supybot creates quite a few
 auxiliary files/directories to store its runtime data. It is thus
