@@ -81,8 +81,10 @@ the beginning of global installation commands.
 .. _msysgit: https://msysgit.github.io/
 .. _Limnoria's README.md: https://github.com/ProgVal/Limnoria/blob/testing/README.md#installing-from-cloned-repo
 
-Global installation
-^^^^^^^^^^^^^^^^^^^
+Global installation (with root access)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you do not have root access, skip this section.
 
 If you are logged in as root, you can remove ``sudo`` from the install 
 commands.
@@ -102,8 +104,10 @@ And then Limnoria itself::
 If pip gives error immediately instead of doing anything and you have git
 installed, try upgrading pip with ``sudo pip install pip --upgrade``.
 
-Local installation
-^^^^^^^^^^^^^^^^^^
+Local installation (without root access)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you have followed the previous section, skip this one.
 
 Simply add ``--user`` to the end of both commands. First we install 
 requirements (you can skip it, but some features won't be available)
