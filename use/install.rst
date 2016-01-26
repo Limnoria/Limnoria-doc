@@ -171,11 +171,11 @@ Install Python
 --------------
 
 Download the latest **Python 3** installer from https://www.python.org, 
-3.4.2, as of 2014-11-30) and run it to install Python.
+3.5.1, as of 2016-01-26) and run it to install Python.
 
 Installing Python is mostly clicking next, but in the next screen remember
 the destination directory where you installed Python. These instructions
-refer to it as ``C:\Python34\`` which is the current name on 2014-11-30.
+refer to it as ``C:\Python35\`` which is the current name on 2016-01-26.
 
 Then you are asked to customize your installation. Click the drive on left
 side of "Python" text and select "Entire feature will be installed on
@@ -186,7 +186,7 @@ Now Python installs itself which may take several minutes.
 Python should be now installed and you can check that the "python" command
 points to correct python. Open ``cmd.exe`` (press the Windows button on
 your keyboard and type "cmd.exe") and  run ``where python``
-and the toppernmost entry should be ``C:\Python34\python.exe``.
+and the toppernmost entry should be ``C:\Python35\python.exe``.
 
 Install git
 -----------
@@ -223,7 +223,7 @@ directory::
 
 and from within it run ``supybot-wizard``::
 
-    python C:\Python34\Scripts\supybot-wizard
+    python C:\Python35\Scripts\supybot-wizard
 
 which will walk you through a series of questions to generate the bot
 config file. 
@@ -243,7 +243,7 @@ directories?* question.)
 Now to start the bot, run, still from within the
 ``C:\users\<username>\runbot`` directory::
 
-    python C:\Python34\Scripts\supybot yourbotnick.conf
+    python C:\Python35\Scripts\supybot yourbotnick.conf
 
 And watch the magic!
 
