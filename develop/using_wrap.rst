@@ -2,8 +2,7 @@
 Using commands.wrap to parse your command's arguments
 *****************************************************
 
-This document illustrates how to use the new 'wrap' function present in Supybot
-0.80 to handle argument parsing and validation for your plugin's commands.
+.. contents::
 
 Introduction
 ============
@@ -159,6 +158,14 @@ Below is a list of all the available converters to use with wrap. If the
 converter accepts any arguments, they are listed after it and if they are
 optional, the default value is shown.
 
+Numbers and time
+----------------
+
+expiry
+
+    Takes a number of seconds and adds it to the current time to create an
+    expiration timestamp.
+
 id, kind="integer"
 
     Returns something that looks like an integer ID number. Takes an optional
@@ -167,10 +174,12 @@ id, kind="integer"
     the argument be an integer, does no other integrity-checking, and provides
     a nice error message with the kind in it.
 
-ip
+index
 
-    Checks and makes sure the argument looks like a valid IP and then returns
-    it.
+    Basically ("int", "index"), but with a twist. This will take a 1-based
+    index and turn it into a 0-based index (which is more useful in code). It
+    doesn't transform 0, and it maintains negative indices as is (note that it
+    does allow them!).
 
 int, type="integer", p=None
 
@@ -179,31 +188,10 @@ int, type="integer", p=None
     to test the integer with. If p(i) fails (where i is the integer arg parsed
     out of the argument string), the arg will not be accepted.
 
-index
-
-    Basically ("int", "index"), but with a twist. This will take a 1-based
-    index and turn it into a 0-based index (which is more useful in code). It
-    doesn't transform 0, and it maintains negative indices as is (note that it
-    does allow them!).
-
-color
-
-    Accepts arguments that describe a text color code (e.g., "black", "light
-    blue") and returns the mIRC color code for that color. (Note that many
-    other IRC clients support the mIRC color code scheme, not just mIRC)
-
 now
 
     Simply returns the current timestamp as an arg, does not reference or
     modify the argument list.
-
-url
-
-    Checks for a valid URL.
-
-httpUrl
-
-    Checks for a valid HTTP URL.
 
 long, type="long"
 
@@ -229,45 +217,14 @@ nonNegativeInt
 
     Accepts only non-negative integers.
 
-letter
+Channel
+-------
 
-    Looks for a single letter. (Technically, it looks for any one-element
-    sequence).
+channelDb
 
-haveOp, action="do that"
-
-    Simply requires that the bot have ops in the channel that the command is
-    called in. The action parameter completes the error message: "I need to be
-    opped to ...".
-
-expiry
-
-    Takes a number of seconds and adds it to the current time to create an
-    expiration timestamp.
-
-literal, literals, errmsg=None
-
-    Takes a required sequence or string (literals) and any argument that
-    uniquely matches the starting substring of one of the literals is
-    transformed into the full literal. For example, with ``("literal", ("bar",
-    "baz", "qux"))``, you'd get "bar" for "bar", "baz" for "baz", and "qux"
-    for any of "q", "qu", or "qux". "b" and "ba" would raise errors because
-    they don't uniquely identify one of the literals in the list. You can
-    override errmsg to provide a specific (full) error message, otherwise the
-    default argument error message is displayed.
-
-to
-
-    Returns the string "to" if the arg is any form of "to" (case-insensitive).
-
-nick
-
-    Checks that the arg is a valid nick on the current IRC server.
-
-seenNick
-
-    Checks that the arg is a nick that the bot has seen (NOTE: this is limited
-    by the size of the history buffer that the bot has).
+    Sets the channel appropriately in order to get to the databases for that
+    channel (handles whether or not a given channel uses channel-specific
+    databases and whatnot).
 
 channel
 
@@ -286,83 +243,101 @@ onlyInChannel
     Requires that the command be called from within any channel that the bot
     is currently in.
 
-nickInChannel
-
-    Requires that the argument be a nick that is in the current channel, and
-    returns that nick.
-
-networkIrc, errorIfNoMatch=False
-
-    Returns the IRC object of the specified IRC network. If one isn't
-    specified, the IRC object of the IRC network the command was called on is
-    returned.
-
 callerInGivenChannel
 
     Takes the given argument as a channel and makes sure that the caller is in
     that channel.
 
-plugin, require=True
+public
 
-    Returns the plugin specified by the arg or None. If require is True, an
-    error is raised if the plugin cannot be retrieved.
+    Requires that the command be sent in a channel instead of a private
+    message.
 
-boolean
+private
 
-    Converts the text string to a boolean value. Acceptable true values are:
-    "1", "true", "on", "enable", or "enabled" (case-insensitive). Acceptable
-    false values are: "0", false", "off", "disable", or "disabled"
-    (case-insensitive).
+    Requires that the command be sent in a private message instead of a
+    channel.
+
+validChannel
+
+    Gets a channel argument once it makes sure it's a valid channel.
+
+Words
+-----
+
+color
+
+    Accepts arguments that describe a text color code (e.g., "black", "light
+    blue") and returns the mIRC color code for that color. (Note that many
+    other IRC clients support the mIRC color code scheme, not just mIRC)
+
+letter
+
+    Looks for a single letter. (Technically, it looks for any one-element
+    sequence).
+
+literal, literals, errmsg=None
+
+    Takes a required sequence or string (literals) and any argument that
+    uniquely matches the starting substring of one of the literals is
+    transformed into the full literal. For example, with ``("literal", ("bar",
+    "baz", "qux"))``, you'd get "bar" for "bar", "baz" for "baz", and "qux"
+    for any of "q", "qu", or "qux". "b" and "ba" would raise errors because
+    they don't uniquely identify one of the literals in the list. You can
+    override errmsg to provide a specific (full) error message, otherwise the
+    default argument error message is displayed.
 
 lowered
 
     Returns the argument lowered (NOTE: it is lowered according to IRC
     conventions, which does strange mapping with some punctuation characters).
 
-anything
+to
 
-    Returns anything as is.
+    Returns the string "to" if the arg is any form of "to" (case-insensitive).
 
-something, errorMsg=None, p=None
+Network
+-------
 
-    Takes anything but the empty string. errorMsg can be used to customize the
-    error message. p is any predicate function that can be used to test the
-    validity of the input.
+ip
 
-filename
+    Checks and makes sure the argument looks like a valid IP and then returns
+    it.
 
-    Used to get a filename argument.
+url
 
-commandName
+    Checks for a valid URL.
 
-    Returns the canonical command name version of the given string (ie, the
-    string is lowercased and dashes and underscores are removed).
+httpUrl
 
-text
+    Checks for a valid HTTP URL.
 
-    Takes the rest of the arguments as one big string. Note that this differs
-    from the "anything" context in that it clobbers the arg string when it's
-    done.  Using any converters after this is most likely incorrect.
+Users, nicks, and permissions
+-----------------------------
 
-glob
+haveOp, action="do that"
 
-    Gets a glob string. Basically, if there are no wildcards (``*``, ``?``) in
-    the argument, returns ``*string*``, making a glob string that matches
-    anything containing the given argument.
+    Simply requires that the bot have ops in the channel that the command is
+    called in. The action parameter completes the error message: "I need to be
+    opped to ...".
 
-somethingWithoutSpaces
+nick
 
-    Same as something, only with the exception of disallowing spaces of course.
+    Checks that the arg is a valid nick on the current IRC server.
+
+seenNick
+
+    Checks that the arg is a nick that the bot has seen (NOTE: this is limited
+    by the size of the history buffer that the bot has).
+
+nickInChannel
+
+    Requires that the argument be a nick that is in the current channel, and
+    returns that nick.
 
 capability
 
     Used to retrieve an argument that describes a capability.
-
-channelDb
-
-    Sets the channel appropriately in order to get to the databases for that
-    channel (handles whether or not a given channel uses channel-specific
-    databases and whatnot).
 
 hostmask
 
@@ -376,36 +351,9 @@ user
 
     Requires that the caller be a registered user.
 
-matches, regexp, errmsg
-
-    Searches the args with the given regexp and returns the matches. If no
-    match is found, errmsg is given.
-
-public
-
-    Requires that the command be sent in a channel instead of a private
-    message.
-
-private
-
-    Requires that the command be sent in a private message instead of a
-    channel.
-
 otherUser
 
     Returns the user specified by the username or hostmask in the argument.
-
-regexpMatcher
-
-    Gets a matching regexp argument (m// or //).
-
-validChannel
-
-    Gets a channel argument once it makes sure it's a valid channel.
-
-regexpReplacer
-
-    Gets a replacing regexp argument (s//).
 
 owner
 
@@ -423,6 +371,78 @@ checkChannelCapability, capability
     Checks to make sure that the caller has the specified capability on the
     channel the command is called in.
 
+Matching
+--------
+
+anything
+
+    Returns anything as is.
+
+something, errorMsg=None, p=None
+
+    Takes anything but the empty string. errorMsg can be used to customize the
+    error message. p is any predicate function that can be used to test the
+    validity of the input.
+
+somethingWithoutSpaces
+
+    Same as something, only with the exception of disallowing spaces of course.
+
+matches, regexp, errmsg
+
+    Searches the args with the given regexp and returns the matches. If no
+    match is found, errmsg is given.
+
+regexpMatcher
+
+    Gets a matching regexp argument (m// or //).
+
+glob
+
+    Gets a glob string. Basically, if there are no wildcards (``*``, ``?``) in
+    the argument, returns ``*string*``, making a glob string that matches
+    anything containing the given argument.
+
+regexpReplacer
+
+    Gets a replacing regexp argument (s//).
+
+Other
+-----
+
+networkIrc, errorIfNoMatch=False
+
+    Returns the IRC object of the specified IRC network. If one isn't
+    specified, the IRC object of the IRC network the command was called on is
+    returned.
+
+plugin, require=True
+
+    Returns the plugin specified by the arg or None. If require is True, an
+    error is raised if the plugin cannot be retrieved.
+
+boolean
+
+    Converts the text string to a boolean value. Acceptable true values are:
+    "1", "true", "on", "enable", or "enabled" (case-insensitive). Acceptable
+    false values are: "0", false", "off", "disable", or "disabled"
+    (case-insensitive).
+
+filename
+
+    Used to get a filename argument.
+
+commandName
+
+    Returns the canonical command name version of the given string (ie, the
+    string is lowercased and dashes and underscores are removed).
+
+text
+
+    Takes the rest of the arguments as one big string. Note that this differs
+    from the "anything" context in that it clobbers the arg string when it's
+    done.  Using any converters after this is most likely incorrect.
+
 Contexts List
 =============
   What contexts are available for me to use?
@@ -431,14 +451,8 @@ The list of available contexts is below. Unless specified otherwise, it can be
 assumed that the type returned by the context itself matches the type of the
 converter it is applied to.
 
-any
-    Looks for any number of arguments matching the supplied converter. Will
-    return a sequence of converted arguments or None.
-
-many
-    Looks for multiple arguments matching the supplied converter. Expects at
-    least one to work, otherwise it will fail. Will return the sequence of
-    converted arguments.
+Options
+-------
 
 optional
     Look for an argument that satisfies the supplied converter, but if it's not
@@ -449,6 +463,30 @@ additional
     Look for an argument that satisfies the supplied converter, making sure
     that it's the right type. If there aren't any arguments to check, then use
     the default value. Will return the converted argument as is or None.
+
+first
+    Tries each of the supplied converters in order and returns the result of
+    the first successfully applied converter.
+
+Multiplicity
+------------
+
+any
+    Looks for any number of arguments matching the supplied converter. Will
+    return a sequence of converted arguments or None.
+
+many
+    Looks for multiple arguments matching the supplied converter. Expects at
+    least one to work, otherwise it will fail. Will return the sequence of
+    converted arguments.
+
+commalist
+    Looks for a comma separated list of arguments that match the supplied
+    converter. Returns a list of the successfully converted arguments. If any
+    of the arguments fail, this whole context fails.
+
+Other
+-----
 
 rest
     Treat the rest of the arguments as one big string, and then convert. If the
@@ -461,18 +499,9 @@ getopts
     name in the dictionary. For no conversion, use None as the converter name
     in the dictionary.
 
-first
-    Tries each of the supplied converters in order and returns the result of
-    the first successfully applied converter.
-
 reverse
     Reverse the argument list, apply the converters, and then reverse the
     argument list back.
-
-commalist
-    Looks for a comma separated list of arguments that match the supplied
-    converter. Returns a list of the successfully converted arguments. If any
-    of the arguments fail, this whole context fails.
 
 
 Final Word
