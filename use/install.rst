@@ -60,26 +60,10 @@ Install Limnoria
 In the next section of this guide we will use `pip`_, which is a generic
 way of installing Python software.
 
-However, you can use any of these **alternatives**:
+There are some :ref:`alternative install methods <alternative-install>`
+at the bottom of this guide, if you don't want to use `pip`.
 
-* Download a .deb or .rpm package at `ProgVal's build repo`_.
-* Use `git`_ to clone the `Limnoria repository`_ and follow the
-  instructions in `Limnoria's README.md`_.
-* Click the "Downloads" button at the `Limnoria repository`_. Then,
-  extract the zipball to some temporary directory, and ``cd`` into the
-  ``supybot`` directory which contains the extracted code.
-
-**Windows users:** `pip`_ also works on Windows and you need `msysgit`_ in 
-which setup you should specify to have UNIX tools in PATH. Also note that
-you should run cmd.exe with Administrator rights and remove ``sudo`` from
-the beginning of global installation commands.
-
-.. _ProgVal's build repo: https://builds.progval.net/limnoria/
-.. _Limnoria repository: https://github.com/ProgVal/Limnoria
 .. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
-.. _git: http://git-scm.com/
-.. _msysgit: https://msysgit.github.io/
-.. _Limnoria's README.md: https://github.com/ProgVal/Limnoria/blob/testing/README.md#installing-from-cloned-repo
 
 Global installation (with root access)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -254,3 +238,25 @@ is licensed under the Creative Commons Attribution ShareAlike 3.0 Unported
 license and/or the GNU Free Documentation License v 1.3 or later.
 
 .. _Supybook: http://supybook.fealdia.org/
+
+
+
+.. _alternative-install:
+
+Alternative install methods
+===========================
+
+If you know what you are doing and you don't want to use pip, you
+can use one of these methods:
+
+* Download a .deb or .rpm package at `ProgVal's build repo`_.
+* Use `git`_ to clone the `Limnoria repository`_ and follow the
+  instructions in `Limnoria's README.md`_.
+* Click the "Download ZIP" button at the `Limnoria repository`_. Then,
+  extract the zipball to some temporary directory, and ``cd`` into the
+  `Limnoria-master` directory which contains the extracted code.
+
+.. _ProgVal's build repo: https://builds.progval.net/limnoria/
+.. _Limnoria repository: https://github.com/ProgVal/Limnoria
+.. _git: http://git-scm.com/
+.. _Limnoria's README.md: https://github.com/ProgVal/Limnoria/blob/testing/README.md#installing-from-cloned-repo
