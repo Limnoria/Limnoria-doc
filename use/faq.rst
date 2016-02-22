@@ -264,6 +264,20 @@ website, or get the current one, with this command::
 
     config supybot.networks.<NETWORK>.servers
 
+How to make Limnoria use Python 3 instead of Python 2?
+======================================================
+
+First, uninstall Limnoria::
+
+    sudo python -m pip uninstall limnoria
+
+Or, if you did not install Limnoria as root::
+
+    python -m pip uninstall limnoria
+
+Then, follow the :ref:`install guide <use-install>`. In short, just run this::
+
+    sudo python3 -m pip install limnoria --upgrade
 
 
 .. _blocks: http://freenode.net/faq.shtml#blockingmessages
