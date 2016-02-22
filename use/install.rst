@@ -19,14 +19,16 @@ a little more of a "foolproof guide".
 Dependencies
 ============
 
-Here's the list of recommended software to run Supybot/Limnoria:
+The only mandatory dependency is `Python`_ 2.6 or greater. However, it is
+highly recommended you use Python 3.4 or greater.
 
-* Supybot is written in Python, and requires `Python`_
-  2.6 or greater.
-* `Twisted`_ framework 1.2.0 or greater (optional, you probably don't need it).
+You may also install chardet and feedparser, which are used by Limnoria if
+they are available.
+
+The remaining of this guide will assume you have Python 3. If you don't,
+replace `python3` by `python` in the given commands
 
 .. _Python: http://www.python.org/
-.. _Twisted: http://twistedmatrix.com/
 
 Installation: UNIX/Linux/BSD
 ============================
@@ -45,8 +47,8 @@ the case, open up a terminal, start python, and run:
 
     import distutils
 
-If it works, you're good to go. Otherwise, install the `python-dev` or
-`python-devel` package and try again.
+If it works, you're good to go. Otherwise, install the `python3-dev` or
+`python3-devel` package and try again.
 
 You may also install "manually" by downloading the source archive from
 http://python.org, and compiling it. That is outside the scope of this guide,
@@ -56,7 +58,7 @@ Install Limnoria
 ----------------
 
 In the next section of this guide we will use `pip`_, which is a generic
-way of installing Python software
+way of installing Python software.
 
 However, you can use any of these **alternatives**:
 
@@ -93,14 +95,14 @@ date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.*
 First we install Limnoria's optional dependencies (you can skip this
 step, but some features won't be available)::
 
-    sudo pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
+    sudo python3 -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
 
 And then Limnoria itself::
 
-    sudo pip install limnoria --upgrade
+    sudo python3 -m pip install limnoria --upgrade
 
-If pip gives error immediately instead of doing anything and you have git
-installed, try upgrading pip with ``sudo pip install pip --upgrade``.
+If you have an error saying `No module named pip`, install `pip` using
+your package manager (the package is usually named `python3-pip`).
 
 Local installation (without root access)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -119,8 +121,8 @@ You might need to add $HOME/.local/bin to your PATH.::
     echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
-If pip gives error immediately instead of doing anything,
-try upgrading pip with ``pip install pip --upgrade --user``.
+If you have an error saying `No module named pip`, install `pip` using this
+guide: https://pip.pypa.io/en/stable/installing/
 
 Configure Supybot
 -----------------
@@ -205,8 +207,8 @@ Now we are ready to install Limnoria and it's requirements. Open
 ``cmd.exe`` as **Administrator** (right click it in the previous place)
 and run::
 
-    python -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
-    python -m pip install limnoria --upgrade
+    python3 -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
+    python3 -m pip install limnoria --upgrade
 
 We are now ready to configure Supybot. Supybot creates quite a few
 auxiliary files/directories to store its runtime data. It is thus
@@ -223,7 +225,7 @@ directory::
 
 and from within it run ``supybot-wizard``::
 
-    python C:\Python35\Scripts\supybot-wizard
+    python3 C:\Python35\Scripts\supybot-wizard
 
 which will walk you through a series of questions to generate the bot
 config file. 
@@ -243,7 +245,7 @@ directories?* question.)
 Now to start the bot, run, still from within the
 ``C:\users\<username>\runbot`` directory::
 
-    python C:\Python35\Scripts\supybot yourbotnick.conf
+    python3 C:\Python35\Scripts\supybot yourbotnick.conf
 
 And watch the magic!
 
