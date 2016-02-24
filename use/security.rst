@@ -2,6 +2,19 @@
 Security in Limnoria
 ********************
 
+Some security features are disabled by default.
+We know this is arguable, but enabling them would make it quite hard
+to start using the bot.
+This guide is for people who want to enable these features to make
+their bot as secure as possible.
+
+.. note::
+
+    Limnoria (or Gribble or Supybot) have never been audited by a security
+    professional.
+    We do the best we can to make it secure, but we cannot guarantee it is
+    completely safe.
+
 Trust in network operators
 ==========================
 
