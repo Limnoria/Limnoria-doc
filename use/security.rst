@@ -5,7 +5,15 @@ Security in Limnoria
 Trust in network operators
 ==========================
 
-to do
+As you may know, it is possible to do anything from IRC, including loading
+the Unix plugin and using the `@call` command.
+The only safeguard is checking the user calling the commands is authenticated
+as the owner of the bot; and network operators are able to spoof hostmasks
+and collect your password, thus allowing them to execute commands as the
+owner.
+
+Although network operators of most well-known IRC networks are not known to
+do that, you should be aware of that risk.
 
 
 .. _security-ssl:
@@ -35,12 +43,31 @@ fingerprint checking.
 Certificate Authorities
 -----------------------
 
-to do
+By default, Limnoria only checks certificates using CA certificates installed
+on your system. However, some networks use a CA that is not trusted by your
+system, such as CACert.
+
+Limnoria allows you to add a CA certificate for a network::
+
+    @config networks.NETWORKNAME.ssl.authorityCertificate /path/to/the/certificate.crt
+
+Note that you are responsible for making sure this is the right certificate
+for the CA, and trust this CA to sign correctly certificates valid for the
+network's hostname(s).
+
 
 Fingerprint checking
 --------------------
 
-to do
+Alternatively, for networks that do not use a CA, you can give Limnoria
+the list of fingerprints of certificates used by the network::
+
+    @config supybot.networks.NETWORKNAME.ssl.serverFingerprints: <fingerprint1> <fingerprint2> ...
+
+Adding fingerprints will disable CA verifications (useful if you do not
+want to trust CAs).
+
+Note that you are responsible for giving the correct list of fingerprints.
 
 .. _ssl-python-versions:
 
