@@ -12,6 +12,7 @@ The Supybot user guide
     configuration.rst
     identifying_to_services.rst
     capabilities.rst
+    security.rst
     faq.rst
     httpserver.rst
     supybot-botchk.rst
