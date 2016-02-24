@@ -24,7 +24,22 @@ Network connections / SSL
 Background on SSL certification validation
 ------------------------------------------
 
-to do
+It is often believed using SSL magically makes impossible any attack on your
+connection (from the bot to the server).
+It is true that it prevents passive eavesdropping, but other attack methods
+are still possible.
+
+The main one involves man-in-the-middle, ie. someone acting as a proxy between
+you (your bot, in that case) and the IRC network.
+If certificates are not validated, the attacker can allow you to connect
+to itself using their own SSL certificate, and you would never know about it.
+
+This is why it is important to check the SSL certificate of the server
+you connect to: an attacker cannot spoof a certificate, or the trust of
+a Certificate Authority in a network's certificates.
+
+Of course, this assumes there is no bug in your SSL library, the network's,
+and the protocols involved.
 
 Certificate validation in Limnoria
 ----------------------------------
