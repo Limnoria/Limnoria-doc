@@ -1,0 +1,5201 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2003-2015, the Limnoria/Gribble/Supybot contributors
+# This file is distributed under the same license as the Limnoria package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Limnoria 0.83\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-24 17:46+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+#: ../../develop/advanced_plugin_config.rst:3
+msgid "Advanced Plugin Config"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:4
+msgid ""
+"This tutorial covers some of the more advanced plugin config features "
+"available to Supybot plugin authors."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:8
+msgid "What's This Tutorial For?"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:9
+msgid "Brief overview of what this tutorial covers and the target audience."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:11
+msgid ""
+"Want to know the crazy advanced features available to you, the Supybot "
+"plugin author? Well, this is the tutorial for you. This article assumes "
+"you've read the Supybot plugin author tutorial since all the basics of "
+"plugin config are handled there first."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:16
+msgid "In this tutorial we'll cover:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:18
+msgid ""
+"Using the configure function more effectively by using the functions "
+"provided in supybot.questions"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:20
+msgid ""
+"Creating config variable groups and config variables underneath those "
+"groups."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:22
+msgid ""
+"The built-in config variable types (\"registry types\") for use with "
+"config variables"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:24
+msgid ""
+"Creating custom registry types to handle config variable values more "
+"effectively"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:28
+msgid "Using 'configure' effectively"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:29
+msgid ""
+"How to use 'configure' effectively using the functions from "
+"'supybot.questions'"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:32
+msgid ""
+"In the original Supybot plugin author tutorial you'll note that we gloss "
+"over the configure portion of the config.py file for the sake of keeping "
+"the tutorial to a reasonable length. Well, now we're going to cover it in"
+" more detail."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:37
+msgid ""
+"The supybot.questions module is a nice little module coded specifically "
+"to help clean up the configure section of every plugin's config.py. The "
+"boilerplate config.py code imports the four most useful functions from "
+"that module:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:41
+msgid ""
+"\"expect\" is a very general prompting mechanism which can specify "
+"certain inputs that it will accept and also specify a default response. "
+"It takes the following arguments:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:45
+#: ../../develop/advanced_plugin_config.rst:57
+#: ../../develop/advanced_plugin_config.rst:62
+#: ../../develop/advanced_plugin_config.rst:69
+msgid "prompt: The text to be displayed"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:46
+msgid "possibilities: The list of possible responses (can be the empty list, [])"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:48
+msgid ""
+"default (optional): Defaults to None. Specifies the default value to use "
+"if the user enters in no input."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:50
+msgid ""
+"acceptEmpty (optional): Defaults to False. Specifies whether or not to "
+"accept no input as an answer."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:53
+msgid ""
+"\"anything\" is basically a special case of expect which takes anything "
+"(including no input) and has no default value specified. It takes only "
+"one argument:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:59
+msgid ""
+"\"something\" is also a special case of expect, requiring some input and "
+"allowing an optional default. It takes the following arguments:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:63
+msgid ""
+"default (optional): Defaults to None. The default value to use if the "
+"user doesn't input anything."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:66
+msgid ""
+"\"yn\" is for \"yes or no\" questions and basically forces the user to "
+"input a \"y\" for yes, or \"n\" for no. It takes the following arguments:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:70
+msgid ""
+"default (optional): Defaults to None. Default value to use if the user "
+"doesn't input anything."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:73
+msgid ""
+"All of these functions, with the exception of \"yn\", return whatever "
+"string results as the answer whether it be input from the user or "
+"specified as the default when the user inputs nothing. The \"yn\" "
+"function returns True for \"yes\" answers and False for \"no\" answers."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:78
+msgid ""
+"For the most part, the latter three should be sufficient, but we expose "
+"expect to anyone who needs a more specialized configuration."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:81
+msgid ""
+"Let's go through a quick example configure that covers all four of these "
+"functions. First I'll give you the code, and then we'll go through it, "
+"discussing each usage of a supybot.questions function just to make sure "
+"you realize what the code is actually doing. Here it is::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:107
+msgid ""
+"As you can see, this is the WorldDom plugin, which I am currently working"
+" on. The first thing our configure function checks is to see whether or "
+"not the bot owner would like the world domination commands in this plugin"
+" to be available to everyone. If they say yes, we set the "
+"globalWorldDominationRequires configuration variable to the empty string,"
+" signifying that no specific capabilities are necessary. If they say no, "
+"we prompt them for a specific capability to check for, defaulting to the "
+"\"Admin\" capability. Here they can create their own custom capability to"
+" grant to folks which this plugin will check for if they want, but "
+"luckily for the bot owner they don't really have to do this since "
+"Supybot's capabilities system can be flexed to take care of this."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:118
+msgid ""
+"Lastly, we check to find out what direction they want to attack from as "
+"they venture towards world domination. I prefer \"death from above!\", so"
+" I made that the default response, but the more boring cardinal "
+"directions are available as choices as well."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:124
+msgid "Using Config Groups"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:125
+msgid "A brief overview of how to use config groups to organize config variables"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:128
+msgid "Supybot's Hierarchical Configuration"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:130
+msgid ""
+"Supybot's configuration is inherently hierarchical, as you've probably "
+"already figured out in your use of the bot. Naturally, it makes sense to "
+"allow plugin authors to create their own hierarchies to organize their "
+"configuration variables for plugins that have a lot of plugin options. If"
+" you've taken a look at the plugins that Supybot comes with, you've "
+"probably noticed that several of them take advantage of this. In this "
+"section of this tutorial we'll go over how to make your own config "
+"hierarchy for your plugin."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:138
+msgid ""
+"Here's the brilliant part about Supybot config values which makes "
+"hierarchical structuring all that much easier - values are groups. That "
+"is, any config value you may already defined in your plugins can already "
+"be treated as a group, you simply need to know how to add items to that "
+"group."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:143
+msgid ""
+"Now, if you want to just create a group that doesn't have an inherent "
+"value you can do that as well, but you'd be surprised at how rarely you "
+"have to do that. In fact if you look at most of the plugins that Supybot "
+"comes with, you'll only find that we do this in a handful of spots yet we"
+" use the \"values as groups\" feature quite a bit."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:150
+msgid "Creating a Config Group"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:152
+msgid ""
+"As stated before, config variables themselves are groups, so you can "
+"create a group simply by creating a configuration variable::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:159
+msgid ""
+"As you probably know by now this creates the config variable "
+"supybot.plugins.WorldDom.globalWorldDominationRequires which you can "
+"access/set using the Config plugin directly on the running bot. What you "
+"may not have known prior to this tutorial is that that variable is also a"
+" group. Specifically, it is now the "
+"WorldDom.globalWorldDominationRequires group, and we can add config "
+"variables to it! Unfortunately, this particular bit of configuration "
+"doesn't really require anything underneath it, so let's create a new "
+"group which does using the \"create only a group, not a value\" command."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:168
+msgid ""
+"Let's create a configurable list of targets for different types of "
+"attacks (land, sea, air, etc.). We'll call the group attackTargets. "
+"Here's how you create just a config group alone with no value assigned::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:174
+msgid ""
+"The first argument is just the group under which you want to create your "
+"new group (and we got WorldDom from conf.registerPlugin which was in our "
+"boilerplate code from the plugin creation wizard). The second argument "
+"is, of course, the group name. So now we have WorldDom.attackTargets (or,"
+" fully, supybot.plugins.WorldDom.attackTargets)."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:181
+msgid "Adding Values to a Group"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:183
+msgid ""
+"Actually, you've already done this several times, just never to a custom "
+"group of your own. You've always added config values to your plugin's "
+"config group. With that in mind, the only slight modification needed is "
+"to simply point to the new group::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:192
+msgid ""
+"And now we have a nice list of air targets! You'll notice that the first "
+"argument is WorldDom.attackTargets, our new group. Make sure that the "
+"conf.registerGroup call is made before this one or else you'll get a "
+"nasty AttributeError."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:198
+msgid "Variations"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:201
+msgid "Channel-specific values"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:203
+msgid ""
+"A very handy feature is channel-specific variables, which allows bot "
+"administrators to set a global value (as for non-channel-specific values "
+"AND another value for specific channels)."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:207
+msgid ""
+"The syntax is pretty much like the previous one, except we use "
+"`registerChannelValue` instead of `registerGlobalValue`::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:215
+msgid "Private values"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:217
+msgid ""
+"Variable type also take an optional argument, for setting a configuration"
+" variable to private (useful for passwords, authentication tokens, api "
+"keys, …)::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:227
+msgid "Accessing the configuration registry"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:229
+msgid "Of course, you can access the variables in your plugins."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:231
+msgid ""
+"If it is a variable created by your plugin, you can do it like this (if "
+"the configuration variable's name is `air`)::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:236
+msgid ""
+"and it will return data of the right type (in this case, a list of "
+"string, as we declarated it above as a "
+"`registry.SpaceSeparatedListOfStrings`)."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:239
+msgid ""
+"If it is a channel-specific variable, you can get the value on `#channel`"
+" like this (if the variable is not defined on this channel, it defaults "
+"to the global one)::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:246
+msgid ""
+"You can also set configuration variables (either globally or for a single"
+" channel)::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:254
+msgid ""
+"You can also access other configuration variables (or your own if you "
+"want) via the ``supybot.conf`` module::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:264
+msgid "The Built-in Registry Types"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:265
+msgid ""
+"A rundown of all of the built-in registry types available for use with "
+"config variables."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:268
+msgid ""
+"The \"registry\" module defines the following config variable types for "
+"your use (I'll include the 'registry.' on each one since that's how "
+"you'll refer to it in code most often). Most of them are fairly self-"
+"explanatory, so excuse the boring descriptions:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:273
+msgid ""
+"registry.Boolean - A simple true or false value. Also accepts the "
+"following for true: \"true\", \"on\" \"enable\", \"enabled\", \"1\", and "
+"the following for false: \"false\", \"off\", \"disable\", \"disabled\", "
+"\"0\","
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:277
+msgid "registry.Integer - Accepts any integer value, positive or negative."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:279
+msgid "registry.NonNegativeInteger - Will hold any non-negative integer value."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:281
+msgid ""
+"registry.PositiveInteger - Same as above, except that it doesn't accept 0"
+" as a value."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:284
+msgid "registry.Float - Accepts any floating point number."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:286
+msgid "registry.PositiveFloat - Accepts any positive floating point number."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:288
+msgid ""
+"registry.Probability - Accepts any floating point number between 0 and 1 "
+"(inclusive, meaning 0 and 1 are also valid)."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:291
+msgid "registry.String - Accepts any string that is not a valid Python command"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:293
+msgid ""
+"registry.NormalizedString - Accepts any string (with the same exception "
+"above) but will normalize sequential whitespace to a single space.."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:296
+msgid ""
+"registry.StringSurroundedBySpaces - Accepts any string but assures that "
+"it has a space preceding and following it. Useful for configuring a "
+"string that goes in the middle of a response."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:300
+msgid ""
+"registry.StringWithSpaceOnRight - Also accepts any string but assures "
+"that it has a space after it. Useful for configuring a string that begins"
+" a response."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:304
+msgid "registry.Regexp - Accepts only valid (Perl or Python) regular expressions"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:306
+msgid ""
+"registry.SpaceSeparatedListOfStrings - Accepts a space-separated list of "
+"strings."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:309
+msgid ""
+"There are a few other built-in registry types that are available but are "
+"not usable in their current state, only by creating custom registry "
+"types, which we'll go over in the next section."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:314
+msgid "Custom Registry Types"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:315
+msgid ""
+"How to create and use your own custom registry types for use in "
+"customizing plugin config variables."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:319
+msgid "Why Create Custom Registry Types?"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:321
+msgid ""
+"For most configuration, the provided types in the registry module are "
+"sufficient. However, for some configuration variables it's not only "
+"convenient to use custom registry types, it's actually recommended. "
+"Customizing registry types allows for tighter restrictions on the values "
+"that get set and for greater error-checking than is possible with the "
+"provided types."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:328
+msgid "What Defines a Registry Type?"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:330
+msgid ""
+"First and foremost, it needs to subclass one of the existing registry "
+"types from the registry module, whether it be one of the ones in the "
+"previous section or one of the other classes in registry specifically "
+"designed to be subclassed."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:334
+msgid ""
+"Also it defines a number of other nice things: a custom error message for"
+" your type, customized value-setting (transforming the data you get into "
+"something else if wanted), etc."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:339
+msgid "Creating Your First Custom Registry Type"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:341
+msgid ""
+"As stated above, priority number one is that you subclass one of the "
+"types in the registry module. Basically, you just subclass one of those "
+"and then customize whatever you want. Then you can use it all you want in"
+" your own plugins. We'll do a quick example to demonstrate."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:346
+msgid ""
+"We already have registry.Integer and registry.PositiveInteger, but let's "
+"say we want to accept only negative integers. We can create our own "
+"NegativeInteger registry type like so::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:357
+msgid ""
+"All we need to do is define a new error message for our custom registry "
+"type (specified by the docstring for the class), and customize the "
+"setValue function. Note that all you have to do when you want to signify "
+"that you've gotten an invalid value is to call self.error(). Finally, we "
+"call the parent class's setValue to actually set the value."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:364
+msgid "What Else Can I Customize?"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:366
+msgid ""
+"Well, the error string and the setValue function are the most useful "
+"things that are available for customization, but there are other things. "
+"For examples, look at the actual built-in registry types defined in "
+"registry.py (in the src directory distributed with the bot)."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:372
+msgid "What Subclasses Can I Use?"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:374
+msgid ""
+"Chances are one of the built-in types in the previous section will be "
+"sufficient, but there are a few others of note which deserve mention:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:377
+msgid ""
+"registry.Value - Provides all the core functionality of registry types "
+"(including acting as a group for other config variables to reside "
+"underneath), but nothing more."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:381
+msgid ""
+"registry.OnlySomeStrings - Allows you to specify only a certain set of "
+"strings as valid values. Simply override validStrings in the inheriting "
+"class and you're ready to go."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:385
+msgid ""
+"registry.SeparatedListOf - The generic class which is the parent class to"
+" registry.SpaceSeparatedListOfStrings. Allows you to customize four "
+"things: the type of sequence it is (list, set, tuple, etc.), what each "
+"item must be (String, Boolean, etc.), what separates each item in the "
+"sequence (using custom splitter/joiner functions), and whether or not the"
+" sequence is to be sorted.  Look at the definitions of "
+"registry.SpaceSeparatedListOfStrings and "
+"registry.CommaSeparatedListOfStrings at the bottom of registry.py for "
+"more information. Also, there will be an example using this in the "
+"section below."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:397
+msgid "Using My Custom Registry Type"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:399
+msgid ""
+"Using your new registry type is relatively straightforward. Instead of "
+"using whatever registry built-in you might have used before, now use your"
+" own custom class. Let's say we define a registry type to handle a comma-"
+"separated list of probabilities::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:410
+msgid ""
+"Now, to use that type we simply have to specify it whenever we create a "
+"config variable using it::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:417
+msgid ""
+"Note that we initialize it just the same as we do any other registry "
+"type, with two arguments: the default value, and then the description of "
+"the config variable."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:424
+msgid "Configuration hooks"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:427
+msgid ""
+"Until stock Supybot or Gribble merge this feature, this section only "
+"applies to Limnoria."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:430
+msgid ""
+"It is possible to get a function called when a configuration variable is "
+"changed. While this is usually not useful (you get the value whenever you"
+" need it), some plugins do use it, for instance for caching results or "
+"for pre-fetching data."
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:435
+msgid ""
+"Let's say you want to write a plugin that prints `nick changed` in the "
+"logs when `supybot.nick` is edited. You can do it like this::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:449
+msgid ""
+"As not all Supybot versions support it (yet), it can be a good idea to "
+"show a warning instead of crashing on those versions::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_config.rst:469
+msgid ""
+"For the moment, the `name` parameter is never given when the callback is "
+"called. However, in the future, it will be set to the name of the "
+"variable that has been changed (useful if you want to use the same "
+"callback for multiple variable), so it is better to allow this parameter."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:3
+msgid "Advanced Plugin Testing"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:4
+msgid "The complete guide to writing tests for your plugins."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:7
+msgid "Why Write Tests?"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:8
+msgid "Why should I write tests for my plugin? Here's why."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:10
+msgid ""
+"For those of you asking \"Why should I write tests for my plugin? I tried"
+" it out, and it works!\", read on. For those of you who already realize "
+"that Testing is Good (TM), skip to the next section."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:14
+msgid "Here are a few quick reasons why to test your Supybot plugins."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:16
+msgid ""
+"When/if we rewrite or change certain features in Supybot, tests make sure"
+" your plugin will work with these changes. It's much easier to run "
+"supybot-test MyPlugin after upgrading the code and before even reloading "
+"the bot with the new code than it is to load the bot with new code and "
+"then load the plugin only to realize certain things don't work. You may "
+"even ultimately decide you want to stick with an older version for a "
+"while as you patch your custom plugin. This way you don't have to rush a "
+"patch while restless users complain since you're now using a newer "
+"version that doesn't have the plugin they really like."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:26
+msgid ""
+"Running the automated tests takes a few seconds, testing plugins in IRC "
+"on a live bot generally takes quite a bit longer. We make it so that "
+"writing tests generally doesn't take much time, so a small initial "
+"investment adds up to lots of long-term gains."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:31
+msgid ""
+"If you want your plugin to be included in any of our releases (the core "
+"Supybot if you think it's worthy, or our supybot-plugins package), it has"
+" to have tests. Period."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:35
+msgid "For a bigger list of why to write unit tests, check out this article:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:37
+msgid "http://www.onjava.com/pub/a/onjava/2003/04/02/javaxpckbk.html"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:39
+msgid ""
+"and also check out what the Extreme Programming folks have to say about "
+"unit tests:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:42
+msgid "http://www.extremeprogramming.org/rules/unittests.html"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:45
+msgid "Plugin Tests"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:46
+msgid "How to write tests for commands in your plugins."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:49
+#: ../../develop/advanced_plugin_testing.rst:239 ../../develop/httpserver.rst:8
+#: ../../develop/plugin_tutorial.rst:6 ../../develop/using_wrap.rst:8
+msgid "Introduction"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:51
+msgid ""
+"This tutorial assumes you've read through the plugin author tutorial, and"
+" that you used supybot-plugin-create to create your plugin (as everyone "
+"should). So, you should already have all the necessary imports and all "
+"that boilerplate stuff in test.py already, and you have already seen what"
+" a basic plugin test looks like from the plugin author tutorial. Now "
+"we'll go into more depth about what plugin tests are available to Supybot"
+" plugin authors."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:59
+msgid "Plugin Test Case Classes"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:61
+msgid ""
+"Supybot comes with two plugin test case classes, PluginTestCase and "
+"ChannelPluginTestCase. The former is used when it doesn't matter whether "
+"or not the commands are issued in a channel, and the latter is used for "
+"when it does. For the most part their API is the same, so unless there's "
+"a distinction between the two we'll treat them as one and the same when "
+"discussing their functionality."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:69
+msgid "The Most Basic Plugin Test Case"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:71
+msgid "At the most basic level, a plugin test case requires three things:"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:73
+msgid ""
+"the class declaration (subclassing PluginTestCase or "
+"ChannelPluginTestCase)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:75
+msgid ""
+"a list of plugins that need to be loaded for these tests (does not "
+"include Owner, Misc, or Config, those are always automatically loaded) - "
+"often this is just the name of the plugin that you are writing tests for"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:78
+msgid "some test methods"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:80
+msgid ""
+"Here's what the most basic plugin test case class looks like (for a "
+"plugin named MyPlugin)::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:89
+msgid ""
+"Your plugin test case should be named TestCase as you see above, though "
+"it doesn't necessarily have to be named that way (supybot-plugin-create "
+"puts that in place for you anyway). As you can see we elected to subclass"
+" PluginTestCase because this hypothetical plugin apparently doesn't do "
+"anything channel-specific."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:95
+msgid ""
+"As you probably noticed, the plugins attribute of the class is where the "
+"list of necessary plugins goes, and in this case just contains the plugin"
+" that we are testing. This will be the case for probably the majority of "
+"plugins. A lot of the time test writers will use a bot function that "
+"performs some function that they don't want to write code for and they "
+"will just use command nesting to feed the bot what they need by using "
+"that plugin's functionality. If you choose to do this, only do so with "
+"core bot plugins as this makes distribution of your plugin simpler. After"
+" all, we want people to be able to run your plugin tests without having "
+"to have all of your plugins!"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:105
+msgid ""
+"One last thing to note before moving along is that each of the test "
+"methods should describe what they are testing. If you want to test that "
+"your plugin only responds to registered users, don't be afraid to name "
+"your test method testOnlyRespondingToRegisteredUsers or "
+"testNotRespondingToUnregisteredUsers. You may have noticed some rather "
+"long and seemingly unwieldy test method names in our code, but that's "
+"okay because they help us know exactly what's failing when we run our "
+"tests. With an ambiguously named test method we may have to crack open "
+"test.py after running the tests just to see what it is that failed. For "
+"this reason you should also test only one thing per test method. Don't "
+"write a test method named testFoobarAndBaz. Just write two test methods, "
+"testFoobar and testBaz. Also, it is important to note that test methods "
+"must begin with test and that any method within the class that does begin"
+" with test will be run as a test by the supybot-test program. If you want"
+" to write utility functions in your test class that's fine, but don't "
+"name them something that begins with test or they will be executed as "
+"tests."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:122
+msgid "Including Extra Setup"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:124
+msgid ""
+"Some tests you write may require a little bit of setup. For the most part"
+" it's okay just to include that in the individual test method itself, but"
+" if you're duplicating a lot of setup code across all or most of your "
+"test methods it's best to use the setUp method to perform whatever needs "
+"to be done prior to each test method."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:130
+msgid ""
+"The setUp method is inherited from the whichever plugin test case class "
+"you chose for your tests, and you can add whatever functionality you want"
+" to it. Note the important distinction, however: you should be adding to "
+"it and not overriding it. Just define setUp in your own plugin test case "
+"class and it will be run before all the test methods are invoked."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:136
+msgid ""
+"Let's do a quick example of one. Let's write a setUp method which "
+"registers a test user for our test bot::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:146
+msgid ""
+"Now notice how the first line calls the parent class's setUp method "
+"first? This must be done first. Otherwise several problems are likely to "
+"arise. For one, you wouldn't have an irc object at self.irc that we use "
+"later on nor would self.nick be set."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:151
+msgid ""
+"As for the rest of the method, you'll notice a few things that are "
+"available to the plugin test author. self.prefix refers to the hostmask "
+"of the hypothetical test user which will be \"talking\" to the bot, "
+"issuing commands. We set it to some generically fake hostmask, and then "
+"we use feedMsg to send a private message (using the bot's nick, "
+"accessible via self.nick) to the bot registering the username \"tester\" "
+"with the password \"moo\". We have to do it this way (rather than what "
+"you'll find out is the standard way of issuing commands to the bot in "
+"test cases a little later) because registration must be done in private. "
+"And lastly, since feedMsg doesn't dequeue any messages from the bot after"
+" being fed a message, we perform a getMsg to get the response. You're not"
+" expected to know all this yet, but do take note of it since using these "
+"methods in test-writing is not uncommon. These utility methods as well as"
+" all of the available assertions are covered in the next section."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:165
+msgid ""
+"So, now in any of the test methods we write, we'll be able to count on "
+"the fact that there will be a registered user \"tester\" with a password "
+"of \"moo\", and since we changed our prefix by altering self.prefix and "
+"registered after doing so, we are now identified as this user for all "
+"messages we send unless we specify that they are coming from some other "
+"prefix."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:172
+msgid "The Opposite of Setting-up: Tearing Down"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:174
+msgid ""
+"If you did some things in your setUp that you want to clean up after, "
+"then this code belongs in the tearDown method of your test case class. "
+"It's essentially the same as setUp except that you probably want to wait "
+"to invoke the parent class's tearDown until after you've done all of your"
+" tearing down. But do note that you do still have to invoke the parent "
+"class's tearDown method if you decide to add in your own tear-down stuff."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:182
+msgid "Setting Config Variables for Testing"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:184
+msgid ""
+"Before we delve into all of the fun assertions we can use in our test "
+"methods it's worth noting that each plugin test case can set custom "
+"values for any Supybot config variable they want rather easily. Much like"
+" how we can simply list the plugins we want loaded for our tests in the "
+"plugins attribute of our test case class, we can set config variables by "
+"creating a mapping of variables to values with the config attribute."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:191
+msgid ""
+"So if, for example, we wanted to disable nested commands within our "
+"plugin testing for some reason, we could just do this::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:200
+msgid ""
+"And now you can be assured that supybot.commands.nested is going to be "
+"off for all of your test methods in this test case class."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:204
+msgid "Temporarily setting a configuration variable"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:206
+msgid ""
+"Sometimes we want to change a configuration variable only in a test (or "
+"in a part of a test), and keep the original value for other tests. The "
+"historical way to do it is::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:221
+msgid "But there is a more compact syntax, using context managers::"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:231
+msgid ""
+"Until stock Supybot or Gribble merge the second syntax, only Limnoria "
+"will support it."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:235
+msgid "Plugin Test Methods"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:236
+msgid "The full list of test methods and how to use them."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:241
+msgid ""
+"You know how to make plugin test case classes and you know how to do just"
+" about everything with them except to actually test stuff. Well, listed "
+"below are all of the assertions used in tests. If you're unfamiliar with "
+"what an assertion is in code testing, it is basically a requirement of "
+"something that must be true in order for that test to pass. It's a "
+"necessary condition. If any assertion within a test method fails the "
+"entire test method fails and it goes on to the next one."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:250
+msgid "Assertions"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:252
+msgid ""
+"All of these are methods of the plugin test classes themselves and hence "
+"are accessed by using self.assertWhatever in your test methods. These are"
+" sorted in order of relative usefulness."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:260
+msgid "assertResponse(query, expectedResponse)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:257
+msgid ""
+"Feeds query to the bot as a message and checks to make sure the response "
+"is expectedResponse. The test fails if they do not match (note that "
+"prefixed nicks in the response do not need to be included in the "
+"expectedResponse)."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:264
+msgid "assertError(query)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:263
+msgid ""
+"Feeds query to the bot and expects an error in return. Fails if the bot "
+"doesn't return an error."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:269
+msgid "assertNotError(query)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:267
+msgid ""
+"The opposite of assertError. It doesn't matter what the response to query"
+" is, as long as it isn't an error. If it is not an error, this test "
+"passes, otherwise it fails."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:275
+msgid "assertRegexp(query, regexp, flags=re.I)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:272
+msgid ""
+"Feeds query to the bot and expects something matching the regexp (no m// "
+"required) in regexp with the supplied flags. Fails if the regexp does not"
+" match the bot's response."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:280
+msgid "assertNotRegexp(query, regexp, flags=re.I)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:278
+msgid ""
+"The opposite of assertRegexp. Fails if the bot's output matches regexp "
+"with the supplied flags."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:284
+msgid "assertHelp(query)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:283
+msgid ""
+"Expects query to return the help for that command. Fails if the command "
+"help is not triggered."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:289
+msgid "assertAction(query, expectedResponse=None)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:287
+msgid ""
+"Feeds query to the bot and expects an action in response, specifically "
+"expectedResponse if it is supplied. Otherwise, the test passes for any "
+"action response."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:294
+msgid "assertActionRegexp(query, regexp, flags=re.I)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:292
+msgid ""
+"Basically like assertRegexp but carries the extra requirement that the "
+"response must be an action or the test will fail."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:297
+msgid "Utilities"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:303
+msgid "feedMsg(query, to=None, frm=None)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:300
+msgid ""
+"Simply feeds query to whoever is specified in to or to the bot itself if "
+"no one is specified. Can also optionally specify the hostmask of the "
+"sender with the frm keyword. Does not actually perform any assertions."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:306
+msgid "getMsg(query)"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:306
+msgid "Feeds query to the bot and gets the response."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:309
+msgid "Other Tests"
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:310
+msgid ""
+"If you had to write helper code for a plugin and want to test it, here's "
+"how."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:313
+msgid ""
+"Previously we've only discussed how to test stuff in the plugin that is "
+"intended for IRC. Well, we realize that some Supybot plugins will require"
+" utility code that doesn't necessarily require all of the overhead of "
+"setting up IRC stuff, and so we provide a more lightweight test case "
+"class, SupyTestCase, which is a very very light wrapper around "
+"unittest.TestCase (from the standard unittest module) that basically just"
+" provides a little extra logging. This test case class is what you should"
+" use for writing those test cases which test things that are independent "
+"of IRC."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:322
+msgid ""
+"For example, in the MoobotFactoids plugin there is a large chunk of "
+"utility code dedicating to parsing out random choices within a factoid "
+"using a class called OptionList. So, we wrote the OptionListTestCase as a"
+" SupyTestCase for the MoobotFactoids plugin. The setup for test methods "
+"is basically the same as before, only you don't have to define plugins "
+"since this is independent of IRC."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:329
+msgid ""
+"You still have the choice of using setUp and tearDown if you wish, since "
+"those are inherited from unittest.TestCase. But, the same rules about "
+"calling the setUp or tearDown method from the parent class still apply."
+msgstr ""
+
+#: ../../develop/advanced_plugin_testing.rst:333
+msgid ""
+"With all this in hand, now you can write great tests for your Supybot "
+"plugins!"
+msgstr ""
+
+#: ../../develop/callbacks.rst:5
+msgid "supybot.callbacks"
+msgstr ""
+
+#: ../../develop/callbacks.rst:10
+msgid "Plugin"
+msgstr ""
+
+#: of supybot.callbacks.Plugin:1
+msgid ""
+"Bases: :class:`supybot.callbacks.PluginMixin`, "
+":class:`supybot.callbacks.Commands`"
+msgstr ""
+
+#: of supybot.callbacks.Plugin.callPrecedence:1
+#: supybot.irclib.IrcCallback.callPrecedence:1
+msgid ""
+"Returns a pair of (callbacks to call before me, callbacks to call after "
+"me)"
+msgstr ""
+
+#: of supybot.callbacks.Plugin.die:1 supybot.irclib.IrcCallback.die:1
+msgid "Makes the callback die.  Called when the parent Irc object dies."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.dispatchCommand:1
+#: supybot.irclib.Irc.dispatchCommand:1
+#: supybot.irclib.IrcState.dispatchCommand:1
+#: supybot.irclib.IrcCommandDispatcher.dispatchCommand:1
+msgid "Given a string 'command', dispatches to doCommand."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.getCommandMethod:1
+#: supybot.callbacks.Commands.getCommandMethod:1
+msgid "Gets the given command from this plugin."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.inFilter:1 supybot.irclib.IrcCallback.inFilter:1
+msgid "Used for filtering/modifying messages as they're entering."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.inFilter:3 supybot.irclib.IrcCallback.inFilter:3
+msgid ""
+"ircmsgs.IrcMsg objects are immutable, so this method is expected to "
+"return another ircmsgs.IrcMsg object.  Obviously the same IrcMsg can be "
+"returned."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.isCommand:1
+#: supybot.callbacks.Commands.isCommand:1
+msgid "Convenience, backwards-compatibility, semi-deprecated."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.isCommandMethod:1
+#: supybot.callbacks.Commands.isCommandMethod:1
+msgid "Returns whether a given method name is a command in this plugin."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.outFilter:1
+#: supybot.irclib.IrcCallback.outFilter:1
+msgid "Used for filtering/modifying messages as they're leaving."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.outFilter:3
+#: supybot.irclib.IrcCallback.outFilter:3
+msgid "As with inFilter, an IrcMsg is returned."
+msgstr ""
+
+#: of supybot.callbacks.Plugin.reset:1 supybot.irclib.IrcCallback.reset:1
+msgid "Resets the callback.  Called when reconnecting to the server."
+msgstr ""
+
+#: ../../develop/callbacks.rst:19
+msgid "PluginRegexp"
+msgstr ""
+
+#: of supybot.callbacks.PluginRegexp:1
+msgid "Bases: :class:`supybot.callbacks.Plugin`"
+msgstr ""
+
+#: of supybot.callbacks.PluginRegexp:1
+msgid ""
+"Same as Plugin, except allows the user to also include regexp-based "
+"callbacks.  All regexp-based callbacks must be specified in the set (or "
+"list) attribute \"regexps\", \"addressedRegexps\", or "
+"\"unaddressedRegexps\" depending on whether they should always be "
+"triggered, triggered only when the bot is addressed, or triggered only "
+"when the bot isn't addressed."
+msgstr ""
+
+#: of supybot.callbacks.PluginRegexp.addressedRegexps:1
+msgid ""
+"'addressedRegexps' methods are called only when the message is addressed,"
+" and then, only with the payload (i.e., what is returned from the "
+"'addressed' function."
+msgstr ""
+
+#: of supybot.callbacks.PluginRegexp.regexps:1
+msgid "'regexps' methods are called whether the message is addressed or not."
+msgstr ""
+
+#: of supybot.callbacks.PluginRegexp.unaddressedRegexps:1
+msgid ""
+"'unaddressedRegexps' methods are called only when the message is *not* "
+"addressed."
+msgstr ""
+
+#: ../../develop/callbacks.rst:28
+msgid "tokenize"
+msgstr ""
+
+#: of supybot.callbacks.tokenize:1
+msgid "A utility function to create a Tokenizer and tokenize a string."
+msgstr ""
+
+#: ../../develop/callbacks.rst:34 ../../develop/irclib.rst:60
+msgid "Other classes"
+msgstr ""
+
+#: of supybot.callbacks:1
+msgid "This module contains the basic callbacks for handling PRIVMSGs."
+msgstr ""
+
+#: of supybot.callbacks.ArgumentError:1 supybot.callbacks.SilentError:1
+msgid "Bases: :class:`supybot.callbacks.Error`"
+msgstr ""
+
+#: of supybot.callbacks.ArgumentError:1
+msgid "The bot replies with a help message when this is raised."
+msgstr ""
+
+#: of supybot.callbacks.BasePlugin:1 supybot.callbacks.DisabledCommands:1
+#: supybot.callbacks.RichReplyMethods:1 supybot.callbacks.Tokenizer:1
+#: supybot.commands.context:1 supybot.commands.Spec:1
+#: supybot.irclib.IrcCommandDispatcher:1 supybot.irclib.IrcMsgQueue:1
+#: supybot.ircmsgs.IrcMsg:1
+msgid "Bases: :class:`object`"
+msgstr ""
+
+#: of supybot.callbacks.CanonicalNameDict:1
+msgid "Bases: :class:`supybot.utils.gen.InsensitivePreservingDict`"
+msgstr ""
+
+#: of supybot.callbacks.CanonicalNameSet:1
+msgid "Bases: :class:`supybot.utils.gen.NormalizingSet`"
+msgstr ""
+
+#: of supybot.callbacks.CanonicalString:1
+msgid "Bases: :class:`supybot.registry.NormalizedString`"
+msgstr ""
+
+#: of supybot.callbacks.CommandProcess:1
+msgid "Bases: :class:`supybot.world.SupyProcess`"
+msgstr ""
+
+#: of supybot.callbacks.CommandProcess:1
+msgid ""
+"Just does some extra logging and error-recovery for commands that need to"
+" run in processes."
+msgstr ""
+
+#: of supybot.callbacks.CommandThread:1
+msgid "Bases: :class:`supybot.world.SupyThread`"
+msgstr ""
+
+#: of supybot.callbacks.CommandThread:1
+msgid ""
+"Just does some extra logging and error-recovery for commands that need to"
+" run in threads."
+msgstr ""
+
+#: of supybot.callbacks.Commands:1
+msgid ""
+"Bases: :class:`supybot.callbacks.BasePlugin`, "
+":class:`supybot.utils.python.SynchronizedAndFirewalled`"
+msgstr ""
+
+#: of supybot.callbacks.Disabled:1
+msgid "Bases: :class:`supybot.registry.SpaceSeparatedListOf`"
+msgstr ""
+
+#: of supybot.callbacks.Error:1
+msgid "Bases: :class:`Exception`"
+msgstr ""
+
+#: of supybot.callbacks.Error:1
+msgid "Generic class for errors in Privmsg callbacks."
+msgstr ""
+
+#: of supybot.callbacks.MetaSynchronizedAndFirewalled:1
+msgid ""
+"Bases: :class:`supybot.log.MetaFirewall`, "
+":class:`supybot.utils.python.MetaSynchronized`"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy:1
+msgid "Bases: :class:`supybot.callbacks.ReplyIrcProxy`"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy:1
+msgid "A proxy object to allow proper nesting of commands (even threaded ones)."
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.findCallbacksForArgs:1
+msgid ""
+"Returns a two-tuple of (command, plugins) that has the command (a list of"
+" strings) and the plugins for which it was a command."
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:1
+msgid "Keyword arguments:"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:3
+msgid "`noLengthCheck=False`:   True if the length shouldn't be checked"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:4
+msgid "(used for 'more' handling)"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:5
+msgid "`prefixNick=True`:       False if the nick shouldn't be prefixed to the"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:6
+msgid "reply."
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:7
+msgid "`action=False`:          True if the reply should be an action."
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:8
+msgid "`private=False`:         True if the reply should be in private."
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:9
+msgid "`notice=False`:          True if the reply should be noticed when the"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:10
+msgid "bot is configured to do so."
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:11
+msgid "`to=<nick|channel>`:     The nick or channel the reply should go to."
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:12
+msgid "Defaults to msg.args[0] (or msg.nick if private)"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:14
+msgid "`sendImmediately=False`: True if the reply should use sendMsg() which"
+msgstr ""
+
+#: of supybot.callbacks.NestedCommandsIrcProxy.reply:14
+msgid ""
+"bypasses conf.supybot.protocols.irc.throttleTime and gets sent before any"
+" queued messages"
+msgstr ""
+
+#: of supybot.callbacks.PluginMixin:1
+msgid ""
+"Bases: :class:`supybot.callbacks.BasePlugin`, "
+":class:`supybot.irclib.IrcCallback`"
+msgstr ""
+
+#: of supybot.callbacks.ReplyIrcProxy:1
+msgid "Bases: :class:`supybot.callbacks.RichReplyMethods`"
+msgstr ""
+
+#: of supybot.callbacks.ReplyIrcProxy:1
+msgid ""
+"This class is a thin wrapper around an irclib.Irc object that gives it "
+"the reply() and error() methods (as well as everything in "
+"RichReplyMethods, based on those two)."
+msgstr ""
+
+#: of supybot.callbacks.ReplyIrcProxy.getRealIrc:1
+msgid "Returns the real irclib.Irc object underlying this proxy chain."
+msgstr ""
+
+#: of supybot.callbacks.RichReplyMethods:1
+msgid ""
+"This is a mixin so these replies need only be defined once.  It operates "
+"under several assumptions, including the fact that 'self' is an Irc "
+"object of some sort and there is a self.msg that is an IrcMsg."
+msgstr ""
+
+#: of supybot.callbacks.SilentError:1
+msgid "An error that we should not notify the user."
+msgstr ""
+
+#: of supybot.callbacks.addressed:1
+msgid ""
+"If msg is addressed to 'name', returns the portion after the address. "
+"Otherwise returns the empty string."
+msgstr ""
+
+#: of supybot.callbacks.canonicalName:1
+msgid "Turn a command into its canonical form."
+msgstr ""
+
+#: of supybot.callbacks.canonicalName:3
+msgid ""
+"Currently, this makes everything lowercase and removes all dashes and "
+"underscores."
+msgstr ""
+
+#: of supybot.callbacks.error:1
+msgid "Makes an error reply to msg with the appropriate error payload."
+msgstr ""
+
+#: ../../develop/capabilities.rst:3
+msgid "Capabilities"
+msgstr ""
+
+#: ../../develop/capabilities.rst:6
+msgid ""
+"I wrote this section with the little knowledge I have of the capabilities"
+" system; I work mainly by testing different possibilities until I get "
+"what I want. As for all the documentation, feel free to contact me to "
+"correct/enhance it."
+msgstr ""
+
+#: ../../develop/capabilities.rst:12
+msgid ""
+"First, you should know how capabilities work :ref:`on the user side "
+"<capabilities>`."
+msgstr ""
+
+#: ../../develop/capabilities.rst:16
+msgid "Checking for a capability given its name"
+msgstr ""
+
+#: ../../develop/capabilities.rst:18
+msgid "You only have to use ``ircdb.checkCapability(prefix, 'capability')``."
+msgstr ""
+
+#: ../../develop/capabilities.rst:20
+msgid ""
+"You can also override some behavior of the capability system. Here is the"
+" complete documentation of ``ircdb.checkCapabiltiy``:"
+msgstr ""
+
+#: of supybot.ircdb.checkCapability:1
+msgid "Checks that the user specified by name/hostmask has the capability given."
+msgstr ""
+
+#: of supybot.ircdb.checkCapability:3
+msgid ""
+"``users`` and ``channels`` default to ``ircdb.users`` and "
+"``ircdb.channels``."
+msgstr ""
+
+#: of supybot.ircdb.checkCapability:6
+msgid ""
+"``ignoreOwner``, ``ignoreChannelOp``, and ``ignoreDefaultAllow`` are used"
+" to override default behavior of the capability system in special cases "
+"(actually, in the AutoMode plugin):"
+msgstr ""
+
+#: of supybot.ircdb.checkCapability:10
+msgid "``ignoreOwner`` disables the behavior \"owners have all capabilites\""
+msgstr ""
+
+#: of supybot.ircdb.checkCapability:11
+msgid ""
+"``ignoreChannelOp`` disables the behavior \"channel ops have all channel "
+"capabilities\""
+msgstr ""
+
+#: of supybot.ircdb.checkCapability:13
+msgid ""
+"``ignoreDefaultAllow`` disables the behavior \"if a user does not have a "
+"capability or the associated anticapability, then they have the "
+"capability\""
+msgstr ""
+
+#: ../../develop/capabilities.rst:27
+msgid "Manipulating capability names"
+msgstr ""
+
+#: ../../develop/capabilities.rst:29
+msgid ""
+"Althrough you can manipulate capability names with string operations, "
+"Supybot provides a few methods to do that “in the abstract” (could be "
+"useful if we change the capability syntax one day…):"
+msgstr ""
+
+#: of supybot.ircdb.makeChannelCapability:1
+msgid "Makes a channel capability given a channel and a capability."
+msgstr ""
+
+#: of supybot.ircdb.isChannelCapability:1
+msgid "Returns True if capability is a channel capability; False otherwise."
+msgstr ""
+
+#: of supybot.ircdb.makeAntiCapability:1
+msgid "Returns the anticapability of a given capability."
+msgstr ""
+
+#: of supybot.ircdb.unAntiCapability:1
+msgid "Takes an anticapability and returns the non-anti form."
+msgstr ""
+
+#: of supybot.ircdb.invertCapability:1
+msgid "Make a capability into an anticapability and vice versa."
+msgstr ""
+
+#: of supybot.ircdb.isAntiCapability:1
+msgid "Returns True if capability is an anticapability; False otherwise."
+msgstr ""
+
+#: ../../develop/commands.rst:5
+msgid "supybot.commands"
+msgstr ""
+
+#: of supybot.commands:1
+msgid "Includes wrappers for commands."
+msgstr ""
+
+#: of supybot.commands.any:1 supybot.commands.additional:1
+#: supybot.commands.rest:1 supybot.commands.getopts:1 supybot.commands.first:1
+#: supybot.commands.reverse:1 supybot.commands.commalist:1
+msgid "Bases: :class:`supybot.commands.context`"
+msgstr ""
+
+#: of supybot.commands.many:1
+msgid "Bases: :class:`supybot.commands.any`"
+msgstr ""
+
+#: of supybot.commands.optional:1
+msgid "Bases: :class:`supybot.commands.additional`"
+msgstr ""
+
+#: of supybot.commands.getopts:1
+msgid ""
+"The empty string indicates that no argument is taken; None indicates that"
+" there is no converter for the argument."
+msgstr ""
+
+#: of supybot.commands.urlSnarfer:1
+msgid "Protects the snarfer from loops (with other bots) and whatnot."
+msgstr ""
+
+#: of supybot.commands.thread:1
+msgid "Makes sure a command spawns a thread when called."
+msgstr ""
+
+#: of supybot.commands.wrap:1
+msgid "Useful wrapper for plugin commands."
+msgstr ""
+
+#: of supybot.commands.wrap:3
+msgid ""
+"Valid converters are: admin, anything, banmask, boolean, "
+"callerInGivenChannel, capability, channel, channelDb, channelOrGlobal, "
+"checkCapability, checkCapabilityButIgnoreOwner, checkChannelCapability, "
+"color, commandName, email, expiry, filename, float, glob, halfop, "
+"haveHalfop, haveHalfop+, haveOp, haveOp+, haveVoice, haveVoice+, "
+"hostmask, httpUrl, id, inChannel, index, int, ip, isGranted, letter, "
+"literal, long, lowered, matches, networkIrc, nick, nickInChannel, nonInt,"
+" nonNegativeInt, now, onlyInChannel, op, otherUser, owner, plugin, "
+"positiveInt, private, public, regexpMatcher, regexpMatcherMany, "
+"regexpReplacer, seenNick, something, somethingWithoutSpaces, text, to, "
+"url, user, validChannel, voice."
+msgstr ""
+
+#: of supybot.commands.wrap:5
+msgid "A command, taking (self, irc, msg, args, ...) as arguments"
+msgstr ""
+
+#: of supybot.commands.wrap:6
+msgid "A list of converters and contexts"
+msgstr ""
+
+#: of supybot.commands.process:1
+msgid "Runs a function <f> in a subprocess."
+msgstr ""
+
+#: of supybot.commands.process:3
+msgid ""
+"Several extra keyword arguments can be supplied.  <pn>, the pluginname, "
+"and <cn>, the command name, are strings used to create the process name, "
+"for identification purposes. <timeout>, if supplied, limits the length of"
+" execution of target  function to <timeout> seconds."
+msgstr ""
+
+#: of supybot.commands.regexp_wrapper:1
+msgid "A convenient wrapper to stuff regexp search queries through a subprocess."
+msgstr ""
+
+#: of supybot.commands.regexp_wrapper:3
+msgid ""
+"This is used because specially-crafted regexps can use exponential time "
+"and hang the bot."
+msgstr ""
+
+#: ../../develop/events.rst:3
+msgid "Special methods and catching events"
+msgstr ""
+
+#: ../../develop/events.rst:5
+msgid ""
+"This page is a non-exhaustive list of special plugin method names and "
+"events catchable via those methods (other events include "
+":ref:`configuration hooks <configuration-hooks>` and :ref:`HTTP server "
+"callbacks <http_plugins>`)"
+msgstr ""
+
+#: ../../develop/events.rst:10
+msgid ""
+"All methods here are defined in ``supybot-callbacks-plugin``. You may "
+"override them if you need, but make sure you call the parent's one unless"
+" you actually don't want to do it."
+msgstr ""
+
+#: ../../develop/events.rst:14
+msgid ""
+"In case multiple plugins implement the same special methods, the order "
+"they are called depends on the ``callAfter`` and ``callBefore`` (lists of"
+" plugin names) attributes of the plugins, if they are set."
+msgstr ""
+
+#: ../../develop/events.rst:19
+msgid "Loading and unloading"
+msgstr ""
+
+#: ../../develop/events.rst:21
+msgid ""
+"The ``__init__`` method gets called with an Irc object as a parameter "
+"when a plugin is loaded (or has just been reloaded). Make sure you always"
+" call the parent's ``__init__``."
+msgstr ""
+
+#: ../../develop/events.rst:25
+msgid ""
+"When a plugin is unloaded (or is to be reloaded), the ``die`` method is "
+"called (with no parameter). Also make sure you always call the parent's "
+"``die``."
+msgstr ""
+
+#: ../../develop/events.rst:30
+msgid "Commands and numerics"
+msgstr ""
+
+#: ../../develop/events.rst:32
+msgid ""
+"You can catch commands directly with “do-methods”: when the bot receives "
+"a ``PRIVMSG``, all ``doPrivmsg`` methods are called; when it gets a "
+"``437`` message, all ``do437`` methods are called, etc."
+msgstr ""
+
+#: ../../develop/events.rst:36
+msgid ""
+"Those command take two commands: an :ref:`Irc object <supybot-irclib-"
+"irc>` and a :ref:`IrcMsg object <supybot-ircmsgs>`."
+msgstr ""
+
+#: ../../develop/events.rst:39
+msgid "To get a list of all possible messages, check IRC RFCs."
+msgstr ""
+
+#: ../../develop/events.rst:42
+msgid "Filters"
+msgstr ""
+
+#: ../../develop/events.rst:44
+msgid ""
+"The ``inFilter`` and ``outFilter`` methods allow you to “intercept” "
+"messages between the bot and the network and to alter them."
+msgstr ""
+
+#: ../../develop/events.rst:47
+msgid ""
+"``inFilter`` gets messages just after they are parsed from network; and "
+"its return value is fed to the bot. ``outFilter`` does the opposite: it "
+"get any message the bot is about the send, and returns a message (which "
+"may be the same) that will be sent instead."
+msgstr ""
+
+#: ../../develop/events.rst:57
+msgid "Commands handling"
+msgstr ""
+
+#: ../../develop/events.rst:60
+msgid "Command dispatching"
+msgstr ""
+
+#: ../../develop/events.rst:63
+msgid ""
+"I wrote this subsection with the little knowledge I have of the commands "
+"handling (all I know comes from hacks I made to write the Aka plugin), so"
+" keep in mind some informations might be wrong. As for all the "
+"documentation, feel free to contact me to correct/enhance it."
+msgstr ""
+
+#: ../../develop/events.rst:70
+msgid ""
+"``isCommandMethod`` takes a command name as a string (which may contain "
+"spaces) and returns a boolean telling if the plugin provides this "
+"command."
+msgstr ""
+
+#: ../../develop/events.rst:72
+msgid ""
+"``listCommands`` returns a list of command names as strings (which may "
+"contain spaces)"
+msgstr ""
+
+#: ../../develop/events.rst:74
+msgid ""
+"``getCommand`` takes a potential command name as a list of strings, and "
+"returns a truncated list corresponding to the name of a command provided "
+"by the plugin. If no command match, it returns an empty list."
+msgstr ""
+
+#: ../../develop/events.rst:77
+msgid ""
+"``getCommandMethod`` takes a command name as a list of strings and "
+"returns the corresponding method/function."
+msgstr ""
+
+#: ../../develop/events.rst:79
+msgid ""
+"``callCommand`` gets a command name as a list of strings, an irc object, "
+"an msg object, and extra arguments (with `*args` and `**kwargs`), calls "
+"``getCommandMethod`` to get the command method, and calls it with the "
+"arguments. It also calls the functions in ``pre_command_callback``."
+msgstr ""
+
+#: ../../develop/events.rst:86
+msgid "Pre-command-call callbacks"
+msgstr ""
+
+#: ../../develop/events.rst:89
+msgid ""
+"Until stock Supybot and Gribble merge this feature, this section only "
+"applies to Limnoria"
+msgstr ""
+
+#: ../../develop/events.rst:92
+msgid ""
+"If you want a function of your plugin to be called before every command "
+"call, you can add it to the ``pre_command_callback`` attribute of your "
+"plugin (actually, it is a static class attribute, so make sure you *add* "
+"it to the list and don't touch other items of the list)."
+msgstr ""
+
+#: ../../develop/events.rst:97
+msgid ""
+"At every command call, *all* callbacks are called, and if *any* of them "
+"returns ``True``, the command is not called."
+msgstr ""
+
+#: ../../develop/events.rst:101
+msgid "Other command-related events"
+msgstr ""
+
+#: ../../develop/events.rst:103
+msgid ""
+"all ``invalidCommand`` methods get called (with an Irc object, an IrcMsg "
+"objet, and a list of token) when a user calls a command that no plugin "
+"provides."
+msgstr ""
+
+#: ../../develop/events.rst:109
+msgid "Regular expression triggered events"
+msgstr ""
+
+#: ../../develop/events.rst:111
+msgid ""
+"The :class:`supybot.callbacks.PluginRegexp` class provides some utilities"
+" for creating plugins that act on regular expression matching."
+msgstr ""
+
+#: ../../develop/httpserver.rst:5
+msgid "Using Limnoria's HTTP server in your plugins"
+msgstr ""
+
+#: ../../develop/httpserver.rst:11
+msgid ""
+"Until stock Supybot or Gribble merge the HTTP server, this documentation "
+"only applies to Limnoria."
+msgstr ""
+
+#: ../../develop/httpserver.rst:14
+msgid ""
+"Limnoria provides an HTTP server to plugins. This is not relevant for "
+"most plugins, but some of them have to start a server (either for serving"
+" a website or for being remotely called). The HTTP server provided by "
+"Limnoria aims at starting a single server for all of them, which means "
+"less used port and less resources usage."
+msgstr ""
+
+#: ../../develop/httpserver.rst:20
+msgid ""
+"Some example plugins are `Factoids`_, `WebStats`_, `GitHub`_, UfrPaste, "
+"and `WebDoc`_"
+msgstr ""
+
+#: ../../develop/httpserver.rst:30
+msgid "Using the HTTP server in a plugin"
+msgstr ""
+
+#: ../../develop/httpserver.rst:32
+msgid ""
+"Let's try to make a basic dictionary about Supybot! We'll call it "
+"Supystory."
+msgstr ""
+
+#: ../../develop/httpserver.rst:34
+msgid ""
+"We want to get plain text information about Supybot, Gribble, and "
+"Limnoria when accessing http://localhost:8080/supystory/supybot, "
+"http://localhost:8080/supystory/gribble, and "
+"http://localhost:8080/supystory/limnoria, an index page, and an HTML "
+"error page if the page is not found"
+msgstr ""
+
+#: ../../develop/httpserver.rst:41
+msgid "Importing the HTTP server"
+msgstr ""
+
+#: ../../develop/httpserver.rst:43
+msgid "On only have to add this line::"
+msgstr ""
+
+#: ../../develop/httpserver.rst:48
+msgid "Creating a callback"
+msgstr ""
+
+#: ../../develop/httpserver.rst:50
+msgid ""
+"If you are familiar with `BaseHTTPServer`, you will recognize the design,"
+" except you don't need to subclass BaseHTTPServer, because I already did "
+"it in *supybot.httpserver*."
+msgstr ""
+
+#: ../../develop/httpserver.rst:54
+msgid ""
+"Now, you have to subclass `httpserver.SupyHTTPServerCallback`. A callback"
+" is pretty much like an handler, but this is not an handler, because a "
+"callback is called by the handler."
+msgstr ""
+
+#: ../../develop/httpserver.rst:58
+msgid "Here is how to do it::"
+msgstr ""
+
+#: ../../develop/httpserver.rst:63
+msgid ""
+"Now, you have to register the callback, because the HTTP server does not "
+"know what subdirectory it should assign to your callback. Do it with "
+"adding a *__init__* to your plugin (read Supybot's docs about it, for "
+"more informations)::"
+msgstr ""
+
+#: ../../develop/httpserver.rst:78
+msgid ""
+"By the way, don't forget to unhook your callback when unloading your "
+"plugin, unless what it will be impossible to reload the plugin! Append "
+"this code to the following::"
+msgstr ""
+
+#: ../../develop/httpserver.rst:89
+msgid ""
+"Now, you can load your plugin, and you'll see on the server a beautiful "
+"link to `/supystory` called `Supystory`."
+msgstr ""
+
+#: ../../develop/httpserver.rst:93
+msgid "Overriding the default error message"
+msgstr ""
+
+#: ../../develop/httpserver.rst:95
+msgid ""
+"But our plugin does not do anything for the moment. If click the link, "
+"you'll get this message::"
+msgstr ""
+
+#: ../../develop/httpserver.rst:102
+msgid ""
+"That mean your browser sent a GET request, but you didn't teach your "
+"plugin how to handle it. First, we'll change this error message. Here is "
+"a new code for your callback::"
+msgstr ""
+
+#: ../../develop/httpserver.rst:111
+msgid ""
+"Now, you'll get your customized message. But your plugin still doesn't "
+"work. You need to implement the GET request."
+msgstr ""
+
+#: ../../develop/httpserver.rst:115
+msgid "Implementing the GET request"
+msgstr ""
+
+#: ../../develop/httpserver.rst:117
+msgid ""
+"As I said before, callbacks are pretty much like handlers. In order to "
+"handle GET requests, you have to implement a method called... `doGet` (if"
+" you used BaseHTTPServer, you will notice this is not do_GET, because "
+"doGet is more homogeneous with Supybot naming style: `doPrivmsg`, "
+"`doPing`, and so on)."
+msgstr ""
+
+#: ../../develop/httpserver.rst:122
+msgid ""
+"You will get the handler and the URI as arguments. The handler is a "
+"`BaseHTTPRequestHandler`_, and the URI is a string."
+msgstr ""
+
+#: ../../develop/httpserver.rst:127
+msgid "Here is the code of the callback... pretty much simple, as ever::"
+msgstr ""
+
+#: ../../develop/httpserver.rst:192
+msgid "Using templates"
+msgstr ""
+
+#: ../../develop/httpserver.rst:194
+msgid ""
+"You may also want to allow your plugin's users to customize the web pages"
+" without editing the source code of the plugin itself."
+msgstr ""
+
+#: ../../develop/httpserver.rst:197
+msgid ""
+"Limnoria provides a template facility, which takes a file name, returns "
+"the content of a file from the file system if it exists (the user-defined"
+" template), and a default one otherwise (the developer's default "
+"template). does not exist."
+msgstr ""
+
+#: ../../develop/httpserver.rst:202
+msgid ""
+"In our case, we will do it only for the home page and the error page "
+"(which are the only 'big' pages), like this::"
+msgstr ""
+
+#: ../../develop/httpserver.rst:275
+msgid ""
+"Then, the user can change the template by copying "
+"`data/web/supystory/index.html.example` to "
+"`data/web/supystory/index.html` and editing it. (Same for `error.html`.)"
+msgstr ""
+
+#: ../../develop/index.rst:5
+msgid "Developing plugins for Limnoria"
+msgstr ""
+
+#: ../../develop/index.rst:8
+msgid "Generic documentation"
+msgstr ""
+
+#: ../../develop/index.rst:20
+msgid "Specific documentation"
+msgstr ""
+
+#: ../../develop/index.rst:31
+msgid "Library reference"
+msgstr ""
+
+#: ../../develop/irclib.rst:5
+msgid "supybot.irclib"
+msgstr ""
+
+#: ../../develop/irclib.rst:10
+msgid "Irc"
+msgstr ""
+
+#: ../../develop/irclib.rst:12
+msgid "It is usually the `irc` object given to plugin commands."
+msgstr ""
+
+#: of supybot.irclib.Irc:1 supybot.irclib.IrcState:1
+#: supybot.irclib.IrcCallback:1
+msgid ""
+"Bases: :class:`supybot.irclib.IrcCommandDispatcher`, "
+":class:`supybot.log.Firewalled`"
+msgstr ""
+
+#: of supybot.irclib.Irc:1
+msgid "The base class for an IRC connection."
+msgstr ""
+
+#: of supybot.irclib.Irc:3
+msgid "Handles PING commands already."
+msgstr ""
+
+#: ../../develop/irclib.rst:20
+msgid "Whether or not this object represents a living IRC connection."
+msgstr ""
+
+#: ../../develop/irclib.rst:22
+msgid "bool"
+msgstr ""
+
+#: ../../develop/irclib.rst:26
+msgid "The name of the network this object is connected to."
+msgstr ""
+
+#: ../../develop/irclib.rst:28
+msgid "str"
+msgstr ""
+
+#: ../../develop/irclib.rst:32
+msgid "float"
+msgstr ""
+
+#: of supybot.irclib.Irc.addCallback:1
+msgid "Adds a callback to the callbacks list."
+msgstr ""
+
+#: of supybot.irclib.Irc.addCallback:3
+msgid "A callback object"
+msgstr ""
+
+#: of supybot.irclib.Irc.die:1
+msgid ""
+"Makes the Irc object *promise* to die -- but it won't die (of its own "
+"volition) until all its queues are clear.  Isn't that cool?"
+msgstr ""
+
+#: of supybot.irclib.Irc.do002:1
+msgid "Logs the ircd version."
+msgstr ""
+
+#: of supybot.irclib.Irc.do670:1
+msgid "STARTTLS accepted."
+msgstr ""
+
+#: of supybot.irclib.Irc.do691:1
+msgid "STARTTLS refused."
+msgstr ""
+
+#: of supybot.irclib.Irc.doError:1
+msgid "Handles ERROR messages."
+msgstr ""
+
+#: of supybot.irclib.Irc.doNick:1
+msgid "Handles NICK messages."
+msgstr ""
+
+#: of supybot.irclib.Irc.doPing:1
+msgid "Handles PING messages."
+msgstr ""
+
+#: of supybot.irclib.Irc.doPong:1
+msgid "Handles PONG messages."
+msgstr ""
+
+#: of supybot.irclib.Irc.feedMsg:1
+msgid "Called by the IrcDriver; feeds a message received."
+msgstr ""
+
+#: of supybot.irclib.Irc.getCallback:1
+msgid "Gets a given callback by name."
+msgstr ""
+
+#: of supybot.irclib.Irc.isChannel:1
+msgid ""
+"Helper function to check whether a given string is a channel on the "
+"network this Irc object is connected to."
+msgstr ""
+
+#: of supybot.irclib.Irc.monitor:1
+msgid ""
+"Increment a counter of how many callbacks monitor each target; and send a"
+" MONITOR + to the server if the target is not yet monitored."
+msgstr ""
+
+#: of supybot.irclib.Irc.queueMsg:1
+msgid "Queues a message to be sent to the server."
+msgstr ""
+
+#: of supybot.irclib.Irc.removeCallback:1
+msgid "Removes a callback from the callback list."
+msgstr ""
+
+#: of supybot.irclib.Irc.reset:1
+msgid "Resets the Irc object.  Called when the driver reconnects."
+msgstr ""
+
+#: of supybot.irclib.Irc.sendMsg:1
+msgid "Queues a message to be sent to the server *immediately*"
+msgstr ""
+
+#: of supybot.irclib.Irc.takeMsg:1
+msgid "Called by the IrcDriver; takes a message to be sent."
+msgstr ""
+
+#: of supybot.irclib.Irc.unmonitor:1
+msgid ""
+"Decrements a counter of how many callbacks monitor each target; and send "
+"a MONITOR - to the server if the counter drops to 0."
+msgstr ""
+
+#: ../../develop/irclib.rst:38
+msgid "IrcState"
+msgstr ""
+
+#: ../../develop/irclib.rst:40
+msgid ""
+"Used mainly as the `state` attribute of :py:class:`supybot.irclib.Irc` "
+"objects."
+msgstr ""
+
+#: of supybot.irclib.IrcState:1
+msgid "Maintains state of the Irc connection.  Should also become smarter."
+msgstr ""
+
+#: of supybot.irclib.IrcState.addMsg:1
+msgid "Updates the state based on the irc object and the message."
+msgstr ""
+
+#: of supybot.irclib.IrcState.do004:1
+msgid "Handles parsing the 004 reply"
+msgstr ""
+
+#: of supybot.irclib.IrcState.do004:3
+msgid "Supported user and channel modes are cached"
+msgstr ""
+
+#: of supybot.irclib.IrcState.getTopic:1
+msgid "Returns the topic for a given channel."
+msgstr ""
+
+#: of supybot.irclib.IrcState.nickToHostmask:1
+msgid "Returns the hostmask for a given nick."
+msgstr ""
+
+#: of supybot.irclib.IrcState.reset:1
+msgid "Resets the state to normal, unconnected state."
+msgstr ""
+
+#: ../../develop/irclib.rst:50
+msgid "ChannelState"
+msgstr ""
+
+#: ../../develop/irclib.rst:52
+msgid ""
+"Used mainly as the `channels['#chan']` attribute of "
+":py:class:`supybot.irclib.Irc` objects."
+msgstr ""
+
+#: of supybot.irclib.ChannelState:1
+msgid "Bases: :class:`supybot.utils.python.Object`"
+msgstr ""
+
+#: of supybot.irclib.ChannelState.addUser:1
+msgid "Adds a given user to the ChannelState.  Power prefixes are handled."
+msgstr ""
+
+#: of supybot.irclib.ChannelState.removeUser:1
+msgid "Removes a given user from the channel."
+msgstr ""
+
+#: of supybot.irclib.ChannelState.replaceUser:1
+msgid "Changes the user oldNick to newNick; used for NICK changes."
+msgstr ""
+
+#: of supybot.irclib.Batch:1
+msgid "Bases: :class:`tuple`"
+msgstr ""
+
+#: of supybot.irclib.Batch.arguments:1
+msgid "Alias for field number 1"
+msgstr ""
+
+#: of supybot.irclib.Batch.messages:1
+msgid "Alias for field number 2"
+msgstr ""
+
+#: of supybot.irclib.Batch.type:1
+msgid "Alias for field number 0"
+msgstr ""
+
+#: of supybot.irclib.IrcCallback:1
+msgid "Base class for standard callbacks."
+msgstr ""
+
+#: of supybot.irclib.IrcCallback:3
+msgid ""
+"Callbacks derived from this class should have methods of the form "
+"\"doCommand\" -- doPrivmsg, doNick, do433, etc.  These will be called on "
+"matching messages."
+msgstr ""
+
+#: of supybot.irclib.IrcCallback.name:1
+msgid "Returns the name of the callback."
+msgstr ""
+
+#: of supybot.irclib.IrcCommandDispatcher:1
+msgid "Base class for classes that must dispatch on a command."
+msgstr ""
+
+#: of supybot.irclib.IrcMsgQueue:1
+msgid "Class for a queue of IrcMsgs.  Eventually, it should be smart."
+msgstr ""
+
+#: of supybot.irclib.IrcMsgQueue:3
+msgid ""
+"Probably smarter than it is now, though it's gotten quite a bit smarter "
+"than it originally was.  A method to \"score\" methods, and a heapq to "
+"maintain a priority queue of the messages would be the ideal way to do "
+"intelligent queuing."
+msgstr ""
+
+#: of supybot.irclib.IrcMsgQueue:8
+msgid ""
+"As it stands, however, we simply keep track of 'high priority' messages, "
+"'low priority' messages, and normal messages, and just make sure to "
+"return the 'high priority' ones before the normal ones before the 'low "
+"priority' ones."
+msgstr ""
+
+#: of supybot.irclib.IrcMsgQueue.dequeue:1
+msgid "Dequeues a given message."
+msgstr ""
+
+#: of supybot.irclib.IrcMsgQueue.enqueue:1
+msgid "Enqueues a given message."
+msgstr ""
+
+#: of supybot.irclib.IrcMsgQueue.reset:1
+msgid "Clears the queue."
+msgstr ""
+
+#: ../../develop/ircmsgs.rst:5
+msgid "supybot.ircmsgs"
+msgstr ""
+
+#: of supybot.ircmsgs:1
+msgid ""
+"This module provides the basic IrcMsg object used throughout the bot to "
+"represent the actual messages.  It also provides several helper functions"
+" to construct such messages in an easier way than the constructor for the"
+" IrcMsg object (which, as you'll read later, is quite...full-featured :))"
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg:1
+msgid "Class to represent an IRC message."
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg:3
+msgid ""
+"As usual, ignore attributes that begin with an underscore.  They simply "
+"don't exist.  Instances of this class are *not* to be modified, since "
+"they are hashable.  Public attributes of this class are .prefix, "
+".command, .args, .nick, .user, and .host."
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg:8
+msgid ""
+"The constructor for this class is pretty intricate.  It's designed to "
+"take any of three major (sets of) arguments."
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg:11
+msgid ""
+"Called with no keyword arguments, it takes a single string that is a raw "
+"IRC message (such as one taken straight from the network)."
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg:14
+msgid ""
+"Called with keyword arguments, it *requires* a command parameter.  Args "
+"is optional, but with most commands will be necessary.  Prefix is "
+"obviously optional, since clients aren't allowed (well, technically, they"
+" are, but only in a completely useless way) to send prefixes to the "
+"server."
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg:19
+msgid ""
+"Since this class isn't to be modified, the constructor also accepts a "
+"'msg' keyword argument representing a message from which to take all the "
+"attributes not provided otherwise as keyword arguments.  So, for "
+"instance, if a programmer wanted to take a PRIVMSG they'd gotten and "
+"simply redirect it to a different source, they could do this:"
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg:25
+msgid "IrcMsg(prefix='', args=(newSource, otherMsg.args[1]), msg=otherMsg)"
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg.tag:1
+msgid "Affect a key:value pair to this message."
+msgstr ""
+
+#: of supybot.ircmsgs.IrcMsg.tagged:1
+msgid "Get the value affected to a tag."
+msgstr ""
+
+#: of supybot.ircmsgs.action:1
+msgid "Returns a PRIVMSG ACTION to recipient with the message msg."
+msgstr ""
+
+#: of supybot.ircmsgs.ban:1
+msgid "Returns a MODE to ban nick on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.bans:1
+msgid "Returns a MODE to ban each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.dehalfop:1
+msgid "Returns a MODE to dehalfop nick on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.dehalfops:1
+msgid "Returns a MODE to dehalfop each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.deop:1
+msgid "Returns a MODE to deop nick on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.deops:1
+msgid "Returns a MODE to deop each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.devoice:1
+msgid "Returns a MODE to devoice nick on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.devoices:1
+msgid "Returns a MODE to devoice each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.halfop:1
+msgid "Returns a MODE to halfop nick on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.halfops:1
+msgid "Returns a MODE to halfop each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.invite:1
+msgid "Returns an INVITE for nick."
+msgstr ""
+
+#: of supybot.ircmsgs.isAction:1
+msgid "A predicate returning true if the PRIVMSG in question is an ACTION"
+msgstr ""
+
+#: of supybot.ircmsgs.isCtcp:1
+msgid "Returns whether or not msg is a CTCP message."
+msgstr ""
+
+#: of supybot.ircmsgs.join:1
+msgid "Returns a JOIN to a channel"
+msgstr ""
+
+#: of supybot.ircmsgs.joins:1
+msgid "Returns a JOIN to each of channels."
+msgstr ""
+
+#: of supybot.ircmsgs.kick:1
+msgid "Returns a KICK to kick nick from channel with the message msg."
+msgstr ""
+
+#: of supybot.ircmsgs.kicks:1
+msgid "Returns a KICK to kick each of nicks from channel with the message msg."
+msgstr ""
+
+#: of supybot.ircmsgs.modes:1
+msgid "Returns a MODE to quiet each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.nick:1
+msgid "Returns a NICK with nick nick."
+msgstr ""
+
+#: of supybot.ircmsgs.notice:1
+msgid "Returns a NOTICE to recipient with the message msg."
+msgstr ""
+
+#: of supybot.ircmsgs.op:1
+msgid "Returns a MODE to op nick on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.ops:1
+msgid "Returns a MODE to op each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.part:1
+msgid "Returns a PART from channel with the message msg."
+msgstr ""
+
+#: of supybot.ircmsgs.parts:1
+msgid "Returns a PART from each of channels with the message msg."
+msgstr ""
+
+#: of supybot.ircmsgs.password:1
+msgid "Returns a PASS command for accessing a server."
+msgstr ""
+
+#: of supybot.ircmsgs.ping:1
+msgid "Takes a payload and returns the proper PING IrcMsg."
+msgstr ""
+
+#: of supybot.ircmsgs.pong:1
+msgid "Takes a payload and returns the proper PONG IrcMsg."
+msgstr ""
+
+#: of supybot.ircmsgs.prettyPrint:1
+msgid "Provides a client-friendly string form for messages."
+msgstr ""
+
+#: of supybot.ircmsgs.prettyPrint:3
+msgid "IIRC, I copied BitchX's (or was it XChat's?) format for messages."
+msgstr ""
+
+#: of supybot.ircmsgs.privmsg:1
+msgid "Returns a PRIVMSG to recipient with the message msg."
+msgstr ""
+
+#: of supybot.ircmsgs.quit:1
+msgid "Returns a QUIT with the message msg."
+msgstr ""
+
+#: of supybot.ircmsgs.topic:1
+msgid "Returns a TOPIC for channel with the topic topic."
+msgstr ""
+
+#: of supybot.ircmsgs.unAction:1
+msgid "Returns the payload (i.e., non-ACTION text) of an ACTION msg."
+msgstr ""
+
+#: of supybot.ircmsgs.unban:1
+msgid "Returns a MODE to unban nick on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.unbans:1
+msgid "Returns a MODE to unban each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.user:1
+msgid "Returns a USER with ident ident and user user."
+msgstr ""
+
+#: of supybot.ircmsgs.voice:1
+msgid "Returns a MODE to voice nick on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.voices:1
+msgid "Returns a MODE to voice each of nicks on channel."
+msgstr ""
+
+#: of supybot.ircmsgs.who:1
+msgid "Returns a WHO for the hostmask or channel hostmaskOrChannel."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:3
+msgid "Writing Your First Supybot Plugin"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:7
+msgid ""
+"Ok, so you want to write a plugin for Supybot. Good, then this is the "
+"place to be. We're going to start from the top (the highest level, where "
+"Supybot code does the most work for you) and move lower after that."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:11
+msgid ""
+"So have you used Supybot? If not, you need to go use it. This will help "
+"you understand crucial things like the way the various commands work and "
+"it is essential prior to embarking upon the plugin-development excursion "
+"detailed in the following pages. If you haven't used Supybot, come back "
+"to this document after you've used it for a while and gotten a feel for "
+"it."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:17
+msgid ""
+"So, now that we know you've used Supybot, we'll start getting into "
+"details. We'll go through this tutorial by actually writing a new plugin,"
+" named Random with just a few simple commands."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:21
+msgid ""
+"Caveat: you'll need to have Supybot installed on the machine you intend "
+"to develop plugins on. This will not only allow you to test the plugins "
+"with a live bot, but it will also provide you with several nice scripts "
+"which aid the development of plugins. Most notably, it provides you with "
+"the supybot-plugin-create script which we will use in the next section..."
+"  Creating a minimal plugin This section describes using the 'supybot-"
+"plugin-create' script to create a minimal plugin which we will enhance in"
+" later sections."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:30
+msgid ""
+"The recommended way to start writing a plugin is to use the wizard "
+"provided, :command:`supybot-plugin-create`. Run this from within your "
+"local plugins directory, so we will be able to load the plugin and test "
+"it out."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:34
+msgid ""
+"It's very easy to follow, because basically all you have to do is answer "
+"three questions. Here's an example session::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:52
+msgid ""
+"It's that simple! Well, that part of making the minimal plugin is that "
+"simple. You should now have a directory with a few files in it, so let's "
+"take a look at each of those files and see what they're used for."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:57
+msgid "README.md"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:58
+msgid ""
+"Open the file with notepad just as if it was a .txt file. In `README.md` "
+"you put exactly what the boilerplate text says to put in there:"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:61
+msgid ""
+"Insert a description of your plugin here, with any notes, etc. about "
+"using it."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:64
+msgid ""
+"A brief overview of exactly what the purpose of the plugin is supposed to"
+" do is really all that is needed here. Also, if this plugin requires any "
+"third-party Python modules, you should definitely mention those here. You"
+" don't have to describe individual commands or anything like that, as "
+"those are defined within the plugin code itself as you'll see later. You "
+"also don't need to acknowledge any of the developers of the plugin as "
+"those too are handled elsewhere."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:71
+msgid "For our Random plugin, let's make :file:`README.md` say this:"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:73
+msgid ""
+"This plugin contains commands relating to random numbers, and includes: a"
+" simple random number generator, the ability to pick a random number from"
+" within a range, a command for returning a random sampling from a list of"
+" items, and a simple dice roller."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:78
+msgid ""
+"And now you know what's in store for the rest of this tutorial, we'll be "
+"writing all of that in one Supybot plugin, and you'll be surprised at "
+"just how simple it is!"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:83
+msgid "__init__.py"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:84
+msgid ""
+"The next file we'll look at is :file:`__init__.py`. If you're familiar "
+"with the Python import mechanism, you'll know what this file is for. If "
+"you're not, think of it as sort of the \"glue\" file that pulls all the "
+"files in this directory together when you load the plugin. It's also "
+"where there are a few administrative items live that you really need to "
+"maintain."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:90
+msgid ""
+"Let's go through the file. For the first 30 lines or so, you'll see the "
+"copyright notice that we use for our plugins, only with your name in "
+"place (as prompted in :command:`supybot-plugin-create`). Feel free to use"
+" whatever license you choose, we don't feel particularly attached to the "
+"boilerplate code so it's yours to license as you see fit even if you "
+"don't modify it. For our example, we'll leave it as is."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:97
+msgid ""
+"The plugin docstring immediately follows the copyright notice and it "
+"(like :file:`README.txt`) tells you precisely what it should contain:"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:100
+msgid ""
+"Add a description of the plugin (to be presented to the user inside the "
+"wizard) here.  This should describe *what* the plugin does."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:103
+msgid ""
+"The \"wizard\" that it speaks of is the :command:`supybot-wizard` script "
+"that is used to create working Supybot config file. I imagine that in "
+"meeting the prerequisite of \"using a Supybot\" first, most readers will "
+"have already encountered this script. Basically, if the user selects to "
+"look at this plugin from the list of plugins to load, it prints out that "
+"description to let the user know what it does, so make sure to be clear "
+"on what the purpose of the plugin is. This should be an abbreviated "
+"version of what we put in our :file:`README.txt`, so let's put this::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:114
+msgid ""
+"Next in :file:`__init__.py` you see a few imports which are necessary, "
+"and then four attributes that you need to modify for your bot and "
+"preferably keep up with as you develop it: ``__version__``, "
+"``__author__``, ``__contributors__``, ``__url__``."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:119
+msgid ""
+"``__version__`` is just a version string representing the current working"
+" version of the plugin, and can be anything you want. If you use some "
+"sort of RCS, this would be a good place to have it automatically "
+"increment the version string for any time you edit any of the files in "
+"this directory. We'll just make ours \"0.1\"."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:125
+msgid ""
+"``__author__`` should be an instance of the :class:`supybot.Author` "
+"class. A :class:`supybot.Author` is simply created by giving it a full "
+"name, a short name (preferably IRC nick), and an e-mail address (all of "
+"these are optional, though at least the second one is expected). So, for "
+"example, to create my Author user (though I get to cheat and use "
+"supybot.authors.strike since I'm a main dev, muahaha), I would do::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:135
+msgid "Keep this in mind as we get to the next item..."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:137
+msgid ""
+"``__contributors__`` is a dictionary mapping supybot.Author instances to "
+"lists of things they contributed. If someone adds a command named foo to "
+"your plugin, the list for that author should be ``[\"foo\"]``, or perhaps"
+" even ``[\"added foo command\"]``. The main author shouldn't be "
+"referenced here, as it is assumed that everything that wasn't contributed"
+" by someone else was done by the main author.  For now we have no "
+"contributors, so we'll leave it blank."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:144
+msgid ""
+"Lastly, the ``__url__`` attribute should just reference the download URL "
+"for the plugin. Since this is just an example, we'll leave this blank."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:147
+msgid ""
+"The rest of :file:`__init__.py` really shouldn't be touched unless you "
+"are using third-party modules in your plugin. If you are, then you need "
+"to take special note of the section that looks like this::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:158
+msgid ""
+"As the comment says, this is one place where you need to make sure you "
+"import the third-party modules, and that you call :func:`reload` on them "
+"as well. That way, if we are reloading a plugin on a running bot it will "
+"actually reload the latest code. We aren't using any third-party modules,"
+" so we can just leave this bit alone."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:164
+msgid ""
+"We're almost through the \"boring\" part and into the guts of writing "
+"Supybot plugins, let's take a look at the next file."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:168
+msgid "config.py"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:169
+msgid ""
+":file:`config.py` is, unsurprisingly, where all the configuration stuff "
+"related to your plugin goes. If you're not familiar with Supybot's "
+"configuration system, I recommend reading the config tutorial before "
+"going any further with this section."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:174
+msgid "So, let's plow through config.py line-by-line like we did the other files."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:176
+msgid ""
+"Once again, at the top is the standard copyright notice. Again, change it"
+" to how you see fit."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:179
+msgid "Then, some standard imports which are necessary."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:181
+msgid ""
+"Now, the first peculiar thing we get to is the configure function. This "
+"function is what is called by the supybot-wizard whenever a plugin is "
+"selected to be loaded. Since you've used the bot by now (as stated on the"
+" first page of this tutorial as a prerequisite), you've seen what this "
+"script does to configure plugins. The wizard allows the bot owner to "
+"choose something different from the default plugin config values without "
+"having to do it through the bot (which is still not difficult, but not as"
+" easy as this). Also, note that the advanced argument allows you to "
+"differentiate whether or not the person configuring this plugin considers"
+" himself an advanced Supybot user. Our plugin has no advanced features, "
+"so we won't be using it."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:192
+msgid ""
+"So, what exactly do we do in this configure function for our plugin? "
+"Well, for the most part we ask questions and we set configuration values."
+" You'll notice the import line with supybot.questions in it. That "
+"provides some nice convenience functions which are used to (you guessed "
+"it) ask questions. The other line in there is the conf.registerPlugin "
+"line which registers our plugin with the config and allows us to create "
+"configuration values for the plugin. You should leave these two lines in "
+"even if you don't have anything else to put in here. For the vast "
+"majority of plugins, you can leave this part as is, so we won't go over "
+"how to write plugin configuration functions here (that will be handled in"
+" a separate article). Our plugin won't be using much configuration, so "
+"we'll leave this as is."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:204
+msgid ""
+"Next, you'll see a line that looks very similar to the one in the "
+"configure function. This line is used not only to register the plugin "
+"prior to being called in configure, but also to store a bit of an alias "
+"to the plugin's config group to make things shorter later on. So, this "
+"line should read::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:211
+msgid ""
+"Now we get to the part where we define all the configuration groups and "
+"variables that our plugin is to have. Again, many plugins won't require "
+"any configuration so we won't go over it here, but in a separate article "
+"dedicated to sprucing up your config.py for more advanced plugins. Our "
+"plugin doesn't require any config variables, so we actually don't need to"
+" make any changes to this file at all."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:218
+msgid ""
+"Configuration of plugins is handled in depth at the Advanced Plugin "
+"Config Tutorial"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:222
+msgid "plugin.py"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:223
+msgid ""
+"Here's the moment you've been waiting for, the overview of plugin.py and "
+"how to make our plugin actually do stuff."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:226
+msgid ""
+"At the top, same as always, is the standard copyright block to be used "
+"and abused at your leisure."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:229
+msgid ""
+"Next, some standard imports. Not all of them are used at the moment, but "
+"you probably will use many (if not most) of them, so just let them be.  "
+"Since we'll be making use of Python's standard 'random' module, you'll "
+"need to add the following line to the list of imports::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:236
+msgid ""
+"Now, the plugin class itself. What you're given is a skeleton: a simple "
+"subclass of callbacks.Plugin for you to start with. The only real content"
+" it has is the boilerplate docstring, which you should modify to reflect "
+"what the boilerplate text says - it should be useful so that when someone"
+" uses the plugin help command to determine how to use this plugin, "
+"they'll know what they need to do. Ours will read something like::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:251
+msgid ""
+"It's basically a \"guide to getting started\" for the plugin. Now, to "
+"make the plugin do something. First of all, to get any random numbers "
+"we're going to need a random number generator (RNG). Pretty much "
+"everything in our plugin is going to use it, so we'll define it in the "
+"constructor of our plugin, __init__. Here we'll also seed it with the "
+"current time (standard practice for RNGs). Here's what our __init__ looks"
+" like::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:264
+msgid ""
+"Now, the first two lines may look a little daunting, but it's just "
+"administrative stuff required if you want to use a custom __init__. If we"
+" didn't want to do so, we wouldn't have to, but it's not uncommon so I "
+"decided to use an example plugin that did. For the most part you can just"
+" copy/paste those lines into any plugin you override the __init__ for and"
+" just change them to use the plugin name that you are working on instead."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:271
+msgid ""
+"So, now we have a RNG in our plugin, let's write a command to get a "
+"random number. We'll start with a simple command named random that just "
+"returns a random number from our RNG and takes no arguments. Here's what "
+"that looks like::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:284
+msgid "And that's it. Now here are the important points."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:286
+msgid ""
+"First and foremost, all plugin commands must have all-lowercase function "
+"names. If they aren't all lowercase they won't show up in a plugin's list"
+" of commands (nor will they be useable in general). If you look through a"
+" plugin and see a function that's not in all lowercase, it is not a "
+"plugin command. Chances are it is a helper function of some sort, and in "
+"fact using capital letters is a good way of assuring that you don't "
+"accidentally expose helper functions to users as commands."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:294
+msgid ""
+"You'll note the arguments to this class method are (self, irc, msg, "
+"args). This is what the argument list for all methods that are to be used"
+" as commands must start with. If you wanted additional arguments, you'd "
+"append them onto the end, but since we take no arguments we just stop "
+"there. I'll explain this in more detail with our next command, but it is "
+"very important that all plugin commands are class methods that start with"
+" those four arguments exactly as named."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:301
+msgid ""
+"Next, in the docstring there are two major components. First, the very "
+"first line dictates the argument list to be displayed when someone calls "
+"the help command for this command (i.e., help random). Then you leave a "
+"blank line and start the actual help string for the function. Don't worry"
+" about the fact that it's tabbed in or anything like that, as the help "
+"command normalizes it to make it look nice. This part should be fairly "
+"brief but sufficient to explain the function and what (if any) arguments "
+"it requires. Remember that this should fit in one IRC message which is "
+"typically around a 450 character limit."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:310
+msgid ""
+"Then we have the actual code body of the plugin, which consists of a "
+"single line: irc.reply(str(self.rng.random())). The irc.reply function "
+"issues a reply to wherever the PRIVMSG it received the command from with "
+"whatever text is provided. If you're not sure what I mean when I say "
+"\"wherever the PRIVMSG it received the command from\", basically it "
+"means: if the command is issued in a channel the response is sent in the "
+"channel, and if the command is issued in a private dialog the response is"
+" sent in a private dialog. The text we want to display is simply the next"
+" number from our RNG (self.rng). We get that number by calling the random"
+" function, and then we str it just to make sure it is a nice printable "
+"string."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:321
+msgid ""
+"Lastly, all plugin commands must be 'wrap'ed. What the wrap function does"
+" is handle argument parsing for plugin commands in a very nice and very "
+"powerful way. With no arguments, we simply need to just wrap it. For more"
+" in-depth information on using wrap check out the wrap tutorial (The "
+"astute Python programmer may note that this is very much like a "
+"decorator, and that's precisely what it is. However, we developed this "
+"before decorators existed and haven't changed the syntax due to our "
+"earlier requirement to stay compatible with Python 2.3.  As we now "
+"require Python 2.4 or greater, this may eventually change to support work"
+" via decorators.)"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:331
+msgid ""
+"Now let's create a command with some arguments and see how we use those "
+"in our plugin commands. Let's allow the user to seed our RNG with their "
+"own seed value. We'll call the command seed and take just the seed value "
+"as the argument (which we'll require be a floating point value of some "
+"sort, though technically it can be any hashable object). Here's what this"
+" command looks like::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:347
+msgid ""
+"You'll notice first that argument list now includes an extra argument, "
+"seed. If you read the wrap tutorial mentioned above, you should "
+"understand how this arg list gets populated with values. Thanks to wrap "
+"we don't have to worry about type-checking or value-checking or anything "
+"like that. We just specify that it must be a float in the wrap portion "
+"and we can use it in the body of the function."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:354
+msgid ""
+"Of course, we modify the docstring to document this function. Note the "
+"syntax on the first line. Arguments go in <> and optional arguments "
+"should be surrounded by [] (we'll demonstrate this later as well)."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:358
+msgid ""
+"The body of the function should be fairly straightforward to figure out, "
+"but it introduces a new function - irc.replySuccess. This is just a "
+"generic \"I succeeded\" command which responds with whatever the bot "
+"owner has configured to be the success response (configured in "
+"supybot.replies.success). Note that we don't do any error-checking in the"
+" plugin, and that's because we simply don't have to. We are guaranteed "
+"that seed will be a float and so the call to our RNG's seed is guaranteed"
+" to work."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:366
+msgid ""
+"Lastly, of course, the wrap call. Again, read the wrap tutorial for "
+"fuller coverage of its use, but the basic premise is that the second "
+"argument to wrap is a list of converters that handles argument validation"
+" and conversion and it then assigns values to each argument in the arg "
+"list after the first four (required) arguments. So, our seed argument "
+"gets a float, guaranteed."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:372
+msgid ""
+"With this alone you'd be able to make some pretty usable plugin commands,"
+" but we'll go through two more commands to introduce a few more useful "
+"ideas. The next command we'll make is a sample command which gets a "
+"random sample of items from a list provided by the user::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:393
+msgid ""
+"This plugin command introduces a few new things, but the general "
+"structure should look fairly familiar by now. You may wonder why we only "
+"have two extra arguments when obviously this plugin can accept any number"
+" of arguments. Well, using wrap we collect all of the remaining arguments"
+" after the first one into the items argument. If you haven't caught on "
+"yet, wrap is really cool and extremely useful."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:400
+msgid ""
+"Next of course is the updated docstring. Note the use of [] to denote the"
+" optional items after the first item."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:403
+msgid ""
+"The body of the plugin should be relatively easy to read. First we check "
+"and make sure that n (the number of items the user wants to sample) is "
+"not larger than the actual number of items they gave. If it does, we call"
+" irc.error with the error message you see. irc.error is kind of like "
+"irc.replySuccess only it gives an error message using the configured "
+"error format (in supybot.replies.error). Otherwise, we use the sample "
+"function from our RNG to get a sample, then we sort it, and we reply with"
+" the 'utils.str.commaAndify'ed version. The utils.str.commaAndify "
+"function basically takes a list of strings and turns it into \"item1, "
+"item2, item3, item4, and item5\" for an arbitrary length. More details on"
+" using the utils module can be found in the utils tutorial."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:415
+msgid ""
+"Now for the last command that we will add to our plugin.py. This last "
+"command will allow the bot users to roll an arbitrary n-sided die, with "
+"as many sides as they so choose. Here's the code for this command::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:429
+msgid ""
+"The only new thing learned here really is that the irc.reply method "
+"accepts an optional argument action, which if set to True makes the reply"
+" an action instead. So instead of just crudely responding with the "
+"number, instead you should see something like * supybot rolls a 5. You'll"
+" also note that it uses a more advanced wrap line than we have used to "
+"this point, but to learn more about wrap, you should refer to the wrap "
+"tutorial"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:436
+msgid ""
+"And now that we're done adding plugin commands you should see the "
+"boilerplate stuff at the bottom, which just consists of::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:441
+msgid ""
+"And also some vim modeline stuff. Leave these as is, and we're finally "
+"done with plugin.py!"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:445
+msgid "test.py"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:446
+msgid ""
+"Now that we've gotten our plugin written, we want to make sure it works. "
+"Sure, an easy way to do a somewhat quick check is to start up a bot, load"
+" the plugin, and run a few commands on it. If all goes well there, "
+"everything's probably okay. But, we can do better than \"probably okay\"."
+" This is where written plugin tests come in. We can write tests that not "
+"only assure that the plugin loads and runs the commands fine, but also "
+"that it produces the expected output for given inputs. And not only that,"
+" we can use the nifty supybot-test script to test the plugin without even"
+" having to have a network connection to connect to IRC with and most "
+"certainly without running a local IRC server."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:456
+msgid ""
+"The boilerplate code for test.py is a good start. It imports everything "
+"you need and sets up RandomTestCase which will contain all of our tests. "
+"Now we just need to write some test methods. I'll be moving fairly "
+"quickly here just going over very basic concepts and glossing over "
+"details, but the full plugin test authoring tutorial has much more detail"
+" to it and is recommended reading after finishing this tutorial."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:463
+msgid ""
+"Since we have four commands we should have at least four test methods in "
+"our test case class. Typically you name the test methods that simply "
+"checks that a given command works by just appending the command name to "
+"test. So, we'll have testRandom, testSeed, testSample, and testDiceRoll. "
+"Any other methods you want to add are more free-form and should describe "
+"what you're testing (don't be afraid to use long names)."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:470
+msgid "First we'll write the testRandom method::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:476
+msgid ""
+"Since we can't predict what the output of our random number generator is "
+"going to be, it's hard to specify a response we want. So instead, we just"
+" make sure we don't get an error by calling the random command, and "
+"that's about all we can do."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:481
+msgid ""
+"Next, testSeed. In this method we're just going to check that the command"
+" itself functions. In another test method later on we will check and make"
+" sure that the seed produces reproducible random numbers like we would "
+"hope it would, but for now we just test it like we did random in "
+"'testRandom'::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:490
+msgid ""
+"Now for testSample. Since this one takes more arguments it makes sense "
+"that we test more scenarios in this one. Also this time we have to make "
+"sure that we hit the error that we coded in there given the right "
+"conditions::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:500
+msgid ""
+"So first we check and make sure trying to take a 20-element sample of a "
+"1-element list gives us an error. Next we just check and make sure we get"
+" the right number of elements and that they are formatted correctly when "
+"we give 1, 2, or 3 element lists."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:505
+msgid ""
+"And for the last of our basic \"check to see that it works\" functions, "
+"testDiceRoll::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:511
+msgid ""
+"We know that diceroll should return an action, and that with no arguments"
+" it should roll a single-digit number. And that's about all we can test "
+"reliably here, so that's all we do."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:515
+msgid ""
+"Lastly, we wanted to check and make sure that seeding the RNG with seed "
+"actually took effect like it's supposed to. So, we write another test "
+"method::"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:528
+msgid ""
+"So we seed the RNG with 20, store the message, and then seed it at 20 "
+"again. We grab that message, and unless they are the same number when we "
+"compare the two, we fail. And then just to make sure our RNG is producing"
+" random numbers, we get another random number and make sure it is "
+"distinct from the prior one."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:534
+msgid "Conclusion"
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:535
+msgid ""
+"You are now very well-prepared to write Supybot plugins. Now for a few "
+"words of wisdom with regards to Supybot plugin-writing."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:538
+msgid ""
+"Read other people's plugins, especially the included plugins and ones by "
+"the core developers. We (the Supybot dev team) can't possibly document "
+"all the awesome things that Supybot plugins can do, but we try. "
+"Nevertheless there are some really cool things that can be done that "
+"aren't very well-documented."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:544
+msgid ""
+"Hack new functionality into existing plugins first if writing a new "
+"plugin is too daunting."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:547
+msgid ""
+"Come ask us questions in #supybot on Freenode or OFTC. Going back to the "
+"first point above, the developers themselves can help you even more than "
+"the docs can (though we prefer you read the docs first)."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:551
+msgid ""
+"Share your plugins with the world and make Supybot all that more "
+"attractive for other users so they will want to write their plugins for "
+"Supybot as well."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:555
+msgid "Read, read, read all the documentation."
+msgstr ""
+
+#: ../../develop/plugin_tutorial.rst:557
+msgid "And of course, have fun writing your plugins."
+msgstr ""
+
+#: ../../develop/style.rst:3
+msgid "Style Guidelines"
+msgstr ""
+
+#: ../../develop/style.rst:5
+msgid ""
+"**Note:** Code not following these style guidelines fastidiously is "
+"likely (*very* likely) not to be accepted into the Supybot core."
+msgstr ""
+
+#: ../../develop/style.rst:8
+msgid ""
+"Read :pep:`8` (Guido's Style Guide) and know that we use almost all the "
+"same style guidelines."
+msgstr ""
+
+#: ../../develop/style.rst:11
+msgid ""
+"Maximum line length is 79 characters.  78 is a safer bet, though. This is"
+" **NON-NEGOTIABLE**.  Your code will not be accepted while you are "
+"violating this guidline."
+msgstr ""
+
+#: ../../develop/style.rst:15
+msgid ""
+"Identation is 4 spaces per level.  No tabs.  This also is **NON-"
+"NEGOTIABLE**.  Your code, again, will *never* be accepted while you have "
+"literal tabs in it."
+msgstr ""
+
+#: ../../develop/style.rst:19
+msgid ""
+"Single quotes are used for all string literals that aren't docstrings. "
+"They're just easier to type."
+msgstr ""
+
+#: ../../develop/style.rst:22
+msgid "Triple double quotes (``\"\"\"``) are always used for docstrings."
+msgstr ""
+
+#: ../../develop/style.rst:24
+msgid "Raw strings (``r''`` or ``r\"\"``) should be used for regular expressions."
+msgstr ""
+
+#: ../../develop/style.rst:26
+msgid ""
+"Spaces go around all operators (except around ``=`` in default arguments "
+"to functions) and after all commas (unless doing so keeps a line within "
+"the 79 character limit)."
+msgstr ""
+
+#: ../../develop/style.rst:30
+msgid ""
+"Functions calls should look like ``foo(bar(baz(x), y))``.  They should "
+"not look like ``foo (bar (baz (x), y))``, or like ``foo(bar(baz(x), y) "
+")`` or like anything else.  I hate extraneous spaces."
+msgstr ""
+
+#: ../../develop/style.rst:34
+msgid ""
+"Class names are StudlyCaps.  Method and function names are camelCaps "
+"(StudlyCaps with an initial lowercase letter).  If variable and attribute"
+" names can maintain readability without being camelCaps, then they should"
+" be entirely in lowercase, otherwise they should also use camelCaps.  "
+"Plugin names are StudlyCaps."
+msgstr ""
+
+#: ../../develop/style.rst:40
+msgid ""
+"Imports should always happen at the top of the module, one import per "
+"line (so if imports need to be added or removed later, it can be done "
+"easily)."
+msgstr ""
+
+#: ../../develop/style.rst:43
+msgid ""
+"Unless absolutely required by some external force, imports should be "
+"ordered by the string length of the module imported.  I just think it "
+"looks prettier."
+msgstr ""
+
+#: ../../develop/style.rst:47
+msgid ""
+"A blank line should be between all consecutive method declarations in a "
+"class definition.  Two blank lines should be between all consecutive "
+"class definitions in a file.  Comments are even better than blank lines "
+"for separating classes."
+msgstr ""
+
+#: ../../develop/style.rst:52
+msgid ""
+"Database filenames should generally begin with the name of the plugin and"
+" the extension should be 'db'.  plugins.DBHandler does this already."
+msgstr ""
+
+#: ../../develop/style.rst:55
+msgid ""
+"Whenever creating a file descriptor or socket, keep a reference around "
+"and be sure to close it.  There should be no code like this::"
+msgstr ""
+
+#: ../../develop/style.rst:60
+msgid "Instead, do this::"
+msgstr ""
+
+#: ../../develop/style.rst:68
+msgid "This is to be sure the bot doesn't leak file descriptors."
+msgstr ""
+
+#: ../../develop/style.rst:70
+msgid ""
+"All plugin files should include a docstring decsribing what the plugin "
+"does. This docstring will be returned when the user is configuring the "
+"plugin. All plugin classes should also include a docstring describing how"
+" to do things with the plugin; this docstring will be returned when the "
+"user requests help on a plugin name."
+msgstr ""
+
+#: ../../develop/style.rst:76
+msgid ""
+"Method docstrings in classes deriving from callbacks.Privmsg should "
+"include an argument list as their first line, and after that a blank line"
+" followed by a longer description of what the command does.  The argument"
+" list is used by the ``syntax`` command, and the longer description is "
+"used by the ``help`` command."
+msgstr ""
+
+#: ../../develop/style.rst:82
+msgid ""
+"Whenever joining more than two strings, use string interpolation, not "
+"addition::"
+msgstr ""
+
+#: ../../develop/style.rst:89
+msgid ""
+"This has to do with efficiency; the intermediate string x+y is made (and "
+"thus copied) before x+y+z is made, so it's less efficient.  People who "
+"use string concatenation in a for loop will be swiftly kicked in the "
+"head."
+msgstr ""
+
+#: ../../develop/style.rst:93
+#, python-format
+msgid ""
+"When writing strings that have formatting characters in them, don't use "
+"anything but ``%s`` unless you absolutely must.  In particular, ``%d`` "
+"should never be used, it's less general than ``%s`` and serves no useful "
+"purpose.  If you got the ``%d`` wrong, you'll get an exception that says,"
+" \"foo instance can't be converted to an integer.\" But if you use "
+"``%s``, you'll get to see your nice little foo instance, if it doesn't "
+"convert to a string cleanly, and if it does convert cleanly, you'll get "
+"to see what you expect to see.  Basically, ``%d`` just sucks."
+msgstr ""
+
+#: ../../develop/style.rst:102
+#, python-format
+msgid ""
+"As a corrolary to the above, note that sometimes ``%f`` is used, but on "
+"when floats need to be formatted, e.g., ``%.2f``."
+msgstr ""
+
+#: ../../develop/style.rst:105
+msgid ""
+"Use the log module to its fullest; when you need to print some values to "
+"debug, use self.log.debug to do so, and leave those statements in the "
+"code (commented out) so they can later be re-enabled.  Remember that once"
+" code is buggy, it tends to have more bugs, and you'll probably need "
+"those print statements again."
+msgstr ""
+
+#: ../../develop/style.rst:111
+msgid ""
+"While on the topic of logs, note that we do not use % (i.e., str.__mod__)"
+" with logged strings; we simple pass the format parameters as additional "
+"arguments.  The reason is simple: the logging module supports it, and "
+"it's cleaner (fewer tokens/glyphs) to read."
+msgstr ""
+
+#: ../../develop/style.rst:116
+msgid ""
+"While still on the topic of logs, it's also important to pick the "
+"appropriate log level for given information."
+msgstr ""
+
+#: ../../develop/style.rst:119
+msgid ""
+"DEBUG:  Appropriate to tell a programmer *how* we're doing something "
+"(i.e., debugging printfs, basically).  If you're trying to figure out why"
+" your code doesn't work, DEBUG is the new printf -- use that, and leave "
+"the statements in your code."
+msgstr ""
+
+#: ../../develop/style.rst:124
+msgid ""
+"INFO:   Appropriate to tell a user *what* we're doing, when what we're "
+"doing isn't important for the user to pay attention to.  A user who likes"
+" to keep up with things should enjoy watching our logging at the INFO "
+"level; it shouldn't be too low-level, but it should give enough "
+"information that it keeps them relatively interested at peak times."
+msgstr ""
+
+#: ../../develop/style.rst:130
+msgid ""
+"WARNING:  Appropriate to tell a user when we're doing something that they"
+" really ought to pay attention to.  Users should see WARNING and think, "
+"\"Hmm, should I tell the Supybot developers about this?\"  Later, they "
+"should decide not to, but it should give the user a moment to pause and "
+"think about what's actually happening with their bot."
+msgstr ""
+
+#: ../../develop/style.rst:136
+msgid ""
+"ERROR:    Appropriate to tell a user when something has gone wrong. "
+"Uncaught exceptions are ERRORs.  Conditions that we absolutely want to "
+"hear about should be errors.  Things that should *scare* the user should "
+"be errors."
+msgstr ""
+
+#: ../../develop/style.rst:141
+msgid ""
+"CRITICAL: Not really appropriate.  I can think of no absolutely critical "
+"issue yet encountered in Supybot; the only possible thing I can imagine "
+"is to notify the user that the partition on which Supybot is running has "
+"filled up.  That would be a CRITICAL condition, but it would also be hard"
+" to log :)"
+msgstr ""
+
+#: ../../develop/style.rst:148
+msgid ""
+"All plugins should have test cases written for them.  Even if it doesn't "
+"actually test anything but just exists, it's good to have the test there "
+"so there's a place to add more tests later (and so we can be sure that "
+"all plugins are adequately documented; PluginTestCase checks that every "
+"command has documentation)"
+msgstr ""
+
+#: ../../develop/style.rst:154
+msgid ""
+"All uses of eval() that expect to get integrated in Supybot must be "
+"approved by jemfinch, no exceptions.  Chances are, it won't be accepted."
+"  Have you looked at utils.safeEval?"
+msgstr ""
+
+#: ../../develop/style.rst:158
+msgid ""
+"SQL table names should be all-lowercase and include underscores to "
+"separate words.  This is because SQL itself is case-insensitive.  This "
+"doesn't change, however the fact that variable/member names should be "
+"camel case."
+msgstr ""
+
+#: ../../develop/style.rst:162
+msgid "SQL statements in code should put SQL words in ALL CAPS::"
+msgstr ""
+
+#: ../../develop/style.rst:166
+msgid "This makes SQL significantly easier to read."
+msgstr ""
+
+#: ../../develop/style.rst:168
+msgid "Common variable names"
+msgstr ""
+
+#: ../../develop/style.rst:170
+msgid "L => an arbitrary list."
+msgstr ""
+
+#: ../../develop/style.rst:172
+msgid "t => an arbitrary tuple."
+msgstr ""
+
+#: ../../develop/style.rst:174
+msgid "x => an arbitrary float."
+msgstr ""
+
+#: ../../develop/style.rst:176
+msgid "s => an arbitrary string."
+msgstr ""
+
+#: ../../develop/style.rst:178
+msgid "f => an arbitrary function."
+msgstr ""
+
+#: ../../develop/style.rst:180
+msgid "p => an arbitrary predicate."
+msgstr ""
+
+#: ../../develop/style.rst:182
+msgid "i,n => an arbitrary integer."
+msgstr ""
+
+#: ../../develop/style.rst:184
+msgid "cb => an arbitrary callback."
+msgstr ""
+
+#: ../../develop/style.rst:186
+msgid "db => a database handle."
+msgstr ""
+
+#: ../../develop/style.rst:188
+msgid "fd => a file-like object."
+msgstr ""
+
+#: ../../develop/style.rst:190
+msgid "msg => an ircmsgs.IrcMsg object."
+msgstr ""
+
+#: ../../develop/style.rst:192
+msgid "irc => an irclib.Irc object (or proxy)"
+msgstr ""
+
+#: ../../develop/style.rst:194
+msgid "nick => a string that is an IRC nick."
+msgstr ""
+
+#: ../../develop/style.rst:196
+msgid "channel => a string that is an IRC channel."
+msgstr ""
+
+#: ../../develop/style.rst:198
+msgid "hostmask => a string that is a user's IRC prefix."
+msgstr ""
+
+#: ../../develop/style.rst:200
+msgid ""
+"When the semantic functionality (that is, the \"meaning\" of a variable "
+"is obvious from context), one of these names should be used.  This just "
+"makes it easier for people reading our code to know what a variable "
+"represents without scouring the surrounding code."
+msgstr ""
+
+#: ../../develop/style.rst:205
+msgid ""
+"Multiple variable assignments should always be surrounded with "
+"parentheses -- i.e., if you're using the partition function, then your "
+"assignment statement should look like::"
+msgstr ""
+
+#: ../../develop/style.rst:211
+msgid ""
+"The parentheses make it obvious that you're doing a multiple assignment, "
+"and that's important because I hate reading code and wondering where a "
+"variable came from."
+msgstr ""
+
+#: ../../develop/using_utils.rst:3
+msgid "Using Supybot's utils module"
+msgstr ""
+
+#: ../../develop/using_utils.rst:4
+msgid ""
+"Supybot provides a wealth of utilities for plugin writers in the "
+"supybot.utils module, this tutorial describes these utilities and shows "
+"you how to use them."
+msgstr ""
+
+#: ../../develop/using_utils.rst:8
+msgid "str.py"
+msgstr ""
+
+#: ../../develop/using_utils.rst:10
+msgid "The Format Function"
+msgstr ""
+
+#: ../../develop/using_utils.rst:12
+#, python-format
+msgid ""
+"The supybot.utils.str module provides a bunch of utility functions for "
+"handling string values. This section contains a quick rundown of all of "
+"the functions available, along with descriptions of the arguments they "
+"take. First and foremost is the format function, which provides a lot of "
+"capability in just one function that uses string-formatting style to "
+"accomplish a lot. So much so that it gets its own section in this "
+"tutorial. All other functions will be in other sections. format takes "
+"several arguments - first, the format string (using the format characters"
+" described below), and then after that, each individual item to be "
+"formatted. Do not attempt to use the % operator to do the formatting "
+"because that will fall back on the normal string formatting operator. The"
+" format function uses the following string formatting characters."
+msgstr ""
+
+#: ../../develop/using_utils.rst:24
+msgid "% - literal ``%``"
+msgstr ""
+
+#: ../../develop/using_utils.rst:25
+msgid "i - integer"
+msgstr ""
+
+#: ../../develop/using_utils.rst:26
+msgid "s - string"
+msgstr ""
+
+#: ../../develop/using_utils.rst:27
+msgid "f - float"
+msgstr ""
+
+#: ../../develop/using_utils.rst:28
+msgid "r - repr"
+msgstr ""
+
+#: ../../develop/using_utils.rst:29
+msgid "b - form of the verb ``to be`` (takes an int)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:30
+msgid "h - form of the verb ``to have`` (takes an int)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:31
+msgid "L - commaAndify (takes a list of strings or a tuple of ([strings], and))"
+msgstr ""
+
+#: ../../develop/using_utils.rst:32
+msgid "p - pluralize (takes a string)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:33
+msgid "q - quoted (takes a string)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:34
+msgid ""
+"n - n items (takes a 2-tuple of (n, item) or a 3-tuple of (n, between, "
+"item))"
+msgstr ""
+
+#: ../../develop/using_utils.rst:35
+msgid "S - a human-readable size (takes an int)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:36
+msgid "t - time, formatted (takes an int)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:37
+msgid "T - time delta, formatted (takes an int)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:38
+msgid "u - url, wrapped in braces"
+msgstr ""
+
+#: ../../develop/using_utils.rst:39
+msgid ""
+"v - void, takes one or many arguments, but doesn't display it (useful for"
+" translation)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:43
+msgid ""
+"Until stock Supybot and Gribble merge them, %S, %T, and %v are only "
+"available in Limnoria."
+msgstr ""
+
+#: ../../develop/using_utils.rst:47
+msgid "Here are a few examples to help elaborate on the above descriptions::"
+msgstr ""
+
+#: ../../develop/using_utils.rst:72
+msgid ""
+"As you can see, you can combine all sorts of combinations of formatting "
+"strings into one. In fact, that was the major motivation behind format. "
+"We have specific functions that you can use individually for each of "
+"those formatting types, but it became much easier just to use special "
+"formatting chars and the format function than concatenating a bunch of "
+"strings that were the result of other utils.str functions."
+msgstr ""
+
+#: ../../develop/using_utils.rst:80
+msgid "The Other Functions"
+msgstr ""
+
+#: ../../develop/using_utils.rst:82
+msgid ""
+"These are the functions that can't be handled by format. They are sorted "
+"in what I perceive to be the general order of usefulness (and I'm leaving"
+" the ones covered by format for the next section)."
+msgstr ""
+
+#: ../../develop/using_utils.rst:86
+msgid ""
+"ellipsisify(s, n) - Returns a shortened version of a string. Produces up "
+"to the first n chars at the nearest word boundary."
+msgstr ""
+
+#: ../../develop/using_utils.rst:89
+msgid "s: the string to be shortened"
+msgstr ""
+
+#: ../../develop/using_utils.rst:90
+msgid "n: the number of characters to shorten it to"
+msgstr ""
+
+#: ../../develop/using_utils.rst:92
+msgid ""
+"perlReToPythonRe(s) - Converts a Perl-style regexp (e.g., \"/abcd/i\" or "
+"\"m/abcd/i\") to an actual Python regexp (an re object)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:95 ../../develop/using_utils.rst:100
+msgid "s: the regexp string"
+msgstr ""
+
+#: ../../develop/using_utils.rst:97
+msgid ""
+"perlReToReplacer(s) - converts a perl-style replacement regexp (eg, "
+"\"s/foo/bar/g\") to a Python function that performs such a replacement"
+msgstr ""
+
+#: ../../develop/using_utils.rst:102
+msgid ""
+"dqrepr(s) - Returns a repr() of s guaranteed to be in double quotes. "
+"(Double Quote Repr)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:105
+msgid "s: the string to be double-quote repr()'ed"
+msgstr ""
+
+#: ../../develop/using_utils.rst:107
+msgid ""
+"toBool(s) - Determines whether or not a string means True or False and "
+"returns the appropriate boolean value. True is any of \"true\", \"on\", "
+"\"enable\", \"enabled\", or \"1\". False is any of \"false\", \"off\", "
+"\"disable\", \"disabled\", or \"0\"."
+msgstr ""
+
+#: ../../develop/using_utils.rst:112
+msgid "s: the string to determine the boolean value for"
+msgstr ""
+
+#: ../../develop/using_utils.rst:114
+msgid ""
+"rsplit(s, sep=None, maxsplit=-1) - functionally the same as str.split in "
+"the Python standard library except splitting from the right instead of "
+"the left. Python 2.4 has str.rsplit (which this function defers to for "
+"those versions >= 2.4), but Python 2.3 did not."
+msgstr ""
+
+#: ../../develop/using_utils.rst:119
+msgid "s: the string to be split"
+msgstr ""
+
+#: ../../develop/using_utils.rst:120
+msgid "sep: the separator to split on, defaults to whitespace"
+msgstr ""
+
+#: ../../develop/using_utils.rst:121
+msgid ""
+"maxsplit: the maximum number of splits to perform, -1 splits all possible"
+" splits."
+msgstr ""
+
+#: ../../develop/using_utils.rst:124
+msgid ""
+"normalizeWhitespace(s) - reduces all multi-spaces in a string to a single"
+" space"
+msgstr ""
+
+#: ../../develop/using_utils.rst:127
+msgid "s: the string to normalize"
+msgstr ""
+
+#: ../../develop/using_utils.rst:129
+msgid "depluralize(s) - the opposite of pluralize"
+msgstr ""
+
+#: ../../develop/using_utils.rst:131
+msgid "s: the string to depluralize"
+msgstr ""
+
+#: ../../develop/using_utils.rst:133
+msgid ""
+"unCommaThe(s) - Takes a string of the form \"foo, the\" and turns it into"
+" \"the foo\""
+msgstr ""
+
+#: ../../develop/using_utils.rst:136
+msgid "s: string, the"
+msgstr ""
+
+#: ../../develop/using_utils.rst:138
+msgid ""
+"distance(s, t) - computes the levenshtein distance (or \"edit distance\")"
+" between two strings"
+msgstr ""
+
+#: ../../develop/using_utils.rst:141
+msgid "s: the first string"
+msgstr ""
+
+#: ../../develop/using_utils.rst:142
+msgid "t: the second string"
+msgstr ""
+
+#: ../../develop/using_utils.rst:144
+msgid "soundex(s, length=4) - computes the soundex for a given string"
+msgstr ""
+
+#: ../../develop/using_utils.rst:146
+msgid "s: the string to compute the soundex for"
+msgstr ""
+
+#: ../../develop/using_utils.rst:147
+msgid "length: the length of the soundex to generate"
+msgstr ""
+
+#: ../../develop/using_utils.rst:149
+msgid ""
+"matchCase(s1, s2) - Matches the case of the first string in the second "
+"string."
+msgstr ""
+
+#: ../../develop/using_utils.rst:152
+msgid "s1: the first string"
+msgstr ""
+
+#: ../../develop/using_utils.rst:153
+msgid "s2: the string which will be made to match the case of the first"
+msgstr ""
+
+#: ../../develop/using_utils.rst:156
+msgid "The Commands Format Already Covers"
+msgstr ""
+
+#: ../../develop/using_utils.rst:158
+msgid ""
+"These commands aren't necessary because you can achieve them more easily "
+"by using the format command, but they exist if you decide you want to use"
+" them anyway though it is greatly discouraged for general use."
+msgstr ""
+
+#: ../../develop/using_utils.rst:162
+msgid ""
+"commaAndify(seq, comma=\",\", And=\"and\") - transforms a list of items "
+"into a comma separated list with an \"and\" preceding the last element. "
+"For example, [\"foo\", \"bar\", \"baz\"] becomes \"foo, bar, and baz\". "
+"Is smart enough to convert two-element lists to just \"item1 and item2\" "
+"as well."
+msgstr ""
+
+#: ../../develop/using_utils.rst:167
+msgid ""
+"seq: the sequence of items (don't have to be strings, but need to be "
+"'str()'-able)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:169
+msgid "comma: the character to use to separate the list"
+msgstr ""
+
+#: ../../develop/using_utils.rst:170
+msgid "And: the word to use before the last element"
+msgstr ""
+
+#: ../../develop/using_utils.rst:172
+msgid ""
+"pluralize(s) - Returns the plural of a string. Put any exceptions to the "
+"general English rules of pluralization in the plurals dictionary in "
+"supybot.utils.str."
+msgstr ""
+
+#: ../../develop/using_utils.rst:176
+msgid "s: the string to pluralize"
+msgstr ""
+
+#: ../../develop/using_utils.rst:178
+msgid ""
+"nItems(n, item, between=None) - returns a string that describes a given "
+"number of an item (with any string between the actual number and the item"
+" itself), handles pluralization with the pluralize function above. Note "
+"that the arguments here are in a different order since between is "
+"optional."
+msgstr ""
+
+#: ../../develop/using_utils.rst:183
+msgid "n: the number of items"
+msgstr ""
+
+#: ../../develop/using_utils.rst:184
+msgid "item: the type of item"
+msgstr ""
+
+#: ../../develop/using_utils.rst:185
+msgid ""
+"between: the optional string that goes between the number and the type of"
+" item"
+msgstr ""
+
+#: ../../develop/using_utils.rst:188
+msgid "quoted(s) - Returns the string surrounded by double-quotes."
+msgstr ""
+
+#: ../../develop/using_utils.rst:190
+msgid "s: the string to quote"
+msgstr ""
+
+#: ../../develop/using_utils.rst:192
+msgid ""
+"be(i) - Returns the proper form of the verb \"to be\" based on the number"
+" provided (be(1) is \"is\", be(anything else) is \"are\")"
+msgstr ""
+
+#: ../../develop/using_utils.rst:195
+msgid "i: the number of things that \"be\""
+msgstr ""
+
+#: ../../develop/using_utils.rst:197
+msgid ""
+"has(i) - Returns the proper form of the verb \"to have\" based on the "
+"number provided (has(1) is \"has\", has(anything else) is \"have\")"
+msgstr ""
+
+#: ../../develop/using_utils.rst:200
+msgid "i: the number of things that \"has\""
+msgstr ""
+
+#: ../../develop/using_utils.rst:203
+msgid "structures.py"
+msgstr ""
+
+#: ../../develop/using_utils.rst:205 ../../develop/using_utils.rst:341
+msgid "Intro"
+msgstr ""
+
+#: ../../develop/using_utils.rst:207
+msgid ""
+"This module provides a number of useful data structures that aren't found"
+" in the standard Python library. For the most part they were created as "
+"needed for the bot and plugins themselves, but they were created in such "
+"a way as to be of general use for anyone who needs a data structure that "
+"performs a like duty. As usual in this document, I'll try and order these"
+" in order of usefulness, starting with the most useful."
+msgstr ""
+
+#: ../../develop/using_utils.rst:215
+msgid "The queue classes"
+msgstr ""
+
+#: ../../develop/using_utils.rst:217
+msgid ""
+"The structures module provides two general-purpose queue classes for you "
+"to use. The \"queue\" class is a robust full-featured queue that scales "
+"up to larger sized queues. The \"smallqueue\" class is for queues that "
+"will contain fewer (less than 1000 or so) items. Both offer the same "
+"common interface, which consists of:"
+msgstr ""
+
+#: ../../develop/using_utils.rst:223
+msgid ""
+"a constructor which will optionally accept a sequence to start the queue "
+"off with"
+msgstr ""
+
+#: ../../develop/using_utils.rst:225
+msgid "enqueue(item) - adds an item to the back of the queue"
+msgstr ""
+
+#: ../../develop/using_utils.rst:226
+msgid "dequeue() - removes (and returns) the item from the front of the queue"
+msgstr ""
+
+#: ../../develop/using_utils.rst:227
+msgid "peek() - returns the item from the front of the queue without removing it"
+msgstr ""
+
+#: ../../develop/using_utils.rst:228
+msgid "reset() - empties the queue entirely"
+msgstr ""
+
+#: ../../develop/using_utils.rst:230
+msgid ""
+"In addition to these general-use queue classes, there are two other more "
+"specialized queue classes as well. The first is the \"TimeoutQueue\" "
+"which holds a queue of items until they reach a certain age and then they"
+" are removed from the queue. It features the following:"
+msgstr ""
+
+#: ../../develop/using_utils.rst:235
+msgid ""
+"TimeoutQueue(timeout, queue=None) - you must specify the timeout (in "
+"seconds) in the constructor. Note that you can also optionally pass it a "
+"queue which uses any implementation you wish to use whether it be one of "
+"the above (queue or smallqueue) or if it's some custom queue you create "
+"that implements the same interface. If you don't pass it a queue instance"
+" to use, it will build its own using smallqueue."
+msgstr ""
+
+#: ../../develop/using_utils.rst:242
+msgid "reset(), enqueue(item), dequeue() - all same as above queue classes"
+msgstr ""
+
+#: ../../develop/using_utils.rst:243
+msgid "setTimeout(secs) - allows you to change the timeout value"
+msgstr ""
+
+#: ../../develop/using_utils.rst:245
+msgid ""
+"And for the final queue class, there's the \"MaxLengthQueue\" class. As "
+"you may have guessed, it's a queue that is capped at a certain specified "
+"length. It features the following:"
+msgstr ""
+
+#: ../../develop/using_utils.rst:249
+msgid ""
+"MaxLengthQueue(length, seq=()) - the constructor naturally requires that "
+"you set the max length and it allows you to optionally pass in a sequence"
+" to be used as the starting queue. The underlying implementation is "
+"actually the queue from before."
+msgstr ""
+
+#: ../../develop/using_utils.rst:254
+msgid ""
+"enqueue(item) - adds an item onto the back of the queue and if it would "
+"push it over the max length, it dequeues the item on the front (it does "
+"not return this item to you)"
+msgstr ""
+
+#: ../../develop/using_utils.rst:257
+msgid "all the standard methods from the queue class are inherited for this class"
+msgstr ""
+
+#: ../../develop/using_utils.rst:260
+msgid "The Other Structures"
+msgstr ""
+
+#: ../../develop/using_utils.rst:262
+msgid ""
+"The most useful of the other structures is actually very similar to the "
+"\"MaxLengthQueue\". It's the \"RingBuffer\", which is essentially a "
+"MaxLengthQueue which fills up to its maximum size and then circularly "
+"replaces the old contents as new entries are added instead of dequeuing."
+"  It features the following:"
+msgstr ""
+
+#: ../../develop/using_utils.rst:268
+msgid ""
+"RingBuffer(size, seq=()) - as with the MaxLengthQueue you specify the "
+"size of the RingBuffer and optionally give it a sequence."
+msgstr ""
+
+#: ../../develop/using_utils.rst:271
+msgid ""
+"append(item) - adds item to the end of the buffer, pushing out an item "
+"from the front if necessary"
+msgstr ""
+
+#: ../../develop/using_utils.rst:273
+msgid "reset() - empties out the buffer entirely"
+msgstr ""
+
+#: ../../develop/using_utils.rst:274
+msgid "resize(i) - shrinks/expands the RingBuffer to the size provided"
+msgstr ""
+
+#: ../../develop/using_utils.rst:275
+msgid ""
+"extend(seq) - append the items from the provided sequence onto the end of"
+" the RingBuffer"
+msgstr ""
+
+#: ../../develop/using_utils.rst:278
+msgid ""
+"The next data structure is the TwoWayDictionary, which as the name "
+"implies is a dictionary in which key-value pairs have mappings going both"
+" directions. It features the following:"
+msgstr ""
+
+#: ../../develop/using_utils.rst:282
+msgid ""
+"TwoWayDictionary(seq=(), \\**kwargs) - Takes an optional sequence of "
+"(key, value) pairs as well as any key=value pairs specified in the "
+"constructor as initial values for the two-way dict."
+msgstr ""
+
+#: ../../develop/using_utils.rst:286
+msgid ""
+"other than that, no extra features that a normal Python dict doesn't "
+"already offer with the exception that any (key, val) pair added to the "
+"dict is also added as (val, key) as well, so the mapping goes both ways. "
+"Elements are still accessed the same way you always do with Python "
+"'dict's."
+msgstr ""
+
+#: ../../develop/using_utils.rst:292
+msgid ""
+"There is also a MultiSet class available, but it's very unlikely that it "
+"will serve your purpose, so I won't go into it here. The curious coder "
+"can go check the source and see what it's all about if they wish (it's "
+"only used once in our code, in the Relay plugin)."
+msgstr ""
+
+#: ../../develop/using_utils.rst:298
+msgid "web.py"
+msgstr ""
+
+#: ../../develop/using_utils.rst:299
+msgid ""
+"The web portion of Supybot's utils module is mainly used for retrieving "
+"data from websites but it also has some utility functions pertaining to "
+"HTML and email text as well. The functions in web are listed below, once "
+"again in order of usefulness."
+msgstr ""
+
+#: ../../develop/using_utils.rst:304
+msgid ""
+"getUrl(url, size=None, headers=None) - gets the data at the URL provided "
+"and returns it as one large string"
+msgstr ""
+
+#: ../../develop/using_utils.rst:307 ../../develop/using_utils.rst:315
+msgid ""
+"url: the location of the data to be retrieved or a urllib2.Request object"
+" to be used in the retrieval"
+msgstr ""
+
+#: ../../develop/using_utils.rst:309
+msgid ""
+"size: the maximum number of bytes to retrieve, defaults to None, meaning "
+"that it is to try to retrieve all data"
+msgstr ""
+
+#: ../../develop/using_utils.rst:311 ../../develop/using_utils.rst:317
+msgid "headers: a dictionary mapping header types to header data"
+msgstr ""
+
+#: ../../develop/using_utils.rst:313
+msgid "getUrlFd(url, headers=None) - returns a file-like object for a url"
+msgstr ""
+
+#: ../../develop/using_utils.rst:319
+msgid ""
+"htmlToText(s, tagReplace=\" \") - strips out all tags in a string of "
+"HTML, replacing them with the specified character"
+msgstr ""
+
+#: ../../develop/using_utils.rst:322
+msgid "s: the HTML text to strip the tags out of"
+msgstr ""
+
+#: ../../develop/using_utils.rst:323
+msgid "tagReplace: the string to replace tags with"
+msgstr ""
+
+#: ../../develop/using_utils.rst:325
+msgid ""
+"strError(e) - pretty-printer for web exceptions, returns a descriptive "
+"string given a web-related exception"
+msgstr ""
+
+#: ../../develop/using_utils.rst:328
+msgid "e: the exception to pretty-print"
+msgstr ""
+
+#: ../../develop/using_utils.rst:330
+msgid ""
+"mungeEmail(s) - a naive e-mail obfuscation function, replaces \"@\" with "
+"\"AT\" and \".\" with \"DOT\""
+msgstr ""
+
+#: ../../develop/using_utils.rst:333
+msgid "s: the e-mail address to obfuscate"
+msgstr ""
+
+#: ../../develop/using_utils.rst:335
+msgid "getDomain(url) - returns the domain of a URL - url: the URL in question"
+msgstr ""
+
+#: ../../develop/using_utils.rst:339
+msgid "The Best of the Rest"
+msgstr ""
+
+#: ../../develop/using_utils.rst:343
+msgid ""
+"Rather than document each of the remaining portions of the supybot.utils "
+"module, I've elected to just pick out the choice bits from specific parts"
+" and document those instead. Here they are, broken out by module name."
+msgstr ""
+
+#: ../../develop/using_utils.rst:348
+msgid "supybot.utils.file - file utilities"
+msgstr ""
+
+#: ../../develop/using_utils.rst:350
+msgid ""
+"touch(filename) - updates the access time of a file by opening it for "
+"writing and immediately closing it"
+msgstr ""
+
+#: ../../develop/using_utils.rst:353
+msgid ""
+"mktemp(suffix=\"\") - creates a decent random string, suitable for a "
+"temporary filename with the given suffix, if provided"
+msgstr ""
+
+#: ../../develop/using_utils.rst:356
+msgid ""
+"the AtomicFile class - used for files that need to be atomically written,"
+" i.e., if there's a failure the original file remains unmodified. For "
+"more info consult file.py in src/utils"
+msgstr ""
+
+#: ../../develop/using_utils.rst:361
+msgid "supybot.utils.gen - general utilities"
+msgstr ""
+
+#: ../../develop/using_utils.rst:363
+msgid ""
+"timeElapsed(elapsed, [lots of optional args]) - given the number of "
+"seconds elapsed, returns a string with the English description of the "
+"amount of time passed, consult gen.py in src/utils for the exact argument"
+" list and documentation if you feel you could use this function."
+msgstr ""
+
+#: ../../develop/using_utils.rst:368
+msgid ""
+"exnToString(e) - improved exception-to-string function. Provides nicer "
+"output than a simple str(e)."
+msgstr ""
+
+#: ../../develop/using_utils.rst:371
+msgid ""
+"InsensitivePreservingDict class - a dict class that is case-insensitive "
+"when accessing keys"
+msgstr ""
+
+#: ../../develop/using_utils.rst:375
+msgid "supybot.utils.iter - iterable utilities"
+msgstr ""
+
+#: ../../develop/using_utils.rst:377
+msgid "len(iterable) - returns the length of a given iterable"
+msgstr ""
+
+#: ../../develop/using_utils.rst:379
+msgid ""
+"groupby(key, iterable) - equivalent to the itertools.groupby function "
+"available as of Python 2.4. Provided for backwards compatibility."
+msgstr ""
+
+#: ../../develop/using_utils.rst:382
+msgid ""
+"any(p, iterable) - Returns true if any element in the iterable satisfies "
+"the predicate p"
+msgstr ""
+
+#: ../../develop/using_utils.rst:385
+msgid ""
+"all(p, iterable) - Returns true if all elements in the iterable satisfy "
+"the predicate p"
+msgstr ""
+
+#: ../../develop/using_utils.rst:388
+msgid "choice(iterable) - Returns a random element from the iterable"
+msgstr ""
+
+#: ../../develop/using_utils.rst:392
+msgid "supybot.dynamicScope / dynamic - accessing variables in the stack"
+msgstr ""
+
+#: ../../develop/using_utils.rst:394
+msgid ""
+"This feature is not in `supybot.utils` but still deserves to be "
+"documented as a utility."
+msgstr ""
+
+#: ../../develop/using_utils.rst:397
+msgid ""
+"Althrough you should avoid using this feature as long as you can, it is "
+"sometimes necessary to access variables the Supybot API does not provide "
+"you."
+msgstr ""
+
+#: ../../develop/using_utils.rst:400
+msgid ""
+"For instance, the `Aka` plugin provides per-channel aliases by overriding"
+" :ref:`getCommandMethod <commands_handling>`. However, the channel where "
+"the command is called is not passed to this functions, so when writing "
+"`Aka` I could either add this parameter (and thus break all plugins all "
+"plugins already overriding this method) or use this hack. I choosed this "
+"hack."
+msgstr ""
+
+#: ../../develop/using_utils.rst:406
+msgid ""
+"How does it work? This is quite simple: ``dynamic.channel`` is a shortcut"
+" for ``supybot.dynamicScope.DynamicScope.__getattr__('channel')``, which "
+"browse the call stack backwards, looking for a variable named "
+"``channel``, and then returns is as far as it finds it (and returns "
+"``None`` if there is no such variale)."
+msgstr ""
+
+#: ../../develop/using_utils.rst:412
+msgid ""
+"Note that you don't have to import ``dynamicScope``, the ``dynamic`` "
+"object is automatically set as a global variable when Supybot starts."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:3
+msgid "Using commands.wrap to parse your command's arguments"
+msgstr ""
+
+#: ../../develop/using_wrap.rst
+msgid "Contents"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:9
+msgid ""
+"To plugin developers for older (pre-0.80) versions of Supybot, one of the"
+" more annoying aspects of writing commands was handling the arguments "
+"that were passed in. In fact, many commands often had to duplicate "
+"parsing and verification code, resulting in lots of duplicated code for "
+"not a whole lot of action. So, instead of forcing plugin writers to come "
+"up with their own ways of cleaning it up, we wrote up the wrap function "
+"to handle all of it."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:16
+msgid ""
+"It allows a much simpler and more flexible way of checking things than "
+"before and it doesn't require that you know the bot internals to do "
+"things like check and see if a user exists, or check if a command name "
+"exists and whatnot."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:20
+msgid ""
+"If you are a plugin author this document is absolutely required reading, "
+"as it will massively ease the task of writing commands."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:24
+msgid "Using Wrap"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:25
+msgid ""
+"First off, to get the wrap function, it is recommended (strongly) that "
+"you use the following import line::"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:30
+msgid ""
+"This will allow you to access the wrap command (and it allows you to do "
+"it without the commands prefix). Note that this line is added to the "
+"imports of plugin templates generated by the supybot-plugin-create "
+"script."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:34
+msgid ""
+"Let's write a quickie command that uses wrap to get a feel for how it "
+"makes our lives better. Let's write a command that repeats a string of "
+"text a given number of times. So you could say \"repeat 3 foo\" and it "
+"would say \"foofoofoo\". Not a very useful command, but it will serve our"
+" purpose just fine. Here's how it would be done without wrap::"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:52
+msgid ""
+"Note that all of the argument validation and parsing takes up 5 of the 6 "
+"lines (and you should have seen it before we had privmsg.getArgs!). Now, "
+"here's what our command will look like with wrap applied::"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:64
+msgid ""
+"Pretty short, eh? With wrap all of the argument parsing and validation is"
+" handled for us and we get the arguments we want, formatted how we want "
+"them, and converted into whatever types we want them to be - all in one "
+"simple function call that is used to wrap the function! So now the code "
+"inside each command really deals with how to execute the command and not "
+"how to deal with the input."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:71
+msgid ""
+"So, now that you see the benefits of wrap, let's figure out what stuff we"
+" have to do to use it."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:75
+msgid "Syntax Changes"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:76
+msgid ""
+"There are two syntax changes to the old style that are implemented. "
+"First, the definition of the command function must be changed. The basic "
+"syntax for the new definition is::"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:82
+msgid ""
+"Where arg1 and arg2 (up through as many as you want) are the variables "
+"that will store the parsed arguments. \"Now where do these parsed "
+"arguments come from?\" you ask. Well, that's where the second syntax "
+"change comes in. The second syntax change is the actual use of the wrap "
+"function itself to decorate our command names. The basic decoration "
+"syntax is::"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:92
+msgid ""
+"This should go on the line immediately following the body of the "
+"command's definition, so it can easily be located (and it obviously must "
+"go after the command's definition so that commandname is defined)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:96
+msgid ""
+"Each of the converters in the above listing should be one of the "
+"converters in commands.py (I will describe each of them in detail later.)"
+" The converters are applied in order to the arguments given to the "
+"command, generally taking arguments off of the front of the argument list"
+" as they go. Note that each of the arguments is actually a string "
+"containing the NAME of the converter to use and not a reference to the "
+"actual converter itself. This way we can have converters with names like "
+"int and not have to worry about polluting the builtin namespace by "
+"overriding the builtin int."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:105
+msgid ""
+"As you will find out when you look through the list of converters below, "
+"some of the converters actually take arguments. The syntax for supplying "
+"them (since we aren't actually calling the converters, but simply "
+"specifying them), is to wrap the converter name and args list into a "
+"tuple. For example::"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:113
+msgid ""
+"For the most part you won't need to use an argument with the converters "
+"you use either because the defaults are satisfactory or because it "
+"doesn't even take any."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:118
+msgid "Customizing Wrap"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:119
+msgid ""
+"Converters alone are a pretty powerful tool, but for even more advanced "
+"(yet simpler!) argument handling you may want to use contexts. Contexts "
+"describe how the converters are applied to the arguments, while the "
+"converters themselves do the actual parsing and validation."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:124
+msgid ""
+"For example, one of the contexts is \"optional\". By using this context, "
+"you're saying that a given argument is not required, and if the supplied "
+"converter doesn't find anything it likes, we should use some default. Yet"
+" another example is the \"reverse\" context. This context tells the "
+"supplied converter to look at the last argument and work backwards "
+"instead of the normal first-to-last way of looking at arguments."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:131
+msgid ""
+"So, that should give you a feel for the role that contexts play. They are"
+" not by any means necessary to use wrap. All of the stuff we've done to "
+"this point will work as-is. However, contexts let you do some very "
+"powerful things in very easy ways, and are a good thing to know how to "
+"use."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:136
+msgid ""
+"Now, how do you use them? Well, they are in the global namespace of "
+"src/commands.py, so your previous import line will import them all; you "
+"can call them just as you call wrap. In fact, the way you use them is you"
+" simply call the context function you want to use, with the converter "
+"(and its arguments) as arguments. It's quite simple. Here's an example::"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:144
+msgid ""
+"In this example, our command is looking for an optional integer argument "
+"first. Then, after that, any number of arguments which can be anything "
+"(as long as they are something, of course)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:148
+msgid ""
+"Do note, however, that the type of the arguments that are returned can be"
+" changed if you apply a context to it. So, optional(\"int\") may very "
+"well return None as well as something that passes the \"int\" converter, "
+"because after all it's an optional argument and if it is None, that "
+"signifies that nothing was there. Also, for another example, "
+"many(\"something\") doesn't return the same thing that just \"something\""
+" would return, but rather a list of \"something\"s."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:156
+msgid "Converter List"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:157
+msgid ""
+"Below is a list of all the available converters to use with wrap. If the "
+"converter accepts any arguments, they are listed after it and if they are"
+" optional, the default value is shown."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:162
+msgid "Numbers and time"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:164
+msgid "expiry"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:166
+msgid ""
+"Takes a number of seconds and adds it to the current time to create an "
+"expiration timestamp."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:169
+msgid "id, kind=\"integer\""
+msgstr ""
+
+#: ../../develop/using_wrap.rst:171
+msgid ""
+"Returns something that looks like an integer ID number. Takes an optional"
+" \"kind\" argument for you to state what kind of ID you are looking for, "
+"though this doesn't affect the integrity-checking. Basically requires "
+"that the argument be an integer, does no other integrity-checking, and "
+"provides a nice error message with the kind in it."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:177
+msgid "index"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:179
+msgid ""
+"Basically (\"int\", \"index\"), but with a twist. This will take a "
+"1-based index and turn it into a 0-based index (which is more useful in "
+"code). It doesn't transform 0, and it maintains negative indices as is "
+"(note that it does allow them!)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:184
+msgid "int, type=\"integer\", p=None"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:186
+msgid ""
+"Gets an integer. The \"type\" text can be used to customize the error "
+"message received when the argument is not an integer. \"p\" is an "
+"optional predicate to test the integer with. If p(i) fails (where i is "
+"the integer arg parsed out of the argument string), the arg will not be "
+"accepted."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:191
+msgid "now"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:193
+msgid ""
+"Simply returns the current timestamp as an arg, does not reference or "
+"modify the argument list."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:196
+msgid "long, type=\"long\""
+msgstr ""
+
+#: ../../develop/using_wrap.rst:198
+msgid ""
+"Basically the same as int minus the predicate, except that it converts "
+"the argument to a long integer regardless of the size of the int."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:201
+msgid "float, type=\"floating point number\""
+msgstr ""
+
+#: ../../develop/using_wrap.rst:203
+msgid ""
+"Basically the same as int minus the predicate, except that it converts "
+"the argument to a float."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:206
+msgid "nonInt, type=\"non-integer value\""
+msgstr ""
+
+#: ../../develop/using_wrap.rst:208
+msgid ""
+"Accepts everything but integers, and returns them unchanged. The \"type\""
+" value, as always, can be used to customize the error message that is "
+"displayed upon failure."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:212
+msgid "positiveInt"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:214
+msgid "Accepts only positive integers."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:216
+msgid "nonNegativeInt"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:218
+msgid "Accepts only non-negative integers."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:221
+msgid "Channel"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:223
+msgid "channelDb"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:225
+msgid ""
+"Sets the channel appropriately in order to get to the databases for that "
+"channel (handles whether or not a given channel uses channel-specific "
+"databases and whatnot)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:229
+msgid "channel"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:231
+msgid ""
+"Gets a channel to use the command in. If the channel isn't supplied, uses"
+" the channel the message was sent in. If using a different channel, does "
+"sanity-checking to make sure the channel exists on the current IRC "
+"network."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:235
+msgid "inChannel"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:237
+msgid ""
+"Requires that the command be called from within any channel that the bot "
+"is currently in or with one of those channels used as an argument to the "
+"command."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:241
+msgid "onlyInChannel"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:243
+msgid ""
+"Requires that the command be called from within any channel that the bot "
+"is currently in."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:246
+msgid "callerInGivenChannel"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:248
+msgid ""
+"Takes the given argument as a channel and makes sure that the caller is "
+"in that channel."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:251
+msgid "public"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:253
+msgid ""
+"Requires that the command be sent in a channel instead of a private "
+"message."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:256
+msgid "private"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:258
+msgid ""
+"Requires that the command be sent in a private message instead of a "
+"channel."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:261
+msgid "validChannel"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:263
+msgid "Gets a channel argument once it makes sure it's a valid channel."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:266
+msgid "Words"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:268
+msgid "color"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:270
+msgid ""
+"Accepts arguments that describe a text color code (e.g., \"black\", "
+"\"light blue\") and returns the mIRC color code for that color. (Note "
+"that many other IRC clients support the mIRC color code scheme, not just "
+"mIRC)"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:274
+msgid "letter"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:276
+msgid ""
+"Looks for a single letter. (Technically, it looks for any one-element "
+"sequence)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:279
+msgid "literal, literals, errmsg=None"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:281
+msgid ""
+"Takes a required sequence or string (literals) and any argument that "
+"uniquely matches the starting substring of one of the literals is "
+"transformed into the full literal. For example, with ``(\"literal\", "
+"(\"bar\", \"baz\", \"qux\"))``, you'd get \"bar\" for \"bar\", \"baz\" "
+"for \"baz\", and \"qux\" for any of \"q\", \"qu\", or \"qux\". \"b\" and "
+"\"ba\" would raise errors because they don't uniquely identify one of the"
+" literals in the list. You can override errmsg to provide a specific "
+"(full) error message, otherwise the default argument error message is "
+"displayed."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:290
+msgid "lowered"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:292
+msgid ""
+"Returns the argument lowered (NOTE: it is lowered according to IRC "
+"conventions, which does strange mapping with some punctuation "
+"characters)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:295
+msgid "to"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:297
+msgid ""
+"Returns the string \"to\" if the arg is any form of \"to\" (case-"
+"insensitive)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:300
+msgid "Network"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:302
+msgid "ip"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:304
+msgid ""
+"Checks and makes sure the argument looks like a valid IP and then returns"
+" it."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:307
+msgid "url"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:309
+msgid "Checks for a valid URL."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:311
+msgid "httpUrl"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:313
+msgid "Checks for a valid HTTP URL."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:316
+msgid "Users, nicks, and permissions"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:318
+msgid "haveOp, action=\"do that\""
+msgstr ""
+
+#: ../../develop/using_wrap.rst:320
+msgid ""
+"Simply requires that the bot have ops in the channel that the command is "
+"called in. The action parameter completes the error message: \"I need to "
+"be opped to ...\"."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:324
+msgid "nick"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:326
+msgid "Checks that the arg is a valid nick on the current IRC server."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:328
+msgid "seenNick"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:330
+msgid ""
+"Checks that the arg is a nick that the bot has seen (NOTE: this is "
+"limited by the size of the history buffer that the bot has)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:333
+msgid "nickInChannel"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:335
+msgid ""
+"Requires that the argument be a nick that is in the current channel, and "
+"returns that nick."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:338
+msgid "capability"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:340
+msgid "Used to retrieve an argument that describes a capability."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:342
+msgid "hostmask"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:344
+msgid "Returns the hostmask of any provided nick or hostmask argument."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:346
+msgid "banmask"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:348
+msgid "Returns a generic banmask of the provided nick or hostmask argument."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:350
+msgid "user"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:352
+msgid "Requires that the caller be a registered user."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:354
+msgid "otherUser"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:356
+msgid "Returns the user specified by the username or hostmask in the argument."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:358
+msgid "owner"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:360
+msgid "Requires that the command caller has the \"owner\" capability."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:362
+msgid "admin"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:364
+msgid "Requires that the command caller has the \"admin\" capability."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:366
+msgid "checkCapability, capability"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:368
+msgid "Checks to make sure that the caller has the specified capability."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:372
+msgid "checkChannelCapability, capability"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:371
+msgid ""
+"Checks to make sure that the caller has the specified capability on the "
+"channel the command is called in."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:375
+msgid "Matching"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:377
+msgid "anything"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:379
+msgid "Returns anything as is."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:381
+msgid "something, errorMsg=None, p=None"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:383
+msgid ""
+"Takes anything but the empty string. errorMsg can be used to customize "
+"the error message. p is any predicate function that can be used to test "
+"the validity of the input."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:387
+msgid "somethingWithoutSpaces"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:389
+msgid ""
+"Same as something, only with the exception of disallowing spaces of "
+"course."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:391
+msgid "matches, regexp, errmsg"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:393
+msgid ""
+"Searches the args with the given regexp and returns the matches. If no "
+"match is found, errmsg is given."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:396
+msgid "regexpMatcher"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:398
+msgid "Gets a matching regexp argument (m// or //)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:400
+msgid "glob"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:402
+msgid ""
+"Gets a glob string. Basically, if there are no wildcards (``*``, ``?``) "
+"in the argument, returns ``*string*``, making a glob string that matches "
+"anything containing the given argument."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:406
+msgid "regexpReplacer"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:408
+msgid "Gets a replacing regexp argument (s//)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:411 ../../develop/using_wrap.rst:489
+msgid "Other"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:413
+msgid "networkIrc, errorIfNoMatch=False"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:415
+msgid ""
+"Returns the IRC object of the specified IRC network. If one isn't "
+"specified, the IRC object of the IRC network the command was called on is"
+" returned."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:419
+msgid "plugin, require=True"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:421
+msgid ""
+"Returns the plugin specified by the arg or None. If require is True, an "
+"error is raised if the plugin cannot be retrieved."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:424
+msgid "boolean"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:426
+msgid ""
+"Converts the text string to a boolean value. Acceptable true values are: "
+"\"1\", \"true\", \"on\", \"enable\", or \"enabled\" (case-insensitive). "
+"Acceptable false values are: \"0\", false\", \"off\", \"disable\", or "
+"\"disabled\" (case-insensitive)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:431
+msgid "filename"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:433
+msgid "Used to get a filename argument."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:435
+msgid "commandName"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:437
+msgid ""
+"Returns the canonical command name version of the given string (ie, the "
+"string is lowercased and dashes and underscores are removed)."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:440
+msgid "text"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:442
+msgid ""
+"Takes the rest of the arguments as one big string. Note that this differs"
+" from the \"anything\" context in that it clobbers the arg string when "
+"it's done.  Using any converters after this is most likely incorrect."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:447
+msgid "Contexts List"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:448
+msgid "What contexts are available for me to use?"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:450
+msgid ""
+"The list of available contexts is below. Unless specified otherwise, it "
+"can be assumed that the type returned by the context itself matches the "
+"type of the converter it is applied to."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:455
+msgid "Options"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:460
+msgid "optional"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:458
+msgid ""
+"Look for an argument that satisfies the supplied converter, but if it's "
+"not the type I'm expecting or there are no arguments for us to check, "
+"then use the default value. Will return the converted argument as is or "
+"None."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:465
+msgid "additional"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:463
+msgid ""
+"Look for an argument that satisfies the supplied converter, making sure "
+"that it's the right type. If there aren't any arguments to check, then "
+"use the default value. Will return the converted argument as is or None."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:469
+msgid "first"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:468
+msgid ""
+"Tries each of the supplied converters in order and returns the result of "
+"the first successfully applied converter."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:472
+msgid "Multiplicity"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:476
+msgid "any"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:475
+msgid ""
+"Looks for any number of arguments matching the supplied converter. Will "
+"return a sequence of converted arguments or None."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:481
+msgid "many"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:479
+msgid ""
+"Looks for multiple arguments matching the supplied converter. Expects at "
+"least one to work, otherwise it will fail. Will return the sequence of "
+"converted arguments."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:486
+msgid "commalist"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:484
+msgid ""
+"Looks for a comma separated list of arguments that match the supplied "
+"converter. Returns a list of the successfully converted arguments. If any"
+" of the arguments fail, this whole context fails."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:493
+msgid "rest"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:492
+msgid ""
+"Treat the rest of the arguments as one big string, and then convert. If "
+"the conversion is unsuccessful, restores the arguments."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:500
+msgid "getopts"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:496
+msgid ""
+"Handles --option style arguments. Each option should be a key in a "
+"dictionary that maps to the name of the converter that is to be used on "
+"that argument. To make the option take no argument, use \"\" as the "
+"converter name in the dictionary. For no conversion, use None as the "
+"converter name in the dictionary."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:505
+msgid "reverse"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:503
+msgid ""
+"Reverse the argument list, apply the converters, and then reverse the "
+"argument list back."
+msgstr ""
+
+#: ../../develop/using_wrap.rst:508
+msgid "Final Word"
+msgstr ""
+
+#: ../../develop/using_wrap.rst:510
+msgid ""
+"Now that you know how to use wrap, and you have a list of converters and "
+"contexts you can use, your task of writing clean, simple, and safe plugin"
+" code should become much easier. Enjoy!"
+msgstr ""
+

@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2003-2015, the Limnoria/Gribble/Supybot contributors
+# This file is distributed under the same license as the Limnoria package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Limnoria 0.83\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-24 17:46+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+#: ../../contribute/develop.rst:5
+msgid "Contributing to Limnoria as a developer"
+msgstr ""
+
+#: ../../contribute/develop.rst:9
+msgid "This page is still a draft and is not complete."
+msgstr ""
+
+#: ../../contribute/develop.rst:14
+msgid "About the policy about repository access"
+msgstr ""
+
+#: ../../contribute/develop.rst:16
+msgid ""
+"For the moment, I decided to give write access to my repository to "
+"nobody, because I want to check everything that is pushed in it. If "
+"someone pushes a bad update, it may be dangerous for users and I do not "
+"want that."
+msgstr ""
+
+#: ../../contribute/develop.rst:20
+#, python-format
+msgid ""
+"On the other side, I am **very** open to pull requests, that's to say, if"
+" you ask me to merge some changes you made, there are 99% changes I will "
+"merge this changes. That's why I suggest you to fork my repository on "
+"GitHub, make your modifications, and click the \"Pull requests\" button "
+"in my repository."
+msgstr ""
+
+#: ../../contribute/develop.rst:27
+msgid "Using Git"
+msgstr ""
+
+#: ../../contribute/develop.rst:29
+msgid ""
+"If you are a developer, I assume that you know how to use Git. If you "
+"don't, I suggest you to learn how to use it, at least the basics (clone, "
+"checkout, branch, commit, push/pull, add/rm, log, show, reset, revert)."
+msgstr ""
+
+#: ../../contribute/develop.rst:33
+msgid ""
+"I learnt how to use Git with an ebook, also available as a real book: "
+"`Pro Git`_."
+msgstr ""
+
+#: ../../contribute/develop.rst:36
+msgid ""
+"Our prefered way of contributing is through GitHub pull requests to "
+"`Limnoria's repository`_. Please send your pull requests to the `testing`"
+" branch."
+msgstr ""
+
+#: ../../contribute/develop.rst:44
+msgid "Where to start"
+msgstr ""
+
+#: ../../contribute/develop.rst:46
+msgid ""
+"If you are not an experienced Python and/or Limnoria developper, you can "
+"start with solving `issues tagged as easy`_. I believe they are likely to"
+" be easy to solve even without a lot of experience."
+msgstr ""
+
+#: ../../contribute/develop.rst:50
+msgid ""
+"If you need help solving an issue (tagged as easy or not) or want to find"
+" an issue that matches your skills, please ask on IRC, we will be glad to"
+" help you."
+msgstr ""
+
+#: ../../contribute/develop.rst:57
+msgid "Code style"
+msgstr ""
+
+#: ../../contribute/develop.rst:59
+msgid "Read the doc in the source code (docs/STYLE.rst)."
+msgstr ""
+
+#: ../../contribute/index.rst:5
+msgid "Contributing to Limnoria"
+msgstr ""
+
+#: ../../contribute/translate.rst:7
+msgid "Translating Limnoria"
+msgstr ""
+
+#: ../../contribute/translate.rst:9
+msgid ""
+"I already wrote a `guide on how to translate`_ plugins. So, this page "
+"will only explain how to translate the core and push your translations to"
+" Limnoria."
+msgstr ""
+
+#: ../../contribute/translate.rst:16
+msgid "The best way: using Git yourself"
+msgstr ""
+
+#: ../../contribute/translate.rst:18
+msgid ""
+"As I said in the :ref:`policy about developer's contributions "
+"<contribute-develop-policy>`, I don't give write access to my repo for "
+"the moment, but I accept pull requests."
+msgstr ""
+
+#: ../../contribute/translate.rst:22
+msgid ""
+"As you are a translator, you don't need to know all the technical details"
+" about development, so I write a simplified doc here."
+msgstr ""
+
+#: ../../contribute/translate.rst:26
+msgid "Preparing git"
+msgstr ""
+
+#: ../../contribute/translate.rst:28
+msgid ""
+"First you should install git. It's usually package ``git`` in your OS, or"
+" you can download it from `their homepage`_ or download GitHub client for"
+" `Windows`_ or `OS X`_"
+msgstr ""
+
+#: ../../contribute/translate.rst:32
+msgid ""
+"Then you should tell GitHub who you are and what is your email address. "
+"This information is attached to commits and GitHub uses it to get your "
+"gravatar::"
+msgstr ""
+
+#: ../../contribute/translate.rst:39
+msgid ""
+"If you are going to use the ``https``, you probably want git to remember "
+"your GitHub password for some time so you don't have to write it "
+"continuosly::"
+msgstr ""
+
+#: ../../contribute/translate.rst:46
+msgid ""
+"This would make git remember your password for hour. It can be changed by"
+" changing 3600 to any other amount of seconds."
+msgstr ""
+
+#: ../../contribute/translate.rst:50
+msgid "Cloning the repository"
+msgstr ""
+
+#: ../../contribute/translate.rst:52
+msgid ""
+"You first need an account on `GitHub`_; I think you don't need "
+"explaination for that."
+msgstr ""
+
+#: ../../contribute/translate.rst:55
+msgid ""
+"Then, go on `Limnoria repository`_ and click the *Fork* button. This will"
+" create you a copy of my repository where you will have write access (and"
+" I won't have this write access)."
+msgstr ""
+
+#: ../../contribute/translate.rst:59
+msgid ""
+"Then, open a console, and write (replace *YourName* by the name of your "
+"GitHub account)::"
+msgstr ""
+
+#: ../../contribute/translate.rst:64
+msgid ""
+"If you are experienced with git, you can ``git clone "
+"git@github.com:<YourName>/Limnoria.git --branch=testing`` instead."
+msgstr ""
+
+#: ../../contribute/translate.rst:68
+msgid ""
+"This will create a new directory, called *Limnoria*, where all the code "
+"and project history are copied. Now, cd to the directory::"
+msgstr ""
+
+#: ../../contribute/translate.rst:73
+msgid ""
+"The things below affect to you only if you didn't specify the branch in "
+"the git clone command."
+msgstr ""
+
+#: ../../contribute/translate.rst:76
+msgid ""
+"Then, you need to checkout the *testing* branch. What does that mean? It "
+"means that there is differents stages in Limnoria: all changes are made "
+"in testing, and when I think *testing* is stable, I merge it into "
+"*master*. So, checking out *testing* means Git will use the code in "
+"*testing*, you will translate strings that are in *testing*, and changes "
+"you make will be in *testing*. Now, do it::"
+msgstr ""
+
+#: ../../contribute/translate.rst:85
+msgid "Git will reply you that it understood what you mean by *testing*."
+msgstr ""
+
+#: ../../contribute/translate.rst:87
+msgid "Ok, now, you can translate."
+msgstr ""
+
+#: ../../contribute/translate.rst:90
+msgid "Pushing translations"
+msgstr ""
+
+#: ../../contribute/translate.rst:92
+msgid ""
+"Once you have done some translations (let's say you translated Alias), "
+"you have to commit your changes. That mean you tell Git \"Ok, I've made "
+"some changes, and I want to take a snapshot (either to be able to roll "
+"back or to publish your changes)."
+msgstr ""
+
+#: ../../contribute/translate.rst:97
+msgid ""
+"First, you need to tell Git what files you want to be committed (let's "
+"say you are the Finnish translator, so you updated Alias's fi.po)::"
+msgstr ""
+
+#: ../../contribute/translate.rst:102
+msgid ""
+"Then, you can commit your files. Depending on what you made, you can use "
+"one of this commands (not all of them!)::"
+msgstr ""
+
+#: ../../contribute/translate.rst:109
+msgid ""
+"By the way, the text that follow -m is a message that will be readed by "
+"**humans**, so you can write anything you want, but I think it's better "
+"that everybody use the same kind of messages."
+msgstr ""
+
+#: ../../contribute/translate.rst:113
+msgid ""
+"Ok, then, Git knows you have done something. But you didn't send your "
+"work on Internet yet. To send it, run::"
+msgstr ""
+
+#: ../../contribute/translate.rst:118
+msgid "Simple, isn't it?"
+msgstr ""
+
+#: ../../contribute/translate.rst:120
+msgid ""
+"Now, go back to GitHub and your forked repository, and click the *Pull "
+"request* button. Then, set *testing* on the both side, and run *Update "
+"Commit Range*. I will by mailed that you asked me to merge your changes, "
+"and I will do it soon."
+msgstr ""
+
+#: ../../contribute/translate.rst:126
+msgid "Getting updates"
+msgstr ""
+
+#: ../../contribute/translate.rst:128
+msgid "As you may know, I do some updates in Limnoria repository. ;)"
+msgstr ""
+
+#: ../../contribute/translate.rst:130
+msgid ""
+"You need to have the latest version of the *messages.pot* files. So, you "
+"need to teach Git how to get this updates::"
+msgstr ""
+
+#: ../../contribute/translate.rst:135
+msgid "Now, every time you want to download updates, run::"
+msgstr ""
+
+#: ../../contribute/translate.rst:141
+msgid "Another way: mailing me your translations"
+msgstr ""
+
+#: ../../contribute/translate.rst:143
+msgid ""
+"I think this is the simplest way for you. You only have to follow the "
+"translation guide and send me your .po files by mail."
+msgstr ""
+
+#: ../../contribute/translate.rst:146
+msgid "You can choose either one of this way to do it."
+msgstr ""
+
+#: ../../contribute/translate.rst:149
+msgid "Mikaela's way"
+msgstr ""
+
+#: ../../contribute/translate.rst:151
+msgid ""
+"Send the fi.po (or whatever the name is) files one by one as an "
+"attachment. Don't forget to tell me what plugin it is."
+msgstr ""
+
+#: ../../contribute/translate.rst:154
+msgid "I (Mikaela) have moved to git long time ago though."
+msgstr ""
+
+#: ../../contribute/translate.rst:157
+msgid "skizzhg's way"
+msgstr ""
+
+#: ../../contribute/translate.rst:159
+msgid ""
+"Do many translations. Put them in a tarball/zipball/whatever (but not a "
+"RAR archive, I can't read them because is a proprietary format)."
+msgstr ""
+
+#: ../../contribute/translate.rst:162
+msgid "I prefer that you choose this architecture:"
+msgstr ""
+
+#: ../../contribute/translate.rst:164
+msgid "FirstPlugin/locales/it.po"
+msgstr ""
+
+#: ../../contribute/translate.rst:165
+msgid "SecondPlugin/locales/it.po"
+msgstr ""
+
+#: ../../contribute/translate.rst:166
+msgid "ThirdPlugin/locales/it.po"
+msgstr ""
+
+#: ../../contribute/translate.rst:168
+msgid "Because I can extract everything with one click."
+msgstr ""
+

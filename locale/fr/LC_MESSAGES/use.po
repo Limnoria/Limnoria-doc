@@ -1,0 +1,2460 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2003-2015, the Limnoria/Gribble/Supybot contributors
+# This file is distributed under the same license as the Limnoria package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Limnoria 0.83\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-24 21:01+0100\n"
+"PO-Revision-Date: 2016-02-24 21:25+0100\n"
+"Last-Translator: Valentin Lorentz <progval+l10n@progval.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+"Language: fr\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#: ../../use/capabilities.rst:5
+msgid "Capabilities"
+msgstr "Capacités"
+
+#: ../../use/capabilities.rst:8 ../../use/configuration.rst:6
+#: ../../use/getting_started.rst:8
+msgid "Introduction"
+msgstr "Introduction"
+
+#: ../../use/capabilities.rst:10
+msgid ""
+"Ok, some explanation of the capabilities system is probably in order.  With "
+"most IRC bots (including the ones I've written myself prior to this one) "
+"\"what a user can do\" is set in one of two ways.  On the *really* simple "
+"bots, each user has a numeric \"level\" and commands check to see if a user "
+"has a \"high enough level\" to perform some operation.  On bots that are "
+"slightly more complicated, users have a list of \"flags\" whose meanings are "
+"hardcoded, and the bot checks to see if a user possesses the necessary flag "
+"before performing some operation.  Both methods, IMO, are rather arbitrary, "
+"and force the user and the programmer to be unduly confined to less "
+"expressive constructs."
+msgstr ""
+"Ok, il est temps d’expliquer le fonctionnement du système de capacités.  "
+"Pour la plupart des bots IRC (y compris certains que j’ai moi-même écrits "
+"avant celui), « ce qu’un-e utilisateur-trice peut faire » peut être défini "
+"de deux façons différentes.  Pour les bots *très* simples, chacun-e a un "
+"« niveau » et les commandes vérifies si le niveau d’un-e utilisateur-trice "
+"est assez élevé pour effectuer telle ou telle opération.  Pour les bots "
+"légèrement plus évolués, les utilisateurs-trices ont une liste de "
+"« flags » (drapeaux, étiquettes) dont la signifie est intégrée au bot, qui "
+"vérifie que la personne qui veut effectuer une opération les a.  Les deux "
+"méthodes sont, à mon avis, assez arbitraires, et forcent les utilisateurs-"
+"trices et développeurs-euses à être inutilement forcé-es à utiliser des "
+"constructions peu expressives.\t"
+
+#: ../../use/capabilities.rst:20
+msgid ""
+"This bot is different.  Every user has a set of \"capabilities\" that is "
+"consulted every time they give the bot a command.  Commands, rather than "
+"checking for a user level of 100, or checking if the user has an 'o' flag, "
+"are instead able to check if a user has the 'owner' capability.  At this "
+"point such a difference might not seem revolutionary, but at least we can "
+"already tell that this method is self-documenting, and easier for users and "
+"developers to understand what's truly going on."
+msgstr ""
+"Ce bot est différent.  Chaque utilisateur-trice a un ensemble de "
+"« capacités », qui est consulté à chaque fois qu’iel envoie une commande au "
+"bot.  Les commandes, plutôt que de vérifier qu’iel a un niveau de 100, ou "
+"vérifier qu’iel a le flag « o », sont capables de vérifier qu’iel a la "
+"capacité « owner ».  Pour le moment, une telle différence ne semble pas "
+"révolutionnaire, mais on peut déjà constater que cette méthode est plus "
+"explicite, et plus facile pour les personnes qui s’en servent et développent "
+"pour comprendre ce qu’il se passe vraiment."
+
+#: ../../use/capabilities.rst:29 ../../use/capabilities.rst:127
+msgid "User Capabilities"
+msgstr "Capacité utilisateur-trice"
+
+#: ../../use/capabilities.rst:30
+msgid "What the heck can these capabilities DO?"
+msgstr "Que permettent donc les capacités de faire ?"
+
+#: ../../use/capabilities.rst:32
+msgid ""
+"If that was all, well, the capability system would be *cool*, but not many "
+"people would say it was *awesome*.  But it **is** awesome!  Several things "
+"are happening behind the scenes that make it awesome, and these are things "
+"that couldn't happen if the bot was using numeric userlevels or single-"
+"character flags.  First, whenever a user issues the bot a command, the "
+"command dispatcher checks to make sure the user doesn't have the "
+"\"anticapability\" for that command.  An anticapability is a capability "
+"that, instead of saying \"what a user can do\", says what a user *cannot* "
+"do.  It's formed rather simply by adding a dash ('-') to the beginning of a "
+"capability; 'rot13' is a capability, and '-rot13' is an anticapability."
+msgstr ""
+"Si c’était tout, eh bien, le système de capacités serait *cool*, mais peu de "
+"gens diraient *génial*. Mais il **est** génial !  Plusieurs choses arrivent "
+"derrière le décors pour que ça soit génial, et ce sont des choses qui "
+"n’arrivent pas avec les bots qui utilisent des niveaux numériques ou des "
+"flags d’un seul caractère.  Premièrement, quand quelqu’un envoie une "
+"commande au bot, le dispatcher de commande vérifie qu’iel n’a pas "
+"l’« anticapacité » pour cete commande.  Une anticapacité est une capacité "
+"qui, plutôt que de dire ce que quelqu’un peut faire, dit ce que cette "
+"personne ne peut *pas* faire.  Elle est formée simplement en ajoutant un "
+"tirer (« - ») au début du nom de la capacité : « rot13 » est une capacité, "
+"« -rot13 » est une anticapacité.\t\t"
+
+#: ../../use/capabilities.rst:43
+msgid ""
+"Anyway, when a user issues the bot a command, perhaps 'calc' or 'help', the "
+"bot first checks to make sure the user doesn't have the '-calc' or the '-"
+"help' (anti)capabilities before even considering responding to the user.  So "
+"commands can be turned on or off on a *per user* basis, offering fine-"
+"grained control not often (if at all!) seen in other bots.  This can be "
+"further refined by limiting the (anti)capability to a command in a specific "
+"plugin or even an entire plugin.  For example, the rot13 command is in the "
+"Filter plugin.  If a user should be able to use another rot13 command, but "
+"not the one in the Format plugin, they would simply need to be given '-"
+"Format.rot13' anticapability. Similarly, if a user were to be banned from "
+"using the Filter plugin altogether, they would simply need to be given the '-"
+"Filter' anticapability."
+msgstr ""
+"Bref, quand quelqu’un envoie une commande au bot, par exemple « calc » ou "
+"« help », le bot vérifie d’apport qu’iel n’a pas les anticapacités « -calc » "
+"ou « -help » avant même de songer à lui réponse.  Donc les commandes peuvent "
+"être activées ou désactivées pour chaque personne, permettant un contrôle "
+"fin, qui n’est pas souvent (voire jamais) possible avec d’autres bots. Cela "
+"peut être raffiné encore plus en limitant les (anti)capacités à une commande "
+"d’un plugin en particulier, ou à tout un plugin.  Par exemple, la commande "
+"rot13 est dans le plugin Filter.  Si quelqu’un devrait pouvoir utilisr la "
+"commande rot13 d’un autre plugin, mais pas celle du plugin Format, iel "
+"aurait seulement besoin de recevoir l’anticapacité « -Format.rot13 ».  "
+"Similairement, si quelqu’un doit se faire bannir du plugin Filter, il suffit "
+"de lui donner l’anticapacité « -Filter »."
+
+#: ../../use/capabilities.rst:56
+msgid "Channel Capabilities"
+msgstr ""
+
+#: ../../use/capabilities.rst:57
+msgid "What if #linux wants completely different capabilities from #windows?"
+msgstr ""
+
+#: ../../use/capabilities.rst:59
+msgid ""
+"But that's not all!  The capabilities system also supports *channel* "
+"capabilities, which are capabilities that only apply to a specific channel; "
+"they're of the form '#channel,capability'.  Whenever a user issues a command "
+"to the bot in a channel, the command dispatcher also checks to make sure the "
+"user doesn't have the anticapability for that command *in that channel*, and "
+"if the user does, the bot won't respond to the user in the channel.  Thus "
+"now, in addition to having the ability to turn individual commands on or off "
+"for an individual user, we can now turn commands on or off for an individual "
+"user on an individual channel!"
+msgstr ""
+
+#: ../../use/capabilities.rst:69
+msgid ""
+"So when a user 'foo' sends a command 'bar' to the bot on channel '#baz', "
+"first the bot checks to see if the user has the anticapability for the "
+"command by itself, '-bar'.  If so, it errors right then and there, telling "
+"the user that he lacks the 'bar' capability.  If the user doesn't have that "
+"anticapability, then the bot checks to see if the user issued the command "
+"over a channel, and if so, checks to see if the user has the "
+"antichannelcapability for that command, '#baz,-bar'.  If so, again, it tells "
+"the user that they lack the 'bar' capability.  If neither of these "
+"anticapabilities are present, then the bot just responds to the user like "
+"normal."
+msgstr ""
+
+#: ../../use/capabilities.rst:80
+msgid "Default Capabilities"
+msgstr ""
+
+#: ../../use/capabilities.rst:81
+msgid "So what capabilities am I dealing with already?"
+msgstr ""
+
+#: ../../use/capabilities.rst:83
+msgid ""
+"There are several default capabilities the bot uses.  The most important of "
+"these is the 'owner' capability.  This capability allows the person having "
+"it to use *any* command.  It's best to keep this capability reserved to "
+"people who actually have access to the shell the bot is running on.  It's so "
+"important, in fact, that the bot will not allow you to add it with a "
+"command--you'll have you edit the users file directly to give it to someone."
+msgstr ""
+
+#: ../../use/capabilities.rst:90
+msgid ""
+"There is also the 'admin' capability for non-owners that are highly trusted "
+"to administer the bot appropriately.  They can do things such as change the "
+"bot's nick, cause the bot to ignore a given user, make the bot join or part "
+"channels, etc. They generally cannot do administration related to channels, "
+"which is reserved for people with the next capability."
+msgstr ""
+
+#: ../../use/capabilities.rst:96
+msgid ""
+"People who are to administer channels with the bot should have the '#channel,"
+"op' capability--whatever channel they are to administrate, they should have "
+"that channel capability for 'op'.  For example, since I want inkedmn to be "
+"an administrator in #supybot, I'll give them the '#supybot,op' capability.  "
+"This is in addition to their 'admin' capability, since the 'admin' "
+"capability doesn't give the person having it control over channels. "
+"'#channel,op' is used for such things as giving/receiving ops, kickbanning "
+"people, lobotomizing the bot, ignoring users in the channel, and managing "
+"the channel capabilities. The '#channel,op' capability is also basically the "
+"equivalent of the 'owner' capability for capabilities involving #channel--"
+"basically anyone with the #channel,op capability is considered to have all "
+"positive capabilities and no negative capabilities for #channel."
+msgstr ""
+
+#: ../../use/capabilities.rst:109
+msgid ""
+"One other globally important capability exists: 'trusted'.  This is a "
+"command that basically says \"This user can be trusted not to try and crash "
+"the bot.\" It allows users to call commands like 'icalc' in the 'Math' "
+"plugin, which can cause the bot to begin a calculation that could "
+"potentially never return (a calculation like '10**10**10**10'). Another "
+"command that requires the 'trusted' capability is the 're' command in the "
+"'Utilities' plugin, which (due to the regular expression implementation in "
+"Python (and any other language that uses NFA regular expressions, like Perl "
+"or Ruby or Lua or ...) which can allow a regular expression to take "
+"exponential time to process).  Consider what would happen if someone gave "
+"the bot the command 're [format join \"\" s/./ [dict go] /] [dict go]'  It "
+"would basically replace every character in the output of 'dict go' (14,896 "
+"characters!) with the entire output of 'dict go', resulting in 221MB of "
+"memory allocated!  And that's not even the worst example!"
+msgstr ""
+
+#: ../../use/capabilities.rst:124
+msgid "Managing capabilities"
+msgstr ""
+
+#: ../../use/capabilities.rst:129
+msgid ""
+"User capabilities are controlled with the ``admin capability <add|remove>`` "
+"and ``channel capability <add|remove>``. Their difference is that the first "
+"one is only restricted to those who have the admin capability."
+msgstr ""
+
+#: ../../use/capabilities.rst:133
+msgid "To make user1 admin, I would run::"
+msgstr ""
+
+#: ../../use/capabilities.rst:137
+msgid ""
+"If the bot joins on a channel where there should be ops who should't have "
+"power over any other channel, I would run::"
+msgstr ""
+
+#: ../../use/capabilities.rst:142
+msgid ""
+"Note that admins cannot give anyone capability which they don't have by "
+"themselves first, so user1 couldn't use ``channel capability add`` unless "
+"they were made #channel,op first. The command::"
+msgstr ""
+
+#: ../../use/capabilities.rst:148
+msgid ""
+"has the same effect as ``channel capability add``, but it requires user to "
+"have the admin capability in addition to #channel,op."
+msgstr ""
+
+#: ../../use/capabilities.rst:151
+msgid ""
+"If there is abusive user who shouldn't have op capability but still does for "
+"one reason or another, I could run either::"
+msgstr ""
+
+#: ../../use/capabilities.rst:156
+msgid "or::"
+msgstr ""
+
+#: ../../use/capabilities.rst:160
+msgid ""
+"Anticapabilities are checked before normal capabilities so the first command "
+"would work even if user3 still had the op capability. Removing capability "
+"which isn't given to user or channel adds anti-capability automatically."
+msgstr ""
+
+#: ../../use/capabilities.rst:165
+msgid "User capabilities can be viewed with ``user capabilities`` command."
+msgstr ""
+
+#: ../../use/capabilities.rst:168
+msgid "Channel"
+msgstr ""
+
+#: ../../use/capabilities.rst:170
+msgid ""
+"Channel capabilities affect everyone on the current channel including "
+"unidentified users. They are controlled with the ``channel capability <set|"
+"unset>`` commands."
+msgstr ""
+
+#: ../../use/capabilities.rst:173
+msgid ""
+"If I wanted to make everyone on the channel able to voice themselves or get "
+"automatically voiced by the AutoMode plugin, I would start by unsetting the "
+"default anticapability and setting the capability.::"
+msgstr ""
+
+#: ../../use/capabilities.rst:180
+msgid ""
+"Now anyone on the channel can voice themselves or if AutoMode plugin is "
+"configured to voice voiced people, the will automatically get voiced on join."
+msgstr ""
+
+#: ../../use/capabilities.rst:184
+msgid ""
+"If there was unwanted plugin or plugin which output was causing spam, Games "
+"for example, I could add anticapability for it and prevent the whole plugin "
+"from being used.::"
+msgstr ""
+
+#: ../../use/capabilities.rst:190
+msgid "Note that I didn't specify any separate command after Games."
+msgstr ""
+
+#: ../../use/capabilities.rst:193
+msgid "Default"
+msgstr ""
+
+#: ../../use/capabilities.rst:195
+msgid ""
+"Default capabilities affect everyone whether they are identified or not. "
+"They are controlled by the ``owner defaultcapability <add|remove>`` command "
+"and they arecommonly used for preventing users from adding/removing akas, "
+"using Unix Progstats which disabling is asked about in supybot-wizard or "
+"registering to the bot using anticapabilities.::"
+msgstr ""
+
+#: ../../use/capabilities.rst:206
+msgid "To undo this I would simply do the opposite.::"
+msgstr ""
+
+#: ../../use/capabilities.rst:213
+msgid ""
+"Defaultcapabilities can be restored with two commands from the First is only "
+"in Limnoria at the time of writing::"
+msgstr ""
+
+#: ../../use/capabilities.rst:220 ../../use/getting_started.rst:325
+msgid "Final Word"
+msgstr ""
+
+#: ../../use/capabilities.rst:222
+msgid ""
+"From a programmer's perspective, capabilties are flexible and easy to use.  "
+"Any command can check if a user has any capability, even ones not thought of "
+"when the bot was originally written. Plugins can easily add their own "
+"capabilities--it's as easy as just checking for a capability and documenting "
+"somewhere that a user needs that capability to do something."
+msgstr ""
+
+#: ../../use/capabilities.rst:228
+msgid ""
+"From an user's perspective, capabilities remove a lot of the mystery and "
+"esotery of bot control, in addition to giving a bot owner absolutely "
+"finegrained control over what users are allowed to do with the bot. "
+"Additionally, defaults can be set by the bot owner for both individual "
+"channels and for the bot as a whole, letting an end-user set the policy they "
+"want the bot to follow for users that haven't yet registered in their user "
+"database.  It's really a revolution!"
+msgstr ""
+
+#: ../../use/configuration.rst:3 ../../use/httpserver.rst:6
+msgid "Configuration"
+msgstr ""
+
+#: ../../use/configuration.rst:7
+msgid ""
+"So you've got your Supybot up and running and there are some things you "
+"don't like about it.  Fortunately for you, chances are that these things are "
+"configurable, and this document is here to tell you how to configure them."
+msgstr ""
+
+#: ../../use/configuration.rst:12
+msgid ""
+"Configuration of Supybot is handled via the `Config` plugin, which controls "
+"runtime access to Supybot's registry (the configuration file generated by "
+"the 'supybot-wizard' program you ran).  The `Config` plugin provides a way "
+"to get or set variables, to list the available variables, and even to get "
+"help for certain variables.  Take a moment now to read the help for each of "
+"those commands: ``config``, ``list``, and ``help``. If you don't know how to "
+"get help on those commands, take a look at the GETTING_STARTED document."
+msgstr ""
+
+#: ../../use/configuration.rst:22
+msgid "Configuration Registry"
+msgstr ""
+
+#: ../../use/configuration.rst:23
+msgid ""
+"Now, if you're used to the Windows registry, don't worry, Supybot's registry "
+"is completely different.  For one, it's completely plain text. But there is "
+"at least one good idea in Windows' registry: hierarchical configuration."
+msgstr ""
+
+#: ../../use/configuration.rst:28
+msgid ""
+"Supybot's configuration variables are organized in a hierarchy: variables "
+"having to do with the way Supybot makes replies all start with `supybot."
+"reply`; variables having to do with the way a plugin works all start with "
+"`supybot.plugins.Plugin` (where 'Plugin' is the name of the plugin in "
+"question).  This hierarchy is nice because it means the user isn't inundated "
+"with hundreds of unrelated and unsorted configuration variables."
+msgstr ""
+
+#: ../../use/configuration.rst:36
+msgid ""
+"Some of the more important configuration values are located directly under "
+"the base group, `supybot`.  Things like the bot's nick, its ident, etc.  "
+"Along with these config values are a few subgroups that contain other "
+"values.  Some of the more prominent subgroups are: `plugins` (where all the "
+"plugin-specific configuration is held), `reply` (where variables affecting "
+"the way a Supybot makes its replies resides), `replies` (where all the "
+"specific standard replies are kept), and `directories` (where all the "
+"directories a Supybot uses are defined). There are other subgroups as well, "
+"but these are the ones we'll use in our example."
+msgstr ""
+
+#: ../../use/configuration.rst:48
+msgid "Configuration Groups"
+msgstr ""
+
+#: ../../use/configuration.rst:49
+msgid ""
+"Using the `Config` plugin, you can list values in a subgroup and get or set "
+"any of the values anywhere in the configuration hierarchy.  For example, "
+"let's say you wanted to see what configuration values were under the "
+"`supybot` (the base group) hierarchy.  You would simply issue this command::"
+msgstr ""
+
+#: ../../use/configuration.rst:58
+msgid ""
+"These are all the configuration groups and values which are under the base "
+"`supybot` group.  Actually, their full names would each have a 'supybot.' "
+"prepended to them, but it is omitted in the listing in order to shorten the "
+"output.  The first entries in the output are the groups (distinguished by "
+"the '@' symbol in front of them), and the rest are the configuration "
+"values.  The '@' symbol (like the '#' symbol we'll discuss later) is simply "
+"a visual cue and is not actually part of the name."
+msgstr ""
+
+#: ../../use/configuration.rst:67
+msgid "Configuration Values"
+msgstr ""
+
+#: ../../use/configuration.rst:68
+msgid ""
+"Okay, now that you've used the Config plugin to list configuration "
+"variables, it's time that we start looking at individual variables and their "
+"values."
+msgstr ""
+
+#: ../../use/configuration.rst:72
+msgid ""
+"The first (and perhaps most important) thing you should know about each "
+"configuration variable is that they all have an associated help string to "
+"tell you what they represent.  So the first command we'll cover is ``config "
+"help``.  To see the help string for any value or group, simply use the "
+"``config help`` command.  For example, to see what this `supybot."
+"snarfThrottle` configuration variable is all about, we'd do this::"
+msgstr ""
+
+#: ../../use/configuration.rst:86
+msgid "Pretty simple, eh?"
+msgstr ""
+
+#: ../../use/configuration.rst:88
+msgid ""
+"Now if you're curious what the current value of a configuration variable is, "
+"you'll use the ``config`` command with one argument, the name of the "
+"variable you want to see the value of::"
+msgstr ""
+
+#: ../../use/configuration.rst:95
+msgid "To set this value, just stick an extra argument after the name::"
+msgstr ""
+
+#: ../../use/configuration.rst:100
+msgid "Now check this out::"
+msgstr ""
+
+#: ../../use/configuration.rst:105
+msgid ""
+"Note that we used '$' as our prefix character, and that the value of the "
+"configuration variable changed.  If I were to use the ``flush`` command now, "
+"this change would be flushed to the registry file on disk (this would also "
+"happen if I made the bot quit, or pressed Ctrl-C in the terminal which the "
+"bot was running).  Instead, I'll revert the change::"
+msgstr ""
+
+#: ../../use/configuration.rst:116
+msgid "Default Values"
+msgstr ""
+
+#: ../../use/configuration.rst:117
+msgid ""
+"If you're ever curious what the default for a given configuration variable "
+"is, use the ``config default`` command::"
+msgstr ""
+
+#: ../../use/configuration.rst:123
+msgid ""
+"Thus, to reset a configuration variable to its default value, you can simply "
+"say::"
+msgstr ""
+
+#: ../../use/configuration.rst:130
+msgid "Simple, eh?"
+msgstr ""
+
+#: ../../use/configuration.rst:133
+msgid "Searching the Registry"
+msgstr ""
+
+#: ../../use/configuration.rst:134
+msgid ""
+"Now, let's say you want to find all configuration variables that might be "
+"even remotely related to opping.  For that, you'll want the ``config "
+"search`` command.  Check this out::"
+msgstr ""
+
+#: ../../use/configuration.rst:144
+msgid ""
+"Sure, it showed all the topic-related stuff in there, but it also showed you "
+"all the op-related stuff, too.  Do note, however, that you can only see "
+"configuration variables for plugins that are currently loaded or that you "
+"loaded in the past; if you've never loaded a plugin there's no way for the "
+"bot to know what configuration variables it registers."
+msgstr ""
+
+#: ../../use/configuration.rst:151
+msgid "Channel-Specific Configuration"
+msgstr ""
+
+#: ../../use/configuration.rst:152
+msgid ""
+"Many configuration variables can be specific to individual channels. The "
+"`Config` plugin provides an easy way to configure something for a specific "
+"channel; for instance, in order to set the prefix chars for a specific "
+"channel, do this in that channel::"
+msgstr ""
+
+#: ../../use/configuration.rst:160
+msgid ""
+"That'll set the prefix chars in the channel from which the message was sent "
+"to '!'.  Voila, channel-specific values!  Also, note that when using the "
+"`Config` plugin's ``list`` command, channel-specific values are preceeded by "
+"a '#' character to indicate such (similar to how '@' is used to indicate a "
+"group of values)."
+msgstr ""
+
+#: ../../use/configuration.rst:168
+msgid "Editing the Configuration Values by Hand"
+msgstr ""
+
+#: ../../use/configuration.rst:170
+msgid ""
+"NOTE: **We don't recommend this and you shouldn't ever do this, you should "
+"do everything with the commands in the Config plugin.**"
+msgstr ""
+
+#: ../../use/configuration.rst:173
+msgid ""
+"Some people might like editing their registry file directly rather than "
+"manipulating all these things through the bot.  For those people, we offer "
+"the ``config reload`` command, which reloads both registry configuration and "
+"user/channel/ignore database configuration."
+msgstr ""
+
+#: ../../use/configuration.rst:178
+msgid ""
+"Just edit the interesting files and then give the bot the ``config reload`` "
+"command and it'll work as expected.  Do note, however, that Supybot flushes "
+"its configuration files and database to disk every hour or so, and if this "
+"happens after you've edited your configuration files but before you reload "
+"your changes, you could lose the changes you made. To prevent this, set the "
+"`supybot.flush` value to 'Off' while editing the files, and no automatic "
+"flushing will occur."
+msgstr ""
+
+#: ../../use/configuration.rst:186
+msgid ""
+"If you cannot access the bot on IRC and your bot is running on a POSIX "
+"system, you can also send it a SIGHUP signal; it is exactly the same as "
+"``config reload`` (note that the Config plugin has to be loaded to do that)."
+msgstr ""
+
+#: ../../use/faq.rst:3
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: ../../use/faq.rst:6
+msgid "How do I make my Supybot connect to multiple servers?"
+msgstr ""
+
+#: ../../use/faq.rst:8
+msgid "Just use the `connect` command in the `Network` plugin."
+msgstr ""
+
+#: ../../use/faq.rst:11
+msgid ""
+"Why does my bot not recognize me or tell me that I don't have the 'owner' "
+"capability?"
+msgstr ""
+
+#: ../../use/faq.rst:13
+msgid "Because you've not given it anything to recognize you from!"
+msgstr ""
+
+#: ../../use/faq.rst:15
+msgid ""
+"You'll need to identify to the bot (``help identify`` to see how that works) "
+"or add your hostmask to your user record (``help hostmask add`` to see how "
+"that works) for it to know that you're you."
+msgstr ""
+
+#: ../../use/faq.rst:19
+msgid ""
+"You may wish to note that ``hostmask add`` can accept a password; rather "
+"than identify, you can send the command::"
+msgstr ""
+
+#: ../../use/faq.rst:24
+msgid ""
+"and the bot will add your current hostmask to your owner user (of course, "
+"you should change myOwnerUser and myOwnerUserPassword appropriately for your "
+"bot)."
+msgstr ""
+
+#: ../../use/faq.rst:28
+msgid ""
+"For additional ways to identify to your bot, you may want to see :ref:"
+"`getting-started`."
+msgstr ""
+
+#: ../../use/faq.rst:32
+msgid "What is a hostmask?"
+msgstr ""
+
+#: ../../use/faq.rst:34
+msgid ""
+"Each user on IRC is uniquely identified by a string which we call a "
+"`hostmask`. The IRC RFC refers to it as a prefix. Either way, it consists of "
+"a nick, a user, and a host, in the form ``nick!user@host``.  If your Supybot "
+"complains that something you've given to it isn't a hostmask, make sure that "
+"you have those three components and that they're joined in the appropriate "
+"manner."
+msgstr ""
+
+#: ../../use/faq.rst:42
+msgid "My bot can't handle nicks with brackets in them!"
+msgstr ""
+
+#: ../../use/faq.rst:44
+msgid ""
+"It always complains about something not being a valid command, or about "
+"spurious or missing right brackets, etc."
+msgstr ""
+
+#: ../../use/faq.rst:47
+msgid ""
+"You should quote arguments (using double quotes, like this: ``"
+"\"foo[bar]\"``) that have brackets in them that you don't wish to be "
+"evaluated as nested commands. Alternatively, you can turn off nested "
+"commands by setting `supybot.commands.nested` to False, or change the "
+"brackets that nest commands by setting `supybot.commands.nested.brackets` to "
+"some other value (like ``<>``, which can't occur in IRC nicks)."
+msgstr ""
+
+#: ../../use/faq.rst:56
+msgid "I loaded Alias before, how do I move to Aka?"
+msgstr ""
+
+#: ../../use/faq.rst:58
+msgid ""
+"First load both of the plugins, Aka and Alias. Then run ``aka "
+"importaliasdatabase`` and ``unload Alias``. Now all your aliases should be "
+"imported to the Aka plugin."
+msgstr ""
+
+#: ../../use/faq.rst:63
+msgid "I added an aka, but it doesn't work!"
+msgstr ""
+
+#: ../../use/faq.rst:65
+msgid ""
+"Take a look at ``aka show <aka you added>``. If the aka the bot has listed "
+"doesn't match what you're giving it, chances are you need to quote your aka "
+"in order for the brackets not to be evaluated. For instance, if you're "
+"adding an aka to give you a link to your homepage, you need to say::"
+msgstr ""
+
+#: ../../use/faq.rst:73
+msgid "and not::"
+msgstr ""
+
+#: ../../use/faq.rst:77
+msgid ""
+"The first version works; the second version will always return the same url."
+msgstr ""
+
+#: ../../use/faq.rst:81
+msgid "What does 'lobotomized' mean?"
+msgstr ""
+
+#: ../../use/faq.rst:83
+msgid ""
+"I see this word in commands and in my `channels.conf`, but I don't know what "
+"it means. What does Supybot mean when it says lobotomized?"
+msgstr ""
+
+#: ../../use/faq.rst:86
+msgid ""
+"A lobotomy is an operation that removes the frontal lobe of the brain, the "
+"part that does most of a person's thinking. To lobotomize a bot is to tell "
+"it to stop thinking--thus, a lobotomized bot will not respond to anything "
+"said by anyone other than its owner in whichever channels it is lobotomized."
+msgstr ""
+
+#: ../../use/faq.rst:92
+msgid ""
+"The term is certainly suboptimal, but remains in use because it was "
+"historically used by certain other IRC bots, and we wanted to ease the "
+"transition to Supybot from those bots by reusing as much terminology as "
+"possible."
+msgstr ""
+
+#: ../../use/faq.rst:98
+msgid "Is there a way to load all the plugins Supybot has?"
+msgstr ""
+
+#: ../../use/faq.rst:100
+msgid ""
+"No, there isn't. Even if there were, some plugins conflict with other "
+"plugins, so it wouldn't make much sense to load them. For instance, what "
+"would a bot do with `Factoids`, `MoobotFactoids`, and `Infobot` all loaded? "
+"Probably just annoy people :)"
+msgstr ""
+
+#: ../../use/faq.rst:105
+msgid ""
+"You can also install user-contributed plugins using the PluginDownloader "
+"plugin (``load PluginDownloader``). The ``repolist`` command can list "
+"repositories and their contents, and the ``install`` command installs "
+"plugins."
+msgstr ""
+
+#: ../../use/faq.rst:111
+msgid ""
+"Is there a command that can tell me what capability another command requires?"
+msgstr ""
+
+#: ../../use/faq.rst:113
+msgid "No, there isn't, and there probably never will be."
+msgstr ""
+
+#: ../../use/faq.rst:115
+msgid ""
+"Commands have the flexibility to check any capabilities they wish to check; "
+"while this flexibility is useful, it also makes it hard to guess what "
+"capability a certain command requires. We could make a solution that would "
+"work in a large majority of cases, but it wouldn't (and couldn't!) be "
+"absolutely correct in all circumstances, and since we're anal and we hate "
+"doing things halfway, we probably won't ever add this partial solution."
+msgstr ""
+
+#: ../../use/faq.rst:124
+msgid "Why doesn't `Karma` seem to work for me?"
+msgstr ""
+
+#: ../../use/faq.rst:126
+msgid ""
+"`Karma`, by default, doesn't acknowledge karma updates. If you check the "
+"karma of whatever you increased/decreased, you'll note that your increment "
+"or decrement still took place. If you'd rather `Karma` acknowledge karma "
+"updates, change the `supybot.plugins.Karma.response` configuration variable "
+"to \"True\"."
+msgstr ""
+
+#: ../../use/faq.rst:133
+msgid "Why won't Supybot respond to private messages?"
+msgstr ""
+
+#: ../../use/faq.rst:135
+msgid ""
+"The most likely cause is that your bot has a mode blocking messages from "
+"unregistered users. Around Sept. 2005, for example, Freenode added a user "
+"mode where registered users could set ``+R``, which `blocks`_ private "
+"messages from unregistered users. So, the reason you aren't seeing a "
+"response from your Supybot is likely:"
+msgstr ""
+
+#: ../../use/faq.rst:141
+msgid ""
+"Your Supybot is not registered with NickServ, you are registered, and you "
+"have set the +R user mode for yourself."
+msgstr ""
+
+#: ../../use/faq.rst:144
+msgid ""
+"or: you have registered your Supybot with NickServ, you aren't registered, "
+"and your Supybot has the +R user mode set."
+msgstr ""
+
+#: ../../use/faq.rst:148
+msgid "Can users with the admin capability change the configuration?"
+msgstr ""
+
+#: ../../use/faq.rst:150
+msgid ""
+"Currently, no.  Feel free to make your case to us as to why a certain "
+"configuration variable should only require the `admin` capability instead of "
+"the `owner` capability, and if we agree with you, we'll change it for the "
+"next release."
+msgstr ""
+
+#: ../../use/faq.rst:156
+msgid "How can I make my Supybot log my IRC channel?"
+msgstr ""
+
+#: ../../use/faq.rst:158
+msgid ""
+"To log all the channels your Supybot is in, simply load the `ChannelLogger` "
+"plugin, which is included in the main distribution."
+msgstr ""
+
+#: ../../use/faq.rst:162
+msgid "How do I get channel modes when writing a plugin?"
+msgstr ""
+
+#: ../../use/faq.rst:164
+msgid ""
+"I want to know who's an op in a certain channel, or who's voiced, or what "
+"the modes on the channel are.  How do I do that?"
+msgstr ""
+
+#: ../../use/faq.rst:167
+msgid ""
+"Everything you need is kept in a `ChannelState` object in an `IrcState` "
+"object in the `Irc` object your plugin is given.  To see the ops in a given "
+"channel, for instance, you would do this::"
+msgstr ""
+
+#: ../../use/faq.rst:173
+msgid ""
+"To see a dictionary mapping mode chars to values (if any), you would do "
+"this::"
+msgstr ""
+
+#: ../../use/faq.rst:178
+msgid "From there, things should be self-evident."
+msgstr ""
+
+#: ../../use/faq.rst:181
+msgid "Can Supybot connect through a proxy server?"
+msgstr ""
+
+#: ../../use/faq.rst:183
+msgid ""
+"Limnoria can connect to specific network using socks proxy, simply set the "
+"configuration variable `supybot.networks.<network>.socksproxy`. For "
+"specifying proxy which is used for HTTP requests, set the configuration "
+"variable `supybot.protocols.http.proxy`."
+msgstr ""
+
+#: ../../use/faq.rst:188
+msgid ""
+"Supybot also works with transparent proxy server helpers like tsocks_ that "
+"are designed to proxy-enable all network applications, and Supybot does work "
+"with these."
+msgstr ""
+
+#: ../../use/faq.rst:193
+msgid "Why can't Supybot find the plugin I want to load?"
+msgstr ""
+
+#: ../../use/faq.rst:195
+msgid ""
+"Why does my bot say that 'No plugin \"foo\" exists.' when I try to load the "
+"foo plugin?"
+msgstr ""
+
+#: ../../use/faq.rst:198
+msgid ""
+"First, make sure you are typing the plugin name correctly.  ``@load foo`` "
+"may not be the same as ``@load Foo`` depending on your Supybot version  "
+"[#plugindir]_.  If that is not the problem,"
+msgstr ""
+
+#: ../../use/faq.rst:202
+msgid ""
+"Yes, it used to be the same, but then we moved to using directories for "
+"plugins instead of a single file.  Apparently, that makes a difference to "
+"Python."
+msgstr ""
+
+#: ../../use/faq.rst:207
+msgid "I've found a bug, what do I do?"
+msgstr ""
+
+#: ../../use/faq.rst:209
+msgid "Submit your bug at our `issue tracker`_."
+msgstr ""
+
+#: ../../use/faq.rst:212
+msgid "Is Python installed?"
+msgstr ""
+
+#: ../../use/faq.rst:214
+msgid ""
+"I run Windows, and I'm not sure if Python is installed on my computer. How "
+"can I find out for sure?"
+msgstr ""
+
+#: ../../use/faq.rst:217
+msgid ""
+"Python isn't commonly installed by default on Windows computers.  If you "
+"don't see it in your start menu somewhere, it's probably not installed."
+msgstr ""
+
+#: ../../use/faq.rst:221
+msgid ""
+"The easiest way to find out if Python is installed is simply to `download "
+"it`_ and try to install it.  If the installer complains, you probably "
+"already have it installed.  If it doesn't, well, now you have Python "
+"installed."
+msgstr ""
+
+#: ../../use/faq.rst:227
+msgid ""
+"Can I make Supybot silent, but still working on channel (as titlesnarfer or "
+"something)?"
+msgstr ""
+
+#: ../../use/faq.rst:229
+msgid ""
+"With lobotomy, the bot stops doing everything on the channel. If you want it "
+"to not reply to commands, but still work as titlesnarfer or similar, you can "
+"configure it to not respond to anything."
+msgstr ""
+
+#: ../../use/faq.rst:233
+msgid "Globally::"
+msgstr ""
+
+#: ../../use/faq.rst:241
+msgid "Or just for one channel::"
+msgstr ""
+
+#: ../../use/faq.rst:250
+msgid "How to make a connection secure?"
+msgstr ""
+
+#: ../../use/faq.rst:252
+msgid "First, you should make the bot use SSL for each network::"
+msgstr ""
+
+#: ../../use/faq.rst:256
+msgid ""
+"Then, you must update the server port for the network the bot connects to "
+"(this is usually 6697, but some networks use a different one)::"
+msgstr ""
+
+#: ../../use/faq.rst:261
+msgid ""
+"In the previous command, you must of course replace `irc.network.com` with "
+"the hostname of a server of the network. You could either check out the "
+"network's website, or get the current one, with this command::"
+msgstr ""
+
+#: ../../use/faq.rst:268
+msgid "How to make Limnoria use Python 3 instead of Python 2?"
+msgstr ""
+
+#: ../../use/faq.rst:270
+msgid "First, uninstall Limnoria::"
+msgstr ""
+
+#: ../../use/faq.rst:274
+msgid "Or, if you did not install Limnoria as root::"
+msgstr ""
+
+#: ../../use/faq.rst:278
+msgid ""
+"Then, follow the :ref:`install guide <use-install>`. In short, just run "
+"this::"
+msgstr ""
+
+#: ../../use/getting_started.rst:5
+msgid "Getting Started with Supybot"
+msgstr ""
+
+#: ../../use/getting_started.rst:10
+msgid ""
+"Ok, so you've decided to try out Supybot.  That's great!  The more people "
+"who use Supybot, the more people can submit bugs and help us to make it the "
+"best IRC bot in the world :)"
+msgstr ""
+
+#: ../../use/getting_started.rst:14
+msgid ""
+"You should have already read through our install document (if you had to "
+"manually install) before reading any further.  Now we'll give you a "
+"whirlwind tour as to how you can get Supybot setup and use Supybot "
+"effectively."
+msgstr ""
+
+#: ../../use/getting_started.rst:19
+msgid "Initial Setup"
+msgstr ""
+
+#: ../../use/getting_started.rst:21
+msgid ""
+"Now that you have Supybot installed, you'll want to get it running.  The "
+"first thing you'll want to do is run supybot-wizard.  Before running supybot-"
+"wizard, you should be in the directory in which you want your bot-related "
+"files to reside.  The wizard will walk you through setting up a base config "
+"file for your Supybot.  Once you've completed the wizard, you will have a "
+"config file called botname.conf.  In order to get the bot running, run "
+"``supybot botname.conf``."
+msgstr ""
+
+#: ../../use/getting_started.rst:30
+msgid "Listing Commands"
+msgstr ""
+
+#: ../../use/getting_started.rst:32
+msgid ""
+"Ok, so let's assume your bot connected to the server and joined the channels "
+"you told it to join.  For now we'll assume you named your bot 'supybot' (you "
+"probably didn't, but it'll make it much clearer in the examples that follow "
+"to assume that you did).  We'll also assume that you told it to join "
+"#channel (a nice generic name for a channel, isn't it? :))  So what do you "
+"do with this bot that you just made to join your channel?  Try this in the "
+"channel::"
+msgstr ""
+
+#: ../../use/getting_started.rst:41
+msgid ""
+"Replacing 'supybot' with the actual name you picked for your bot, of course. "
+"Your bot should reply with a list of the plugins it currently has loaded.  "
+"At least `Admin`, `Channel`, `Config`, `Misc`, `Owner`, and `User` should be "
+"there; if you used supybot-wizard to create your configuration file you may "
+"have many more plugins loaded.  The list command can also be used to list "
+"the commands in a given plugin::"
+msgstr ""
+
+#: ../../use/getting_started.rst:50
+msgid ""
+"will list all the commands in the `Misc` plugin.  If you want to see the "
+"help for any command, just use the help command::"
+msgstr ""
+
+#: ../../use/getting_started.rst:57
+msgid ""
+"Sometimes more than one plugin will have a given command; for instance, the "
+"\"list\" command exists in both the Misc and Config plugins (both loaded by "
+"default).  List, in this case, defaults to the Misc plugin, but you may want "
+"to get the help for the list command in the Config plugin.  In that case, "
+"you'll want to give your command like this::"
+msgstr ""
+
+#: ../../use/getting_started.rst:65
+msgid ""
+"Anytime your bot tells you that a given command is defined in several "
+"plugins, you'll want to use this syntax (\"plugin command\") to disambiguate "
+"which plugin's command you wish to call.  For instance, if you wanted to "
+"call the Config plugin's list command, then you'd need to say::"
+msgstr ""
+
+#: ../../use/getting_started.rst:72
+msgid "Rather than just 'list'."
+msgstr ""
+
+#: ../../use/getting_started.rst:75
+msgid "Making Supybot Recognize You"
+msgstr ""
+
+#: ../../use/getting_started.rst:77
+msgid ""
+"For making the bot to identify to services, please see :ref:`identifying to "
+"services. <identifying-to-services>`"
+msgstr ""
+
+#: ../../use/getting_started.rst:79
+msgid ""
+"If you ran the wizard, then it is almost certainly the case that you already "
+"added an owner user for yourself.  If not, however, you can add one via the "
+"handy-dandy 'supybot-adduser' script.  You'll want to run it while the bot "
+"is not running (otherwise it could overwrite supybot-adduser's changes to "
+"your user database before you get a chance to reload them).  Just follow the "
+"prompts, and when it asks if you want to give the user any capabilities, say "
+"yes and then give yourself the 'owner' capability, restart the bot and "
+"you'll be ready to load some plugins!"
+msgstr ""
+
+#: ../../use/getting_started.rst:88
+msgid ""
+"Now, in order for the bot to recognize you as your owner user, you'll have "
+"to identify with the bot."
+msgstr ""
+
+#: ../../use/getting_started.rst:91
+msgid ""
+"Open up a query window in your irc client ('/query' should do it; if not, "
+"just know that you can't identify in a channel because it requires sending "
+"your password to the bot).  Then type this::"
+msgstr ""
+
+#: ../../use/getting_started.rst:97
+msgid ""
+"And follow the instructions; the command you send will probably look like "
+"this, with 'myowneruser' and 'myuserpassword' replaced::"
+msgstr ""
+
+#: ../../use/getting_started.rst:102
+msgid ""
+"The bot will tell you that 'The operation succeeded' if you got the right "
+"name and password.  Now that you're identified, you can do anything that "
+"requires any privilege: that includes all the commands in the Owner and "
+"Admin plugins, which you may want to take a look at (using the list and help "
+"commands, of course).  One command in particular that you might want to use "
+"(it's from the User plugin) is the 'hostmask add' command: it lets you add a "
+"hostmask to your user record so the bot recognizes you by your hostmask "
+"instead of requiring you always to identify with it before it recognizes "
+"you.  Use the 'help' command to see how this command works.  Here's how I "
+"often use it::"
+msgstr ""
+
+#: ../../use/getting_started.rst:114
+msgid ""
+"You may not have seen that '[hostmask]' syntax before.  Supybot allows "
+"nested commands, which means that any command's output can be nested as an "
+"argument to another command.  The hostmask command from the Misc plugin "
+"returns the hostmask of a given nick, but if given no arguments, it returns "
+"the hostmask of the person giving the command. So the command above adds the "
+"hostmask I'm currently using to my user's list of recognized hostmasks.  I'm "
+"only required to give mypassword if I'm not already identified with the bot."
+msgstr ""
+
+#: ../../use/getting_started.rst:122
+msgid ""
+"It might often be better to specify the hostmask by yourself instead of "
+"nesting the hostmask command as the hostmask command gives your exact "
+"hostmask of that moment meaning ``nick!ident@host`` which means that you "
+"will get unidentified if you change your nickname."
+msgstr ""
+
+#: ../../use/getting_started.rst:127
+msgid ""
+"I (Mikaela) often specify hostmasks in two other forms depending on the "
+"situation which I go through in next subtopics."
+msgstr ""
+
+#: ../../use/getting_started.rst:131
+msgid "Wildcard nick"
+msgstr ""
+
+#: ../../use/getting_started.rst:133
+msgid ""
+"In case my username and host stay the same or there aren't bots on same "
+"server which could get identified as me to other bots, I use::"
+msgstr ""
+
+#: ../../use/getting_started.rst:138
+msgid ""
+"I only recommend this if there is ident server configured and the IRC "
+"network checks for it."
+msgstr ""
+
+#: ../../use/getting_started.rst:142
+msgid "Host only"
+msgstr ""
+
+#: ../../use/getting_started.rst:144
+msgid ""
+"In case I am the only one who has the same host (cloaks/vhosts on many "
+"networks which have account in them, (for example freenode) or server where "
+"no one else has access and no bots share it either), I use::"
+msgstr ""
+
+#: ../../use/getting_started.rst:150
+msgid ""
+"Mycloak at freenode is usually in format ``unaffiliated/accountname``. You "
+"can usually request hostmasks using HostServ, ``/msg HostServ help``, or "
+"asking on help channel of your IRC network, in case of freenode that is "
+"#freenode. OFTC is exception to this and uses ``/msg NickServ set cloak "
+"on``, but whatever your network users, you can ask it on their help channel."
+msgstr ""
+
+#: ../../use/getting_started.rst:158
+msgid "Limnoria"
+msgstr ""
+
+#: ../../use/getting_started.rst:160
+msgid "Limnoria has two additional methods to identify. GPG and NickAuth."
+msgstr ""
+
+#: ../../use/getting_started.rst:163
+msgid "GPG"
+msgstr ""
+
+#: ../../use/getting_started.rst:165
+msgid ""
+"First you must associate your GPG key with your Limnoria account. The gpg "
+"add command takes two arguments, key id and key server."
+msgstr ""
+
+#: ../../use/getting_started.rst:168
+msgid ""
+"My key is 0x0C207F07B2F32B67 and it's on keyserver pool.sks-keyservers.net "
+"so and now I add it to my bot::"
+msgstr ""
+
+#: ../../use/getting_started.rst:174
+msgid "Now I can get token to sign so I can identify::"
+msgstr ""
+
+#: ../../use/getting_started.rst:179
+msgid "Then I follow the instructions and sign my token in terminal::"
+msgstr ""
+
+#: ../../use/getting_started.rst:183
+msgid ""
+"Note that I sent the output to curl with flags to directly send the "
+"clearsigned content to sprunge.us pastebin. Curl should be installed on most "
+"of distributions and comes with msysgit. If you remove the curl part, you "
+"get the output to terminal and can pastebin it to any pastebin of your "
+"choice. Sprunge.us has only plain text and is easy so I used it in this "
+"example."
+msgstr ""
+
+#: ../../use/getting_started.rst:190
+msgid "And last I give the bot link to the plain text signature::"
+msgstr ""
+
+#: ../../use/getting_started.rst:196
+msgid "NickAuth"
+msgstr ""
+
+#: ../../use/getting_started.rst:198
+msgid ""
+"This requires you to load the NickAuth plugin (see next section of this page "
+"for loading plugins)."
+msgstr ""
+
+#: ../../use/getting_started.rst:201
+msgid ""
+"NickAuth allows you to identify to the bot using your NickServ account. "
+"First I add my NickServ account name which I can see with \"/whois Mikaela "
+"Mikaela\" (because my current nick is Mikaela). It gives me something like::"
+msgstr ""
+
+#: ../../use/getting_started.rst:206
+msgid ""
+"Now I tell the bot add my NickServ account Mikaela to my bot user on "
+"freenode. The syntax is [<network>] <bot-username> <NickServ-account>::"
+msgstr ""
+
+#: ../../use/getting_started.rst:212
+msgid ""
+"Next time when I identify to NickServ I will get identified automatically if "
+"the bot sees that I was identified when I joined. This requires server to "
+"support extended-join and WHOX. Most of modern networks support them, but if "
+"your bot is using some bouncer, it might not support them."
+msgstr ""
+
+#: ../../use/getting_started.rst:217
+msgid ""
+"Automatic identification doesn't work always even when it's supported, but "
+"when it fails, I can always use the NickAuth Auth command to identify to the "
+"bot::"
+msgstr ""
+
+#: ../../use/getting_started.rst:227
+msgid "Loading Plugins"
+msgstr ""
+
+#: ../../use/getting_started.rst:229
+msgid ""
+"Let's take a look at loading other plugins.  If you didn't use supybot-"
+"wizard, though, you might do well to try it before playing around with "
+"loading plugins yourself: each plugin has its own configure function that "
+"the wizard uses to setup the appropriate registry entries if the plugin "
+"requires any."
+msgstr ""
+
+#: ../../use/getting_started.rst:234
+msgid ""
+"If you do want to play around with loading plugins, you're going to need to "
+"have the owner capability."
+msgstr ""
+
+#: ../../use/getting_started.rst:237
+msgid ""
+"Remember earlier when I told you to try ``help load``?  That's the very "
+"command you'll be using. Basically, if you want to load, say, the Games "
+"plugin, then ``load Games``.  Simple, right?  If you need a list of the "
+"plugins you can load, you'll have to list the directory the plugins are in "
+"(using whatever command is appropriate for your operating system, either "
+"'ls' or 'dir')."
+msgstr ""
+
+#: ../../use/getting_started.rst:244
+msgid "Understanding the help syntax"
+msgstr ""
+
+#: ../../use/getting_started.rst:246
+msgid ""
+"The syntax of a command describes how to run a command. The syntax is given "
+"by the help command. Some examples:"
+msgstr ""
+
+#: ../../use/getting_started.rst:263
+msgid "help [<plugin>] [<command>]"
+msgstr ""
+
+#: ../../use/getting_started.rst:251
+msgid "This is the help of :ref:`command-plugin-help`."
+msgstr ""
+
+#: ../../use/getting_started.rst:253
+msgid ""
+"The chevrons mean you have to replace <plugin> and <command> by a plugin "
+"name and a command name."
+msgstr ""
+
+#: ../../use/getting_started.rst:256
+msgid "The brackets mean the argument they wrap is **optional**."
+msgstr ""
+
+#: ../../use/getting_started.rst:258
+msgid "So, the fellowing commands are correct::"
+msgstr ""
+
+#: ../../use/getting_started.rst:268
+msgid "ping takes no arguments"
+msgstr ""
+
+#: ../../use/getting_started.rst:266
+msgid "This is the help for :ref:`command-misc-ping`."
+msgstr ""
+
+#: ../../use/getting_started.rst:268
+msgid "I think it is clear enough."
+msgstr ""
+
+#: ../../use/getting_started.rst:278
+msgid "join <channel> [<key>]"
+msgstr ""
+
+#: ../../use/getting_started.rst:271
+msgid "This is the help for :ref:`command-admin-join`."
+msgstr ""
+
+#: ../../use/getting_started.rst:273
+msgid "It requires a channel name, and the channel key is optional."
+msgstr ""
+
+#: ../../use/getting_started.rst:275
+msgid "This two commands are ok::"
+msgstr ""
+
+#: ../../use/getting_started.rst:286
+msgid "utilities last <text> [<text> ...]"
+msgstr ""
+
+#: ../../use/getting_started.rst:281
+msgid ""
+"This is the help for :ref:`command-utilities-last`. By the way, there is "
+"another ``last`` command in the `Misc` plugin, which doesn't do the same "
+"thing, that's why you need to give the plugin name."
+msgstr ""
+
+#: ../../use/getting_started.rst:285
+msgid ""
+"You have to give at least one argument, but you can give as many as you wish."
+msgstr ""
+
+#: ../../use/getting_started.rst:289
+msgid "Getting More From Your Supybot"
+msgstr ""
+
+#: ../../use/getting_started.rst:291
+msgid ""
+"Another command you might find yourself needing somewhat often is the 'more' "
+"command.  The IRC protocol limits messages to 512 bytes, 60 or so of which "
+"must be devoted to some bookkeeping.  Sometimes, however, Supybot wants to "
+"send a message that's longer than that.  What it does, then, is break it "
+"into \"chunks\" and send the first one, following it with ``(X more "
+"messages)`` where X is how many more chunks there are.  To get to these "
+"chunks, use the `more` command.  One way to try is to look at the default "
+"value of `supybot.replies.genericNoCapability` -- it's so long that it'll "
+"stretch across two messages::"
+msgstr ""
+
+#: ../../use/getting_started.rst:317
+msgid ""
+"So basically, the bot keeps, for each person it sees, a list of \"chunks\" "
+"which are \"released\" one at a time by the `more` command.  In fact, you "
+"can even get the more chunks for another user: if you want to see another "
+"chunk in the last command jemfinch gave, for instance, you would just say "
+"`more jemfinch` after which, his \"chunks\" now belong to you.  So, you "
+"would just need to say `more` to continue seeing chunks from jemfinch's "
+"initial command."
+msgstr ""
+
+#: ../../use/getting_started.rst:327
+msgid ""
+"You should now have a solid foundation for using Supybot.  You can use the "
+"`list` command to see what plugins your bot has loaded and what commands are "
+"in those plugins; you can use the 'help' command to see how to use a "
+"specific command, and you can use the 'more' command to continue a long "
+"response from the bot.  With these three commands, you should have a strong "
+"basis with which to discover the rest of the features of Supybot!"
+msgstr ""
+
+#: ../../use/getting_started.rst:334
+msgid ""
+"Do be sure to read our other documentation and make use of the resources we "
+"provide for assistance; this website and, of course, #supybot on irc."
+"freenode.net if you run into any trouble!"
+msgstr ""
+
+#: ../../use/httpserver.rst:3
+msgid "Using the HTTP server"
+msgstr ""
+
+#: ../../use/httpserver.rst:8
+msgid "The HTTP server comes with a couple of additional variables:"
+msgstr ""
+
+#: ../../use/httpserver.rst:10
+msgid ""
+":ref:`supybot.servers.http.favicon`: Path to the file which is shown to "
+"browsers as favicon."
+msgstr ""
+
+#: ../../use/httpserver.rst:12
+msgid ""
+":ref:`supybot.servers.http.hosts4`: The IPv4 addresses where the bot will  "
+"bind. In most of the cases, you will use 0.0.0.0 (everything) or 127.0.0.1 "
+"(restricted to local connections). Defaults to 0.0.0.0"
+msgstr ""
+
+#: ../../use/httpserver.rst:15
+msgid ""
+":ref:`supybot.servers.http.hosts6`: The IPv6 addresses where the bot will  "
+"bind. Defaults to empty."
+msgstr ""
+
+#: ../../use/httpserver.rst:17
+msgid ""
+":ref:`supybot.servers.http.keepAlive`: Determines whether the HTTP server "
+"will run even if has nothing to serve. Defaults to False, because the daemon "
+"might require changing the port, if it is already taken."
+msgstr ""
+
+#: ../../use/httpserver.rst:20
+msgid ""
+":ref:`supybot.servers.http.port`: The port the bot will bind. May not work "
+"if the number is below 1024. Defaults to 8080 (alternative HTTP port)."
+msgstr ""
+
+#: ../../use/httpserver.rst:25
+msgid "Using the server"
+msgstr ""
+
+#: ../../use/httpserver.rst:27
+msgid ""
+"At the root of the server, you will find a list of the plugins that have a "
+"Web interface, and a link to them. Each plugin has one or more "
+"subdirectories of its own."
+msgstr ""
+
+#: ../../use/httpserver.rst:31
+msgid ""
+"You may also want to run Apache httpd or Nginx in front of Supybot's HTTP "
+"server, if you want to use subdomains or load balancing."
+msgstr ""
+
+#: ../../use/httpserver.rst:34
+msgid ""
+"Here is an example of Apache httpd configuration (I didn't test it with the "
+"rewrite, please notify me whether it works or not):"
+msgstr ""
+
+#: ../../use/httpserver.rst:48
+msgid ""
+"Here is an example of the Nginx configuration.  Create a new site ``/etc/"
+"nginx/sites-enabled/bot``:"
+msgstr ""
+
+#: ../../use/httpserver.rst:67
+msgid ""
+"Note that any HTTP server which can provide a reverse proxy service can be "
+"configured to act as an intermediary or front end for the Limnoria HTTP "
+"server.  Configuring these alternatives is left as an exercise to the system "
+"administrator (who ought to be familiar enough with it already)."
+msgstr ""
+
+#: ../../use/httpserver.rst:75
+msgid "Templates"
+msgstr ""
+
+#: ../../use/httpserver.rst:77
+msgid ""
+"Among the plugins which use the HTTP server, some use the standard templates "
+"system which allows you to edit page templates in a standard way (for other "
+"plugins, check their documentation)."
+msgstr ""
+
+#: ../../use/httpserver.rst:81
+msgid ""
+"Templates are located in the `data/web/` folder. There is a folder per "
+"plugin (and a `generic` folder, which holds generic pages), and all file "
+"names end with `.example`, which is the default template provided by the "
+"plugin. To customize it, rename it to remove `.example` (for instance: ``mv "
+"fooplugin/foopage.html.example fooplugin/foopage.html``) and edit it (either "
+"do it intuitively or check the plugin documentation to see how it handles "
+"its templates)."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:5
+msgid "Identifying the bot to services"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:7
+msgid ""
+"The different methods listed here are in the order how they are usually "
+"recommended by network operators."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:10
+msgid ""
+"Please also note that SASL and CertFP are only fully supported on Limnoria. "
+"Gribble has imported partial SASL support (only PLAIN)."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:14
+msgid "Registering to services"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:16
+msgid ""
+"You can safely jump over this section if your bot is already registered to "
+"services."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:19
+msgid ""
+"First start by checking what is the syntax for registering with ``/msg "
+"nickserv help register``. It returns you something like this (Atheme 7.2.4)::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:25
+msgid "Assuming that that is the syntax, we can register the bot with::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:29
+msgid ""
+"Note that the email address must be correct. Next check that ``/msg nickserv "
+"info bot`` doesn't say something about being unverified. If it does, go to "
+"the email address and run::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:35
+msgid ""
+"Now your bot should be successfully registered and you can move to setting "
+"up automatic identifying below. If you need to identify to services now, ``/"
+"msg nickserv help identify`` and following the syntax (I am still assuming "
+"that you are on Atheme 7.2.4) ``owner ircquote nickserv identify username "
+"password``."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:42
+msgid "SASL PLAIN"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:44
+msgid ""
+"*To use SASL EXTERNAL, you must only configure CertFP and it's attempted "
+"automatically.* SASL PLAIN is identifying using username and password, SASL "
+"EXTERNAL is identifying by using CertFP which is explained later on this "
+"document. It doesn't need username or password to be configured."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:49
+msgid ""
+"Note that SASL isn't supported on all networks. As the only way to check if "
+"SASL is supported is either ``/quote CAP LS`` (which usually gets eaten by "
+"bouncers) or connecting to the network and seeing if it works, we recommend "
+"always configuring SASL and whoising the bot to see if it worked. If it "
+"didn't work, you might want to ask the network operators about their SASL "
+"support and request them to start supporting it."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:56
+msgid ""
+"SASL is widely agreed as the best method to identify to services as it "
+"identifies you before anyone (other than IRC operators) can see that you are "
+"connected. To enable SASL, simply::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:63
+msgid ""
+"where you of course replace AccountName and P455w0rd with your actual "
+"NickServ account name and password. Remember to replace ``<network>`` with "
+"the real network name like ``freenode``."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:68
+msgid "CertFP"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:70
+msgid ""
+"You can test if CertFP is supported by services simply by doing ``/msg "
+"NickServ cert``. If you get an error about \"Insufficient parameters for CERT"
+"\", CertFP is supported, and if you get an error about unknown command, it's "
+"not supported."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:75
+msgid ""
+"CertFP identifies you to services using a client (SSL) certificate and "
+"naturally requires an SSL connection. It doesn't identify you as soon as "
+"SASL, but unlike SASL, it identifies you even when services return from a "
+"netsplit, unlike any other mechanism."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:80
+msgid ""
+"First you must generate a certificate, and the easiest method is probably "
+"using OpenSSL which you should have even on Windows if you installed with "
+"pip::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:85
+msgid ""
+"Now you should have a ``<BOT>.pem`` file in the directory where you ran the "
+"command, presumably your home directory and you only tell your bot where to "
+"find it and tell NickServ that it belongs to you. Note that you should "
+"replace ``<BOT>`` with the account name of your bot."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:90
+msgid "You have two choices, using the same certificate on all networks::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:94
+msgid "or only on one or more network where it's manually configured::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:98
+msgid ""
+"And lastly, you must tell the services what is your certificate fingerprint, "
+"which you can find out with::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:103
+msgid ""
+"This results in something like ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` "
+"which you tell your bot to tell services::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:109
+msgid "Or if your bot identifies as you, you can do that by yourself with::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:114
+msgid ""
+"Remember to replace ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` with your "
+"own fingerprint! Next time your bot connects, it should get identified "
+"automatically."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:119
+msgid "SASL ECDSA-NIST256P-CHALLENGE"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:121
+msgid "First you must ECDSA key for the bot to use::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:125
+msgid "and get the public key using::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:129
+msgid ""
+"After getting the public key, you must tell your bot to use it and tell "
+"services about it (just like with CertFP/SASL EXTERNAL)::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:136
+msgid ""
+"and after reconnecting, the bot should successfully identify using SASL "
+"ECDSA-NIST256P-CHALLENGE."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:139
+msgid ""
+"*NOTE:* You can use ``ecdsa pubkey`` to get the public key, but you cannot "
+"generate the key pair using it as pyecdsa doesn't support ecdsatool "
+"generated keys."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:144
+msgid "Server password"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:146
+msgid ""
+"Many networks support identifying using ``username:password`` as server "
+"password. If this is the case with your network (anything that uses a "
+"charybdis-like IRCd), this should work for you. Note that this identifies "
+"you after SASL so, your real host might be seen. To do this, simply::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:153
+msgid ""
+"Replace ``<network>`` with the name of network, for example ``freenode`` and "
+"username:password with your real username and password."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:157
+msgid "ZNC"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:159
+msgid "If you wish to connect your bot to ZNC, the recommended way is::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:164
+msgid ""
+"The identifier is free text to describe which client your Limnoria is. It "
+"came with ZNC 1.6.0 and is completely optional. ``<network>`` again has been "
+"there since ZNC 1.0 which is very old and has multiple security issues that "
+"have been fixed since then. You should always run the latest release."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:170
+msgid "Services plugin"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:172
+msgid ""
+"The Services plugin comes with Supybot and should be an easy way to identify "
+"your bot, but SASL and ``username:password`` as server password are "
+"recommended over it. Start by loading Services with::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:178
+msgid "and then tell it what NickServ and ChanServ are called::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:183
+msgid ""
+"Remember to replace NickServ/ChanServ with their real names if they have a "
+"different name on any network. Note that they must have the same name on all "
+"networks, and you must have the same password on all networks."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:187
+msgid "Now you can set your password::"
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:191
+msgid ""
+"makes the bot attempt identifying as Bot using password P455w0rd. Replace "
+"them with your real nickname and password. Note that if you have multiple "
+"nicknames, you must run ``services password`` for them all."
+msgstr ""
+
+#: ../../use/identifying_to_services.rst:195
+msgid ""
+"If your bot happens to get a nickname that isn't configured, it won't know "
+"how to identify. You might be able to avoid this issue by loading "
+"NickCapture, (``load NickCapture``) which attempts to regain the primary "
+"nick, when it's possible, and when it regains the primary nick, the "
+"identification should work."
+msgstr ""
+
+#: ../../use/index.rst:5
+msgid "The Supybot user guide"
+msgstr ""
+
+#: ../../use/install.rst:7
+msgid "Installing Limnoria"
+msgstr ""
+
+#: ../../use/install.rst:9
+msgid ""
+"This is the \"easy to follow\" guide to installing Limnoria. The "
+"installation documentation provided with the supybot distribution is really "
+"quite good already, but since people keep coming to IRC, asking a repeating "
+"pattern of questions, we thought it would be a good idea to expand it a bit "
+"to make it a little more of a \"foolproof guide\"."
+msgstr ""
+
+#: ../../use/install.rst:17
+msgid "Limnoria is a modified version of Supybot."
+msgstr ""
+
+#: ../../use/install.rst:20
+msgid "Dependencies"
+msgstr ""
+
+#: ../../use/install.rst:22
+msgid ""
+"The only mandatory dependency is `Python`_ 2.6 or greater. However, it is "
+"highly recommended you use Python 3.4 or greater."
+msgstr ""
+
+#: ../../use/install.rst:25
+msgid ""
+"You may also install chardet and feedparser, which are used by Limnoria if "
+"they are available."
+msgstr ""
+
+#: ../../use/install.rst:28
+msgid ""
+"The remaining of this guide will assume you have Python 3. If you don't, "
+"replace `python3` by `python` in the given commands"
+msgstr ""
+
+#: ../../use/install.rst:34
+msgid "Installation: UNIX/Linux/BSD"
+msgstr ""
+
+#: ../../use/install.rst:37 ../../use/install.rst:157
+msgid "Install Python"
+msgstr ""
+
+#: ../../use/install.rst:39
+msgid ""
+"Python will usually come by installed by default in your distribution. If "
+"not, grab the appropriate packages from the distribution's repository."
+msgstr ""
+
+#: ../../use/install.rst:42
+msgid ""
+"If you're installing Python using your distribution's packages, you may need "
+"a ''python-dev'' or ''python-devel'' package installed, too. To see if this "
+"is the case, open up a terminal, start python, and run:"
+msgstr ""
+
+#: ../../use/install.rst:50
+msgid ""
+"If it works, you're good to go. Otherwise, install the `python3-dev` or "
+"`python3-devel` package and try again."
+msgstr ""
+
+#: ../../use/install.rst:53
+msgid ""
+"You may also install \"manually\" by downloading the source archive from "
+"http://python.org, and compiling it. That is outside the scope of this "
+"guide, however."
+msgstr ""
+
+#: ../../use/install.rst:58
+msgid "Install Limnoria"
+msgstr ""
+
+#: ../../use/install.rst:60
+msgid ""
+"In the next section of this guide we will use `pip`_, which is a generic way "
+"of installing Python software."
+msgstr ""
+
+#: ../../use/install.rst:63
+msgid ""
+"There are some :ref:`alternative install methods <alternative-install>` at "
+"the bottom of this guide, if you don't want to use `pip`."
+msgstr ""
+
+#: ../../use/install.rst:69
+msgid "Global installation (with root access)"
+msgstr ""
+
+#: ../../use/install.rst:71
+msgid "If you do not have root access, skip this section."
+msgstr ""
+
+#: ../../use/install.rst:73
+msgid ""
+"If you are logged in as root, you can remove ``sudo`` from the install "
+"commands."
+msgstr ""
+
+#: ../../use/install.rst:76
+msgid ""
+"*In case you want to use the testing branch which might be more up-to date "
+"BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.*"
+msgstr ""
+
+#: ../../use/install.rst:79
+msgid ""
+"First we install Limnoria's optional dependencies (you can skip this step, "
+"but some features won't be available)::"
+msgstr ""
+
+#: ../../use/install.rst:84
+msgid "And then Limnoria itself::"
+msgstr ""
+
+#: ../../use/install.rst:88
+msgid ""
+"If you have an error saying `No module named pip`, install `pip` using your "
+"package manager (the package is usually named `python3-pip`)."
+msgstr ""
+
+#: ../../use/install.rst:92
+msgid "Local installation (without root access)"
+msgstr ""
+
+#: ../../use/install.rst:94
+msgid "If you have followed the previous section, skip this one."
+msgstr ""
+
+#: ../../use/install.rst:96
+msgid ""
+"Simply add ``--user`` to the end of both commands. First we install "
+"requirements (you can skip it, but some features won't be available) and "
+"then Limnoria itself.::"
+msgstr ""
+
+#: ../../use/install.rst:103
+msgid "You might need to add $HOME/.local/bin to your PATH.::"
+msgstr ""
+
+#: ../../use/install.rst:108
+msgid ""
+"If you have an error saying `No module named pip`, install `pip` using this "
+"guide: https://pip.pypa.io/en/stable/installing/"
+msgstr ""
+
+#: ../../use/install.rst:112
+msgid "Configure Supybot"
+msgstr ""
+
+#: ../../use/install.rst:114
+msgid ""
+"We are now ready to configure Supybot. Supybot creates quite a few auxiliary "
+"files/directories to store its runtime data. It is thus recommended to "
+"create an empty directory from which you'll be running supybot, to keep all "
+"the data in a nice dedicated location. For example, you may create a "
+"'runbot' directory inside your home directory."
+msgstr ""
+
+#: ../../use/install.rst:120
+msgid ""
+"Now you can cd to your 'runbot' directory, and from within it run ``supybot-"
+"wizard``, which will walk you through a series of questions to generate the "
+"bot config file."
+msgstr ""
+
+#: ../../use/install.rst:124
+msgid ""
+"One thing to make sure to do in the wizard, to make your life easier down "
+"the line, is to select **y** for the *Would you like to add an owner user "
+"for your bot?* question, and actually create the owner user. Remember that "
+"password, so that you can later ''identify'' with the bot on IRC and "
+"administer it."
+msgstr ""
+
+#: ../../use/install.rst:129
+msgid ""
+"Once you generate the config file, which will be named ``yourbotnick.conf`` "
+"(where \"yourbotnick\" is the nick you have chosen for your bot in the "
+"wizard), it will be placed in your 'runbot' directory. (As long as you leave "
+"the default answer to the ''Where would you like to create these "
+"directories?'' question.)"
+msgstr ""
+
+#: ../../use/install.rst:134
+msgid "Now to start the bot, run, still from within the 'runbot' directory::"
+msgstr ""
+
+#: ../../use/install.rst:138 ../../use/install.rst:234
+msgid "And watch the magic!"
+msgstr ""
+
+#: ../../use/install.rst:140
+msgid ""
+"For a tutorial on using and managing the bot from here on, see the "
+"`Supybook`_."
+msgstr ""
+
+#: ../../use/install.rst:145
+msgid "Installation: OS X"
+msgstr ""
+
+#: ../../use/install.rst:147
+msgid ""
+"The steps are essentially the same as those of the previous section, except "
+"there are no repositories. Grab the latest python installer for OS X from "
+"http://python.org, and follow the rest of the steps."
+msgstr ""
+
+#: ../../use/install.rst:152
+msgid "Installation: Windows"
+msgstr ""
+
+#: ../../use/install.rst:159
+msgid ""
+"Download the latest **Python 3** installer from https://www.python.org, "
+"3.5.1, as of 2016-01-26) and run it to install Python."
+msgstr ""
+
+#: ../../use/install.rst:162
+msgid ""
+"Installing Python is mostly clicking next, but in the next screen remember "
+"the destination directory where you installed Python. These instructions "
+"refer to it as ``C:\\Python35\\`` which is the current name on 2016-01-26."
+msgstr ""
+
+#: ../../use/install.rst:166
+msgid ""
+"Then you are asked to customize your installation. Click the drive on left "
+"side of \"Python\" text and select \"Entire feature will be installed on "
+"local hard drive\"."
+msgstr ""
+
+#: ../../use/install.rst:170
+msgid "Now Python installs itself which may take several minutes."
+msgstr ""
+
+#: ../../use/install.rst:172
+msgid ""
+"Python should be now installed and you can check that the \"python\" command "
+"points to correct python. Open ``cmd.exe`` (press the Windows button on your "
+"keyboard and type \"cmd.exe\") and  run ``where python`` and the toppernmost "
+"entry should be ``C:\\Python35\\python.exe``."
+msgstr ""
+
+#: ../../use/install.rst:178
+msgid "Install git"
+msgstr ""
+
+#: ../../use/install.rst:180
+msgid ""
+"In order to install the latest Limnoria from the git repository, you need "
+"git in your %PATH%. You can get it from http://git-scm.com/."
+msgstr ""
+
+#: ../../use/install.rst:183
+msgid ""
+"In the \"Adjusting your PATH environment\", select the last option, \"Use "
+"Git and optional Unix tools from the Windows Command Prompt\" or you will "
+"have issues in the next step."
+msgstr ""
+
+#: ../../use/install.rst:188
+msgid "Install Supybot"
+msgstr ""
+
+#: ../../use/install.rst:190
+msgid ""
+"Now we are ready to install Limnoria and it's requirements. Open ``cmd.exe`` "
+"as **Administrator** (right click it in the previous place) and run::"
+msgstr ""
+
+#: ../../use/install.rst:197
+msgid ""
+"We are now ready to configure Supybot. Supybot creates quite a few auxiliary "
+"files/directories to store its runtime data. It is thus recommended to "
+"create an empty directory from which you'll be running supybot, to keep all "
+"the data in a nice dedicated location. For example, you may create a ``C:"
+"\\Users\\<username>\\runbot`` for this purpose."
+msgstr ""
+
+#: ../../use/install.rst:204
+msgid ""
+"Now you open cmd.exe as **normal user**, and create and cd into your runbot "
+"directory::"
+msgstr ""
+
+#: ../../use/install.rst:210
+msgid "and from within it run ``supybot-wizard``::"
+msgstr ""
+
+#: ../../use/install.rst:214
+msgid ""
+"which will walk you through a series of questions to generate the bot config "
+"file."
+msgstr ""
+
+#: ../../use/install.rst:217
+msgid ""
+"One thing to make sure to do in the wizard, to make your life easier down "
+"the line, is to select *y* for the *Would you like to add an owner user for "
+"your bot?* question, and actually create the owner user. Remember that "
+"password, so that you can later ''identify'' with the bot on IRC and "
+"administer it."
+msgstr ""
+
+#: ../../use/install.rst:223
+msgid ""
+"Once you generate the config file, which will be named ``yourbotnick.conf`` "
+"(where ``yourbotnick`` is the nick you have chosen for your bot in the "
+"wizard), it will be placed in your ``runbot`` directory. (As long as you "
+"leave the default answer to the *Where would you like to create these "
+"directories?* question.)"
+msgstr ""
+
+#: ../../use/install.rst:229
+msgid ""
+"Now to start the bot, run, still from within the ``C:\\users\\<username>"
+"\\runbot`` directory::"
+msgstr ""
+
+#: ../../use/install.rst:236
+msgid ""
+"This guide has been mainly written by nanotube (Daniel Folkinshteyn), and is "
+"licensed under the Creative Commons Attribution ShareAlike 3.0 Unported "
+"license and/or the GNU Free Documentation License v 1.3 or later."
+msgstr ""
+
+#: ../../use/install.rst:247
+msgid "Alternative install methods"
+msgstr ""
+
+#: ../../use/install.rst:249
+msgid ""
+"If you know what you are doing and you don't want to use pip, you can use "
+"one of these methods:"
+msgstr ""
+
+#: ../../use/install.rst:252
+msgid "Download a .deb or .rpm package at `ProgVal's build repo`_."
+msgstr ""
+
+#: ../../use/install.rst:253
+msgid ""
+"Use `git`_ to clone the `Limnoria repository`_ and follow the instructions "
+"in `Limnoria's README.md`_."
+msgstr ""
+
+#: ../../use/install.rst:255
+msgid ""
+"Click the \"Download ZIP\" button at the `Limnoria repository`_. Then, "
+"extract the zipball to some temporary directory, and ``cd`` into the "
+"`Limnoria-master` directory which contains the extracted code."
+msgstr ""
+
+#: ../../use/security.rst:3
+msgid "Security in Limnoria"
+msgstr ""
+
+#: ../../use/security.rst:5
+msgid ""
+"Some security features are disabled by default. We know this is arguable, "
+"but enabling them would make it quite hard to start using the bot. This "
+"guide is for people who want to enable these features to make their bot as "
+"secure as possible."
+msgstr ""
+
+#: ../../use/security.rst:13
+msgid ""
+"Limnoria (or Gribble or Supybot) have never been audited by a security "
+"professional. We do the best we can to make it secure, but we cannot "
+"guarantee it is completely safe."
+msgstr ""
+
+#: ../../use/security.rst:19
+msgid "Trust in network operators"
+msgstr ""
+
+#: ../../use/security.rst:21
+msgid ""
+"As you may know, it is possible to do anything from IRC, including loading "
+"the Unix plugin and using the `@call` command. The only safeguard is "
+"checking the user calling the commands is authenticated as the owner of the "
+"bot; and network operators are able to spoof hostmasks and collect your "
+"password, thus allowing them to execute commands as the owner."
+msgstr ""
+
+#: ../../use/security.rst:28
+msgid ""
+"Although network operators of most well-known IRC networks are not known to "
+"do that, you should be aware of that risk."
+msgstr ""
+
+#: ../../use/security.rst:35
+msgid "Network connections / SSL"
+msgstr ""
+
+#: ../../use/security.rst:38
+msgid "Background on SSL certification validation"
+msgstr ""
+
+#: ../../use/security.rst:40
+msgid ""
+"It is often believed using SSL magically makes impossible any attack on your "
+"connection (from the bot to the server). It is true that it prevents passive "
+"eavesdropping, but other attack methods are still possible."
+msgstr ""
+
+#: ../../use/security.rst:45
+msgid ""
+"The main one involves man-in-the-middle, ie. someone acting as a proxy "
+"between you (your bot, in that case) and the IRC network. If certificates "
+"are not validated, the attacker can allow you to connect to itself using "
+"their own SSL certificate, and you would never know about it."
+msgstr ""
+
+#: ../../use/security.rst:50
+msgid ""
+"This is why it is important to check the SSL certificate of the server you "
+"connect to: an attacker cannot spoof a certificate, or the trust of a "
+"Certificate Authority in a network's certificates."
+msgstr ""
+
+#: ../../use/security.rst:54
+msgid ""
+"Of course, this assumes there is no bug in your SSL library, the network's, "
+"and the protocols involved."
+msgstr ""
+
+#: ../../use/security.rst:58
+msgid "Certificate validation in Limnoria"
+msgstr ""
+
+#: ../../use/security.rst:60
+msgid ""
+"Until version 2016.02.24, Limnoria did not support certificate validation. "
+"Starting from this version, it is possible, but disabled by default, in "
+"order to not break existing bot when updating."
+msgstr ""
+
+#: ../../use/security.rst:64
+msgid "Certificate validation can be enabled using this command::"
+msgstr ""
+
+#: ../../use/security.rst:68
+msgid ""
+"Available validation mechanisms are Certification Authorities and "
+"fingerprint checking."
+msgstr ""
+
+#: ../../use/security.rst:72
+msgid "Certificate Authorities"
+msgstr ""
+
+#: ../../use/security.rst:74
+msgid ""
+"By default, Limnoria only checks certificates using CA certificates "
+"installed on your system. However, some networks use a CA that is not "
+"trusted by your system, such as CACert."
+msgstr ""
+
+#: ../../use/security.rst:78
+msgid "Limnoria allows you to add a CA certificate for a network::"
+msgstr ""
+
+#: ../../use/security.rst:82
+msgid ""
+"Note that you are responsible for making sure this is the right certificate "
+"for the CA, and trust this CA to sign correctly certificates valid for the "
+"network's hostname(s)."
+msgstr ""
+
+#: ../../use/security.rst:88
+msgid "Fingerprint checking"
+msgstr ""
+
+#: ../../use/security.rst:90
+msgid ""
+"Alternatively, for networks that do not use a CA, you can give Limnoria the "
+"list of fingerprints of certificates used by the network::"
+msgstr ""
+
+#: ../../use/security.rst:95
+msgid ""
+"Adding fingerprints will disable CA verifications (useful if you do not want "
+"to trust CAs)."
+msgstr ""
+
+#: ../../use/security.rst:98
+msgid ""
+"Note that you are responsible for giving the correct list of fingerprints."
+msgstr ""
+
+#: ../../use/security.rst:103
+msgid "Supported python versions"
+msgstr ""
+
+#: ../../use/security.rst:105
+msgid "Fingerprint checking is available in all Python versions."
+msgstr ""
+
+#: ../../use/security.rst:107
+msgid ""
+"CA validation is available in Python 2, starting on 2.7.9; and Python 3, "
+"starting on 3.4."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:5
+msgid "Restarting the bot automatically"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:7
+msgid ""
+"This page documents the different ways to automatically restart your bot in "
+"case of crash or system reboot or anything that can make the bot quit."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:10
+msgid "Note that you only need to use one."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:13
+msgid "supybot-botchk"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:15
+msgid ""
+"supybot-botchk is a script that comes with Supybot which restarts the bot if "
+"it quits or system reboots or anything that causes the bot to quit. It's "
+"placed to crontab so cron will run it with scheduled intervals."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:20
+msgid "How to use it?"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:23
+msgid "Configuring the bot"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:25
+msgid ""
+"Start by telling your bot to write a pidfile somewhere where it can write "
+"and restart the bot. For example::"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:30
+msgid ""
+"where <username> is replaced with the system username and <bot> is replaced "
+"with the name of the bot."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:34
+msgid "crontab"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:36
+msgid ""
+"After the pidfile is configured, you can modify crontab. First you should "
+"copy the output of::"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:41
+msgid ""
+"and open crontab with ``EDITOR=nano crontab -e`` and paste the output of "
+"previous command to the first lines which don't have comments. This should "
+"be on top. You will probably also want to configure locale and timezone "
+"which happens by adding the following lines::"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:58
+msgid "NOTE: Lines starting with # are comments and don't need to be written."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:60
+msgid ""
+"Now you finally add the bot. If you have multiple bots, simply add separate "
+"lines for them all::"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:65
+msgid ""
+"If you needed to use diferent environment for other bot, you could specify "
+"that on the same line. For example, my other bot uses en_US.utf8 as locale "
+"and UTC as timezone::"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:71
+msgid ""
+"Note that environment doesn't need to be specified on supybot-botchk line "
+"unless it differs from globally specified environment which we added as the "
+"first thing to crontab."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:75
+msgid ""
+"Now you can save the crontab by pressing ``CTRL + O`` answering ``y`` and "
+"then quitting nano with ``CTRL + X``."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:78
+msgid ""
+"If you are wondering what ``*/5 * * * *`` means, it simply means \"run this "
+"every five minutes every day\". The 5 can be replaced with any other number "
+"and there are also ``@hourly`` etc. which can be used on it's place, but you "
+"most likely won't want to wait hour or more if your bot crashes."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:84
+msgid "systemd service"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:86
+msgid ""
+"You need root access as no one has got this to work as user service yet. You "
+"must also use systemd as your init."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:89
+msgid ""
+"Create a new file ``/etc/systemd/system/<BOTNAME>.service`` with the "
+"following content replacing things were suitable::"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:107
+msgid ""
+"Now you should run ``systemctl daemon-reload`` to make systemd aware of "
+"changed files and ``systemctl enable <BOTNAME>.service`` to make the bot "
+"start on boot etc. and ``systemctl start <BOTNAME>.service`` to start the "
+"bot."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:112
+#, python-format
+msgid ""
+"Remember to check the ``Ènvironment`` line. You can get your PATH with "
+"``printf 'PATH=%s\\n' \"$PATH\"``."
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:116
+msgid "Some commands"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:118
+msgid "autostart on boot: ``systemctl enable <BOTNAME>.service``"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:119
+msgid "disable autostart on boot: ``systemctl disable <BOTNAME>.service``"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:120
+msgid "start the bot: ``systemctl start <BOTNAME>.service``"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:121
+msgid "stop the bot: ``systemctl stop <BOTNAME>.service``"
+msgstr ""
+
+#: ../../use/supybot-botchk.rst:122
+msgid "reload config files: ``systemctl reload <BOTNAME>.service``"
+msgstr ""
