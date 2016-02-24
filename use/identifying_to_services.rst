@@ -24,7 +24,7 @@ First start by checking what is the syntax for registering with
 
 Assuming that that is the syntax, we can register the bot with::
 
-    owner ircquote nickserv register bot@example.com
+    owner ircquote nickserv register mypassword bot@example.com
 
 Note that the email address must be correct. Next check that
 ``/msg nickserv info bot`` doesn't say something about being unverified. If
