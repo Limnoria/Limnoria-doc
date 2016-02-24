@@ -1,6 +1,7 @@
 *~
 *.swp
 *.swo
+*.mo
 _build
 conf/
 logs/
