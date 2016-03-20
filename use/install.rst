@@ -97,8 +97,8 @@ Simply add ``--user`` to the end of both commands. First we install
 requirements (you can skip it, but some features won't be available)
 and then Limnoria itself.::
 
-    pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
-    pip install limnoria --user --upgrade
+    python3 -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
+    python3 -m pip install limnoria --user --upgrade
 
 You might need to add $HOME/.local/bin to your PATH.::
 
