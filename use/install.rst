@@ -58,7 +58,7 @@ You have to first add the EPEL repository (`EL7`_, `EL6`_, `EL5`_) before being 
 
 .. code-block:: bash
 
-    sudo yum install limnoria`
+    sudo yum install limnoria
 
 .. _EL7: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 .. _EL6: https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
