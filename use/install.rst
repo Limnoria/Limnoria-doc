@@ -16,6 +16,74 @@ a little more of a "foolproof guide".
 
     Limnoria is a modified version of Supybot.
 
+Using your OS' package manager
+******************************
+
+On Debian (8.0 and above)
+=========================
+
+.. code-block:: bash
+
+    sudo aptitude install limnoria
+
+If you have Debian 8.0 (Jessie), this command won't work unless you
+have `Backports`_ repositories configured.
+
+.. _Backports: https://wiki.debian.org/Backports
+
+On Ubuntu (16.10 and above)
+===========================
+
+.. code-block:: bash
+
+    sudo apt-get install limnoria
+
+On Fedora (23 and above)
+========================
+
+.. code-block:: bash
+
+    sudo dnf install limnoria
+
+On CentOS and Red Hat Enterprise Linux
+======================================
+
+You have to first add the EPEL repository (`EL7`_, `EL6`_, `EL5`_) before being able to install the package on CentOS / RHEL. Once you have, you can run the following command to install Limnoria:
+
+.. code-block:: bash
+
+    sudo yum install limnoria`
+
+.. _EL7: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+.. _EL6: https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+.. _EL5: https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm
+
+On FreeBSD
+==========
+
+Port
+----
+
+.. code-block:: bash
+
+    cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.5 make install clean
+
+You can omit ``PYTHON_VERSION=3.5`` if you want to build for Python 2.7,
+or if you have ``DEFAULT_VERSIONS=python=3.5`` in `/etc/make.conf`.
+
+Package
+-------
+
+.. code-block:: bash
+
+    sudo pkg install py27-limnoria
+
+
+Manual install
+**************
+
+If your OS is not listed above, or if you want to do a manual install:
+
 Dependencies
 ============
 
