@@ -2,9 +2,9 @@
 
 .. _use-install:
 
-*******************
-Installing Limnoria
-*******************
+***************************************************************
+Installing Limnoria on GNU/Linux and UNIX (FreeBSD, macOS, ...)
+***************************************************************
 
 This is the "easy to follow" guide to installing Limnoria. The installation
 documentation provided with the supybot distribution is really quite good
@@ -12,15 +12,21 @@ already, but since people keep coming to IRC, asking a repeating pattern of
 questions, we thought it would be a good idea to expand it a bit to make it
 a little more of a "foolproof guide".
 
+This guide is for non-Windows operating systems. If you want to install
+on Windows, check out the :ref:`Windows install guide <use-install_windows>`.
+
 .. note::
 
     Limnoria is a modified version of Supybot.
 
-Using your OS' package manager
-******************************
+Install
+*******
+
+Install using your OS' package manager
+======================================
 
 On Debian (8.0 and above)
-=========================
+-------------------------
 
 .. code-block:: bash
 
@@ -32,21 +38,21 @@ have `Backports`_ repositories configured.
 .. _Backports: https://wiki.debian.org/Backports
 
 On Ubuntu (16.10 and above)
-===========================
+---------------------------
 
 .. code-block:: bash
 
     sudo apt-get install limnoria
 
 On Fedora (23 and above)
-========================
+------------------------
 
 .. code-block:: bash
 
     sudo dnf install limnoria
 
 On CentOS and Red Hat Enterprise Linux
-======================================
+--------------------------------------
 
 You have to first add the EPEL repository (`EL7`_, `EL6`_, `EL5`_) before being able to install the package on CentOS / RHEL. Once you have, you can run the following command to install Limnoria:
 
@@ -59,10 +65,9 @@ You have to first add the EPEL repository (`EL7`_, `EL6`_, `EL5`_) before being 
 .. _EL5: https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm
 
 On FreeBSD
-==========
+----------
 
-Port
-----
+Port:
 
 .. code-block:: bash
 
@@ -71,21 +76,20 @@ Port
 You can omit ``PYTHON_VERSION=3.5`` if you want to build for Python 2.7,
 or if you have ``DEFAULT_VERSIONS=python=3.5`` in `/etc/make.conf`.
 
-Package
--------
+Package:
 
 .. code-block:: bash
 
     sudo pkg install py27-limnoria
 
 
-Manual install
-**************
+Other operating systems (manual install)
+========================================
 
-If your OS is not listed above, or if you want to do a manual install:
+If you followed the section above, skip this one.
 
 Dependencies
-============
+------------
 
 The only mandatory dependency is `Python`_ 2.6 or greater. However, it is
 highly recommended you use Python 3.4 or greater.
@@ -98,14 +102,12 @@ replace `python3` by `python` in the given commands
 
 .. _Python: http://www.python.org/
 
-Installation: UNIX/Linux/BSD
-============================
-
 Install Python
 --------------
 
 Python will usually come by installed by default in your distribution. If not,
-grab the appropriate packages from the distribution's repository.
+grab the appropriate packages from the distribution's repository, or download
+it from http://python.org.
 
 If you're installing Python using your distribution's packages, you may need a
 ''python-dev'' or ''python-devel'' package installed, too. To see if this is
@@ -176,8 +178,8 @@ You might need to add $HOME/.local/bin to your PATH.::
 If you have an error saying `No module named pip`, install `pip` using this
 guide: https://pip.pypa.io/en/stable/installing/
 
-Configure Supybot
------------------
+Configuration
+*************
 
 We are now ready to configure Supybot. Supybot creates quite a few auxiliary
 files/directories to store its runtime data. It is thus recommended to create
@@ -209,110 +211,13 @@ For a tutorial on using and managing the bot from here on, see the `Supybook`_.
 
 .. _Supybook: http://supybook.fealdia.org/
 
-Installation: OS X
-==================
-
-The steps are essentially the same as those of the previous section, except
-there are no repositories. Grab the latest python installer for OS X from
-http://python.org, and follow the rest of the steps.
-
-Installation: Windows
-=====================
-
-.. highlight:: bat
-
-Install Python
---------------
-
-Download the latest **Python 3** installer from https://www.python.org, 
-3.5.1, as of 2016-01-26) and run it to install Python.
-
-Installing Python is mostly clicking next, but in the next screen remember
-the destination directory where you installed Python. These instructions
-refer to it as ``C:\Python35\`` which is the current name on 2016-01-26.
-
-Then you are asked to customize your installation. Click the drive on left
-side of "Python" text and select "Entire feature will be installed on
-local hard drive".
-
-Now Python installs itself which may take several minutes.
-
-Python should be now installed and you can check that the "python" command
-points to correct python. Open ``cmd.exe`` (press the Windows button on
-your keyboard and type "cmd.exe") and  run ``where python``
-and the toppernmost entry should be ``C:\Python35\python.exe``.
-
-Install git
------------
-
-In order to install the latest Limnoria from the git repository, you need
-git in your %PATH%. You can get it from http://git-scm.com/.
-
-In the "Adjusting your PATH environment", select the last option, "Use Git
-and optional Unix tools from the Windows Command Prompt" or you will have
-issues in the next step.
-
-Install Supybot
----------------
-
-Now we are ready to install Limnoria and it's requirements. Open 
-``cmd.exe`` as **Administrator** (right click it in the previous place)
-and run::
-
-    python3 -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
-    python3 -m pip install limnoria --upgrade
-
-We are now ready to configure Supybot. Supybot creates quite a few
-auxiliary files/directories to store its runtime data. It is thus
-recommended to create an empty directory from which you'll be running
-supybot, to keep all the data in a nice dedicated location. 
-For example, you may create a ``C:\Users\<username>\runbot`` for this
-purpose. 
-
-Now you open cmd.exe as **normal user**, and create and cd into your runbot
-directory::
-
-    mkdir runbot
-    cd runbot
-
-and from within it run ``supybot-wizard``::
-
-    python3 C:\Python35\Scripts\supybot-wizard
-
-which will walk you through a series of questions to generate the bot
-config file. 
-
-One thing to make sure to do in the wizard, to make your life easier down
-the line, is to select *y* for the *Would you like to add an owner user 
-for your bot?* question, and actually create the owner user. Remember that
-password, so that you can later ''identify'' with the bot on IRC and
-administer it.
-
-Once you generate the config file, which will be named ``yourbotnick.conf``
-(where ``yourbotnick`` is the nick you have chosen for your bot in the 
-wizard), it will be placed in your ``runbot`` directory. (As long as you
-leave the default answer to the *Where would you like to create these 
-directories?* question.) 
-
-Now to start the bot, run, still from within the
-``C:\users\<username>\runbot`` directory::
-
-    python3 C:\Python35\Scripts\supybot yourbotnick.conf
-
-And watch the magic!
-
-This guide has been mainly written by nanotube (Daniel Folkinshteyn), and
-is licensed under the Creative Commons Attribution ShareAlike 3.0 Unported
-license and/or the GNU Free Documentation License v 1.3 or later.
-
-.. _Supybook: http://supybook.fealdia.org/
 
 
 
 .. _alternative-install:
 
 Alternative install methods
-===========================
+***************************
 
 If you know what you are doing and you don't want to use pip, you
 can use one of these methods:

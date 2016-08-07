@@ -8,6 +8,7 @@ The Supybot user guide
     :maxdepth: 3
 
     install.rst
+    install_windows.rst
     getting_started.rst
     configuration.rst
     identifying_to_services.rst
