@@ -82,6 +82,20 @@ Package:
 
     sudo pkg install py27-limnoria
 
+On Archlinux
+------------
+
+You can install Limnoria `from AUR`_.
+
+.. _from AUR: https://aur.archlinux.org/packages/limnoria-python3-git/
+
+On Gentoo
+---------
+
+.. code-block:: bash
+
+    sudo emerge net-irc/limnoria
+
 
 Other operating systems (manual install)
 ========================================
