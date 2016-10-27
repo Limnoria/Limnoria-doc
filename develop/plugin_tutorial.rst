@@ -261,6 +261,9 @@ Here's what our __init__ looks like::
         self.rng = random.Random()   # create our rng
         self.rng.seed()   # automatically seeds with current time
 
+Make sure you add it with one indentation level more than the `class` line
+(ie. with four spaces before the `def`).
+
 Now, the first two lines may look a little daunting, but it's just
 administrative stuff required if you want to use a custom __init__. If we
 didn't want to do so, we wouldn't have to, but it's not uncommon so I decided
@@ -281,6 +284,7 @@ like::
         irc.reply(str(self.rng.random()))
     random = wrap(random)
 
+Same as before, you have to past it with one indentation level.
 And that's it. Now here are the important points.
 
 First and foremost, all plugin commands must have all-lowercase function
