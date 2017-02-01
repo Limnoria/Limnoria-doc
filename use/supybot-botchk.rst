@@ -19,6 +19,8 @@ placed to crontab so cron will run it with scheduled intervals.
 How to use it?
 --------------
 
+.. _supybot-botchk-configure:
+
 Configuring the bot
 ^^^^^^^^^^^^^^^^^^^
 
@@ -48,9 +50,9 @@ which happens by adding the following lines::
     # ends with "utf8" or "UTF-8" (the latter is required on some operating
     # systems like OS X).
     LC_ALL=en_US.UTF-8
-    
+
     # Specifying timezone is optional, but you probably want to do it if
-    # your system is on different timezone. Replace ``UTC`` with 
+    # your system is on different timezone. Replace ``UTC`` with
     # ``Area/Region`` as it appears in IANA Time Zone Database if you don't
     # want to use UTC.
     TZ=UTC
@@ -83,11 +85,15 @@ you most likely won't want to wait hour or more if your bot crashes.
 systemd service
 ===============
 
-You need root access as no one has got this to work as user service yet.
-You must also use systemd as your init.
+#. You need root access as no one has got this to work as user service
+   yet. You must also use ``systemd`` as your init.
 
-Create a new file ``/etc/systemd/system/<BOTNAME>.service`` with the
-following content replacing things were suitable::
+#. Ensure you followed the instructions in :ref:`Configuring the bot
+   <supybot-botchk-configure>` so that a PID file is created for the
+   bot.
+
+#. Create a new file ``/etc/systemd/system/<BOTIRCNAME>.service`` with
+   the following content replacing things where suitable::
 
     [Unit]
     Description=Supybot
@@ -96,21 +102,24 @@ following content replacing things were suitable::
     [Service]
     Environment="PATH=/usr/local/bin:/usr/local/sbin:/usr/local/games:/usr/bin:/usr/sbin:/usr/games:/bin:/sbin:/bin:/opt/local/bin:/opt/local/sbin:/opt/local/games TZ=UTC"
     Type=forking
-    ExecStart=/usr/local/bin/supybot /home/bot/botname/botname.conf --daemon
+    PIDFile=/home/<BOTUSERNAME>/<BOTIRCNAME>/<BOTIRCNAME>.pid
+    ExecStart=/usr/local/bin/supybot /home/<BOTUSERNAME>/<BOTIRCNAME>/<BOTIRCNAME>.conf --daemon
     ExecReload=/bin/kill -HUP $MAINPID
     Restart=always
-    User=BOTUSERNAME
+    User=<BOTUSERNAME>
 
     [Install]
     WantedBy=multi-user.target
 
-Now you should run ``systemctl daemon-reload`` to make systemd aware
-of changed files and ``systemctl enable <BOTNAME>.service`` to make the
-bot start on boot etc. and ``systemctl start <BOTNAME>.service`` to start
-the bot.
+.. note::
 
-Remember to check the ``Ènvironment`` line. You can get your PATH with
-``printf 'PATH=%s\n' "$PATH"``.
+   * ``<BOTUSERNAME>`` - The user account on the system the bot runs on
+   * ``<BOTIRCNAME>`` - The name the bot assumes on IRC networks
+
+Finally, one last step:
+
+* Run ``systemctl daemon-reload`` to make ``systemd`` aware of changed
+  unit files
 
 Some commands
 -------------
