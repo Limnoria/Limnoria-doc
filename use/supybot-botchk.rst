@@ -95,11 +95,12 @@ following content replacing things were suitable::
 
     [Service]
     Environment="PATH=/usr/local/bin:/usr/local/sbin:/usr/local/games:/usr/bin:/usr/sbin:/usr/games:/bin:/sbin:/bin:/opt/local/bin:/opt/local/sbin:/opt/local/games TZ=UTC"
-    Type=forking
-    ExecStart=/usr/local/bin/supybot /home/bot/botname/botname.conf --daemon
+    Type=simple
+    ExecStart=/usr/local/bin/supybot /home/bot/botname/botname.conf
     ExecReload=/bin/kill -HUP $MAINPID
     Restart=always
     User=BOTUSERNAME
+    SyslogIdentifier=Supybot
 
     [Install]
     WantedBy=multi-user.target
