@@ -96,6 +96,13 @@ On Gentoo
 
     sudo emerge net-irc/limnoria
 
+With Guix and GuixSD
+--------------------
+
+.. code-block:: bash
+
+    guix package --install limnoria
+
 
 Other operating systems (manual install)
 ========================================
