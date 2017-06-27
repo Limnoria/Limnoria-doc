@@ -24,19 +24,19 @@ First start by checking what is the syntax for registering with
 
 Assuming that that is the syntax, we can register the bot with::
 
-    owner ircquote nickserv register mypassword bot@example.com
+    owner ircquote privmsg nickserv :register mypassword bot@example.com
 
 Note that the email address must be correct. Next check that
 ``/msg nickserv info bot`` doesn't say something about being unverified. If
 it does, go to the email address and run::
 
-    owner ircquote nickserv VERIFY REGISTER nick <code from the email>
+    owner ircquote privmsg nickserv :VERIFY REGISTER nick <code from the email>
 
 Now your bot should be successfully registered and you can move to setting
 up automatic identifying below. If you need to identify to services now,
 ``/msg nickserv help identify`` and following the syntax (I am still
 assuming that you are on Atheme 7.2.4)
-``owner ircquote nickserv identify username password``.
+``owner ircquote privmsg nickserv :identify username password``.
 
 SASL PLAIN
 ----------
@@ -104,7 +104,7 @@ This results in something like
 ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` which you tell your bot to
 tell services::
 
-    owner ircquote NickServ cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8
+    owner ircquote privmsg NickServ :cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8
 
 Or if your bot identifies as you, you can do that by yourself with::
 
@@ -131,7 +131,7 @@ services about it (just like with CertFP/SASL EXTERNAL)::
 
     config supybot.networks.<network>.sasl.username AccountName
     config supybot.networks.<network>.sasl.ecdsa_key /home/<username>/<BOT>_ecdsa.pem
-    ircquote nickserv set pubkey PUBKEY_WHICH_YOU_GOT_EARLIER
+    ircquote privmsg nickserv :set pubkey PUBKEY_WHICH_YOU_GOT_EARLIER
 
 and after reconnecting, the bot should successfully identify using SASL
 ECDSA-NIST256P-CHALLENGE.
