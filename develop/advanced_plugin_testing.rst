@@ -141,7 +141,7 @@ test user for our test bot::
         # Create a valid user to use
         self.prefix = 'foo!bar@baz'
         self.feedMsg('register tester moo', to=self.nick, frm=self.prefix))
-        m = self.getMsg()  # Response to registration.
+        m = self.getMsg(' ')  # Response to registration.
 
 Now notice how the first line calls the parent class's setUp method first?
 This must be done first. Otherwise several problems are likely to arise. For
