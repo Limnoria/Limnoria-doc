@@ -18,8 +18,8 @@ their bot as secure as possible.
 Trust in network operators
 ==========================
 
-As you may know, it is possible to do anything from IRC, including loading
-the Unix plugin and using the `@call` command.
+As you may know, by default, it is possible to do anything from IRC, including
+loading the Unix plugin and using the `@call` command.
 The only safeguard is checking the user calling the commands is authenticated
 as the owner of the bot; and network operators are able to spoof hostmasks
 and collect your password, thus allowing them to execute commands as the
@@ -27,6 +27,15 @@ owner.
 
 Although network operators of most well-known IRC networks are not known to
 do that, you should be aware of that risk.
+
+Starting on commit `4f6a5e7db`_ (version 2017.10.01), there is a new
+configuration variable, `supybot.commands.allowShell`, to prevent malicious
+network operators from getting shell access on your bot's computer.
+It defaults to `True` to make it easy for new users to install plugins using
+PluginDownloader, but it is recommended you set it to `False` if you do not
+care about that feature.
+
+.. _4f6a5e7db: https://github.com/ProgVal/Limnoria/commit/4f6a5e7db
 
 
 .. _security-ssl:
@@ -59,7 +68,7 @@ Certificate validation in Limnoria
 
 Until version 2016.02.24, Limnoria did not support certificate validation.
 Starting from this version, it is possible, but disabled by default, in order
-to not break existing bot when updating.
+to not break existing bots when updating.
 
 Certificate validation can be enabled using this command::
 
