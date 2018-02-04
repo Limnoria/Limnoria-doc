@@ -22,7 +22,7 @@ How to use it?
 Configuring the bot
 ^^^^^^^^^^^^^^^^^^^
 
-Start by telling your bot to write a pidfile somewhere where it can write
+Start by telling your bot to write a pidfile somewhere where it can write,
 and restart the bot. For example::
 
     config supybot.pidfile /home/<username>/<bot>/<bot>.pid
