@@ -44,16 +44,6 @@ points to correct python. Open ``cmd.exe`` (press the Windows button on
 your keyboard and type "cmd.exe") and  run ``where python``
 and the toppernmost entry should be ``C:\Python35\python.exe``.
 
-Install git
------------
-
-In order to install the latest Limnoria from the git repository, you need
-git in your %PATH%. You can get it from http://git-scm.com/.
-
-In the "Adjusting your PATH environment", select the last option, "Use Git
-and optional Unix tools from the Windows Command Prompt" or you will have
-issues in the next step.
-
 Install Supybot
 ---------------
 
