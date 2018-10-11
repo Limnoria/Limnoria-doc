@@ -157,7 +157,8 @@ ask it on their help channel.
 Limnoria
 --------
 
-Limnoria has two additional methods to identify. GPG and NickAuth.
+Limnoria has two additional methods to identify, GPG and NickAuth, each
+provided as a plugin that you need to load (with the ``load`` command).
 
 GPG
 ^^^
