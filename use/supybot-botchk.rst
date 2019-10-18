@@ -115,7 +115,7 @@ of changed files and ``systemctl enable <BOTNAME>.service`` to make the
 bot start on boot etc. and ``systemctl start <BOTNAME>.service`` to start
 the bot.
 
-Remember to check the ``Ènvironment`` line. You can get your PATH with
+Remember to check the ``Environment`` line. You can get your PATH with
 ``printf 'PATH=%s\n' "$PATH"``.
 
 Some commands
