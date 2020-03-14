@@ -135,11 +135,11 @@ main dev, muahaha), I would do::
 Keep this in mind as we get to the next item...
 
 ``__contributors__`` is a dictionary mapping supybot.Author instances to lists
-of things they contributed. If someone adds a command named foo to your
-plugin, the list for that author should be ``["foo"]``, or perhaps even
-``["added foo command"]``. The main author shouldn't be referenced here, as it
-is assumed that everything that wasn't contributed by someone else was done by
-the main author.  For now we have no contributors, so we'll leave it blank.
+of things they contributed. For example, if someone adds a command named ``foo``
+to your plugin, the list for that author could be ``["added foo command"]``.
+The main author shouldn't be referenced here, as it is assumed that everything
+that wasn't contributed by someone else was done by the main author.
+For now we have no contributors, so we'll leave it blank.
 
 Lastly, the ``__url__`` attribute should just reference the download URL for
 the plugin. Since this is just an example, we'll leave this blank.
