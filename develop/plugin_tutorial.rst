@@ -148,8 +148,9 @@ The rest of :file:`__init__.py` really shouldn't be touched unless you are
 using third-party modules in your plugin. If you are, then you need to take
 special note of the section that looks like this::
 
-    import config
-    import plugin
+    from . import config
+    from . import plugin
+    from importlib import reload
     reload(plugin) # In case we're being reloaded.
     # Add more reloads here if you add third-party modules and want them
     # to be reloaded when this plugin is reloaded.  Don't forget to
