@@ -109,14 +109,12 @@ If you followed the section above, skip this one.
 Dependencies
 ------------
 
-The only mandatory dependency is `Python`_ 2.6 or greater. However, it is
-highly recommended you use Python 3.4 or greater.
+The only mandatory dependency is Python 3.4 or greater.
 
 You may also install chardet and feedparser, which are used by Limnoria if
 they are available.
 
-The remaining of this guide will assume you have Python 3. If you don't,
-replace `python3` by `python` in the given commands
+The remaining of this guide will assume you have Python 3.
 
 .. _Python: http://www.python.org/
 
@@ -158,10 +156,10 @@ Global installation (with root access)
 
 If you do not have root access, skip this section.
 
-If you are logged in as root, you can remove ``sudo`` from the install 
+If you are logged in as root, you can remove ``sudo`` from the install
 commands.
 
-*In case you want to use the testing branch which might be more up-to 
+*In case you want to use the testing branch which might be more up-to
 date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.*
 
 First we install Limnoria's optional dependencies (you can skip this
@@ -181,7 +179,7 @@ Local installation (without root access)
 
 If you have followed the previous section, skip this one.
 
-Simply add ``--user`` to the end of both commands. First we install 
+Simply add ``--user`` to the end of both commands. First we install
 requirements (you can skip it, but some features won't be available)
 and then Limnoria itself.::
 
@@ -203,11 +201,11 @@ We are now ready to configure Supybot. Supybot creates quite a few auxiliary
 files/directories to store its runtime data. It is thus recommended to create
 an empty directory from which you'll be running supybot, to keep all the data
 in a nice dedicated location. For example, you may create a 'runbot' directory
-inside your home directory. 
+inside your home directory.
 
 Now you can cd to your 'runbot' directory, and from within it run
 ``supybot-wizard``, which will walk you through a series of questions to
-generate the bot config file. 
+generate the bot config file.
 
 One thing to make sure to do in the wizard, to make your life easier down the
 line, is to select **y** for the *Would you like to add an owner user for your
@@ -217,7 +215,7 @@ that you can later ''identify'' with the bot on IRC and administer it.
 Once you generate the config file, which will be named ``yourbotnick.conf``
 (where "yourbotnick" is the nick you have chosen for your bot in the wizard),
 it will be placed in your 'runbot' directory. (As long as you leave the default
-answer to the ''Where would you like to create these directories?'' question.) 
+answer to the ''Where would you like to create these directories?'' question.)
 
 Now to start the bot, run, still from within the 'runbot' directory::
 
