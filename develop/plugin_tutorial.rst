@@ -549,7 +549,7 @@ wisdom with regards to Supybot plugin-writing.
 * Hack new functionality into existing plugins first if writing a new
   plugin is too daunting.
 
-* Come ask us questions in #supybot on Freenode or OFTC. Going back to the
+* Come ask us questions in #limnoria on Freenode. Going back to the
   first point above, the developers themselves can help you even more than
   the docs can (though we prefer you read the docs first).
 

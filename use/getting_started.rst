@@ -333,5 +333,5 @@ the bot.  With these three commands, you should have a strong basis with which
 to discover the rest of the features of Supybot!
 
 Do be sure to read our other documentation and make use of the resources we
-provide for assistance; this website and, of course, #supybot on
+provide for assistance; this website and, of course, #limnoria on
 irc.freenode.net if you run into any trouble!
