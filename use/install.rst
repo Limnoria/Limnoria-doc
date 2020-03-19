@@ -71,23 +71,20 @@ Port:
 
 .. code-block:: bash
 
-    cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.5 make install clean
-
-You can omit ``PYTHON_VERSION=3.5`` if you want to build for Python 2.7,
-or if you have ``DEFAULT_VERSIONS=python=3.5`` in `/etc/make.conf`.
+    cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.7 make install clean
 
 Package:
 
 .. code-block:: bash
 
-    sudo pkg install py27-limnoria
+    sudo pkg install py37-limnoria
 
-On Archlinux
+On Arch Linux
 ------------
 
-You can install Limnoria `from AUR`_.
+You can install Limnoria `from the AUR`_.
 
-.. _from AUR: https://aur.archlinux.org/packages/limnoria-python3-git/
+.. _from the AUR: https://aur.archlinux.org/packages/limnoria-git/
 
 On Gentoo
 ---------
