@@ -33,17 +33,17 @@ branch, commit, push/pull, add/rm, log, show, reset, revert).
 I learnt how to use Git with an ebook, also available as a real book:
 `Pro Git`_.
 
-Our prefered way of contributing is through GitHub pull requests to
+Our preferred way of contributing is through GitHub pull requests to
 `Limnoria's repository`_. Please send your pull requests to the `testing`
 branch.
 
 .. _Pro Git: http://progit.org/book/
-.. _Limnoria's repo: https://github.com/ProgVal/Limnoria/
+.. _Limnoria's repository: https://github.com/ProgVal/Limnoria/
 
 Where to start
 ==============
 
-If you are not an experienced Python and/or Limnoria developper, you
+If you are not an experienced Python and/or Limnoria developer, you
 can start with solving `issues tagged as easy`_. I believe they are
 likely to be easy to solve even without a lot of experience.
 
