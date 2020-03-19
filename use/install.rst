@@ -25,24 +25,17 @@ Install
 Install using your OS' package manager
 ======================================
 
-On Debian (8.0 and above)
--------------------------
-
-.. code-block:: bash
-
-    sudo aptitude install limnoria
-
-If you have Debian 8.0 (Jessie), this command won't work unless you
-have `Backports`_ repositories configured.
-
-.. _Backports: https://wiki.debian.org/Backports
-
-On Ubuntu (16.10 and above)
----------------------------
+On Debian (8.0 and above) or Ubuntu (16.10 and above)
+-----------------------------------------------------
 
 .. code-block:: bash
 
     sudo apt-get install limnoria
+
+Note that stable / LTS releases may not have the latest features or bug fixes for Limnoria. If you want a newer version than what's in the default repositories, you can enable `Backports`_ on Debian or `Unit 193's PPA`_ on Ubuntu.
+
+.. _Backports: https://wiki.debian.org/Backports
+.. _Unit 193's PPA: https://launchpad.net/~unit193/+archive/ubuntu/limnoria
 
 On Fedora (23 and above)
 ------------------------
@@ -80,7 +73,7 @@ Package:
     sudo pkg install py37-limnoria
 
 On Arch Linux
-------------
+-------------
 
 You can install Limnoria `from the AUR`_.
 
