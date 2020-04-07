@@ -237,28 +237,50 @@ and it will return data of the right type (in this case, a list of string,
 as we declarated it above as a `registry.SpaceSeparatedListOfStrings`).
 
 If it is a channel-specific variable, you can get the value on `#channel`
-like this (if the variable is not defined on this channel, it defaults
-to the global one)::
+and `network` like this (if the variable is not defined on this channel,
+it defaults to the global one)::
 
-    self.registryValue('air', '#channel')
+    self.registryValue('air', '#channel', 'network')
+
+.. note::
+
+   You will typically obtain the current channel name using the `channel`
+   converter (in commands with a `<channel>` argument) or `msg.channel`
+   (in other methods); and the network name with `irc.network`.
 
 
 You can also set configuration variables (either globally or for a single
 channel)::
 
     self.setRegistryValue('air', value=['foo', 'bar'])
-    self.setRegistryValue('air', value=['foo', 'bar'], channel=channel)
-
-
+    self.setRegistryValue('air', value=['foo', 'bar'],
+                          channel=channel, network=network)
 
 You can also access other configuration variables (or your own if you want)
 via the ``supybot.conf`` module::
 
     conf.supybot.plugins.WorldDom.air()
     conf.supybot.plugins.WorldDom.get('air')()
-    conf.supybot.plugins.WorldDom.air.get('#channel')()
+    conf.supybot.plugins.WorldDom.air.get('network').get('#channel')()
     conf.supybot.plugins.WorldDom.air.setValue(['foo'])
-    conf.supybot.plugins.WorldDom.air.get('#channel').setValue(['foo'])
+    conf.supybot.plugins.WorldDom.air.get('network').get('#channel').setValue(['foo'])
+
+.. warning::
+
+   Before version 2019.10.22, Limnoria (and Supybot) did not support
+   network-specific configuration variables.
+   If you want to support these versions, you must drop the `network` argument,
+   and access the configuration variables like this::
+
+       self.registryValue('air', '#channel', 'network')
+       self.setRegistryValue('air', value=['foo', 'bar'],
+                             channel=channel)
+       conf.supybot.plugins.WorldDom.air.get('#channel')()
+       conf.supybot.plugins.WorldDom.air.get('#channel').setValue(['foo'])
+
+   This will also work in recent versions of Limnoria, but will prevent users
+   from setting different values for each network.
+
 
 The Built-in Registry Types
 ===========================
