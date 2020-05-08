@@ -553,9 +553,9 @@ wisdom with regards to Supybot plugin-writing.
   first point above, the developers themselves can help you even more than
   the docs can (though we prefer you read the docs first).
 
-* Share your plugins with the world and make Supybot all that more
-  attractive for other users so they will want to write their plugins for
-  Supybot as well.
+* :ref:`Share your plugins with the world <distributing-plugins>`
+  and make Supybot all that more attractive for other users so they will want
+  to write their plugins for Supybot as well.
 
 * Read, read, read all the documentation.
 

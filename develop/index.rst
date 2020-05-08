@@ -15,6 +15,7 @@ Generic documentation
     style.rst
     advanced_plugin_config.rst
     advanced_plugin_testing.rst
+    plugin_distribution.rst
 
 Specific documentation
 ~~~~~~~~~~~~~~~~~~~~~~
