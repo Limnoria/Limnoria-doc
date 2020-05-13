@@ -157,3 +157,8 @@ Again, if this is undesirable to you, you can do the following:
   ``defaultcapability add -plugin``
 * Hide capabilities users are missing to run a command:
   ``supybot.reply.error.noCapability``
+* Replace errors with a generic reply: ``supybot.reply.error.detailed``
+
+Note that, when asking for help involving an error, you should enable verbose
+errors when providing logs (ie. reset these last values to their default),
+so it is easier to help you diagnose your problems.
