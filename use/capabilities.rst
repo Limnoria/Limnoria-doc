@@ -215,6 +215,38 @@ Defaultcapabilities can be restored with either of these two commands::
     config setdefault capabilities
     config capabilities [config default capabilities]
 
+
+Example
+-------
+
+To make all this less abstract, here is a popular example of what
+capabilities are used for: disabling a plugin or command for everyone
+but a select group of people
+
+Allowing only user ``foo`` to use the ``Games`` plugin, globally::
+
+    defaultcapability add -games
+    admin capability add foo games
+
+And to undo it::
+
+    defaultcapability remove -Games
+    admin capability remove foo Games
+
+Same, but only on ``#channel``::
+
+    channel capability set #channel -games
+    channel capability add #channel foo games
+
+    channel capability unset #channel -games
+    channel capability remove #channel foo games
+
+
+And to forbid only the ``dice`` command of the ``Games`` plugin instead of the
+entire plugin, you would use the same commands, but with ``-games.dice`` and
+``games.dice`` instead of ``-games`` and ``games``.
+
+
 Final Word
 ----------
 
