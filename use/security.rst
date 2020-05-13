@@ -114,3 +114,46 @@ Supported python versions
 Fingerprint checking and CA validation are available in all Python versions
 supported by Limnoria.
 
+
+Flooding via command abuse
+==========================
+
+Limnoria answers at most one message per command, but its message can be
+rather long (up to about 450 to 500 characters) for even a small command.
+
+If this is undesirable for you, you can take the following measures:
+
+* Limit the size of a single message with ``supybot.reply.mores.length``.
+* Limit how many messages the ``@more`` command may be called to get
+  a response to a command: ``supybot.reply.mores.maximum``
+* Disable large error replies with ``supybot.reply.error.detailed`` and
+  ``supybot.reply.error.noCapability``, and/or
+  send them in private with ``supybot.reply.error.inPrivate``.
+* And check out the various variables in ``supybot.abuse.flood``.
+
+For old bot configurations, you may also want to set the ``-scheduler``
+capability to prevent users from using the ``@scheduler add`` and
+``@scheduler repeat`` commands (bot configurations created with Limnoria
+versions greater than 2020.05.13 already have this by default).
+
+We also recommend you report users abusing your bot to network operators,
+so they take extra measures against these users if this is against their
+network's policy.
+
+Hardening
+=========
+
+By default, Limnoria exposes much of its configuration. This is by design,
+to improve discoverability and debugging.
+
+Again, if this is undesirable to you, you can do the following:
+
+* Prevent users from using the Config plugin to read the configuration:
+  ``defaultcapability add -config`` (note that sensitive configuration
+  variables are, of course, always hidden from users by default).
+* Prevent users from listing available plugins and commands:
+  ``defaultcapability add -misc.list``,
+  ``defaultcapability add -misc.apropos``, and
+  ``defaultcapability add -plugin``
+* Hide capabilities users are missing to run a command:
+  ``supybot.reply.error.noCapability``

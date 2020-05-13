@@ -120,6 +120,7 @@ happen if someone gave the bot the command 're [format join "" s/./ [dict go]
 'dict go' (14,896 characters!) with the entire output of 'dict go', resulting
 in 221MB of memory allocated!  And that's not even the worst example!
 
+
 Managing capabilities
 ---------------------
 
