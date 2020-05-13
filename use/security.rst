@@ -111,7 +111,6 @@ Note that you are responsible for giving the correct list of fingerprints.
 Supported python versions
 -------------------------
 
-Fingerprint checking is available in all Python versions.
+Fingerprint checking and CA validation are available in all Python versions
+supported by Limnoria.
 
-CA validation is available in Python 2, starting on 2.7.9; and
-Python 3, starting on 3.4.
