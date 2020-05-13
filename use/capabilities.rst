@@ -69,7 +69,7 @@ an individual channel!
 So when a user 'foo' sends a command 'bar' to the bot on channel '#baz', first
 the bot checks to see if the user has the anticapability for the command by
 itself, '-bar'.  If so, it errors right then and there, telling the user that
-he lacks the 'bar' capability.  If the user doesn't have that anticapability,
+they lacks the 'bar' capability.  If the user doesn't have that anticapability,
 then the bot checks to see if the user issued the command over a channel, and
 if so, checks to see if the user has the antichannelcapability for that
 command, '#baz,-bar'.  If so, again, it tells the user that they lack the 'bar'
@@ -210,8 +210,7 @@ To undo this I would simply do the opposite.::
     defaultcapability remove -user.register
     defaultcapability remove -unix.progstats
 
-Defaultcapabilities can be restored with two commands from the First is
-only in Limnoria at the time of writing::
+Defaultcapabilities can be restored with either of these two commands::
 
     config setdefault capabilities
     config capabilities [config default capabilities]
@@ -219,7 +218,7 @@ only in Limnoria at the time of writing::
 Final Word
 ----------
 
-From a programmer's perspective, capabilties are flexible and easy to use.  Any
+From a programmer's perspective, capabilities are flexible and easy to use.  Any
 command can check if a user has any capability, even ones not thought of when
 the bot was originally written. Plugins can easily add their own
 capabilities--it's as easy as just checking for a capability and documenting
