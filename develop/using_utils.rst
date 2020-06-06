@@ -39,10 +39,6 @@ operator. The format function uses the following string formatting characters.
 * v - void, takes one or many arguments, but doesn't display it
   (useful for translation)
 
-.. note::
-    Until stock Supybot and Gribble merge them, %S, %T, and %v are only
-    available in Limnoria.
-
 
 Here are a few examples to help elaborate on the above descriptions::
 
