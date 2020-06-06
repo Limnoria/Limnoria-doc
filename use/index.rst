@@ -1,8 +1,8 @@
 .. _use-index:
 
-######################
-The Supybot user guide
-######################
+##########
+User Guide
+##########
 
 .. toctree::
     :maxdepth: 3

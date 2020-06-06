@@ -1,11 +1,8 @@
 .. _develop-plugins:
 
-###############################
-Developing plugins for Limnoria
-###############################
-
-Generic documentation
-~~~~~~~~~~~~~~~~~~~~~
+######################
+Plugin Developer Guide
+######################
 
 .. toctree::
     :maxdepth: 1
@@ -16,12 +13,6 @@ Generic documentation
     advanced_plugin_config.rst
     advanced_plugin_testing.rst
     plugin_distribution.rst
-
-Specific documentation
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. toctree::
-    :maxdepth: 2
 
     using_utils.rst
     capabilities.rst
