@@ -113,7 +113,7 @@ command to see how this command works.  Here's how I often use it::
 
 You may not have seen that '[hostmask]' syntax before.  Supybot allows nested
 commands, which means that any command's output can be nested as an argument
-to another command.  The hostmask command from the Misc plugin returns the
+to another command.  The hostmask command from the User plugin returns the
 hostmask of a given nick, but if given no arguments, it returns the hostmask
 of the person giving the command. So the command above adds the hostmask I'm
 currently using to my user's list of recognized hostmasks.  I'm only required
