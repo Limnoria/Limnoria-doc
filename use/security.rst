@@ -155,6 +155,9 @@ Again, if this is undesirable to you, you can do the following:
   ``defaultcapability add -misc.list``,
   ``defaultcapability add -misc.apropos``, and
   ``defaultcapability add -plugin``
+* Hide the version from users: ``defaultcapability add -misc.version``,
+  and also make sure it's not in ``supybot.user`` or
+  ``supybot.plugins.Owner.quitMsg``.
 * Hide capabilities users are missing to run a command:
   ``supybot.reply.error.noCapability``
 * Replace errors with a generic reply: ``supybot.reply.error.detailed``
