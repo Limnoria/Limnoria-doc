@@ -227,10 +227,6 @@ But there is a more compact syntax, using context managers::
             with conf.supybot.commands.nested.context(False):
                 # stuff
 
-.. note::
-    Until stock Supybot or Gribble merge the second syntax, only Limnoria
-    will support it.
-
 Plugin Test Methods
 ===================
   The full list of test methods and how to use them.
