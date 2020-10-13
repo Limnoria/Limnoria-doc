@@ -1,28 +1,28 @@
 .. _getting-started:
 
-****************************
-Getting Started with Supybot
-****************************
+*************************************
+Getting Started with Limnoria/Supybot
+*************************************
 
 Introduction
 ============
 
-Ok, so you've decided to try out Supybot.  That's great!  The more people who
-use Supybot, the more people can submit bugs and help us to make it the best
+Ok, so you've decided to try out Limnoria.  That's great!  The more people who
+use Limnoria, the more people can submit bugs and help us to make it the best
 IRC bot in the world :)
 
 You should have already read through our install document (if you had to
 manually install) before reading any further.  Now we'll give you a whirlwind
-tour as to how you can get Supybot setup and use Supybot effectively.
+tour as to how you can get Limnoria setup and use Limnoria effectively.
 
 Initial Setup
 =============
 
-Now that you have Supybot installed, you'll want to get it running.  The first
+Now that you have Limnoria installed, you'll want to get it running.  The first
 thing you'll want to do is run supybot-wizard.  Before running supybot-wizard,
 you should be in the directory in which you want your bot-related files to
 reside.  The wizard will walk you through setting up a base config file for
-your Supybot.  Once you've completed the wizard, you will have a config file
+your Limnoria.  Once you've completed the wizard, you will have a config file
 called botname.conf.  In order to get the bot running, run ``supybot
 botname.conf``.
 
@@ -30,15 +30,15 @@ Listing Commands
 ================
 
 Ok, so let's assume your bot connected to the server and joined the channels
-you told it to join.  For now we'll assume you named your bot 'supybot' (you
+you told it to join.  For now we'll assume you named your bot 'mybot' (you
 probably didn't, but it'll make it much clearer in the examples that follow to
 assume that you did).  We'll also assume that you told it to join #channel (a
 nice generic name for a channel, isn't it? :))  So what do you do with this
 bot that you just made to join your channel?  Try this in the channel::
 
-    supybot: list
+    mybot: list
 
-Replacing 'supybot' with the actual name you picked for your bot, of course.
+Replacing 'mybot' with the actual name you picked for your bot, of course.
 Your bot should reply with a list of the plugins it currently has loaded.  At
 least `Admin`, `Channel`, `Config`, `Misc`, `Owner`, and `User` should be
 there; if you used supybot-wizard to create your configuration file you may
@@ -71,8 +71,8 @@ Config plugin's list command, then you'd need to say::
 
 Rather than just 'list'.
 
-Making Supybot Recognize You
-============================
+Making Limnoria Recognize You
+=============================
 
 For making the bot to identify to services, please see :ref:`identifying to services. <identifying-to-services>`
 
@@ -111,7 +111,7 @@ command to see how this command works.  Here's how I often use it::
 
     hostmask add myuser [hostmask] mypassword
 
-You may not have seen that '[hostmask]' syntax before.  Supybot allows nested
+You may not have seen that '[hostmask]' syntax before.  Limnoria allows nested
 commands, which means that any command's output can be nested as an argument
 to another command.  The hostmask command from the User plugin returns the
 hostmask of a given nick, but if given no arguments, it returns the hostmask
@@ -286,12 +286,12 @@ utilities last <text> [<text> ...]
     You have to give at least one argument, but you can give as many as you
     wish.
 
-Getting More From Your Supybot
-==============================
+Getting More From Your Limnoria
+===============================
 
 Another command you might find yourself needing somewhat often is the 'more'
 command.  The IRC protocol limits messages to 512 bytes, 60 or so of which
-must be devoted to some bookkeeping.  Sometimes, however, Supybot wants to
+must be devoted to some bookkeeping.  Sometimes, however, Limnoria wants to
 send a message that's longer than that.  What it does, then, is break it into
 "chunks" and send the first one, following it with ``(X more messages)`` where
 X is how many more chunks there are.  To get to these chunks, use the `more`
@@ -325,12 +325,12 @@ to continue seeing chunks from jemfinch's initial command.
 Final Word
 ==========
 
-You should now have a solid foundation for using Supybot.  You can use the
+You should now have a solid foundation for using Limnoria.  You can use the
 `list` command to see what plugins your bot has loaded and what commands are
 in those plugins; you can use the 'help' command to see how to use a specific
 command, and you can use the 'more' command to continue a long response from
 the bot.  With these three commands, you should have a strong basis with which
-to discover the rest of the features of Supybot!
+to discover the rest of the features of Limnoria!
 
 Do be sure to read our other documentation and make use of the resources we
 provide for assistance; this website and, of course, #limnoria on
