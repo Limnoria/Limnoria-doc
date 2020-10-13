@@ -1,6 +1,13 @@
+.. _user-faq:
+
 **************************
 Frequently Asked Questions
 **************************
+
+This section tries to cover all questions you may have as a Limnoria user or
+administrator.
+(For questions about plugin development, check out the
+:ref:`Developer FAQ <user-faq>` instead.)
 
 How do I make my Supybot connect to multiple servers?
 =====================================================
@@ -145,7 +152,7 @@ Why won't Supybot respond to private messages?
     registered, and your Supybot has the +R user mode set.
 
 Can users with the admin capability change the configuration?
-===========================================================
+=============================================================
 
   Currently, no.  Feel free to make your case to us as to why a certain
   configuration variable should only require the `admin` capability
