@@ -19,6 +19,8 @@ Plugin Developer Guide
     events.rst
     httpserver.rst
 
+    faq.rst
+
 Library reference
 ~~~~~~~~~~~~~~~~~
 
