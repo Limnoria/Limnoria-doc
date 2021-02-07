@@ -59,12 +59,42 @@ My bot can't handle nicks with brackets in them!
   `supybot.commands.nested.brackets` to some other value (like ``<>``,
   which can't occur in IRC nicks).
 
+How do I create a command?
+==========================
+
+  You can create simple commands with the Aka plugin, like this::
+
+    <admin> @aka add "rules" "echo Here are the rules of the channel."
+    <bot> Ok.
+    [...]
+    <user> @rules
+    <bot> Here are the rules of the channel.
+
+  You can also make the bot reply on arbitrary words, MessageParser::
+
+    <admin> @messageparser add "some words" "echo Blah blah"
+    <bot> Ok
+    [...]
+    <user> I am saying some words.
+    <bot> Blah blah
+
+  Both these examples assume you have the Utilities plugin loaded
+  (it provides the ``echo`` command).
+
+  See the help of ``aka add``, ``messageparser add``, and ``echo``
+  to see more advanced uses of these commands
+  (command arguments, regular expressions, variables, etc.)
+
+  While powerful, Aka and MessageParser cannot do everything.
+  For the most advanced commands, you will need to
+  :ref:`write your own plugin in Python <develop-plugins>`.
+
 I loaded Alias before, how do I move to Aka?
 ============================================
 
-First load both of the plugins, Aka and Alias. Then run
-``aka importaliasdatabase`` and ``unload Alias``. Now all your aliases
-should be imported to the Aka plugin.
+  First load both of the plugins, Aka and Alias. Then run
+  ``aka importaliasdatabase`` and ``unload Alias``. Now all your aliases
+  should be imported to the Aka plugin.
 
 I added an aka, but it doesn't work!
 ====================================
