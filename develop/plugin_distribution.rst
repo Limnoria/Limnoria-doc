@@ -179,3 +179,7 @@ Alternatively, if you don't want to publish on PyPI, they can still
 use pip to install directly from your repository, for example::
 
      sudo pip3 install git+https://example.org/~jdoe/YourPlugin.git
+
+Or, if you use a single repository for multiple plugins::
+
+    sudo pip3 install "git+https://example.org/~jdoe/Supybot-plugins.git#egg=limnoria-yourplugin&subdirectory=YourPlugin"
