@@ -169,7 +169,8 @@ config.py
 =========
 :file:`config.py` is, unsurprisingly, where all the configuration stuff
 related to your plugin goes. If you're not familiar with Supybot's
-configuration system, I recommend reading the config tutorial before going any
+configuration system, I recommend reading the
+:ref:`config tutorial <configuration-tutorial>` before going any
 further with this section.
 
 So, let's plow through config.py line-by-line like we did the other files.
@@ -235,7 +236,7 @@ the following line to the list of imports::
   import random
 
 Now, the plugin class itself. What you're given is a skeleton: a simple
-subclass of callbacks.Plugin for you to start with. The only real content it
+subclass of :class:`callbacks.Plugin` for you to start with. The only real content it
 has is the boilerplate docstring, which you should modify to reflect what the
 boilerplate text says - it should be useful so that when someone uses the
 plugin help command to determine how to use this plugin, they'll know what they
@@ -262,14 +263,14 @@ Here's what our __init__ looks like::
         self.rng = random.Random()   # create our rng
         self.rng.seed()   # automatically seeds with current time
 
-Make sure you add it with one indentation level more than the `class` line
-(ie. with four spaces before the `def`).
+Make sure you add it with one indentation level more than the ``class`` line
+(ie. with four spaces before the ``def``).
 
 Now, the first two lines may look a little daunting, but it's just
-administrative stuff required if you want to use a custom __init__. If we
+administrative stuff required if you want to use a custom ``__init__``. If we
 didn't want to do so, we wouldn't have to, but it's not uncommon so I decided
 to use an example plugin that did. For the most part you can just copy/paste
-those lines into any plugin you override the __init__ for and just change them
+those lines into any plugin you override the ``__init__`` for and just change them
 to use the plugin name that you are working on instead.
 
 So, now we have a RNG in our plugin, let's write a command to get a random
@@ -296,7 +297,7 @@ Chances are it is a helper function of some sort, and in fact using capital
 letters is a good way of assuring that you don't accidentally expose helper
 functions to users as commands.
 
-You'll note the arguments to this class method are (self, irc, msg, args). This
+You'll note the arguments to this class method are ``(self, irc, msg, args)``. This
 is what the argument list for all methods that are to be used as commands must
 start with. If you wanted additional arguments, you'd append them onto the end,
 but since we take no arguments we just stop there. I'll explain this in more
@@ -313,7 +314,9 @@ the function and what (if any) arguments it requires. Remember that this should
 fit in one IRC message which is typically around a 450 character limit.
 
 Then we have the actual code body of the plugin, which consists of a single
-line: irc.reply(str(self.rng.random())). The irc.reply function issues a reply
+line: ``irc.reply(str(self.rng.random()))``.
+The :py:meth:`irc.reply <supybot.callbacks.NestedCommandsIrcProxy.reply>`
+function issues a reply
 to wherever the PRIVMSG it received the command from with whatever text is
 provided. If you're not sure what I mean when I say "wherever the PRIVMSG it
 received the command from", basically it means: if the command is issued in a
@@ -358,7 +361,7 @@ function.
 
 Of course, we modify the docstring to document this function. Note the syntax
 on the first line. Arguments go in <> and optional arguments should be
-surrounded by [] (we'll demonstrate this later as well).
+surrounded by ``[]`` (we'll demonstrate this later as well).
 
 The body of the function should be fairly straightforward to figure out, but it
 introduces a new function - irc.replySuccess. This is just a generic "I
@@ -402,7 +405,7 @@ using wrap we collect all of the remaining arguments after the first one into
 the items argument. If you haven't caught on yet, wrap is really cool and
 extremely useful.
 
-Next of course is the updated docstring. Note the use of [] to denote the
+Next of course is the updated docstring. Note the use of ``[]`` to denote the
 optional items after the first item.
 
 The body of the plugin should be relatively easy to read. First we check and
@@ -410,7 +413,7 @@ make sure that n (the number of items the user wants to sample) is not larger
 than the actual number of items they gave. If it does, we call irc.error with
 the error message you see. irc.error is kind of like irc.replySuccess only it
 gives an error message using the configured error format (in
-supybot.replies.error). Otherwise, we use the sample function from our RNG to
+``supybot.replies.error``). Otherwise, we use the sample function from our RNG to
 get a sample, then we sort it, and we reply with the 'utils.str.commaAndify'ed
 version. The utils.str.commaAndify function basically takes a list of strings
 and turns it into "item1, item2, item3, item4, and item5" for an arbitrary
