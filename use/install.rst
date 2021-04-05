@@ -119,7 +119,7 @@ You may also install chardet and feedparser, which are used by Limnoria if
 they are available.
 
 The remaining of this guide will assume you have Python 3. If you don't,
-replace `python3` by `python` in the given commands
+replace ``python3`` with ``python`` in the given commands
 
 .. _Python: http://www.python.org/
 
@@ -138,8 +138,8 @@ the case, open up a terminal, start python, and run:
 
     import distutils
 
-If it works, you're good to go. Otherwise, install the `python3-dev` or
-`python3-devel` package and try again.
+If it works, you're good to go. Otherwise, install the ``python3-dev`` or
+``python3-devel`` package and try again.
 
 You may also install "manually" by downloading the source archive from
 http://python.org, and compiling it. That is outside the scope of this guide,
@@ -152,7 +152,7 @@ In the next section of this guide we will use `pip`_, which is a generic
 way of installing Python software.
 
 There are some :ref:`alternative install methods <alternative-install>`
-at the bottom of this guide, if you don't want to use `pip`.
+at the bottom of this guide, if you don't want to use ``pip``.
 
 .. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
 
@@ -161,30 +161,30 @@ Global installation (with root access)
 
 If you do not have root access, skip this section.
 
-If you are logged in as root, you can remove ``sudo`` from the install 
+If you are logged in as root, you can remove ``sudo`` from the install
 commands.
 
-*In case you want to use the testing branch which might be more up-to 
-date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.*
+If you want to use the testing branch which might be more up-to
+date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.
 
-First we install Limnoria's optional dependencies (you can skip this
+First, install Limnoria's optional dependencies (you can skip this
 step, but some features won't be available)::
 
     sudo python3 -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
 
-And then Limnoria itself::
+Then Limnoria itself::
 
     sudo python3 -m pip install limnoria --upgrade
 
-If you have an error saying `No module named pip`, install `pip` using
-your package manager (the package is usually named `python3-pip`).
+If you have an error saying ``No module named pip``, install ``pip`` using
+your package manager (the package is usually named ``python3-pip``).
 
 Local installation (without root access)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have followed the previous section, skip this one.
 
-Simply add ``--user`` to the end of both commands. First we install 
+Simply add ``--user`` to the end of both commands. First we install
 requirements (you can skip it, but some features won't be available)
 and then Limnoria itself.::
 
@@ -196,7 +196,7 @@ You might need to add $HOME/.local/bin to your PATH.::
     echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
-If you have an error saying `No module named pip`, install `pip` using this
+If you have an error saying ``No module named pip``, install ``pip`` using this
 guide: https://pip.pypa.io/en/stable/installing/
 
 Configuration
@@ -206,11 +206,11 @@ We are now ready to configure Supybot. Supybot creates quite a few auxiliary
 files/directories to store its runtime data. It is thus recommended to create
 an empty directory from which you'll be running supybot, to keep all the data
 in a nice dedicated location. For example, you may create a 'runbot' directory
-inside your home directory. 
+inside your home directory.
 
 Now you can cd to your 'runbot' directory, and from within it run
 ``supybot-wizard``, which will walk you through a series of questions to
-generate the bot config file. 
+generate the bot config file.
 
 One thing to make sure to do in the wizard, to make your life easier down the
 line, is to select **y** for the *Would you like to add an owner user for your
@@ -220,7 +220,7 @@ that you can later ''identify'' with the bot on IRC and administer it.
 Once you generate the config file, which will be named ``yourbotnick.conf``
 (where "yourbotnick" is the nick you have chosen for your bot in the wizard),
 it will be placed in your 'runbot' directory. (As long as you leave the default
-answer to the ''Where would you like to create these directories?'' question.) 
+answer to the ''Where would you like to create these directories?'' question.)
 
 Now to start the bot, run, still from within the 'runbot' directory::
 
@@ -247,8 +247,8 @@ can use one of these methods:
 * Use `git`_ to clone the `Limnoria repository`_ and follow the
   instructions in `Limnoria's README.md`_.
 * Click the "Download ZIP" button at the `Limnoria repository`_. Then,
-  extract the zipball to some temporary directory, and ``cd`` into the
-  `Limnoria-master` directory which contains the extracted code.
+  extract the zipball to some temporary directory, and ``cd`` to the
+  ``Limnoria-master`` directory which contains the extracted code.
 
 .. _ProgVal's build repo: https://builds.progval.net/limnoria/
 .. _Limnoria repository: https://github.com/ProgVal/Limnoria
