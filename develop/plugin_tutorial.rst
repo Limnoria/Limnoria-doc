@@ -364,7 +364,9 @@ on the first line. Arguments go in <> and optional arguments should be
 surrounded by ``[]`` (we'll demonstrate this later as well).
 
 The body of the function should be fairly straightforward to figure out, but it
-introduces a new function - irc.replySuccess. This is just a generic "I
+introduces a new function -
+:py:meth:`irc.replySuccess <supybot.callbacks.RichReplyMethods.replySuccess>`.
+This is just a generic "I
 succeeded" command which responds with whatever the bot owner has configured to
 be the success response (configured in supybot.replies.success). Note that we
 don't do any error-checking in the plugin, and that's because we simply don't
@@ -411,7 +413,9 @@ optional items after the first item.
 The body of the plugin should be relatively easy to read. First we check and
 make sure that n (the number of items the user wants to sample) is not larger
 than the actual number of items they gave. If it does, we call irc.error with
-the error message you see. irc.error is kind of like irc.replySuccess only it
+the error message you see.
+:py:meth:`irc.error <supybot.callbacks.NestedCommandsIrcProxy.error>`
+is kind of like irc.replySuccess only it
 gives an error message using the configured error format (in
 ``supybot.replies.error``). Otherwise, we use the sample function from our RNG to
 get a sample, then we sort it, and we reply with the 'utils.str.commaAndify'ed
