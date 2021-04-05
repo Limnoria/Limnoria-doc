@@ -18,6 +18,7 @@ Plugin Developer Guide
     capabilities.rst
     events.rst
     httpserver.rst
+    schedule.rst
 
     faq.rst
 
