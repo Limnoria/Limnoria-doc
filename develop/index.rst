@@ -29,6 +29,7 @@ Library reference
     :maxdepth: 2
 
     callbacks.rst
-    irclib.rst
     commands.rst
     ircmsgs.rst
+    irclib.rst
+    registry.rst
