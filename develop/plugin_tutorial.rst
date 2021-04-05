@@ -1,24 +1,24 @@
-*********************************
-Writing Your First Supybot Plugin
-*********************************
+**********************************
+Writing Your First Limnoria Plugin
+**********************************
 
 Introduction
 ============
-Ok, so you want to write a plugin for Supybot. Good, then this is the place to
-be. We're going to start from the top (the highest level, where Supybot code
+Ok, so you want to write a plugin for Supybot/Limnoria. Good, then this is the place to
+be. We're going to start from the top (the highest level, where Limnoria code
 does the most work for you) and move lower after that.
 
-So have you used Supybot? If not, you need to go use it. This will help you
+So have you used Supybot/Limnoria? If not, you need to go use it. This will help you
 understand crucial things like the way the various commands work and it is
 essential prior to embarking upon the plugin-development excursion detailed in
-the following pages. If you haven't used Supybot, come back to this document
+the following pages. If you haven't used Limnoria, come back to this document
 after you've used it for a while and gotten a feel for it.
 
-So, now that we know you've used Supybot, we'll start getting into details.
+So, now that we know you've used Supybot/Limnoria, we'll start getting into details.
 We'll go through this tutorial by actually writing a new plugin, named Random
 with just a few simple commands.
 
-    Caveat: you'll need to have Supybot installed on the machine you
+    Caveat: you'll need to have Limnoria installed on the machine you
     intend to develop plugins on. This will not only allow you to test
     the plugins with a live bot, but it will also provide you with
     several nice scripts which aid the development of plugins. Most
@@ -76,7 +76,7 @@ For our Random plugin, let's make :file:`README.md` say this:
     sampling from a list of items, and a simple dice roller.
 
 And now you know what's in store for the rest of this tutorial, we'll be
-writing all of that in one Supybot plugin, and you'll be surprised at just how
+writing all of that in one Limnoria plugin, and you'll be surprised at just how
 simple it is!
 
 __init__.py
@@ -101,8 +101,8 @@ The plugin docstring immediately follows the copyright notice and it (like
     the wizard) here.  This should describe *what* the plugin does.
 
 The "wizard" that it speaks of is the :command:`supybot-wizard` script that is
-used to create working Supybot config file. I imagine that in meeting the
-prerequisite of "using a Supybot" first, most readers will have already
+used to create working Limnoria config file. I imagine that in meeting the
+prerequisite of "using a Limnoria" first, most readers will have already
 encountered this script. Basically, if the user selects to look at this plugin
 from the list of plugins to load, it prints out that description to let the
 user know what it does, so make sure to be clear on what the purpose of the
@@ -162,13 +162,13 @@ That way, if we are reloading a plugin on a running bot it will actually
 reload the latest code. We aren't using any third-party modules, so we can
 just leave this bit alone.
 
-We're almost through the "boring" part and into the guts of writing Supybot
+We're almost through the "boring" part and into the guts of writing Limnoria
 plugins, let's take a look at the next file.
 
 config.py
 =========
 :file:`config.py` is, unsurprisingly, where all the configuration stuff
-related to your plugin goes. If you're not familiar with Supybot's
+related to your plugin goes. If you're not familiar with Limnoria's
 configuration system, I recommend reading the
 :ref:`config tutorial <configuration-tutorial>` before going any
 further with this section.
@@ -188,7 +188,7 @@ configure plugins. The wizard allows the bot owner to choose something
 different from the default plugin config values without having to do it through
 the bot (which is still not difficult, but not as easy as this). Also, note
 that the advanced argument allows you to differentiate whether or not the
-person configuring this plugin considers himself an advanced Supybot user. Our
+person configuring this plugin considers himself an advanced Limnoria user. Our
 plugin has no advanced features, so we won't be using it.
 
 So, what exactly do we do in this configure function for our plugin? Well, for
@@ -540,12 +540,12 @@ another random number and make sure it is distinct from the prior one.
 
 Conclusion
 ==========
-You are now very well-prepared to write Supybot plugins. Now for a few words of
-wisdom with regards to Supybot plugin-writing.
+You are now very well-prepared to write Limnoria plugins. Now for a few words of
+wisdom with regards to Limnoria plugin-writing.
 
 * Read other people's plugins, especially the included plugins and ones by
-  the core developers. We (the Supybot dev team) can't possibly document
-  all the awesome things that Supybot plugins can do, but we try.
+  the core developers. We (the Limnoria dev team) can't possibly document
+  all the awesome things that Limnoria plugins can do, but we try.
   Nevertheless there are some really cool things that can be done that
   aren't very well-documented.
 
@@ -557,8 +557,8 @@ wisdom with regards to Supybot plugin-writing.
   the docs can (though we prefer you read the docs first).
 
 * :ref:`Share your plugins with the world <distributing-plugins>`
-  and make Supybot all that more attractive for other users so they will want
-  to write their plugins for Supybot as well.
+  and make Limnoria all that more attractive for other users so they will want
+  to write their plugins for Limnoria as well.
 
 * Read, read, read all the documentation.
 
