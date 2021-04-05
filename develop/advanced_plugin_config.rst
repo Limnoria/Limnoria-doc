@@ -1,3 +1,5 @@
+.. _configuration-tutorial:
+
 **********************
 Advanced Plugin Config
 **********************
