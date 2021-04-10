@@ -19,7 +19,7 @@ Trust in network operators
 ==========================
 
 As you may know, by default, it is possible to do anything from IRC, including
-loading the Unix plugin and using the `@call` command.
+loading the Unix plugin and using the ``@call`` command.
 The only safeguard is checking the user calling the commands is authenticated
 as the owner of the bot; and network operators are able to spoof hostmasks
 and collect your password, thus allowing them to execute commands as the
@@ -31,9 +31,17 @@ do that, you should be aware of that risk.
 Starting on commit `4f6a5e7db`_ (version 2017.10.01), there is a new
 configuration variable, `supybot.commands.allowShell`, to prevent malicious
 network operators from getting shell access on your bot's computer.
-It defaults to `True` to make it easy for new users to install plugins using
-PluginDownloader, but it is recommended you set it to `False` if you do not
+It defaults to ``True`` to make it easy for new users to install plugins using
+PluginDownloader, but it is recommended you set it to ``False`` if you do not
 care about that feature.
+
+Finally, you can remove the ``owner`` user account entirely
+(or remove the ``owner`` capability) for that account.
+This causes every privileged commands to be disabled, so neither you
+nor server operators can access it.
+Channel-specific configuration variables can still be configured by
+users with the ``#channel,op`` capability (if any), but global configuration
+variables can only be modified by accessing the config files.
 
 .. _4f6a5e7db: https://github.com/ProgVal/Limnoria/commit/4f6a5e7db
 
