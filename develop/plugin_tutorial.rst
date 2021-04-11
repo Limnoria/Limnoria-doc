@@ -1,3 +1,5 @@
+.. _plugin-tutorial:
+
 **********************************
 Writing Your First Limnoria Plugin
 **********************************
