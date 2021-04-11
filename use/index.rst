@@ -14,6 +14,11 @@ User Guide
     identifying_to_services.rst
     capabilities.rst
     security.rst
-    faq.rst
     httpserver.rst
     supybot-botchk.rst
+    faq.rst
+
+.. toctree::
+    :maxdepth: 1
+
+    plugins/index.rst

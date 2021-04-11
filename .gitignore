@@ -8,3 +8,6 @@ logs/
 backup/
 data/
 tmp/
+
+# auto-generated:
+use/plugins/
