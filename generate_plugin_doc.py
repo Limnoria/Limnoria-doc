@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import importlib
 import os
 import pkgutil
 import subprocess
@@ -40,8 +41,25 @@ with open(os.path.join(OUTPUT_DIR, "index.rst"), "w") as fd:
 
             .. _Limnoria.net's plugin page: https://limnoria.net/plugins.xhtml
 
+            """
+        )
+    )
+
+    for plugin in plugins:
+        if plugin == "Alias":
+            # Deprecated
+            continue
+        plugin_module = importlib.import_module(f"supybot.plugins.{plugin}")
+        fd.write(f":doc:`{plugin} <{plugin}>`\n")
+        fd.write(textwrap.indent(plugin_module.__doc__, "    "))
+        fd.write("\n")
+
+    fd.write(
+        textwrap.dedent(
+            """
             .. toctree::
                :maxdepth: 1
+               :hidden:
 
             """
         )
