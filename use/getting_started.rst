@@ -4,6 +4,8 @@
 Getting Started with Limnoria/Supybot
 *************************************
 
+.. highlight:: irc
+
 Introduction
 ============
 
@@ -36,23 +38,28 @@ assume that you did).  We'll also assume that you told it to join #channel (a
 nice generic name for a channel, isn't it? :))  So what do you do with this
 bot that you just made to join your channel?  Try this in the channel::
 
-    mybot: list
+    <user> supybot: list
+    <supybot> Admin, Channel, ChannelLogger, Config, Misc, Network, Owner, Plugin, User, and Utilities
 
-Replacing 'mybot' with the actual name you picked for your bot, of course.
+Replacing 'supybot' with the actual name you picked for your bot, of course.
 Your bot should reply with a list of the plugins it currently has loaded.  At
 least `Admin`, `Channel`, `Config`, `Misc`, `Owner`, and `User` should be
 there; if you used supybot-wizard to create your configuration file you may
 have many more plugins loaded.  The list command can also be used to list the
 commands in a given plugin::
 
-    supybot: list Misc
+    <user> supybot: list Misc
+    <supybot> user: apropos, clearmores, completenick, help, last, list, more, noticetell, ping, source, tell, and version
 
-will list all the commands in the `Misc` plugin.  If you want to see the help
+This listed all the commands in the `Misc` plugin.  If you want to see the help
 for any command, just use the help command::
 
-    supybot: help help
-    supybot: help list
-    supybot: help load
+    <user> supybot: help help
+    <supybot> user: (help [<plugin>] [<command>]) -- This command gives a useful description of what <command> does. <plugin> is only necessary if the command is in more than one plugin. You may also want to use the 'list' command to list all available plugins and commands.
+    <user> supybot: help list
+    <supybot> user: (list [--unloaded] [<plugin>]) -- Lists the commands available in the given plugin. If no plugin is given, lists the public plugins available. If --unloaded is given, it will list available plugins that are not loaded.
+    <user> supybot: help load
+    <supybot> user: (load <plugin>) -- Loads the plugin <plugin> from any of the directories in conf.supybot.directories.plugins; usually this includes the main installed directory and 'plugins' in the current directory.
 
 Sometimes more than one plugin will have a given command; for instance, the
 "list" command exists in both the Misc and Config plugins (both loaded by
@@ -60,14 +67,15 @@ default).  List, in this case, defaults to the Misc plugin, but you may want
 to get the help for the list command in the Config plugin.  In that case,
 you'll want to give your command like this::
 
-    supybot: help config list
+    <user> supybot: help config list
+    <supybot> user: (config list <group>) -- Returns the configuration variables available under the given configuration <group>. If a variable has values under it, it is preceded by an '@' sign.
 
 Anytime your bot tells you that a given command is defined in several plugins,
 you'll want to use this syntax ("plugin command") to disambiguate which
 plugin's command you wish to call.  For instance, if you wanted to call the
 Config plugin's list command, then you'd need to say::
 
-    supybot: config list
+    <user> supybot: config list
 
 Rather than just 'list'.
 
@@ -92,14 +100,16 @@ Open up a query window in your irc client ('/query'
 should do it; if not, just know that you can't identify in a channel because
 it requires sending your password to the bot).  Then type this::
 
-    help identify
+    <user> help identify
+    <supybot> (identify <name> <password>) -- Identifies the user as <name>. This command (and all other commands that include a password) must be sent to the bot privately, not in a channel.
 
 And follow the instructions; the command you send will probably look like
 this, with 'myowneruser' and 'myuserpassword' replaced::
 
-    identify myowneruser myuserpassword
+    <user> identify myowneruser myuserpassword
+    <supybot> The operation succeeded
 
-The bot will tell you that 'The operation succeeded' if you got the right name
+The bot told you 'The operation succeeded', meaning that you got the right name
 and password.  Now that you're identified, you can do anything that requires
 any privilege: that includes all the commands in the Owner and Admin plugins,
 which you may want to take a look at (using the list and help commands, of
@@ -109,7 +119,8 @@ user record so the bot recognizes you by your hostmask instead of requiring
 you always to identify with it before it recognizes you.  Use the 'help'
 command to see how this command works.  Here's how I often use it::
 
-    hostmask add myuser [hostmask] mypassword
+    <user> hostmask add myuser [hostmask] mypassword
+    <supybot> The operation succeeded
 
 You may not have seen that '[hostmask]' syntax before.  Limnoria allows nested
 commands, which means that any command's output can be nested as an argument
@@ -133,7 +144,8 @@ Wildcard nick
 In case my username and host stay the same or there aren't bots on same
 server which could get identified as me to other bots, I use::
 
-    user hostmask add myuser *!myident@myhost
+    <user> user hostmask add myuser *!myident@myhost
+    <supybot> The operation succeeded
 
 I only recommend this if there is ident server configured and the IRC
 network checks for it.
@@ -145,7 +157,8 @@ In case I am the only one who has the same host (cloaks/vhosts on many
 networks which have account in them, (for example freenode) or server where
 no one else has access and no bots share it either), I use::
 
-    user hostmask add myuser *!*@mycloak
+    <user> user hostmask add myuser *!*@mycloak
+    <supybot> The operation succeeded
 
 Mycloak at freenode is usually in format ``unaffiliated/accountname``. You
 can usually request hostmasks using HostServ, ``/msg HostServ help``, or
@@ -258,10 +271,10 @@ help [<plugin>] [<command>]
 
     So, the fellowing commands are correct::
     
-        help
-        help PluginName
-        help PluginName CommandName
-        help CommandName
+        <user> help
+        <user> help PluginName
+        <user> help PluginName CommandName
+        <user> help CommandName
 
 ping takes no arguments
     This is the help for :ref:`command-misc-ping`.
@@ -275,8 +288,8 @@ join <channel> [<key>]
 
     This two commands are ok::
 
-        join #limnoria
-        join #limnoria MySecretKey
+        <user> join #limnoria
+        <user> join #limnoria MySecretKey
 
 utilities last <text> [<text> ...]
     This is the help for :ref:`command-utilities-last`.
