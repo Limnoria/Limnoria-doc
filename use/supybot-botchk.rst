@@ -53,6 +53,7 @@ Some commands
 * start the bot: ``systemctl start <BOTNAME>.service``
 * stop the bot: ``systemctl stop <BOTNAME>.service``
 * reload config files: ``systemctl reload <BOTNAME>.service``
+* show the latest logs: ``journalctl -fu <BOTNAME>.service``
 
 .. _supybot-botchk:
 
