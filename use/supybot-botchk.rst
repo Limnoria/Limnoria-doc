@@ -12,8 +12,11 @@ Note that you only need to use one.
 systemd service
 ===============
 
+Using a systemd service is the recommended method to run Limnoira.
 You need root access as no one has got this to work as user service yet.
-You must also use systemd as your init.
+You must also use systemd as your init system (this is usually the case
+on Linux).
+If you don't, skip to the "supybot-botchk" section below.
 
 Create a new file ``/etc/systemd/system/<BOTNAME>.service`` with the
 following content replacing things were suitable::
@@ -55,6 +58,8 @@ Some commands
 * start the bot: ``systemctl start <BOTNAME>.service``
 * stop the bot: ``systemctl stop <BOTNAME>.service``
 * reload config files: ``systemctl reload <BOTNAME>.service``
+
+.. _supybot-botchk:
 
 supybot-botchk
 ==============
