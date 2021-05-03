@@ -173,3 +173,14 @@ Again, if this is undesirable to you, you can do the following:
 Note that, when asking for help involving an error, you should enable verbose
 errors when providing logs (ie. reset these last values to their default),
 so it is easier to help you diagnose your problems.
+
+Finally, if you use :ref:`the systemd unit <supybot-botchk>`, you can add
+this to its ``[Service]]`` section:
+
+    SystemCallFilter=~@raw-io @clock @cpu-emulation @debug @keyring @module @mount @obsolete @privileged @raw-io
+    ProtectSystem=strict
+    ProtectHome=read-only
+    ReadWritePaths=/home/bot/botname
+
+This might break some plugins, but most will work. You will get explicit
+errors if this is an issue, and you can always revert back.

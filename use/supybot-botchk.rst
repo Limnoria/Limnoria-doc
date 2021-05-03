@@ -33,11 +33,6 @@ following content replacing things were suitable::
     Restart=always
     User=BOTUSERNAME
     SyslogIdentifier=Supybot
-    # Uncomment these lines for extra security at the cost of breaking some third-party plugins:
-    # SystemCallFilter=~@raw-io @clock @cpu-emulation @debug @keyring @module @mount @obsolete @privileged @raw-io
-    # ProtectSystem=strict
-    # ProtectHome=read-only
-    # ReadWritePaths=/home/bot/botname
 
     [Install]
     WantedBy=multi-user.target
