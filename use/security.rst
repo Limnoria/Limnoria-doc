@@ -175,7 +175,7 @@ errors when providing logs (ie. reset these last values to their default),
 so it is easier to help you diagnose your problems.
 
 Finally, if you use :ref:`the systemd unit <supybot-botchk>`, you can add
-this to its ``[Service]]`` section:
+this to its ``[Service]`` section::
 
     SystemCallFilter=~@raw-io @clock @cpu-emulation @debug @keyring @module @mount @obsolete @privileged @raw-io
     ProtectSystem=strict
