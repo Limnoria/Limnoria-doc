@@ -25,24 +25,17 @@ Install
 Install using your OS' package manager
 ======================================
 
-On Debian (8.0 and above)
--------------------------
-
-.. code-block:: bash
-
-    sudo aptitude install limnoria
-
-If you have Debian 8.0 (Jessie), this command won't work unless you
-have `Backports`_ repositories configured.
-
-.. _Backports: https://wiki.debian.org/Backports
-
-On Ubuntu (16.10 and above)
----------------------------
+On Debian (8.0 and above) or Ubuntu (16.10 and above)
+-----------------------------------------------------
 
 .. code-block:: bash
 
     sudo apt-get install limnoria
+
+Note that stable / LTS releases may not have the latest features or bug fixes for Limnoria. If you want a newer version than what's in the default repositories, you can enable `Backports`_ on Debian or `Unit 193's PPA`_ on Ubuntu.
+
+.. _Backports: https://wiki.debian.org/Backports
+.. _Unit 193's PPA: https://launchpad.net/~unit193/+archive/ubuntu/limnoria
 
 On Fedora (23 and above)
 ------------------------
@@ -71,23 +64,20 @@ Port:
 
 .. code-block:: bash
 
-    cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.5 make install clean
-
-You can omit ``PYTHON_VERSION=3.5`` if you want to build for Python 2.7,
-or if you have ``DEFAULT_VERSIONS=python=3.5`` in `/etc/make.conf`.
+    cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.7 make install clean
 
 Package:
 
 .. code-block:: bash
 
-    sudo pkg install py27-limnoria
+    sudo pkg install py37-limnoria
 
-On Archlinux
-------------
+On Arch Linux
+-------------
 
-You can install Limnoria `from AUR`_.
+You can install Limnoria `from the AUR`_.
 
-.. _from AUR: https://aur.archlinux.org/packages/limnoria-python3-git/
+.. _from the AUR: https://aur.archlinux.org/packages/limnoria-git/
 
 On Gentoo
 ---------
@@ -112,14 +102,12 @@ If you followed the section above, skip this one.
 Dependencies
 ------------
 
-The only mandatory dependency is `Python`_ 2.6 or greater. However, it is
-highly recommended you use Python 3.4 or greater.
+The only mandatory dependency is Python 3.4 or greater.
 
 You may also install chardet and feedparser, which are used by Limnoria if
 they are available.
 
-The remaining of this guide will assume you have Python 3. If you don't,
-replace ``python3`` with ``python`` in the given commands
+The remaining of this guide will assume you have Python 3.
 
 .. _Python: http://www.python.org/
 
