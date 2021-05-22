@@ -18,7 +18,7 @@ services.
 
 First start by checking what is the syntax for registering with
 ``/msg nickserv help register``. It returns you something like this (Atheme
-7.2.4)::
+7.x)::
 
     NickServ: Syntax: REGISTER <password> <email-address>
 
@@ -35,8 +35,14 @@ it does, go to the email address and run::
 Now your bot should be successfully registered and you can move to setting
 up automatic identifying below. If you need to identify to services now,
 ``/msg nickserv help identify`` and following the syntax (I am still
-assuming that you are on Atheme 7.2.4)
+assuming that you are on Atheme 7.x)
 ``owner ircquote nickserv identify username password``.
+
+Note: on *most* networks, ``/nickserv`` is defined as a server-side alias which
+forwards text to NickServ; this is why ``ircquote nickserv`` often will work
+out of the box. On networks where this is not the case, you may need to run
+something like ``ircquote privmsg nickserv :register ...`` instead (notice
+the placement of the ``:`` after ``nickserv`` and before the command name).
 
 SASL PLAIN
 ----------
@@ -54,7 +60,7 @@ If it didn't work, you might want to ask the network operators about their
 SASL support and request them to start supporting it.
 
 SASL is widely agreed as the best method to identify to services as it
-identifies you before anyone (other than IRC operators) can see that you 
+identifies you before anyone (other than IRC operators) can see that you
 are connected. To enable SASL, simply::
 
     config networks.<network>.sasl.username AccountName
@@ -75,16 +81,16 @@ command, it's not supported.
 CertFP identifies you to services using a client (SSL) certificate and
 naturally requires an SSL connection. It doesn't identify you as soon as
 SASL, but unlike SASL, it identifies you even when services return from a
-netsplit, unlike any other mechanism. 
+netsplit, unlike any other mechanism.
 
-First you must generate a certificate, and the easiest method is probably 
+First you must generate a certificate, and the easiest method is probably
 using OpenSSL which you should have even on Windows if you installed with pip::
 
     openssl req -nodes -newkey rsa:4096 -keyout <BOT>.pem -x509 -days 3650 -out <BOT>.pem -subj "/CN=<BOT>"
 
-Now you should have a ``<BOT>.pem`` file in the directory where you ran 
-the command, presumably your home directory and you only tell your 
-bot where to find it and tell NickServ that it belongs to you. 
+Now you should have a ``<BOT>.pem`` file in the directory where you ran
+the command, presumably your home directory and you only tell your
+bot where to find it and tell NickServ that it belongs to you.
 Note that you should replace ``<BOT>`` with the account name of your bot.
 
 You have two choices, using the same certificate on all networks::
@@ -108,7 +114,7 @@ tell services::
 
 Or if your bot identifies as you, you can do that by yourself with::
 
-    /msg NickServ cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8 
+    /msg NickServ cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8
 
 
 Remember to replace ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` with your
@@ -169,11 +175,11 @@ that have been fixed since then. You should always run the latest release.
 Services plugin
 ---------------
 
-The Services plugin comes with Supybot and should be an easy way to 
-identify your bot, but SASL and ``username:password`` as server password 
-are recommended over it. Start by loading Services with:: 
+The Services plugin comes with Supybot and should be an easy way to
+identify your bot, but SASL and ``username:password`` as server password
+are recommended over it. Start by loading Services with::
 
-    load Services 
+    load Services
 
 and then tell it what NickServ and ChanServ are called::
 
