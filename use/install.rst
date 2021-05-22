@@ -64,20 +64,21 @@ Port:
 
 .. code-block:: bash
 
-    cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.7 make install clean
+    cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.8 make install clean
 
 Package:
 
 .. code-block:: bash
 
-    sudo pkg install py37-limnoria
+    sudo pkg install py38-limnoria
 
 On Arch Linux
 -------------
 
-You can install Limnoria `from the AUR`_.
+You can install Limnoria from the AUR, using either `limnoria`_ (stable releases) or `limnoria-git`_ (git snapshots).
 
-.. _from the AUR: https://aur.archlinux.org/packages/limnoria-git/
+.. _limnoria: https://aur.archlinux.org/packages/limnoria/
+.. _limnoria-git: https://aur.archlinux.org/packages/limnoria-git/
 
 On Gentoo
 ---------
