@@ -24,24 +24,29 @@ First start by checking what is the syntax for registering with
 
 Assuming that that is the syntax, we can register the bot with::
 
-    owner ircquote nickserv register mypassword bot@example.com
+    load Services
+    nickserv register mypassword bot@example.com
+
+Or, on Limnoria versions older than 2021.06.15::
+
+    nickserv register mypassword bot@example.com
 
 Note that the email address must be correct. Next check that
 ``/msg nickserv info bot`` doesn't say something about being unverified. If
 it does, go to the email address and run::
 
-    owner ircquote nickserv VERIFY REGISTER nick <code from the email>
+    nickserv VERIFY nick <code from the email>
 
 Now your bot should be successfully registered and you can move to setting
 up automatic identifying below. If you need to identify to services now,
 ``/msg nickserv help identify`` and following the syntax (I am still
-assuming that you are on Atheme 7.x)
-``owner ircquote nickserv identify username password``.
+assuming that you are on Atheme 7.x)::
 
-Note: on *most* networks, ``/nickserv`` is defined as a server-side alias which
-forwards text to NickServ; this is why ``ircquote nickserv`` often will work
-out of the box. On networks where this is not the case, you may need to run
-something like ``ircquote privmsg nickserv :register ...`` instead (notice
+    nickserv IDENTIFY username password
+
+Note: the ``nickserv`` command was added in Limnoria 2021.06.15.
+If you have an older version, you need to run
+something like ``ircquote privmsg nickserv :register ...`` instead (note
 the placement of the ``:`` after ``nickserv`` and before the command name).
 
 SASL PLAIN
@@ -110,7 +115,7 @@ This results in something like
 ``05dd01fedc1b821b796d0d785160f03e32f53fa8`` which you tell your bot to
 tell services::
 
-    owner ircquote NickServ cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8
+    nickserv cert add 05dd01fedc1b821b796d0d785160f03e32f53fa8
 
 Or if your bot identifies as you, you can do that by yourself with::
 
@@ -137,7 +142,7 @@ services about it (just like with CertFP/SASL EXTERNAL)::
 
     config supybot.networks.<network>.sasl.username AccountName
     config supybot.networks.<network>.sasl.ecdsa_key /home/<username>/<BOT>_ecdsa.pem
-    ircquote nickserv set pubkey PUBKEY_WHICH_YOU_GOT_EARLIER
+    nickserv set pubkey PUBKEY_WHICH_YOU_GOT_EARLIER
 
 and after reconnecting, the bot should successfully identify using SASL
 ECDSA-NIST256P-CHALLENGE.
