@@ -181,19 +181,26 @@ Services plugin
 ---------------
 
 The Services plugin comes with Supybot and should be an easy way to
-identify your bot, but SASL and ``username:password`` as server password
-are recommended over it. Start by loading Services with::
+identify your bot, but SASL is recommended over it. Start by loading
+Services with::
 
     load Services
 
 and then tell it what NickServ and ChanServ are called::
 
-    config plugins.services.nickserv NickServ
-    config plugins.services.chanserv ChanServ
+    config network [<network>] plugins.services.nickserv NickServ
+    config network [<network>] plugins.services.chanserv ChanServ
 
-Remember to replace NickServ/ChanServ with their real names if they have a
-different name on any network. Note that they must have the same name on
-all networks, and you must have the same password on all networks.
+``[<network>]`` is only necessary if the message isn't sent in the network
+itself. Remember to replace NickServ/ChanServ with their real names if they
+have a different name on any network.
+
+If you wish to ensure that your bot never contacts an user impersonating
+NickServ, you may specify the server name from ``/MAP`` command (in your IRC
+client), e.g. on Libera.Chat::
+
+    config network [<network>] plugins.services.nickserv NickServ@services.
+    config network [<network>] plugins.services.chanserv ChanServ@services.
 
 Now you can set your password::
 
