@@ -105,11 +105,11 @@ I added an aka, but it doesn't work!
   instance, if you're adding an aka to give you a link to your
   homepage, you need to say::
 
-    aka add mylink "format concat https://my.host.com/ [urlquote $1]"
+    aka add mylink "format concat https://example.com/ [urlquote $1]"
 
   and not::
 
-    aka add mylink format concat https://my.host.com/ [urlquote $1]
+    aka add mylink format concat https://example.com/ [urlquote $1]
 
   The first version works; the second version will always return the
   same url.
