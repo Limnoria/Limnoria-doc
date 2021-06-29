@@ -43,10 +43,10 @@ operator. The format function uses the following string formatting characters.
 Here are a few examples to help elaborate on the above descriptions::
 
   >>> format("Error %q has been reported %n.  For more information, see %u.",
-             "AttributeError", (5, "time"), "http://supybot.com")
+             "AttributeError", (5, "time"), "https://limnoria.net")
 
   'Error "AttributeError" has been reported 5 times.  For more information,
-   see <http://supybot.com>.'
+   see <https://limnoria.net>.'
 
   >>> i = 4
   >>> format("There %b %n at this time.  You are only allowed %n at any given

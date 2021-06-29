@@ -122,7 +122,7 @@ homogeneous with Supybot naming style: `doPrivmsg`, `doPing`, and so on).
 You will get the handler and the URI as arguments. The handler is a
 `BaseHTTPRequestHandler`_, and the URI is a string.
 
-.. _BaseHTTPRequestHandler: http://docs.python.org/library/basehttpserver.html#BaseHTTPServer.BaseHTTPRequestHandler
+.. _BaseHTTPRequestHandler: https://docs.python.org/library/basehttpserver.html#BaseHTTPServer.BaseHTTPRequestHandler
 
 Here is the code of the callback... pretty much simple, as ever::
 
