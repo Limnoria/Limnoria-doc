@@ -100,5 +100,5 @@ This guide has been mainly written by nanotube (Daniel Folkinshteyn), and
 is licensed under the Creative Commons Attribution ShareAlike 3.0 Unported
 license and/or the GNU Free Documentation License v 1.3 or later.
 
-.. _Supybook: http://supybook.fealdia.org/
+.. _Supybook: https://hoxu.github.io/supybook/
 
