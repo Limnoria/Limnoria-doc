@@ -110,14 +110,14 @@ they are available.
 
 The remaining of this guide will assume you have Python 3.
 
-.. _Python: http://www.python.org/
+.. _Python: https://www.python.org/
 
 Install Python
 --------------
 
 Python will usually come by installed by default in your distribution. If not,
 grab the appropriate packages from the distribution's repository, or download
-it from http://python.org.
+it from https://python.org.
 
 If you're installing Python using your distribution's packages, you may need a
 ''python-dev'' or ''python-devel'' package installed, too. To see if this is
@@ -131,7 +131,7 @@ If it works, you're good to go. Otherwise, install the ``python3-dev`` or
 ``python3-devel`` package and try again.
 
 You may also install "manually" by downloading the source archive from
-http://python.org, and compiling it. That is outside the scope of this guide,
+https://python.org, and compiling it. That is outside the scope of this guide,
 however.
 
 Install Limnoria
@@ -143,7 +143,7 @@ way of installing Python software.
 There are some :ref:`alternative install methods <alternative-install>`
 at the bottom of this guide, if you don't want to use ``pip``.
 
-.. _pip: http://pip.readthedocs.org/en/latest/installing.html#install-pip
+.. _pip: https://pip.readthedocs.org/en/latest/installing.html#install-pip
 
 Global installation (with root access)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -241,5 +241,5 @@ can use one of these methods:
 
 .. _ProgVal's build repo: https://builds.progval.net/limnoria/
 .. _Limnoria repository: https://github.com/ProgVal/Limnoria
-.. _git: http://git-scm.com/
+.. _git: https://git-scm.com/
 .. _Limnoria's README.md: https://github.com/ProgVal/Limnoria/blob/testing/README.md#installing-from-cloned-repo

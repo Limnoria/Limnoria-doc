@@ -105,11 +105,11 @@ I added an aka, but it doesn't work!
   instance, if you're adding an aka to give you a link to your
   homepage, you need to say::
 
-    aka add mylink "format concat http://my.host.com/ [urlquote $1]"
+    aka add mylink "format concat https://my.host.com/ [urlquote $1]"
 
   and not::
 
-    aka add mylink format concat http://my.host.com/ [urlquote $1]
+    aka add mylink format concat https://my.host.com/ [urlquote $1]
 
   The first version works; the second version will always return the
   same url.
@@ -317,7 +317,7 @@ Then, follow the :ref:`install guide <use-install>`. In short, just run this::
     sudo python3 -m pip install limnoria --upgrade
 
 
-.. _blocks: http://freenode.net/faq.shtml#blockingmessages
+.. _blocks: https://libera.chat/guides/usermodes#main
 .. _tsocks: http://tsocks.sourceforge.net
 .. _issue tracker: https://github.com/ProgVal/Limnoria/issues
-.. _download it: http://python.org/download/
+.. _download it: https://python.org/download/

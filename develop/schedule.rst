@@ -157,5 +157,5 @@ This example comes from the Gribble Wiki:
 https://sourceforge.net/p/gribble/wiki/Supybot.schedule/history
 
 Copyright 2010, 2015, nanotube and quantumlemur
-licensed under the `Creative Commons Attribution ShareAlike 3.0 Unported license <http://creativecommons.org/licenses/by-sa/3.0/>`_
-and/or the `GNU Free Documentation License v 1.3 or later <http://www.gnu.org/licenses/fdl.html>`_
+licensed under the `Creative Commons Attribution ShareAlike 3.0 Unported license <https://creativecommons.org/licenses/by-sa/3.0/>`_
+and/or the `GNU Free Documentation License v 1.3 or later <https://www.gnu.org/licenses/fdl.html>`_

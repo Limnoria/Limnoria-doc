@@ -169,6 +169,6 @@ Because I can extract everything with one click.
 
 .. _GitHub: https://github.com/
 .. _Limnoria repository: https://github.com/ProgVal/Limnoria
-.. _their homepage: http://git-scm.com/
+.. _their homepage: https://git-scm.com/
 .. _Windows: https://windows.github.com/
 .. _OS X: https://mac.github.com/
