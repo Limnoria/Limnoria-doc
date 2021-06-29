@@ -219,7 +219,7 @@ And watch the magic!
 
 For a tutorial on using and managing the bot from here on, see the `Supybook`_.
 
-.. _Supybook: http://supybook.fealdia.org/
+.. _Supybook: https://hoxu.github.io/supybook/
 
 
 
