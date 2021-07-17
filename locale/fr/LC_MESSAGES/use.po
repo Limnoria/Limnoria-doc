@@ -1187,7 +1187,7 @@ msgstr ""
 
 #: ../../use/getting_started.rst:150
 msgid ""
-"Mycloak at Libera is usually in format ``Libera/accountname``. You "
+"Mycloak at Libera is usually in format ``user/accountname``. You "
 "can usually request hostmasks using HostServ, ``/msg HostServ help``, or "
 "asking on help channel of your IRC network, in case of Libera that is "
 "#libera. OFTC is exception to this and uses ``/msg NickServ set cloak "
