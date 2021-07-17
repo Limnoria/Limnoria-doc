@@ -91,7 +91,7 @@ manually)
 
    This distribution method is currently experimental, but will likely be the
    recommended one some time in the future.
-   Please try it out and give us feedback on #limnoria at freenode!
+   Please try it out and give us feedback on #limnoria on Libera!
 
 Setting up your plugin
 ----------------------
