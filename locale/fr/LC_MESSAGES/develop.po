@@ -3197,7 +3197,7 @@ msgstr ""
 
 #: ../../develop/plugin_tutorial.rst:547
 msgid ""
-"Come ask us questions in #supybot on Freenode or OFTC. Going back to the "
+"Come ask us questions in #limnoria on Libera. Going back to the "
 "first point above, the developers themselves can help you even more than "
 "the docs can (though we prefer you read the docs first)."
 msgstr ""

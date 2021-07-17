@@ -73,7 +73,7 @@ are connected. To enable SASL, simply::
 
 where you of course replace AccountName and P455w0rd with your actual
 NickServ account name and password. Remember to replace ``<network>`` with
-the real network name like ``freenode``.
+the real network name like ``Libera``.
 
 CertFP
 ------
@@ -161,7 +161,7 @@ you after SASL so, your real host might be seen. To do this, simply::
 
     config networks.<network>.password username:password
 
-Replace ``<network>`` with the name of network, for example ``freenode``
+Replace ``<network>`` with the name of network, for example ``Libera``
 and username:password with your real username and password.
 
 ZNC

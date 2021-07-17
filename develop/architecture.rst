@@ -19,7 +19,7 @@ You should also be somewhat familiar with the
 .. note::
 
    This document is a work in progress and is still incomplete.
-   As usual, feel free to ask any questions in #limnoria @ freenode.
+   As usual, feel free to ask any questions in #limnoria @ Libera.
 
 Main loop and drivers
 =====================
