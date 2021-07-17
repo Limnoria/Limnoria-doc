@@ -154,16 +154,16 @@ Host only
 ^^^^^^^^^
 
 In case I am the only one who has the same host (cloaks/vhosts on many
-networks which have account in them, (for example freenode) or server where
+networks which have account in them, (for example Libera) or server where
 no one else has access and no bots share it either), I use::
 
     <user> user hostmask add myuser *!*@mycloak
     <supybot> The operation succeeded
 
-Mycloak at freenode is usually in format ``unaffiliated/accountname``. You
+Mycloak at Libera is usually in format ``user/accountname``. You
 can usually request hostmasks using HostServ, ``/msg HostServ help``, or
-asking on help channel of your IRC network, in case of freenode that is
-#freenode. OFTC is exception to this and uses 
+asking on help channel of your IRC network, in case of Libera that is
+#libera. OFTC is exception to this and uses 
 ``/msg NickServ set cloak on``, but whatever your network users, you can 
 ask it on their help channel.
 
@@ -218,9 +218,9 @@ First I add my NickServ account name which I can see with "/whois Mikaela Mikael
     [Mikaela] is logged in as Mikaela
 
 Now I tell the bot add my NickServ account Mikaela to my bot user on 
-freenode. The syntax is [<network>] <bot-username> <NickServ-account>::
+Libera. The syntax is [<network>] <bot-username> <NickServ-account>::
 
-    <Mikaela> +nickauth nick add freenode Mikaela Mikaela
+    <Mikaela> +nickauth nick add Libera Mikaela Mikaela
     <Yvzabevn> OK.
 
 Next time when I identify to NickServ I will get identified automatically
@@ -347,4 +347,4 @@ to discover the rest of the features of Limnoria!
 
 Do be sure to read our other documentation and make use of the resources we
 provide for assistance; this website and, of course, #limnoria on
-irc.freenode.net if you run into any trouble!
+irc.libera.chat if you run into any trouble!

@@ -1181,16 +1181,16 @@ msgstr ""
 #: ../../use/getting_started.rst:144
 msgid ""
 "In case I am the only one who has the same host (cloaks/vhosts on many "
-"networks which have account in them, (for example freenode) or server where "
+"networks which have account in them, (for example Libera) or server where "
 "no one else has access and no bots share it either), I use::"
 msgstr ""
 
 #: ../../use/getting_started.rst:150
 msgid ""
-"Mycloak at freenode is usually in format ``unaffiliated/accountname``. You "
+"Mycloak at Libera is usually in format ``Libera/accountname``. You "
 "can usually request hostmasks using HostServ, ``/msg HostServ help``, or "
-"asking on help channel of your IRC network, in case of freenode that is "
-"#freenode. OFTC is exception to this and uses ``/msg NickServ set cloak "
+"asking on help channel of your IRC network, in case of Libera that is "
+"#libera. OFTC is exception to this and uses ``/msg NickServ set cloak "
 "on``, but whatever your network users, you can ask it on their help channel."
 msgstr ""
 
@@ -1260,7 +1260,7 @@ msgstr ""
 #: ../../use/getting_started.rst:206
 msgid ""
 "Now I tell the bot add my NickServ account Mikaela to my bot user on "
-"freenode. The syntax is [<network>] <bot-username> <NickServ-account>::"
+"Libera. The syntax is [<network>] <bot-username> <NickServ-account>::"
 msgstr ""
 
 #: ../../use/getting_started.rst:212
@@ -1424,8 +1424,8 @@ msgstr ""
 #: ../../use/getting_started.rst:334
 msgid ""
 "Do be sure to read our other documentation and make use of the resources we "
-"provide for assistance; this website and, of course, #supybot on irc."
-"freenode.net if you run into any trouble!"
+"provide for assistance; this website and, of course, #limnoria on irc."
+"libera.chat if you run into any trouble!"
 msgstr ""
 
 #: ../../use/httpserver.rst:3
@@ -1612,7 +1612,7 @@ msgstr ""
 msgid ""
 "where you of course replace AccountName and P455w0rd with your actual "
 "NickServ account name and password. Remember to replace ``<network>`` with "
-"the real network name like ``freenode``."
+"the real network name like ``Libera``."
 msgstr ""
 
 #: ../../use/identifying_to_services.rst:68
@@ -1726,7 +1726,7 @@ msgstr ""
 
 #: ../../use/identifying_to_services.rst:153
 msgid ""
-"Replace ``<network>`` with the name of network, for example ``freenode`` and "
+"Replace ``<network>`` with the name of network, for example ``Libera`` and "
 "username:password with your real username and password."
 msgstr ""
 
