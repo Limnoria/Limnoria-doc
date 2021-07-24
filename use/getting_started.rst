@@ -154,15 +154,15 @@ Host only
 ^^^^^^^^^
 
 In case I am the only one who has the same host (cloaks/vhosts on many
-networks which have account in them, (for example Libera) or server where
+networks which have account in them, (for example Libera Chat) or server where
 no one else has access and no bots share it either), I use::
 
     <user> user hostmask add myuser *!*@mycloak
     <supybot> The operation succeeded
 
-Mycloak at Libera is usually in format ``user/accountname``. You
+``mycloak`` at Libera Chat is usually in format ``user/accountname``. You
 can usually request hostmasks using HostServ, ``/msg HostServ help``, or
-asking on help channel of your IRC network, in case of Libera that is
+asking on help channel of your IRC network, in case of Libera Chat that is
 #libera. OFTC is exception to this and uses 
 ``/msg NickServ set cloak on``, but whatever your network users, you can 
 ask it on their help channel.
@@ -218,9 +218,9 @@ First I add my NickServ account name which I can see with "/whois Mikaela Mikael
     [Mikaela] is logged in as Mikaela
 
 Now I tell the bot add my NickServ account Mikaela to my bot user on 
-Libera. The syntax is [<network>] <bot-username> <NickServ-account>::
+Libera Chat. The syntax is [<network>] <bot-username> <NickServ-account>::
 
-    <Mikaela> +nickauth nick add Libera Mikaela Mikaela
+    <Mikaela> +nickauth nick add libera Mikaela Mikaela
     <Yvzabevn> OK.
 
 Next time when I identify to NickServ I will get identified automatically
