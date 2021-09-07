@@ -29,7 +29,7 @@ Assuming that that is the syntax, we can register the bot with::
 
 Or, on Limnoria versions older than 2021.06.15::
 
-    nickserv register mypassword bot@example.com
+    ircquote PRIVMSG NickServ :REGISTER mypassword bot@example.com
 
 Note that the email address must be correct. Next check that
 ``/msg nickserv info bot`` doesn't say something about being unverified. If
