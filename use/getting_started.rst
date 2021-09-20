@@ -21,7 +21,7 @@ Initial Setup
 =============
 
 Now that you have Limnoria installed, you'll want to get it running.  The first
-thing you'll want to do is run supybot-wizard.  Before running supybot-wizard,
+thing you'll want to do is run ``supybot-wizard``.  Before running ``supybot-wizard``,
 you should be in the directory in which you want your bot-related files to
 reside.  The wizard will walk you through setting up a base config file for
 your Limnoria.  Once you've completed the wizard, you will have a config file
