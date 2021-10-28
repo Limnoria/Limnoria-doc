@@ -142,8 +142,8 @@ For example::
        name='limnoria-this-is-my-plugin',
    )
 
-Publishing your plugin
-----------------------
+Publishing your plugin (optional)
+---------------------------------
 
 It's now time to publish your plugin to PyPI.
 
