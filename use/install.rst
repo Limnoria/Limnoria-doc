@@ -6,18 +6,10 @@
 Installing Limnoria on GNU/Linux and UNIX (FreeBSD, macOS, ...)
 ***************************************************************
 
-This is the "easy to follow" guide to installing Limnoria. The installation
-documentation provided with the supybot distribution is really quite good
-already, but since people keep coming to IRC, asking a repeating pattern of
-questions, we thought it would be a good idea to expand it a bit to make it
-a little more of a "foolproof guide".
+This is the "easy to follow" guide to installing Limnoria.
 
 This guide is for non-Windows operating systems. If you want to install
 on Windows, check out the :ref:`Windows install guide <use-install_windows>`.
-
-.. note::
-
-    Limnoria is a modified version of Supybot.
 
 Install
 *******
@@ -25,8 +17,8 @@ Install
 Install using your OS' package manager
 ======================================
 
-On Debian (8.0 and above) or Ubuntu (16.10 and above)
------------------------------------------------------
+On Debian or Ubuntu
+-------------------
 
 .. code-block:: bash
 
