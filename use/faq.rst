@@ -260,6 +260,35 @@ Is Python installed?
   probably already have it installed.  If it doesn't, well, now you have
   Python installed.
 
+How can I make the bot announce titles of URLs (links) posted in channels
+=========================================================================
+
+This is called the "title snarfer". You can enable it with::
+
+    load Web
+    config supybot.plugins.Web.titleSnarfer True
+
+If you only want it for some channels but not all, use this instead of the last command::
+
+    config channel #channel supybot.plugins.Web.titleSnarfer True
+
+Why doesn't the title snarfer announce links from a particular website (eg. Youtube)?
+=====================================================================================
+
+Limnoria needs to fetch pages to get their title. But in order to avoid being
+overloaded by users, it only fetches the beginning (the first 8kB if I recall
+correctly). That's enough to find the title of most pages, but in the last years
+Youtube has become so bloated it isn't.
+
+If you are ok with Limnoria fetching more data when users post URLs, you can use::
+
+    config supybot.protocols.http.peekSize 32000
+
+This will make it fetch 32kB from every link, instead of the default 8kB.
+This should be enough for Youtube for now. If not enough for other websites,
+try increasing it further.
+
+
 Can I make Supybot silent, but still working on channel (as titlesnarfer or something)?
 =======================================================================================
 
