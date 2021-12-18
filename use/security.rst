@@ -28,16 +28,16 @@ owner.
 Although network operators of most well-known IRC networks are not known to
 do that, you should be aware of that risk.
 
-Starting on commit `4f6a5e7db`_ (version 2017.10.01), there is a new
-configuration variable, `supybot.commands.allowShell`, to prevent malicious
-network operators from getting shell access on your bot's computer.
+Since version 2017.10.01, there the ``supybot.commands.allowShell`` config
+variable, to prevent malicious network operators from getting shell access
+on your bot's computer.
 It defaults to ``True`` to make it easy for new users to install plugins using
 PluginDownloader, but it is recommended you set it to ``False`` if you do not
 care about that feature.
 
 Finally, you can remove the ``owner`` user account entirely
-(or remove the ``owner`` capability) for that account.
-This causes every privileged commands to be disabled, so neither you
+(or remove the ``owner`` capability for that account).
+This causes every privileged commands to be unavailable, so neither you
 nor server operators can access it.
 Channel-specific configuration variables can still be configured by
 users with the ``#channel,op`` capability (if any), but global configuration
