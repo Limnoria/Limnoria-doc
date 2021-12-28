@@ -9,10 +9,14 @@ administrator.
 (For questions about plugin development, check out the
 :ref:`Developer FAQ <user-faq>` instead.)
 
+.. _user-faq-multi-servers:
+
 How do I make my Supybot connect to multiple servers?
 =====================================================
 
   Just use the `connect` command in the `Network` plugin.
+
+.. _user-faq-recognize-owner:
 
 Why does my bot not recognize me or tell me that I don't have the 'owner' capability?
 =====================================================================================
@@ -35,6 +39,8 @@ Why does my bot not recognize me or tell me that I don't have the 'owner' capabi
   For additional ways to identify to your bot, you may want to see
   :ref:`getting-started`.
 
+.. _user-faq-hostmask:
+
 What is a hostmask?
 ===================
 
@@ -44,6 +50,8 @@ What is a hostmask?
   ``nick!user@host``.  If your Supybot complains that something you've
   given to it isn't a hostmask, make sure that you have those three
   components and that they're joined in the appropriate manner.
+
+.. _user-faq-bracket-nicks:
 
 My bot can't handle nicks with brackets in them!
 ================================================
@@ -58,6 +66,8 @@ My bot can't handle nicks with brackets in them!
   brackets that nest commands by setting
   `supybot.commands.nested.brackets` to some other value (like ``<>``,
   which can't occur in IRC nicks).
+
+.. _user-faq-create-command:
 
 How do I create a command?
 ==========================
@@ -89,12 +99,16 @@ How do I create a command?
   For the most advanced commands, you will need to
   :ref:`write your own plugin in Python <develop-plugins>`.
 
+.. _user-faq-migrate-to-aka:
+
 I loaded Alias before, how do I move to Aka?
 ============================================
 
   First load both of the plugins, Aka and Alias. Then run
   ``aka importaliasdatabase`` and ``unload Alias``. Now all your aliases
   should be imported to the Aka plugin.
+
+.. _user-faq-aka-unquoted:
 
 I added an aka, but it doesn't work!
 ====================================
@@ -114,6 +128,8 @@ I added an aka, but it doesn't work!
   The first version works; the second version will always return the
   same url.
 
+.. _user-faq-lobotomized:
+
 What does 'lobotomized' mean?
 =============================
 
@@ -131,6 +147,8 @@ What does 'lobotomized' mean?
   transition to Supybot from those bots by reusing as much terminology
   as possible.
 
+.. _user-faq-load-all-plugins:
+
 Is there a way to load all the plugins Supybot has?
 ===================================================
 
@@ -143,6 +161,8 @@ Is there a way to load all the plugins Supybot has?
   plugin (``load PluginDownloader``). The ``repolist`` command can list
   repositories and their contents, and the ``install`` command installs
   plugins.
+
+.. _user-faq-list-required-capabilities:
 
 Is there a command that can tell me what capability another command requires?
 =============================================================================
@@ -157,6 +177,8 @@ Is there a command that can tell me what capability another command requires?
   we're anal and we hate doing things halfway, we probably won't ever
   add this partial solution.
 
+.. _user-faq-karma-not-working:
+
 Why doesn't `Karma` seem to work for me?
 ========================================
 
@@ -165,6 +187,8 @@ Why doesn't `Karma` seem to work for me?
   increment or decrement still took place. If you'd rather `Karma`
   acknowledge karma updates, change the `supybot.plugins.Karma.response`
   configuration variable to "True".
+
+.. _user-faq-ignore-private-message:
 
 Why won't Supybot respond to private messages?
 ==============================================
@@ -181,6 +205,8 @@ Why won't Supybot respond to private messages?
   * or: you have registered your Supybot with NickServ, you aren't
     registered, and your Supybot has the +R user mode set.
 
+.. _user-faq-admin-change-config:
+
 Can users with the admin capability change the configuration?
 =============================================================
 
@@ -189,12 +215,15 @@ Can users with the admin capability change the configuration?
   instead of the `owner` capability, and if we agree with you, we'll
   change it for the next release.
 
+.. _user-faq-log-channel:
+
 How can I make my Supybot log my IRC channel?
 =============================================
 
   To log all the channels your Supybot is in, simply load the
   `ChannelLogger` plugin, which is included in the main distribution.
 
+.. _user-faq-irc-proxy:
 
 Can Supybot connect through a proxy server?
 ===========================================
@@ -207,6 +236,8 @@ Can Supybot connect through a proxy server?
   Supybot also works with transparent proxy server helpers like tsocks_ 
   that are designed to proxy-enable all network applications, and Supybot
   does work with these.
+
+.. _user-faq-cannot-find-plugin:
 
 Why can't Supybot find the plugin I want to load?
 =================================================
@@ -222,10 +253,14 @@ Why can't Supybot find the plugin I want to load?
    directories for plugins instead of a single file.  Apparently, that
    makes a difference to Python.
 
+.. _user-faq-report-bug:
+
 I've found a bug, what do I do?
 ===============================
 
   Submit your bug at our `issue tracker`_.
+
+.. _user-faq-python-installed:
 
 Is Python installed?
 ====================
@@ -242,6 +277,8 @@ Is Python installed?
   probably already have it installed.  If it doesn't, well, now you have
   Python installed.
 
+.. _user-faq-snarf-titles:
+
 How can I make the bot announce titles of URLs (links) posted in channels
 =========================================================================
 
@@ -253,6 +290,8 @@ This is called the "title snarfer". You can enable it with::
 If you only want it for some channels but not all, use this instead of the last command::
 
     config channel #channel supybot.plugins.Web.titleSnarfer True
+
+.. _user-faq-title-snarfer-ignoring-website:
 
 Why doesn't the title snarfer announce links from a particular website (eg. Youtube)?
 =====================================================================================
@@ -270,6 +309,7 @@ This will make it fetch 32kB from every link, instead of the default 8kB.
 This should be enough for Youtube for now. If not enough for other websites,
 try increasing it further.
 
+.. _user-faq-make-silent:
 
 Can I make Supybot silent, but still working on channel (as titlesnarfer or something)?
 =======================================================================================
@@ -293,6 +333,9 @@ Or just for one channel::
     config channel #channel supybot.reply.whenAddressedBy.strings ""
     config channel #channel supybot.reply.whenAddressedBy.nick False
     config channel #channel supybot.reply.whenAddressedBy.nick.atEnd False
+
+.. _user-faq-make-connection-secure:
+.. _how-to-make-a-connection-secure:
 
 How to make a connection secure?
 ================================
