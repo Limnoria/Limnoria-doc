@@ -11,7 +11,7 @@ questions, we thought it would be a good idea to expand it a bit to make it
 a little more of a "foolproof guide".
 
 This guide is only for Windows. If you don't want to install on Windows,
-check out the :ref:`non-Windows install guide <use-install>`_.
+check out the :ref:`non-Windows install guide <use-install>`.
 
 
 .. note::
