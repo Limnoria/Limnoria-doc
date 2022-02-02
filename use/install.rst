@@ -225,8 +225,6 @@ If you know what you are doing and you don't want to use pip, you
 can use one of these methods:
 
 * Download a .deb or .rpm package at `ProgVal's build repo`_.
-* Use `git`_ to clone the `Limnoria repository`_ and follow the
-  instructions in `Limnoria's README.md`_.
 * Click the "Download ZIP" button at the `Limnoria repository`_. Then,
   extract the zipball to some temporary directory, and ``cd`` to the
   ``Limnoria-master`` directory which contains the extracted code.
@@ -234,4 +232,3 @@ can use one of these methods:
 .. _ProgVal's build repo: https://builds.progval.net/limnoria/
 .. _Limnoria repository: https://github.com/ProgVal/Limnoria
 .. _git: https://git-scm.com/
-.. _Limnoria's README.md: https://github.com/ProgVal/Limnoria/blob/testing/README.md#installing-from-cloned-repo
