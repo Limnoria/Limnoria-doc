@@ -142,10 +142,30 @@ For example::
        name='limnoria-this-is-my-plugin',
    )
 
+
+Installing plugins
+------------------
+
+Finally, once you plushed your plugin, users can install it simply with::
+
+    pip3 install git+https://example.org/~jdoe/YourPlugin.git
+
+Or, if you use a single repository for multiple plugins::
+
+    pip3 install "git+https://example.org/~jdoe/Supybot-plugins.git#subdirectory=YourPlugin"
+
+and this will automatically install your plugin's dependencies as well. Then,
+they just need to run ``@load YourPlugin`` as usual.
+
+For example, to install the LinkRelay plugin from https://github.com/progval/Supybot-plugins::
+
+    pip3 install "git+https://github.com/progval/Supybot-plugins.git#subdirectory=LinkRelay"
+
 Publishing your plugin (optional)
 ---------------------------------
 
-It's now time to publish your plugin to PyPI.
+Additionally, you may want to publish your plugin to PyPI, to make it easier
+for users to install.
 
 First, you must create an account on https://pypi.org/ and install twine::
 
@@ -164,22 +184,6 @@ For more details, see the official Python documentation on:
 * `generating archives <https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives>`_
 * `uploading archives <https://packaging.python.org/tutorials/packaging-projects/#uploading-the-distribution-archives>`_
 
-
-Installing plugins
-------------------
-
-Finally, once you installed your plugin, users can install it simply with::
+And users can simply install it with::
 
     sudo pip3 install limnoria-yourplugin
-
-and this will automatically install your plugin's dependencies as well. Then,
-they just need to run ``@load YourPlugin`` as usual.
-
-Alternatively, if you don't want to publish on PyPI, they can still
-use pip to install directly from your repository, for example::
-
-     sudo pip3 install git+https://example.org/~jdoe/YourPlugin.git
-
-Or, if you use a single repository for multiple plugins::
-
-    sudo pip3 install "git+https://example.org/~jdoe/Supybot-plugins.git#egg=limnoria-yourplugin&subdirectory=YourPlugin"
