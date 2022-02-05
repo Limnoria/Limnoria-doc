@@ -89,9 +89,8 @@ manually)
 
 .. warning::
 
-   This distribution method is currently experimental, but will likely be the
-   recommended one some time in the future.
-   Please try it out and give us feedback on #limnoria at Libera!
+   The following section assumes both your and your users have
+   Limnoria 2020.05.08 or newer.
 
 Setting up your plugin
 ----------------------
