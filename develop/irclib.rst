@@ -46,7 +46,7 @@ Used as the ``fsm`` attribute of :py:class:`supybot.irclib.IrcState` objects
 ChannelState
 ============
 
-Used mainly as the `channels['#chan']` attribute of
+Used mainly as the ``.state.channels['#chan']`` attribute of
 :py:class:`supybot.irclib.Irc` objects.
 
 .. autoclass:: supybot.irclib.ChannelState
