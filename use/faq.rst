@@ -347,7 +347,7 @@ First, you should make the bot use SSL for each network::
 Then, you must update the server port for the network the bot connects to (this is
 usually 6697, but some networks use a different one)::
 
-    config supybot.networks.<NETWORK>.servers irc.network.com/6697
+    config supybot.networks.<NETWORK>.servers irc.network.com:6697
 
 In the previous command, you must of course replace `irc.network.com` with the
 hostname of a server of the network. You could either check out the network's
