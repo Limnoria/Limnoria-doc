@@ -45,8 +45,8 @@ What is a hostmask?
 ===================
 
   Each user on IRC is uniquely identified by a string which we call a
-  `hostmask`. The IRC RFC refers to it as a prefix. Either way, it
-  consists of a nick, a user, and a host, in the form
+  ``hostmask``. The IRC specifications refers to it as a "prefix" or "source".
+  Either way, it consists of a nick, a user, and a host, in the form
   ``nick!user@host``.  If your Supybot complains that something you've
   given to it isn't a hostmask, make sure that you have those three
   components and that they're joined in the appropriate manner.

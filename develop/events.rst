@@ -38,7 +38,8 @@ message, all ``do437`` methods are called, etc.
 Those command take two commands: an :ref:`Irc object <supybot-irclib-irc>`
 and a :ref:`IrcMsg object <supybot-ircmsgs>`.
 
-To get a list of all possible messages, check IRC RFCs.
+To get a list of all possible messages, check `IRC specifications
+<https://modern.ircdocs.horse/>`__.
 
 Filters
 =======
