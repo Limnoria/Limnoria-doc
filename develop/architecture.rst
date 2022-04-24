@@ -59,10 +59,10 @@ Network drivers have a reference to a :class:`irclib.Irc` object, and
 do three things in their ``run()`` method:
 
 1. check the connection is still alive (and schedule a reconnect if not)
-2. get new messages from their :class:`irclib.Irc` instance (using
-   :meth:`irclib.Irc.takeMsg`) and send them to the network
-3. get new messages from the network and pass them to their :class:`irclib.Irc`
-   (using :meth:`irclib.Irc.feedMsg`)
+2. get new messages from their :class:`supybot.irclib.Irc` instance (using
+   :meth:`supybot.irclib.Irc.takeMsg`) and send them to the network
+3. get new messages from the network and pass them to their :class:`supybot.irclib.Irc`
+   (using :meth:`supybot.irclib.Irc.feedMsg`)
 
 The actual implementation of the current ``Socket`` driver is actually
 a little more complex than this, as all ``Socket`` driver instances cooperate
