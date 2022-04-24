@@ -14,7 +14,7 @@ familiar with using the bot and writing plugins (if not, see the
 and :ref:`events`,
 
 You should also be somewhat familiar with the
-`IRC protocol <https://modern.ircdocs.horse/>`.
+`IRC protocol <https://modern.ircdocs.horse/>`_.
 
 .. note::
 
@@ -109,7 +109,7 @@ state, and optionally react to it by queuing messages.
 Commands
 ========
 
-Next is the callbacks system, mostly implemented in :mod:``supybot.callbacks``.
+Next is the callbacks system, mostly implemented in :mod:`supybot.callbacks`.
 This is where all the magic happens to make plugins so easy to write;
 it's also the most complex part of Limnoria and the hardest to understand,
 because everything is tightly interleaved.
