@@ -62,21 +62,6 @@ Python will usually come by installed by default in your distribution. If not,
 grab the appropriate packages from the distribution's repository, or download
 it from https://python.org.
 
-If you're installing Python using your distribution's packages, you may need a
-''python-dev'' or ''python-devel'' package installed, too. To see if this is
-the case, open up a terminal, start python, and run:
-
-.. code-block:: python
-
-    import distutils
-
-If it works, you're good to go. Otherwise, install the ``python3-dev`` or
-``python3-devel`` package and try again.
-
-You may also install "manually" by downloading the source archive from
-https://python.org, and compiling it. That is outside the scope of this guide,
-however.
-
 Install Limnoria
 ----------------
 
