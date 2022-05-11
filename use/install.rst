@@ -83,9 +83,6 @@ Install Limnoria
 In the next section of this guide we will use `pip`_, which is a generic
 way of installing Python software.
 
-There are some :ref:`alternative install methods <alternative-install>`
-at the bottom of this guide, if you don't want to use ``pip``.
-
 .. _pip: https://pip.readthedocs.org/en/latest/installing.html#install-pip
 
 Global installation (with root access)
@@ -170,19 +167,3 @@ And watch the magic!
 For a tutorial on using and managing the bot from here on, see the `Supybook`_.
 
 .. _Supybook: https://hoxu.github.io/supybook/
-
-
-
-
-.. _alternative-install:
-
-Alternative install methods
-***************************
-
-If you know what you are doing and you don't want to use pip, you
-can click the "Download ZIP" button at the `Limnoria repository`_. Then,
-extract the zipball to some temporary directory, and ``cd`` to the
-``Limnoria-master`` directory which contains the extracted code.
-
-.. _Limnoria repository: https://github.com/progval/Limnoria
-.. _git: https://git-scm.com/
