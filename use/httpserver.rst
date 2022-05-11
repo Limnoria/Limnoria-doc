@@ -28,7 +28,7 @@ At the root of the server, you will find a list of the plugins that
 have a Web interface, and a link to them. Each plugin has one or more
 subdirectories of its own.
 
-You may also want to run Apache httpd or Nginx in front of Supybot's HTTP
+You may also want to run Apache httpd or Nginx in front of Limnoria's HTTP
 server, if you want to use subdomains or load balancing.
 
 Here is an example of Apache httpd configuration (I didn't test it

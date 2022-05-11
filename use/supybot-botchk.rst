@@ -22,7 +22,7 @@ Create a new file ``/etc/systemd/system/<BOTNAME>.service`` with the
 following content replacing things were suitable::
 
     [Unit]
-    Description=Supybot
+    Description=Limnoria
     After=network.target
 
     [Service]
@@ -33,7 +33,7 @@ following content replacing things were suitable::
     ExecReload=/bin/kill -HUP $MAINPID
     Restart=always
     User=BOTUSERNAME
-    SyslogIdentifier=Supybot
+    SyslogIdentifier=Limnoria
 
     [Install]
     WantedBy=multi-user.target
@@ -61,7 +61,7 @@ Some commands
 supybot-botchk
 ==============
 
-supybot-botchk is a script that comes with Supybot which restarts the bot
+supybot-botchk is a script that comes with Limnoria which restarts the bot
 if it quits or system reboots or anything that causes the bot to quit. It's
 placed to crontab so cron will run it with scheduled intervals.
 

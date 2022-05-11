@@ -11,8 +11,8 @@ administrator.
 
 .. _user-faq-multi-servers:
 
-How do I make my Supybot connect to multiple servers?
-=====================================================
+How do I make my Limnoria connect to multiple servers?
+======================================================
 
   Just use the `connect` command in the `Network` plugin.
 
@@ -47,7 +47,7 @@ What is a hostmask?
   Each user on IRC is uniquely identified by a string which we call a
   ``hostmask``. The IRC specifications refers to it as a "prefix" or "source".
   Either way, it consists of a nick, a user, and a host, in the form
-  ``nick!user@host``.  If your Supybot complains that something you've
+  ``nick!user@host``.  If your Limnoria complains that something you've
   given to it isn't a hostmask, make sure that you have those three
   components and that they're joined in the appropriate manner.
 
@@ -134,7 +134,7 @@ What does 'lobotomized' mean?
 =============================
 
   I see this word in commands and in my `channels.conf`, but I don't
-  know what it means. What does Supybot mean when it says lobotomized?
+  know what it means. What does Limnoria mean when it says lobotomized?
 
   A lobotomy is an operation that removes the frontal lobe of the brain,
   the part that does most of a person's thinking. To lobotomize a bot
@@ -144,13 +144,13 @@ What does 'lobotomized' mean?
 
   The term is certainly suboptimal, but remains in use because it was
   historically used by certain other IRC bots, and we wanted to ease the
-  transition to Supybot from those bots by reusing as much terminology
+  transition to Limnoria from those bots by reusing as much terminology
   as possible.
 
 .. _user-faq-load-all-plugins:
 
-Is there a way to load all the plugins Supybot has?
-===================================================
+Is there a way to load all the plugins Limnoria has?
+====================================================
 
   No, there isn't. Even if there were, some plugins conflict with other
   plugins, so it wouldn't make much sense to load them. For instance,
@@ -190,20 +190,20 @@ Why doesn't `Karma` seem to work for me?
 
 .. _user-faq-ignore-private-message:
 
-Why won't Supybot respond to private messages?
+Why won't Limnoria respond to private messages?
 ==============================================
 
   The most likely cause is that your bot has a mode blocking messages
   from unregistered users. Around Sept. 2005, for example, Freenode added
   a user mode where registered users could set ``+R``, which `blocks`_
   private messages from unregistered users. So, the reason you aren't
-  seeing a response from your Supybot is likely:
+  seeing a response from your Limnoria is likely:
 
-  * Your Supybot is not registered with NickServ, you are registered,
+  * Your Limnoria is not registered with NickServ, you are registered,
     and you have set the +R user mode for yourself.
 
-  * or: you have registered your Supybot with NickServ, you aren't
-    registered, and your Supybot has the +R user mode set.
+  * or: you have registered your Limnoria with NickServ, you aren't
+    registered, and your Limnoria has the +R user mode set.
 
 .. _user-faq-admin-change-config:
 
@@ -217,36 +217,36 @@ Can users with the admin capability change the configuration?
 
 .. _user-faq-log-channel:
 
-How can I make my Supybot log my IRC channel?
-=============================================
+How can I make my Limnoria log my IRC channel?
+==============================================
 
-  To log all the channels your Supybot is in, simply load the
+  To log all the channels your Limnoria is in, simply load the
   `ChannelLogger` plugin, which is included in the main distribution.
 
 .. _user-faq-irc-proxy:
 
-Can Supybot connect through a proxy server?
-===========================================
+Can Limnoria connect through a proxy server?
+============================================
 
   Limnoria can connect to specific network using socks proxy, simply set 
   the configuration variable `supybot.networks.<network>.socksproxy`. For
   specifying proxy which is used for HTTP requests, set the configuration
   variable `supybot.protocols.http.proxy`.
   
-  Supybot also works with transparent proxy server helpers like tsocks_ 
-  that are designed to proxy-enable all network applications, and Supybot
+  Limnoria also works with transparent proxy server helpers like tsocks_ 
+  that are designed to proxy-enable all network applications, and Limnoria
   does work with these.
 
 .. _user-faq-cannot-find-plugin:
 
-Why can't Supybot find the plugin I want to load?
-=================================================
+Why can't Limnoria find the plugin I want to load?
+==================================================
 
   Why does my bot say that 'No plugin "foo" exists.' when I try to load
   the foo plugin?
 
   First, make sure you are typing the plugin name correctly.  ``@load
-  foo`` may not be the same as ``@load Foo`` depending on your Supybot
+  foo`` may not be the same as ``@load Foo`` depending on your Limnoria
   version  [#plugindir]_.  If that is not the problem, 
 
 .. [#plugindir] Yes, it used to be the same, but then we moved to using
@@ -311,8 +311,8 @@ try increasing it further.
 
 .. _user-faq-make-silent:
 
-Can I make Supybot silent, but still working on channel (as titlesnarfer or something)?
-=======================================================================================
+Can I make Limnoria silent, but still working on channel (as titlesnarfer or something)?
+========================================================================================
 
 With lobotomy, the bot stops doing everything on the channel. If you want
 it to not reply to commands, but still work as titlesnarfer or similar, you

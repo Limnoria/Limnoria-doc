@@ -5,7 +5,7 @@ Installing Limnoria on Windows
 ******************************
 
 This is the "easy to follow" guide to installing Limnoria. The installation
-documentation provided with the supybot distribution is really quite good
+documentation provided with the Limnoria distribution is really quite good
 already, but since people keep coming to IRC, asking a repeating pattern of
 questions, we thought it would be a good idea to expand it a bit to make it
 a little more of a "foolproof guide".
@@ -13,10 +13,6 @@ a little more of a "foolproof guide".
 This guide is only for Windows. If you don't want to install on Windows,
 check out the :ref:`non-Windows install guide <use-install>`.
 
-
-.. note::
-
-    Limnoria is a modified version of Supybot.
 
 .. highlight:: bat
 
@@ -44,7 +40,7 @@ points to correct python. Open ``cmd.exe`` (press the Windows button on
 your keyboard and type "cmd.exe") and  run ``where python``
 and the toppernmost entry should be ``C:\Python35\python.exe``.
 
-Install Supybot
+Install Limnoria
 ---------------
 
 Now we are ready to install Limnoria and it's requirements. Open 
@@ -54,15 +50,20 @@ and run::
     python3 -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
     python3 -m pip install limnoria --upgrade
 
-We are now ready to configure Supybot. Supybot creates quite a few
+We are now ready to configure Limnoria. Limnoria creates quite a few
 auxiliary files/directories to store its runtime data. It is thus
 recommended to create an empty directory from which you'll be running
-supybot, to keep all the data in a nice dedicated location. 
+Limnoria, to keep all the data in a nice dedicated location. 
 For example, you may create a ``C:\Users\<username>\runbot`` for this
 purpose. 
 
-Configure Supybot
-=================
+Configure Limnoria
+==================
+
+.. note::
+
+   For historical reasons, commands are called ``supybot``; but they actually
+   run Limnoria.
 
 Now you open cmd.exe as **normal user**, and create and cd into your runbot
 directory::

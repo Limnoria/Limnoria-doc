@@ -180,7 +180,7 @@ that have been fixed since then. You should always run the latest release.
 Services plugin
 ---------------
 
-The Services plugin comes with Supybot and should be an easy way to
+The Services plugin comes with Limnoria and should be an easy way to
 identify your bot, but SASL is recommended over it. Start by loading
 Services with::
 

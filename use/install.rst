@@ -183,9 +183,14 @@ guide: https://pip.pypa.io/en/stable/installing/
 Configuration
 *************
 
-We are now ready to configure Supybot. Supybot creates quite a few auxiliary
+.. note::
+
+   For historical reasons, commands are called ``supybot``; but they actually
+   run Limnoria.
+
+We are now ready to configure Limnoria. Limnoria creates quite a few auxiliary
 files/directories to store its runtime data. It is thus recommended to create
-an empty directory from which you'll be running supybot, to keep all the data
+an empty directory from which you'll be running Limnoria, to keep all the data
 in a nice dedicated location. For example, you may create a 'runbot' directory
 inside your home directory.
 
