@@ -227,13 +227,9 @@ Alternative install methods
 ***************************
 
 If you know what you are doing and you don't want to use pip, you
-can use one of these methods:
+can click the "Download ZIP" button at the `Limnoria repository`_. Then,
+extract the zipball to some temporary directory, and ``cd`` to the
+``Limnoria-master`` directory which contains the extracted code.
 
-* Download a .deb or .rpm package at `ProgVal's build repo`_.
-* Click the "Download ZIP" button at the `Limnoria repository`_. Then,
-  extract the zipball to some temporary directory, and ``cd`` to the
-  ``Limnoria-master`` directory which contains the extracted code.
-
-.. _ProgVal's build repo: https://builds.progval.net/limnoria/
-.. _Limnoria repository: https://github.com/ProgVal/Limnoria
+.. _Limnoria repository: https://github.com/progval/Limnoria
 .. _git: https://git-scm.com/
