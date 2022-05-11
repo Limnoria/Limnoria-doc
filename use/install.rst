@@ -17,74 +17,25 @@ Install
 Install using your OS' package manager
 ======================================
 
-On Debian or Ubuntu
--------------------
+* Debian or Ubuntu: ``sudo apt-get install limnoria``
 
-.. code-block:: bash
+  Note that stable / LTS releases may not have the latest features or bug fixes for Limnoria.
+  If you want a newer version than what's in the default repositories, you can enable `Backports`_ on Debian or `Unit 193's PPA`_ on Ubuntu.
+* Fedora: ``sudo dnf install limnoria``
+* CentOS and Red Hat Enterprise Linux: you have to first add the right EPEL repository for your CentOS/RHEL version before being able to install the package on CentOS / RHEL.
+  Once you have, you can run the following command to install Limnoria: ``sudo yum install limnoria``
+* FreeBSD port: ``cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.8 make install clean``
+* FreeBSD pkg: ``sudo pkg install py38-limnoria``
+* Arch Linux: You can install Limnoria from the AUR, using either `limnoria <archlinux-limnoria>`_ (stable releases) or `limnoria-git <archlinux-limnoria-git>`_ (git snapshots).
+* Gentoo: ``sudo emerge net-irc/limnoria``
+* Guix and GuixSD: ``guix package --install limnoria``
 
-    sudo apt-get install limnoria
-
-Note that stable / LTS releases may not have the latest features or bug fixes for Limnoria. If you want a newer version than what's in the default repositories, you can enable `Backports`_ on Debian or `Unit 193's PPA`_ on Ubuntu.
+If any of the methods above works for you, skip the next section and go to :ref:`initial-configuration`.
 
 .. _Backports: https://wiki.debian.org/Backports
 .. _Unit 193's PPA: https://launchpad.net/~unit193/+archive/ubuntu/limnoria
-
-On Fedora (23 and above)
-------------------------
-
-.. code-block:: bash
-
-    sudo dnf install limnoria
-
-On CentOS and Red Hat Enterprise Linux
---------------------------------------
-
-You have to first add the EPEL repository (`EL7`_, `EL6`_, `EL5`_) before being able to install the package on CentOS / RHEL. Once you have, you can run the following command to install Limnoria:
-
-.. code-block:: bash
-
-    sudo yum install limnoria
-
-.. _EL7: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-.. _EL6: https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
-.. _EL5: https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm
-
-On FreeBSD
-----------
-
-Port:
-
-.. code-block:: bash
-
-    cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.8 make install clean
-
-Package:
-
-.. code-block:: bash
-
-    sudo pkg install py38-limnoria
-
-On Arch Linux
--------------
-
-You can install Limnoria from the AUR, using either `limnoria`_ (stable releases) or `limnoria-git`_ (git snapshots).
-
-.. _limnoria: https://aur.archlinux.org/packages/limnoria/
-.. _limnoria-git: https://aur.archlinux.org/packages/limnoria-git/
-
-On Gentoo
----------
-
-.. code-block:: bash
-
-    sudo emerge net-irc/limnoria
-
-With Guix and GuixSD
---------------------
-
-.. code-block:: bash
-
-    guix package --install limnoria
+.. _<archlinux-limnoria: https://aur.archlinux.org/packages/limnoria/
+.. _<archlinux-limnoria-git: https://aur.archlinux.org/packages/limnoria-git/
 
 
 Other operating systems (manual install)
@@ -179,6 +130,8 @@ You might need to add $HOME/.local/bin to your PATH.::
 
 If you have an error saying ``No module named pip``, install ``pip`` using this
 guide: https://pip.pypa.io/en/stable/installing/
+
+.. _initial-configuration:
 
 Configuration
 *************
