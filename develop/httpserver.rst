@@ -42,7 +42,7 @@ Importing the HTTP server
 
 On only have to add this line::
 
-    import supybot.httpserver as httpserver.
+    from supybot import httpserver
 
 Creating a callback
 -------------------
@@ -68,8 +68,7 @@ informations)::
     class Supystory(callbacks.Plugin):
         def __init__(self, irc):
             # Some stuff needed by Supybot
-            self.__parent = super(Supystory, self)
-            callbacks.Plugin.__init__(self, irc)
+            super().__init__(irc)
 
             # registering the callback
             callback = SupystoryServerCallback() # create an instance of the callback
@@ -84,7 +83,7 @@ the following::
         httpserver.unhook('supystory') # unregister the callback hooked at /supystory
 
         # Stuff for Supybot
-        self.__parent.die()
+        super().die()
 
 Now, you can load your plugin, and you'll see on the server a beautiful link
 to `/supystory` called `Supystory`.
@@ -168,7 +167,7 @@ Here is the code of the callback... pretty much simple, as ever::
                      <!DOCTYPE html>
                      <html>
                       <head>
-                       <meta charset="UTF-8"> 
+                       <meta charset="UTF-8">
                        <title>Error</title>
                       </head>
                       <body>
