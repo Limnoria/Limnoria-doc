@@ -34,8 +34,8 @@ If any of the methods above works for you, skip the next section and go to :ref:
 
 .. _Backports: https://wiki.debian.org/Backports
 .. _Unit 193's PPA: https://launchpad.net/~unit193/+archive/ubuntu/limnoria
-.. _<archlinux-limnoria: https://aur.archlinux.org/packages/limnoria/
-.. _<archlinux-limnoria-git: https://aur.archlinux.org/packages/limnoria-git/
+.. _archlinux-limnoria: https://aur.archlinux.org/packages/limnoria/
+.. _archlinux-limnoria-git: https://aur.archlinux.org/packages/limnoria-git/
 
 
 Other operating systems (manual install)
