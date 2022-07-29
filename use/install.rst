@@ -26,7 +26,7 @@ Install using your OS' package manager
   Once you have, you can run the following command to install Limnoria: ``sudo yum install limnoria``
 * FreeBSD port: ``cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.8 make install clean``
 * FreeBSD pkg: ``sudo pkg install py38-limnoria``
-* Arch Linux: You can install Limnoria from the AUR, using either `limnoria <archlinux-limnoria>`_ (stable releases) or `limnoria-git <archlinux-limnoria-git>`_ (git snapshots).
+* Arch Linux: You can install Limnoria from the AUR, using either `limnoria <https://aur.archlinux.org/packages/limnoria/>`__ (stable releases) or `limnoria-git <https://aur.archlinux.org/packages/limnoria-git/>`__ (git snapshots).
 * Gentoo: ``sudo emerge net-irc/limnoria``
 * Guix and GuixSD: ``guix package --install limnoria``
 
@@ -34,8 +34,6 @@ If any of the methods above works for you, skip the next section and go to :ref:
 
 .. _Backports: https://wiki.debian.org/Backports
 .. _Unit 193's PPA: https://launchpad.net/~unit193/+archive/ubuntu/limnoria
-.. _archlinux-limnoria: https://aur.archlinux.org/packages/limnoria/
-.. _archlinux-limnoria-git: https://aur.archlinux.org/packages/limnoria-git/
 
 
 Other operating systems (manual install)
