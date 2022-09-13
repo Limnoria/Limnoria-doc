@@ -1,5 +1,3 @@
-.. _supybot-botchk:
-
 ################################
 Restarting the bot automatically
 ################################
@@ -7,16 +5,19 @@ Restarting the bot automatically
 This page documents the different ways to automatically restart your bot
 in case of crash or system reboot or anything that can make the bot quit.
 
-Note that you only need to use one.
+We recommend the systemd service, if possible.
+If you do not have systemd as init daemon (typically when on Windows, macOS, or BSDs),
+skip to :ref:`supybot-botchk`.
+
+.. _systemd-service:
 
 systemd service
 ===============
 
-Using a systemd service is the recommended method to run Limnoira.
+Using a systemd service is the recommended method to run Limnoria.
 You need root access as no one has got this to work as user service yet.
 You must also use systemd as your init system (this is usually the case
 on Linux).
-If you don't, skip to the "supybot-botchk" section below.
 
 Create a new file ``/etc/systemd/system/<BOTNAME>.service`` with the
 following content replacing things were suitable::
