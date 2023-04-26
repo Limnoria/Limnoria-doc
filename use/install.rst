@@ -24,8 +24,6 @@ Install using your OS' package manager
 * Fedora: ``sudo dnf install limnoria``
 * CentOS and Red Hat Enterprise Linux: you have to first add the right EPEL repository for your CentOS/RHEL version before being able to install the package on CentOS / RHEL.
   Once you have, you can run the following command to install Limnoria: ``sudo yum install limnoria``
-* FreeBSD port: ``cd /usr/ports/irc/py-limnoria && sudo PYTHON_VERSION=3.8 make install clean``
-* FreeBSD pkg: ``sudo pkg install py38-limnoria``
 * Arch Linux: You can install Limnoria from the AUR, using either `limnoria <https://aur.archlinux.org/packages/limnoria/>`__ (stable releases) or `limnoria-git <https://aur.archlinux.org/packages/limnoria-git/>`__ (git snapshots).
 * Gentoo: ``sudo emerge net-irc/limnoria``
 * Guix and GuixSD: ``guix package --install limnoria``
