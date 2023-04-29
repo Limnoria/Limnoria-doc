@@ -13,10 +13,6 @@ not to be accepted into the Limnoria core.
 
 * Raw strings (``r''`` or ``r""``) should be used for regular expressions.
 
-* Unless absolutely required by some external force, imports should be ordered
-  by the string length of the module imported.  I just think it looks
-  prettier.
-
 * Database filenames should generally begin with the name of the plugin and
   the extension should be 'db'.  plugins.DBHandler does this already.
 
