@@ -30,7 +30,7 @@ following content replacing things were suitable::
     Environment="PATH=/usr/local/bin:/usr/local/sbin:/usr/local/games:/usr/bin:/usr/sbin:/usr/games:/bin:/sbin:/bin:/opt/local/bin:/opt/local/sbin:/opt/local/games"
     Environment="TZ=UTC"
     Type=simple
-    ExecStart=/usr/local/bin/supybot /home/bot/botname/botname.conf
+    ExecStart=/usr/bin/supybot /home/bot/botname/botname.conf
     ExecReload=/bin/kill -HUP $MAINPID
     Restart=always
     User=BOTUSERNAME
@@ -39,9 +39,10 @@ following content replacing things were suitable::
     [Install]
     WantedBy=multi-user.target
 
-:file:`/usr/local/bin/supybot` should be the path where you installed Limnoria.
+:file:`/usr/bin/supybot` should be the path where you installed Limnoria.
 Typically, this is:
 
+* :file:`/usr/bin/supybot` if installed with a system package manager (APT, YUM, ...)
 * :file:`/usr/local/bin/supybot` if installed as root without a virtualenv
 * :file:`/opt/venvs/limnoria/bin/supybot` if installed as root with a virtualenv
   as :file:`/opt/venvs/limnoria/`
