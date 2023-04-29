@@ -39,6 +39,16 @@ following content replacing things were suitable::
     [Install]
     WantedBy=multi-user.target
 
+:file:`/usr/local/bin/supybot` should be the path where you installed Limnoria.
+Typically, this is:
+
+* :file:`/usr/local/bin/supybot` if installed as root without a virtualenv
+* :file:`/opt/venvs/limnoria/bin/supybot` if installed as root with a virtualenv
+  as :file:`/opt/venvs/limnoria/`
+* :file:`/home/BOTUSERNAME/.local/bin/supybot` if installed as non-root without a virtualenv
+* :file:`/home/BOTUSERNAME/.venvs/limnoria/bin/supybot` if installed as non-root with a virtualenv
+  as :file:`~/.venvs/limnoria/`
+
 Now you should run ``systemctl daemon-reload`` to make systemd aware
 of changed files and ``systemctl enable <BOTNAME>.service`` to make the
 bot start on boot etc. and ``systemctl start <BOTNAME>.service`` to start

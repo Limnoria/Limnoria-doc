@@ -89,6 +89,12 @@ Then Limnoria itself::
 If you have an error saying ``No module named pip``, install ``pip`` using
 your package manager (the package is usually named ``python3-pip``).
 
+If you have an error about ``externally-managed-environment``, you need to setup
+a virtualenv first, then re-run the commands above::
+
+    python3 -m venv /opt/venvs/limnoria  # creates a virtualenv at the given path
+    . /opt/venvs/limnoria/bin/activate   # enables the virtualenv in the current shell
+
 Local installation (without root access)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -108,6 +114,12 @@ You might need to add $HOME/.local/bin to your PATH.::
 
 If you have an error saying ``No module named pip``, install ``pip`` using this
 guide: https://pip.pypa.io/en/stable/installing/
+
+If you have an error about ``externally-managed-environment``, you need to setup
+a virtualenv first, then re-run the commands above::
+
+    python3 -m venv ~/.venvs/limnoria  # creates a virtualenv at the given path
+    . ~/.venvs/limnoria/bin/activate   # enables the virtualenv in the current shell
 
 .. _initial-configuration:
 
