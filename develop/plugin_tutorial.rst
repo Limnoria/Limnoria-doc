@@ -73,56 +73,28 @@ prompted in :command:`supybot-plugin-create`. Feel free to use whatever
 license you choose: the default is the bot's 3-clause BSD. For our example,
 we'll leave it as is.
 
-The plugin docstring immediately follows the copyright notice and it (like
-:file:`README.md`) tells you precisely what it should contain:
+Here is a list of attributes you should usually look at:
 
-The "wizard" that it speaks of is the :command:`supybot-wizard` script that is
-used to create working Limnoria config file. I imagine that in meeting the
-prerequisite of "using a Limnoria" first, most readers will have already
-encountered this script. Basically, if the user selects to look at this plugin
-from the list of plugins to load, it prints out that description to let the
-user know what it does, so make sure to be clear on what the purpose of the
-plugin is. This should be an abbreviated version of what we put in our
-:file:`README.txt`, so let's put this::
+* ``__version__``: the plugin version. We'll just make ours "0.1"
+* ``__author__`` should be an instance of the :class:`supybot.Author` class.
+  This optionally includes a full name, a short name (usually IRC nick), and
+  an e-mail address::
 
-    Provides a number of commands for selecting random things.
+    __author__ = supybot.Author(name='Daniel DiPaolo', nick='Strike',
+                                email='somewhere@someplace.xxx')
 
-Next in :file:`__init__.py` you see a few imports which are necessary, and
-then four attributes that you need to modify for your bot and preferably keep
-up with as you develop it: ``__version__``, ``__author__``,
-``__contributors__``, ``__url__``.
+* ``__contributors__`` is a dictionary mapping :class:`supybot.Author`
+  instances to lists of things they contributed. See e.g. `in the Plugin plugin
+  <https://github.com/progval/Limnoria/blob/master/plugins/Plugin/__init__.py#L42-L49>`_.
+  For now we have no contributors, so we'll leave it blank.
 
-``__version__`` is just a version string representing the current working
-version of the plugin, and can be anything you want. If you use some sort of
-RCS, this would be a good place to have it automatically increment the version
-string for any time you edit any of the files in this directory. We'll just
-make ours "0.1".
-
-``__author__`` should be an instance of the :class:`supybot.Author` class. A
-:class:`supybot.Author` is simply created by giving it a full name, a short
-name (preferably IRC nick), and an e-mail address (all of these are optional,
-though at least the second one is expected). So, for example, to create my
-Author user (though I get to cheat and use supybot.authors.strike since I'm a
-main dev, muahaha), I would do::
-
-    __author__ = supybot.Author('Daniel DiPaolo', 'Strike',
-                                'somewhere@someplace.xxx')
-
-Keep this in mind as we get to the next item...
-
-``__contributors__`` is a dictionary mapping supybot.Author instances to lists
-of things they contributed. For example, if someone adds a command named ``foo``
-to your plugin, the list for that author could be ``["added foo command"]``.
-The main author shouldn't be referenced here, as it is assumed that everything
-that wasn't contributed by someone else was done by the main author.
-For now we have no contributors, so we'll leave it blank.
-
-Lastly, the ``__url__`` attribute should just reference the download URL for
-the plugin. Since this is just an example, we'll leave this blank.
+* ``__url__`` references the download URL for the plugin. Since this is just an
+  example, we'll leave this blank.
 
 The rest of :file:`__init__.py` really shouldn't be touched unless you are
-using third-party modules in your plugin. If you are, then you need to take
-special note of the section that looks like this::
+using third-party modules in your plugin. If you are, then you need to add
+additional import statements and ``reload`` calls to all those modules, so that
+they get reloaded with the rest of the plugin::
 
     from . import config
     from . import plugin
@@ -132,69 +104,29 @@ special note of the section that looks like this::
     # to be reloaded when this plugin is reloaded.  Don't forget to
     # import them as well!
 
-As the comment says, this is one place where you need to make sure you import
-the third-party modules, and that you call :func:`reload` on them as well.
-That way, if we are reloading a plugin on a running bot it will actually
-reload the latest code. We aren't using any third-party modules, so we can
-just leave this bit alone.
-
-We're almost through the "boring" part and into the guts of writing Limnoria
-plugins, let's take a look at the next file.
-
 config.py
 =========
 :file:`config.py` is, unsurprisingly, where all the configuration stuff
-related to your plugin goes. If you're not familiar with Limnoria's
-configuration system, I recommend reading the
-:ref:`config tutorial <configuration-tutorial>` before going any
-further with this section.
+related to your plugin goes. For this tutorial, the Random plugin is simple
+enough that it doesn't need any config variables, so this file can be left as
+is.
 
-So, let's plow through config.py line-by-line like we did the other files.
+To briefly outline this file's structure: the ``configure`` function is used by
+the :command:`supybot-wizard` wizard and allows users to configure the plugin
+further if it's present when the bot is first installed. (In practice though,
+this is seldomly used by third-party plugins as they're generally installed
+*after* configuring the bot.)
 
-Once again, at the top is the standard copyright notice. Again, change it to
-how you see fit.
-
-Then, some standard imports which are necessary.
-
-Now, the first peculiar thing we get to is the configure function. This
-function is what is called by the supybot-wizard whenever a plugin is selected
-to be loaded. Since you've used the bot by now (as stated on the first page of
-this tutorial as a prerequisite), you've seen what this script does to
-configure plugins. The wizard allows the bot owner to choose something
-different from the default plugin config values without having to do it through
-the bot (which is still not difficult, but not as easy as this). Also, note
-that the advanced argument allows you to differentiate whether or not the
-person configuring this plugin considers himself an advanced Limnoria user. Our
-plugin has no advanced features, so we won't be using it.
-
-So, what exactly do we do in this configure function for our plugin? Well, for
-the most part we ask questions and we set configuration values. You'll notice
-the import line with supybot.questions in it. That provides some nice
-convenience functions which are used to (you guessed it) ask questions. The
-other line in there is the conf.registerPlugin line which registers our plugin
-with the config and allows us to create configuration values for the plugin.
-You should leave these two lines in even if you don't have anything else to put
-in here. For the vast majority of plugins, you can leave this part as is, so we
-won't go over how to write plugin configuration functions here (that will be
-handled in a separate article). Our plugin won't be using much configuration,
-so we'll leave this as is.
-
-Next, you'll see a line that looks very similar to the one in the configure
-function. This line is used not only to register the plugin prior to being
-called in configure, but also to store a bit of an alias to the plugin's config
-group to make things shorter later on. So, this line should read::
+The following line registers an entry for the plugin in Limnoria's config
+registry, followed by any configuration groups and variable definitions::
 
     Random = conf.registerPlugin('Random')
+    # This is where your configuration variables (if any) should go.  For example:
+    # conf.registerGlobalValue(Random, 'someConfigVariableName',
+    #     registry.Boolean(False, _("""Help for someConfigVariableName.""")))
 
-Now we get to the part where we define all the configuration groups and
-variables that our plugin is to have. Again, many plugins won't require any
-configuration so we won't go over it here, but in a separate article dedicated
-to sprucing up your config.py for more advanced plugins. Our plugin doesn't
-require any config variables, so we actually don't need to make any changes to
-this file at all.
-
-Configuration of plugins is handled in depth at the Advanced Plugin Config
-Tutorial
+Writing plugin configuration is explained in depth
+in the :ref:`Advanced Plugin Config Tutorial <configuration-tutorial>`.
 
 plugin.py
 =========
