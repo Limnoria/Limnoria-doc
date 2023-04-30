@@ -9,7 +9,7 @@ not to be accepted into the Limnoria core.
   same style guidelines.
   - We use a maximum of 79 characters per line and 4 spaces per indentation level
   - Exception: method and function names generally use camelCase for consistency
-    with existing code.
+  with existing code.
 
 * Raw strings (``r''`` or ``r""``) should be used for regular expressions.
 
