@@ -28,9 +28,7 @@ Event scheduling using supybot.schedule
        This should describe *how* to use this plugin."""
 
        def __init__(self, irc):
-           # these two lines are required if you have a custom __init__()
-           self.__parent = super(Spam, self)
-           self.__parent.__init__(irc)
+           super().__init__(irc)
            # this is the channel we want to spam, and how frequently we want to do it.
            # It would be nicer to put it in a supybot config variable instead, but for
            # this demonstration, defining it in the plugin itself is fine.

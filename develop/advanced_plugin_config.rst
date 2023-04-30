@@ -463,8 +463,7 @@ when `supybot.nick` is edited. You can do it like this::
         """Some useless plugin."""
 
         def __init__(self, irc):
-            self.__parent = super(LogNickChange, self)
-            self.__parent.__init__(irc)
+            super().__init__(irc)
             conf.supybot.nick.addCallback(self._configCallback)
 
         def _configCallback(self, name=None):
@@ -477,8 +476,7 @@ show a warning instead of crashing on those versions::
         """Some useless plugin."""
 
         def __init__(self, irc):
-            self.__parent = super(LogNickChange, self)
-            self.__parent.__init__(irc)
+            super().__init__(irc)
             try:
                 conf.supybot.nick.addCallback(self._configCallback)
             except registry.NonExistentRegistryEntry:

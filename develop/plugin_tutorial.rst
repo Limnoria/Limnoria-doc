@@ -260,8 +260,8 @@ Here we'll also seed it with the current time (standard practice for RNGs).
 Here's what our __init__ looks like::
 
     def __init__(self, irc):
-        self.__parent = super(Random, self)
-        self.__parent.__init__(irc)
+        # Make sure to call the superclass' constructor when you define a custom one
+        super().__init__(irc)
         self.rng = random.Random()   # create our rng
         self.rng.seed()   # automatically seeds with current time
 
