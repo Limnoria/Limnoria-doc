@@ -6,37 +6,32 @@ Writing Your First Limnoria Plugin
 
 Introduction
 ============
-Ok, so you want to write a plugin for Limnoria. Good, then this is the place to
-be. We're going to start from the top (the highest level, where Limnoria code
-does the most work for you) and move lower after that.
 
-So have you used Limnoria? If not, you need to go use it. This will help you
-understand crucial things like the way the various commands work and it is
-essential prior to embarking upon the plugin-development excursion detailed in
-the following pages. If you haven't used Limnoria, come back to this document
-after you've used it for a while and gotten a feel for it.
+This page is a top-down guide on how to write new plugins for Limnoria.
 
-So, now that we know you've used Limnoria, we'll start getting into details.
+Before you start, you should be more-or-less familiar with how to use and
+manage a Limnoria instance (loading plugins, configuring options, etc.).
+You should also install a copy of Limnoria on the machine you intend to develop
+plugins on, as it includes some additional scripts like
+:command:`supybot-plugin-create` to generate the plugin skeleton.
+
 We'll go through this tutorial by actually writing a new plugin, named Random
-with just a few simple commands.
+with just a few commands.
 
-    Caveat: you'll need to have Limnoria installed on the machine you
-    intend to develop plugins on. This will not only allow you to test
-    the plugins with a live bot, but it will also provide you with
-    several nice scripts which aid the development of plugins. Most
-    notably, it provides you with the supybot-plugin-create script which
-    we will use in the next section...  Creating a minimal plugin This
-    section describes using the 'supybot-plugin-create' script to create
-    a minimal plugin which we will enhance in later sections.
+Generating the Plugin template
+==============================
 
-The recommended way to start writing a plugin is to use the wizard provided,
-:command:`supybot-plugin-create`. Run this from within your local plugins
-directory, so we will be able to load the plugin and test it out.
+The recommended way to start writing a plugin is to use the
+:command:`supybot-plugin-create` wizard. You can run this from within your bot's
+plugins directory, or make a separate directory for all your own plugins and run
+it there. (You can add additional plugin directories to your bot config using
+``config directories.plugins``). The latter approach is probably easier if you
+intend to publish your code afterwards, as it keeps your code separate from any
+other plugins you've installed.
 
-It's very easy to follow, because basically all you have to do is answer three
-questions. Here's an example session::
+Here's an example session::
 
-    [ddipaolo@quinn ../python/supybot]% supybot-plugin-create
+    $ supybot-plugin-create
     What should the name of the plugin be? Random
 
     Sometimes you'll want a callback to be threaded.  If its methods
@@ -46,61 +41,40 @@ questions. Here's an example session::
 
     Does your plugin need to be threaded? [y/n] n
 
-    What is your real name, so I can fill in the copyright and license
-    appropriately? Daniel DiPaolo
+    What is your name, so I can fill in the copyright and license
+    appropriately? John Doe
 
-    Your new plugin template is in the Random directory.
+    Do you wish to use Supybot's license for your plugin? [y/n] y
 
-It's that simple! Well, that part of making the minimal plugin is that simple.
-You should now have a directory with a few files in it, so let's take a look at
-each of those files and see what they're used for.
+    Please provide a short description of the plugin: This plugin contains
+    commands relating to random numbers, including random sampling from a list
+    and a simple dice roller.
 
 README.md
 ==========
-Open the file with notepad just as if it was a .txt file. In `README.md` you put exactly what the boilerplate text says to put in
-there:
 
-    Insert a description of your plugin here, with any notes, etc. about
-    using it.
+This is the README page people will see when they download your plugin or view
+it from a source control website. It's helpful to include a brief summary of
+what the plugin does here, as well as list any third-party dependencies.
 
-A brief overview of exactly what the purpose of the plugin is supposed to do is
-really all that is needed here. Also, if this plugin requires any third-party
-Python modules, you should definitely mention those here. You don't have to
-describe individual commands or anything like that, as those are defined within
-the plugin code itself as you'll see later. You also don't need to acknowledge
-any of the developers of the plugin as those too are handled elsewhere.
-
-For our Random plugin, let's make :file:`README.md` say this:
-
-    This plugin contains commands relating to random numbers, and
-    includes: a simple random number generator, the ability to pick a
-    random number from within a range, a command for returning a random
-    sampling from a list of items, and a simple dice roller.
-
-And now you know what's in store for the rest of this tutorial, we'll be
-writing all of that in one Limnoria plugin, and you'll be surprised at just how
-simple it is!
+The :command:`supybot-plugin-create` wizard should have already filled in the
+README with the summary you provided.
 
 __init__.py
 ===========
-The next file we'll look at is :file:`__init__.py`. If you're familiar with
-the Python import mechanism, you'll know what this file is for. If you're not,
-think of it as sort of the "glue" file that pulls all the files in this
-directory together when you load the plugin. It's also where there are a few
-administrative items live that you really need to maintain.
+The next file we'll look at is :file:`__init__.py`. If you're not so familiar
+with the Python import mechanism, think of it as sort of the "glue" file that
+pulls all the files in the plugin directory together when you load it.
+There are also a few administrative items here that can be queried from the bot,
+such as the plugin's author and contact info.
 
-Let's go through the file. For the first 30 lines or so, you'll see the
-copyright notice that we use for our plugins, only with your name in place (as
-prompted in :command:`supybot-plugin-create`). Feel free to use whatever
-license you choose, we don't feel particularly attached to the boilerplate
-code so it's yours to license as you see fit even if you don't modify it. For
-our example, we'll leave it as is.
+At the top of the file you'll see the copyright header, with your name added as
+prompted in :command:`supybot-plugin-create`. Feel free to use whatever
+license you choose: the default is the bot's 3-clause BSD. For our example,
+we'll leave it as is.
 
 The plugin docstring immediately follows the copyright notice and it (like
-:file:`README.txt`) tells you precisely what it should contain:
-
-    Add a description of the plugin (to be presented to the user inside
-    the wizard) here.  This should describe *what* the plugin does.
+:file:`README.md`) tells you precisely what it should contain:
 
 The "wizard" that it speaks of is the :command:`supybot-wizard` script that is
 used to create working Limnoria config file. I imagine that in meeting the
