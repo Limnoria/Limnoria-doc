@@ -17,110 +17,13 @@ handled there first.
 
 In this tutorial we'll cover:
 
-* Using the configure function more effectively by using the functions
-  provided in supybot.questions
 * Creating config variable groups and config variables underneath those
   groups.
 * The built-in config variable types ("registry types") for use with config
   variables
 * Creating custom registry types to handle config variable values more
   effectively
-
-Using 'configure' effectively
-=============================
-  How to use 'configure' effectively using the functions from
-  'supybot.questions'
-
-In the original Supybot plugin author tutorial you'll note that we gloss over
-the configure portion of the config.py file for the sake of keeping the
-tutorial to a reasonable length. Well, now we're going to cover it in more
-detail.
-
-The supybot.questions module is a nice little module coded specifically to help
-clean up the configure section of every plugin's config.py. The boilerplate
-config.py code imports the four most useful functions from that module:
-
-* "expect" is a very general prompting mechanism which can specify certain
-  inputs that it will accept and also specify a default response. It takes
-  the following arguments:
-
-    * prompt: The text to be displayed
-    * possibilities: The list of possible responses (can be the empty
-      list, [])
-    * default (optional): Defaults to None. Specifies the default value
-      to use if the user enters in no input.
-    * acceptEmpty (optional): Defaults to False. Specifies whether or not
-      to accept no input as an answer.
-
-* "anything" is basically a special case of expect which takes anything
-  (including no input) and has no default value specified. It takes only
-  one argument:
-
-    * prompt: The text to be displayed
-
-* "something" is also a special case of expect, requiring some input and
-  allowing an optional default. It takes the following arguments:
-
-    * prompt: The text to be displayed
-    * default (optional): Defaults to None. The default value to use if
-      the user doesn't input anything.
-
-* "yn" is for "yes or no" questions and basically forces the user to input
-  a "y" for yes, or "n" for no. It takes the following arguments:
-
-    * prompt: The text to be displayed
-    * default (optional): Defaults to None. Default value to use if the
-      user doesn't input anything.
-
-All of these functions, with the exception of "yn", return whatever string
-results as the answer whether it be input from the user or specified as the
-default when the user inputs nothing. The "yn" function returns True for "yes"
-answers and False for "no" answers.
-
-For the most part, the latter three should be sufficient, but we expose expect
-to anyone who needs a more specialized configuration.
-
-Let's go through a quick example configure that covers all four of these
-functions. First I'll give you the code, and then we'll go through it,
-discussing each usage of a supybot.questions function just to make sure you
-realize what the code is actually doing. Here it is::
-
-  def configure(advanced):
-      # This will be called by supybot to configure this module.  advanced is
-      # a bool that specifies whether the user identified himself as an advanced
-      # user or not.  You should effect your configuration by manipulating the
-      # registry as appropriate.
-      from supybot.questions import expect, anything, something, yn
-      WorldDom = conf.registerPlugin('WorldDom', True)
-      if yn("""The WorldDom plugin allows for total world domination
-               with simple commands.  Would you like these commands to
-               be enabled for everyone?""", default=False):
-          WorldDom.globalWorldDominationRequires.setValue("")
-      else:
-          cap = something("""What capability would you like to require for
-                             this command to be used?""", default="Admin")
-          WorldDom.globalWorldDominationRequires.setValue(cap)
-      dir = expect("""What direction would you like to attack from in
-                      your quest for world domination?""",
-                   ["north", "south", "east", "west", "ABOVE"],
-                   default="ABOVE")
-      WorldDom.attackDirection.setValue(dir)
-
-As you can see, this is the WorldDom plugin, which I am currently working on.
-The first thing our configure function checks is to see whether or not the bot
-owner would like the world domination commands in this plugin to be available
-to everyone. If they say yes, we set the globalWorldDominationRequires
-configuration variable to the empty string, signifying that no specific
-capabilities are necessary. If they say no, we prompt them for a specific
-capability to check for, defaulting to the "Admin" capability. Here they can
-create their own custom capability to grant to folks which this plugin will
-check for if they want, but luckily for the bot owner they don't really have to
-do this since Supybot's capabilities system can be flexed to take care of this.
-
-Lastly, we check to find out what direction they want to attack from as they
-venture towards world domination. I prefer "death from above!", so I made that
-the default response, but the more boring cardinal directions are available as
-choices as well.
+* Using the configure function for interactive configuration in supybot-wizard
 
 Using Config Groups
 ===================
@@ -441,6 +344,102 @@ variable using it::
 Note that we initialize it just the same as we do any other registry type, with
 two arguments: the default value, and then the description of the config
 variable.
+
+Using 'configure' for supybot-wizard support
+============================================
+  How to use 'configure' effectively using the functions from
+  'supybot.questions'
+
+In the original Supybot plugin author tutorial you'll note that we gloss over
+the configure portion of the config.py file for the sake of keeping the
+tutorial to a reasonable length. Well, now we're going to cover it in more
+detail.
+
+The supybot.questions module is a nice little module coded specifically to help
+clean up the configure section of every plugin's config.py. The boilerplate
+config.py code imports the four most useful functions from that module:
+
+* "expect" is a very general prompting mechanism which can specify certain
+  inputs that it will accept and also specify a default response. It takes
+  the following arguments:
+
+    * prompt: The text to be displayed
+    * possibilities: The list of possible responses (can be the empty
+      list, [])
+    * default (optional): Defaults to None. Specifies the default value
+      to use if the user enters in no input.
+    * acceptEmpty (optional): Defaults to False. Specifies whether or not
+      to accept no input as an answer.
+
+* "anything" is basically a special case of expect which takes anything
+  (including no input) and has no default value specified. It takes only
+  one argument:
+
+    * prompt: The text to be displayed
+
+* "something" is also a special case of expect, requiring some input and
+  allowing an optional default. It takes the following arguments:
+
+    * prompt: The text to be displayed
+    * default (optional): Defaults to None. The default value to use if
+      the user doesn't input anything.
+
+* "yn" is for "yes or no" questions and basically forces the user to input
+  a "y" for yes, or "n" for no. It takes the following arguments:
+
+    * prompt: The text to be displayed
+    * default (optional): Defaults to None. Default value to use if the
+      user doesn't input anything.
+
+All of these functions, with the exception of "yn", return whatever string
+results as the answer whether it be input from the user or specified as the
+default when the user inputs nothing. The "yn" function returns True for "yes"
+answers and False for "no" answers.
+
+For the most part, the latter three should be sufficient, but we expose expect
+to anyone who needs a more specialized configuration.
+
+Let's go through a quick example configure that covers all four of these
+functions. First I'll give you the code, and then we'll go through it,
+discussing each usage of a supybot.questions function just to make sure you
+realize what the code is actually doing. Here it is::
+
+  def configure(advanced):
+      # This will be called by supybot to configure this module.  advanced is
+      # a bool that specifies whether the user identified himself as an advanced
+      # user or not.  You should effect your configuration by manipulating the
+      # registry as appropriate.
+      from supybot.questions import expect, anything, something, yn
+      WorldDom = conf.registerPlugin('WorldDom', True)
+      if yn("""The WorldDom plugin allows for total world domination
+               with simple commands.  Would you like these commands to
+               be enabled for everyone?""", default=False):
+          WorldDom.globalWorldDominationRequires.setValue("")
+      else:
+          cap = something("""What capability would you like to require for
+                             this command to be used?""", default="Admin")
+          WorldDom.globalWorldDominationRequires.setValue(cap)
+      dir = expect("""What direction would you like to attack from in
+                      your quest for world domination?""",
+                   ["north", "south", "east", "west", "ABOVE"],
+                   default="ABOVE")
+      WorldDom.attackDirection.setValue(dir)
+
+As you can see, this is the WorldDom plugin, which I am currently working on.
+The first thing our configure function checks is to see whether or not the bot
+owner would like the world domination commands in this plugin to be available
+to everyone. If they say yes, we set the globalWorldDominationRequires
+configuration variable to the empty string, signifying that no specific
+capabilities are necessary. If they say no, we prompt them for a specific
+capability to check for, defaulting to the "Admin" capability. Here they can
+create their own custom capability to grant to folks which this plugin will
+check for if they want, but luckily for the bot owner they don't really have to
+do this since Supybot's capabilities system can be flexed to take care of this.
+
+Lastly, we check to find out what direction they want to attack from as they
+venture towards world domination. I prefer "death from above!", so I made that
+the default response, but the more boring cardinal directions are available as
+choices as well.
 
 .. _configuration-hooks:
 
