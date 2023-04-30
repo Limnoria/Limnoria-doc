@@ -448,8 +448,8 @@ Configuration hooks
 ===================
 
 .. note::
-    Until stock Supybot or Gribble merge this feature, this section
-    only applies to Limnoria.
+    This feature is specific to Limnoria and not available in stock Supybot
+    or Gribble.
 
 It is possible to get a function called when a configuration variable is
 changed. While this is usually not useful (you get the value whenever you
