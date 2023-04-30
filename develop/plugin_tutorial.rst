@@ -6,17 +6,17 @@ Writing Your First Limnoria Plugin
 
 Introduction
 ============
-Ok, so you want to write a plugin for Supybot/Limnoria. Good, then this is the place to
+Ok, so you want to write a plugin for Limnoria. Good, then this is the place to
 be. We're going to start from the top (the highest level, where Limnoria code
 does the most work for you) and move lower after that.
 
-So have you used Supybot/Limnoria? If not, you need to go use it. This will help you
+So have you used Limnoria? If not, you need to go use it. This will help you
 understand crucial things like the way the various commands work and it is
 essential prior to embarking upon the plugin-development excursion detailed in
 the following pages. If you haven't used Limnoria, come back to this document
 after you've used it for a while and gotten a feel for it.
 
-So, now that we know you've used Supybot/Limnoria, we'll start getting into details.
+So, now that we know you've used Limnoria, we'll start getting into details.
 We'll go through this tutorial by actually writing a new plugin, named Random
 with just a few simple commands.
 
