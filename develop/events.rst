@@ -28,6 +28,8 @@ When a plugin is unloaded (or is to be reloaded), the ``die``
 method is called (with no parameter).
 Also make sure you always call the parent's ``die``.
 
+.. _do-method-handlers:
+
 Commands and numerics
 =====================
 

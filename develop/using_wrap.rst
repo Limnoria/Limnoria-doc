@@ -1,3 +1,5 @@
+.. _using-wrap:
+
 *****************************************************
 Using commands.wrap to parse your command's arguments
 *****************************************************
@@ -154,6 +156,8 @@ thing that just "something" would return, but rather a list of "something"s.
 
 Converter List
 ==============
+
+.. _wrap-converter-list:
 Below is a list of all the available converters to use with wrap. If the
 converter accepts any arguments, they are listed after it and if they are
 optional, the default value is shown.
@@ -467,6 +471,8 @@ additional
 first
     Tries each of the supplied converters in order and returns the result of
     the first successfully applied converter.
+
+.. _wrap-multiplicity-handlers:
 
 Multiplicity
 ------------

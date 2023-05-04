@@ -130,236 +130,205 @@ in the :ref:`Advanced Plugin Config Tutorial <configuration-tutorial>`.
 
 plugin.py
 =========
-Here's the moment you've been waiting for, the overview of plugin.py and how to
-make our plugin actually do stuff.
+``plugin.py`` includes the core code for the plugin. For most plugins this will
+include command handlers, as well as anything else that's relevant to its
+particular use case (database queries,
+:ref:`HTTP server endpoints <http_plugins>`,
+:ref:`IRC command triggers <do-method-handlers>`, etc.)
 
-At the top, same as always, is the standard copyright block to be used and
-abused at your leisure.
+As with any Python module, you'll need to import any dependencies you want,
+in addition to the standard ``supybot`` imports included in the plugin
+template::
 
-Next, some standard imports. Not all of them are used at the moment, but you
-probably will use many (if not most) of them, so just let them be.  Since
-we'll be making use of Python's standard 'random' module, you'll need to add
-the following line to the list of imports::
+    import random
 
-  import random
+The bulk of the plugin definition then resides in a subclass of
+:class:`callbacks.Plugin`. By convention, the class name is equal to the name of
+the plugin, though this is not strictly required (the actual linkage is done by
+the ``Class = Random`` statement at the end of the file). It is helpful to fill
+in the plugin docstring with some more details on how to actually use the plugin
+too: this info can be shown on a live bot using the
+``plugin help <plugin name>`` command.
 
-Now, the plugin class itself. What you're given is a skeleton: a simple
-subclass of :class:`callbacks.Plugin` for you to start with. The only real content it
-has is the boilerplate docstring, which you should modify to reflect what the
-boilerplate text says - it should be useful so that when someone uses the
-plugin help command to determine how to use this plugin, they'll know what they
-need to do. Ours will read something like::
+::
 
-    """This plugin provides a few random number commands and some
-    commands for getting random samples.  Use the "seed" command to seed
-    the plugin's random number generator if you like, though it is
-    unnecessary as it gets seeded upon loading of the plugin.  The
-    "random" command is most likely what you're looking for, though
-    there are a number of other useful commands in this plugin.  Use
-    'list random' to check them out.  """
+    class Random(callbacks.Plugin):
+        """This plugin contains commands relating to random numbers, including random sampling from a list and a simple dice roller."""
 
-It's basically a "guide to getting started" for the plugin. Now, to make the
-plugin do something. First of all, to get any random numbers we're going to
-need a random number generator (RNG). Pretty much everything in our plugin is
-going to use it, so we'll define it in the constructor of our plugin, __init__.
-Here we'll also seed it with the current time (standard practice for RNGs).
-Here's what our __init__ looks like::
+        def __init__(self, irc):
+            # Make sure to call the superclass' constructor when you define a custom one
+            super().__init__(irc)
+            self.rng = random.Random()  # create our rng
+            self.rng.seed() # automatically seeds with current time
 
-    def __init__(self, irc):
-        # Make sure to call the superclass' constructor when you define a custom one
-        super().__init__(irc)
-        self.rng = random.Random()   # create our rng
-        self.rng.seed()   # automatically seeds with current time
+For this sample plugin, we define a custom constructor (``__init__``) that
+instantiates a random number generator instance and pre-seeds it. This isn't
+technically necessary for Python's ``random`` module, but this helps outline
+how to write a similar constructor. Notice in particular how you must pass in
+the ``irc`` argument in addition to ``self``.
 
-Make sure you add it with one indentation level more than the ``class`` line
-(ie. with four spaces before the ``def``).
+.. note::
+    TODO(jlu): semantically, what does ``irc`` refer to? Most plugins don't
+    actually reference it on load time.
 
-Now, the first two lines may look a little daunting, but it's just
-administrative stuff required if you want to use a custom ``__init__``. If we
-didn't want to do so, we wouldn't have to, but it's not uncommon so I decided
-to use an example plugin that did. For the most part you can just copy/paste
-those lines into any plugin you override the ``__init__`` for and just change them
-to use the plugin name that you are working on instead.
+Basic command handler
+---------------------
 
-So, now we have a RNG in our plugin, let's write a command to get a random
-number. We'll start with a simple command named random that just returns a
-random number from our RNG and takes no arguments. Here's what that looks
-like::
+Our first command definition can immediately follow::
 
-    def random(self, irc, msg, args):
-        """takes no arguments
+    # dummy comment to indent the below code consistently
+        @wrap
+        def random(self, irc, msg, args):
+            """takes no arguments
 
-        Returns the next random number from the random number generator.
-        """
-        irc.reply(str(self.rng.random()))
-    random = wrap(random)
+            Returns the next random number from the random number generator.
+            """
+            irc.reply(str(self.rng.random()))
 
-Same as before, you have to past it with one indentation level.
-And that's it. Now here are the important points.
+.. note::
+    All functions used as commands must have an all lowercase name.
 
-First and foremost, all plugin commands must have all-lowercase function
-names. If they aren't all lowercase they won't show up in a plugin's list of
-commands (nor will they be useable in general). If you look through a plugin
-and see a function that's not in all lowercase, it is not a plugin command.
-Chances are it is a helper function of some sort, and in fact using capital
-letters is a good way of assuring that you don't accidentally expose helper
-functions to users as commands.
+A command function taking in no arguments from IRC will still require 4
+arguments; they are as follows:
 
-You'll note the arguments to this class method are ``(self, irc, msg, args)``. This
-is what the argument list for all methods that are to be used as commands must
-start with. If you wanted additional arguments, you'd append them onto the end,
-but since we take no arguments we just stop there. I'll explain this in more
-detail with our next command, but it is very important that all plugin commands
-are class methods that start with those four arguments exactly as named.
+- ``self``: refers to the class instance. It is common to keep local state
+  for the plugin as instance variables within the plugin class.
+- ``irc``: refers to the IRC network instance the command was called on
+- ``msg``: a :ref:`supybot.ircmsgs <supybot-ircmsgs>` instance; refers to the
+  IRC message that triggered this command.
+- ``args``: a raw list of remaining unconverted arguments; new plugins that
+  use :ref:`@wrap <using-wrap>` for automatic argument type conversion should
+  never need to interact with ``args`` directly.
 
-Next, in the docstring there are two major components. First, the very first
-line dictates the argument list to be displayed when someone calls the help
-command for this command (i.e., help random). Then you leave a blank line and
-start the actual help string for the function. Don't worry about the fact that
-it's tabbed in or anything like that, as the help command normalizes it to
-make it look nice. This part should be fairly brief but sufficient to explain
-the function and what (if any) arguments it requires. Remember that this should
-fit in one IRC message which is typically around a 450 character limit.
+The function docstring is expected to be in a particular format. First, the very
+first line dictates the argument list to be displayed when someone calls the
+``help`` command on this command (i.e., ``help random``). Then, leave a blank
+line and start the actual help string for the function. Don't worry about the
+fact that it's tabbed in or anything like that, as the help command normalizes
+it to make it look nice. This part should be fairly brief but sufficient to
+explain the function and what (if any) arguments it requires. Remember that this
+should fit in one IRC message which is typically around a 450 character limit.
 
-Then we have the actual code body of the plugin, which consists of a single
-line: ``irc.reply(str(self.rng.random()))``.
-The :py:meth:`irc.reply <supybot.callbacks.NestedCommandsIrcProxy.reply>`
-function issues a reply
-to wherever the PRIVMSG it received the command from with whatever text is
-provided. If you're not sure what I mean when I say "wherever the PRIVMSG it
-received the command from", basically it means: if the command is issued in a
-channel the response is sent in the channel, and if the command is issued in a
-private dialog the response is sent in a private dialog. The text we want to
-display is simply the next number from our RNG (self.rng). We get that number
-by calling the random function, and then we str it just to make sure it is a
-nice printable string.
+The :py:meth:`irc.reply <supybot.callbacks.NestedCommandsIrcProxy.reply>` call
+is a bit of magic: it issues a reply the same place as the message that
+triggered the command. i.e. this may be in a channel or in a private
+conversation with the bot.
 
-Lastly, all plugin commands must be 'wrap'ed. What the wrap function does is
-handle argument parsing for plugin commands in a very nice and very powerful
-way. With no arguments, we simply need to just wrap it. For more in-depth
-information on using wrap check out the wrap tutorial (The astute Python
-programmer may note that this is very much like a decorator, and that's
-precisely what it is. However, we developed this before decorators existed and
-haven't changed the syntax due to our earlier requirement to stay compatible
-with Python 2.3.  As we now require Python 2.4 or greater, this may eventually
-change to support work via decorators.)
+Lastly, notice that commands go through the :ref:`@wrap <using-wrap>`
+decorator for automatic argument type conversion. For commands that require no
+parameters, calling ``@wrap`` with no arguments is enough.
+
+Command handler with parameters
+-------------------------------
 
 Now let's create a command with some arguments and see how we use those in our
-plugin commands. Let's allow the user to seed our RNG with their own seed
-value. We'll call the command seed and take just the seed value as the argument
-(which we'll require be a floating point value of some sort, though technically
-it can be any hashable object). Here's what this command looks like::
+plugin commands. This ``seed`` command lets the user pick a specific RNG seed::
 
-    def seed(self, irc, msg, args, seed):
-        """<seed>
+    # dummy comment to indent the below code consistently
+        @wrap(['float'])
+        def seed(self, irc, msg, args, seed):
+            """<seed>
 
-        Sets the internal RNG's seed value to <seed>.  <seed> must be a
-        floating point number.
-        """
-        self.rng.seed(seed)
-        irc.replySuccess()
-    seed = wrap(seed, ['float'])
+            Sets the internal RNG's seed value to <seed>.  <seed> must be a
+            floating point number.
+            """
+            self.rng.seed(seed)
+            irc.replySuccess()
 
-You'll notice first that argument list now includes an extra argument, seed. If
-you read the wrap tutorial mentioned above, you should understand how this arg
-list gets populated with values. Thanks to wrap we don't have to worry about
-type-checking or value-checking or anything like that. We just specify that it
-must be a float in the wrap portion and we can use it in the body of the
-function.
+For functions that use ``@wrap`` (described further in the
+:ref:`Using commands.wrap tutorial <using-wrap>`), additional command arguments
+are handled by:
 
-Of course, we modify the docstring to document this function. Note the syntax
-on the first line. Arguments go in <> and optional arguments should be
-surrounded by ``[]`` (we'll demonstrate this later as well).
+1. Adding :ref:`type converters <wrap-converter-list>`, one for each parameter,
+   to the list passed into ``@wrap``
+2. Adding one function parameter per argument to the command function
+   definition. (i.e. ``def seed(self, irc, msg, args, seed)`` instead of
+   ``def seed(self, irc, msg, args)``)
 
-The body of the function should be fairly straightforward to figure out, but it
-introduces a new function -
+We also modify the docstring to document this function. Note the syntax
+on the first line: by convention, required arguments go in ``<>`` and optional
+arguments should be surrounded by ``[]``.
+
+The function body includes a new method
 :py:meth:`irc.replySuccess <supybot.callbacks.RichReplyMethods.replySuccess>`.
-This is just a generic "I
-succeeded" command which responds with whatever the bot owner has configured to
-be the success response (configured in supybot.replies.success). Note that we
-don't do any error-checking in the plugin, and that's because we simply don't
-have to. We are guaranteed that seed will be a float and so the call to our
-RNG's seed is guaranteed to work.
+This is just a generic "I succeeded" command which responds with whatever the
+bot owner has configured in ``config supybot.replies.success``.
+Also, by using ``@wrap``, we don't need to do any type checking inside the
+function itself - this is handled separately, and invalid argument values will
+cause the command to error before it reaches the wrapped function.
 
-Lastly, of course, the wrap call. Again, read the wrap tutorial for fuller
-coverage of its use, but the basic premise is that the second argument to wrap
-is a list of converters that handles argument validation and conversion and it
-then assigns values to each argument in the arg list after the first four
-(required) arguments. So, our seed argument gets a float, guaranteed.
+With this alone you'd be able to make a range of useful plugin commands, but
+we'll go include some more examples to illustrate common patterns.
 
-With this alone you'd be able to make some pretty usable plugin commands, but
-we'll go through two more commands to introduce a few more useful ideas. The
-next command we'll make is a sample command which gets a random sample of items
-from a list provided by the user::
+Command handler with list-type arguments
+----------------------------------------
+The next sample command is named ``sample`` (no pun intended): it takes a random
+sample of arbitrary size from a list provided by the user::
 
-    def sample(self, irc, msg, args, n, items):
-        """<number of items> <item1> [<item2> ...]
+    # dummy comment to indent the below code consistently
+        def sample(self, irc, msg, args, n, items):
+            """<number of items> <item1> [<item2> ...]
 
-        Returns a sample of the <number of items> taken from the remaining
-        arguments.  Obviously <number of items> must be less than the number
-        of arguments given.
-        """
-        if n > len(items):
-            irc.error('<number of items> must be less than the number '
-                      'of arguments.')
-            return
-        sample = self.rng.sample(items, n)
-        sample.sort()
-        irc.reply(utils.str.commaAndify(sample))
-    sample = wrap(sample, ['int', many('anything')])
+            Returns a sample of the <number of items> taken from the remaining
+            arguments.  <number of items> must be less than the number
+            of arguments given.
+            """
+            if n > len(items):
+                # Calling irc.error with Raise=True is an alternative early return
+                irc.error('<number of items> must be less than the number '
+                          'of arguments.', Raise=True)
+            sample = self.rng.sample(items, n)
+            sample.sort()
+            irc.reply(utils.str.commaAndify(sample))
+        sample = wrap(sample, ['int', many('anything')])
 
-This plugin command introduces a few new things, but the general structure
-should look fairly familiar by now. You may wonder why we only have two extra
-arguments when obviously this plugin can accept any number of arguments. Well,
-using wrap we collect all of the remaining arguments after the first one into
-the items argument. If you haven't caught on yet, wrap is really cool and
-extremely useful.
+The important thing to note is that list type arguments are rolled into one
+parameter in the command function by the ``many`` filter. Similar "multiplicity"
+handlers are documented :ref:`here <wrap-multiplicity-handlers>`.
 
-Next of course is the updated docstring. Note the use of ``[]`` to denote the
-optional items after the first item.
+We also update the docstring to use the ``[]`` convention when surrounding
+optional arguments.
 
-The body of the plugin should be relatively easy to read. First we check and
-make sure that n (the number of items the user wants to sample) is not larger
-than the actual number of items they gave. If it does, we call irc.error with
-the error message you see.
+For this function's body,
 :py:meth:`irc.error <supybot.callbacks.NestedCommandsIrcProxy.error>`
-is kind of like irc.replySuccess only it
-gives an error message using the configured error format (in
-``supybot.replies.error``). Otherwise, we use the sample function from our RNG to
-get a sample, then we sort it, and we reply with the 'utils.str.commaAndify'ed
-version. The utils.str.commaAndify function basically takes a list of strings
+is like
+:py:meth:`irc.replySuccess <supybot.callbacks.NestedCommandsIrcProxy.replySuccess>`
+but for error messages. We prefer using this instead of ``irc.reply`` for error
+signaling because its behaviour can be configured specially. For example, you
+can force all errors to go in private by setting the ``reply.error.inPrivate``
+option, and this can help reduce noise on a busy channel.
+Also, ``irc.error()`` with no text will return a generic error message
+configured in ``supybot.replies.error``, but this is not a valid call to
+:py:meth:`irc.reply <supybot.callbacks.NestedCommandsIrcProxy.reply>`.
+
+``utils.str.commaAndify`` is a simple helper that takes a list of strings
 and turns it into "item1, item2, item3, item4, and item5" for an arbitrary
-length. More details on using the utils module can be found in the utils
-tutorial.
+length. Limnoria has accumulated many such helpers in its lifetime, many of
+which are described in the :ref:`Using Utils <using-utils>` page.
 
-Now for the last command that we will add to our plugin.py. This last command
-will allow the bot users to roll an arbitrary n-sided die, with as many sides
-as they so choose. Here's the code for this command::
+Command handler with optional arguments
+---------------------------------------
+Now for the last command that we will add to our plugin.py. This ``diceroll``
+command will allow the bot users to roll an arbitrary n-sided die, with n
+defaulting to 6::
 
-    def diceroll(self, irc, msg, args, n):
-        """[<number of sides>]
+    # dummy comment to indent the below code consistently
+        def diceroll(self, irc, msg, args, n):
+            """[<number of sides>]
 
-        Rolls a die with <number of sides> sides.  The default number of sides
-        is 6.
-        """
-        s = 'rolls a %s' % self.rng.randrange(1, n)
-        irc.reply(s, action=True)
-    diceroll = wrap(diceroll, [additional(('int', 'number of sides'), 6)])
+            Rolls a die with <number of sides> sides.  The default number of sides
+            is 6.
+            """
+            s = 'rolls a %s' % self.rng.randrange(1, n)
+            irc.reply(s, action=True)
+        diceroll = wrap(diceroll, [additional(('int', 'number of sides'), 6)])
 
-The only new thing learned here really is that the irc.reply method accepts an
-optional argument action, which if set to True makes the reply an action
-instead. So instead of just crudely responding with the number, instead you
-should see something like * supybot rolls a 5. You'll also note that it uses a
-more advanced wrap line than we have used to this point, but to learn more
-about wrap, you should refer to the wrap tutorial
-
-And now that we're done adding plugin commands you should see the boilerplate
-stuff at the bottom, which just consists of::
-
-    Class = Random
-
-And also some vim modeline stuff. Leave these as is, and we're finally done
-with plugin.py!
+The only new thing described here is that ``irc.reply(..., action=True)`` makes
+the bot perform a `/me`. There are some other flags described in the
+:py:meth:`irc.reply <supybot.callbacks.NestedCommandsIrcProxy.reply>`
+documentation too: common ones include ``private=True``, which
+forces a private message, and ``notice=True``, which forces the reply to use
+NOTICE instead of PRIVMSG.
 
 test.py
 =======
