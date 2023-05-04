@@ -1,3 +1,5 @@
+.. _using-utils:
+
 ****************************
 Using Supybot's utils module
 ****************************
