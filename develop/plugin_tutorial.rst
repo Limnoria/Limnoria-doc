@@ -194,7 +194,7 @@ arguments; they are as follows:
 - ``self``: refers to the class instance. It is common to keep local state
   for the plugin as instance variables within the plugin class.
 - ``irc``: refers to the IRC network instance the command was called on
-- ``msg``: a :ref:`supybot.ircmsgs <supybot-ircmsgs>` instance; refers to the
+- ``msg``: a :class:`supybot.ircmsgs.IrcMsg` instance; refers to the
   IRC message that triggered this command.
 - ``args``: a raw list of remaining unconverted arguments; new plugins that
   use :ref:`@wrap <using-wrap>` for automatic argument type conversion should
