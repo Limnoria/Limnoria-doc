@@ -91,7 +91,7 @@ Here is a list of attributes you should usually look at:
 * ``__url__`` references the download URL for the plugin. Since this is just an
   example, we'll leave this blank.
 
-The rest of :file:`__init__.py` really shouldn't be touched unless you are
+The rest of :file:`__init__.py` shouldn't be touched unless you are
 using third-party modules in your plugin. If you are, then you need to add
 additional import statements and ``reload`` calls to all those modules, so that
 they get reloaded with the rest of the plugin::
@@ -354,7 +354,7 @@ instance of the bot, in addition to the
 provided by the unittest library.
 
 Running the tests for a Limnoria plugin is done using the
-:command:`supybot-test` command: i.e. ``supybot-test /path/to/your/plugin``
+:command:`supybot-test` command: i.e. ``supybot-test /path/to/your/Plugin``
 
 The structure of these test classes, as well
 as interactions with features like Limnoria's config system are described in
