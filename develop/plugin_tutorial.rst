@@ -165,11 +165,14 @@ For this sample plugin, we define a custom constructor (``__init__``) that
 instantiates a random number generator instance and pre-seeds it. This isn't
 technically necessary for Python's ``random`` module, but it helps outline
 how to write a similar constructor. Notice in particular how you must pass in
-the ``irc`` argument in addition to ``self``.
+an ``irc`` argument in addition to ``self``.
 
-.. note::
-    TODO(jlu): semantically, what does ``irc`` refer to? Most plugins don't
-    actually reference it on load time.
+.. warning::
+    Because Limnoria is a multi-network bot, you should generally ignore
+    the ``irc`` instance passed to the plugin constructor.
+    On a manual ``load`` call to a live bot, this will be set to the network
+    the command was run on, but on bot startup, ``irc`` will be (arbitrarily)
+    set to the first network that the bot decides to connect to.
 
 Basic command handler
 ---------------------
