@@ -163,7 +163,7 @@ too: this info can be shown on a live bot using the
 
 For this sample plugin, we define a custom constructor (``__init__``) that
 instantiates a random number generator instance and pre-seeds it. This isn't
-technically necessary for Python's ``random`` module, but this helps outline
+technically necessary for Python's ``random`` module, but it helps outline
 how to write a similar constructor. Notice in particular how you must pass in
 the ``irc`` argument in addition to ``self``.
 
@@ -332,103 +332,111 @@ NOTICE instead of PRIVMSG.
 
 test.py
 =======
-Now that we've gotten our plugin written, we want to make sure it works. Sure,
-an easy way to do a somewhat quick check is to start up a bot, load the plugin,
-and run a few commands on it. If all goes well there, everything's probably
-okay. But, we can do better than "probably okay". This is where written plugin
-tests come in. We can write tests that not only assure that the plugin loads
-and runs the commands fine, but also that it produces the expected output for
-given inputs. And not only that, we can use the nifty supybot-test script to
-test the plugin without even having to have a network connection to connect to
-IRC with and most certainly without running a local IRC server.
+The easy way to test any plugin would be to start up a bot, load the plugin, and
+run all the commands a few times to verify that they work. But this takes time,
+and as a project grows larger, starts to be a tedious and error-prone process...
 
-The boilerplate code for test.py is a good start. It imports everything you
-need and sets up RandomTestCase which will contain all of our tests. Now we
-just need to write some test methods. I'll be moving fairly quickly here just
-going over very basic concepts and glossing over details, but the full plugin
-test authoring tutorial has much more detail to it and is recommended reading
-after finishing this tutorial.
+This is where automated testing comes in. Limnoria has a test harness built upon
+the `Python unittest library <https://docs.python.org/3/library/unittest.html>`_
+that abstracts away all the dependencies of live testing (i.e. the IRC
+client and server) and allows you to cover your entire plugin's functionality
+within a few seconds.
 
-Since we have four commands we should have at least four test methods in our
-test case class. Typically you name the test methods that simply checks that a
-given command works by just appending the command name to test. So, we'll have
-testRandom, testSeed, testSample, and testDiceRoll. Any other methods you want
-to add are more free-form and should describe what you're testing (don't be
-afraid to use long names).
+How it works
+------------
 
-First we'll write the testRandom method::
+Plugin test cases inherit from
+:class:`supybot.test.PluginTestCase` or
+:class:`supybot.test.ChannelPluginTestCase` and include
+:ref:`several methods <plugin-test-methods>` to interact with a simulated
+instance of the bot, in addition to the
+`standard assertion functions <https://docs.python.org/3/library/unittest.html#assert-methods>`_
+provided by the unittest library.
 
-    def testRandom(self):
-        # difficult to test, let's just make sure it works
-        self.assertNotError('random')
+Running the tests for a Limnoria plugin is done using the
+:command:`supybot-test` command: i.e. ``supybot-test /path/to/your/plugin``
 
-Since we can't predict what the output of our random number generator is going
-to be, it's hard to specify a response we want. So instead, we just make sure
-we don't get an error by calling the random command, and that's about all we
-can do.
+The structure of these test classes, as well
+as interactions with features like Limnoria's config system are described in
+detail in the :ref:`Advanced Plugin Testing guide <plugin-testing-guide>`.
 
-Next, testSeed. In this method we're just going to check that the command
-itself functions. In another test method later on we will check and make sure
-that the seed produces reproducible random numbers like we would hope it would,
-but for now we just test it like we did random in 'testRandom'::
+Functional testing examples
+---------------------------
 
-    def testSeed(self):
-        # just make sure it works
-        self.assertNotError('seed 20')
+For a command where we don't care about the exact output, the usual approach is
+to check that invocations raise or don't raise an error. For a command that
+generates a purely random output, this applies too since we can't predict what
+the result will be::
 
-Now for testSample. Since this one takes more arguments it makes sense that we
-test more scenarios in this one. Also this time we have to make sure that we
-hit the error that we coded in there given the right conditions::
+  class RandomTestCase(PluginTestCase):
+      # This tuple determines which plugins to load in the test case
+      plugins = ('Random',)
 
-    def testSample(self):
-        self.assertError('sample 20 foo')
-        self.assertResponse('sample 1 foo', 'foo')
-        self.assertRegexp('sample 2 foo bar', '... and ...')
-        self.assertRegexp('sample 3 foo bar baz', '..., ..., and ...')
+      def testRandom(self):
+          self.assertNotError('random')
 
-So first we check and make sure trying to take a 20-element sample of a
-1-element list gives us an error. Next we just check and make sure we get the
-right number of elements and that they are formatted correctly when we give 1,
-2, or 3 element lists.
+          # This throws, because the command doesn't expect any arguments
+          self.assertError('random abcdef')
 
-And for the last of our basic "check to see that it works" functions,
-testDiceRoll::
+However, this is less true if you pre-seed the RNG, as then you're guaranteed
+a repeatable result. The following snippet introduces
+``assertResponse(commandPlusArgs, expectedOutput)``, where ``commandPlusArgs``
+is the full bot command including arguments, all as one string::
 
-    def testDiceRoll(self):
-        self.assertActionRegexp('diceroll', 'rolls a \d')
+    # dummy comment to indent the below code consistently
+        def testSeed(self):
+            self.assertNotError('seed 20')
+            self.assertResponse('random', '0.9056396761745207')
+            self.assertResponse('random', '0.6862541570267026')
+            self.assertNotError('seed 20')
+            self.assertResponse('random', '0.9056396761745207')
+            self.assertNotError('seed 1234')
+            self.assertResponse('random', '0.9664535356921388')
 
-We know that diceroll should return an action, and that with no arguments it
-should roll a single-digit number. And that's about all we can test reliably
-here, so that's all we do.
+Alternatively, you can use ``getMsg(command)`` to fetch the output of a bot
+command as a string and reuse it::
 
-Lastly, we wanted to check and make sure that seeding the RNG with seed
-actually took effect like it's supposed to. So, we write another test method::
+    # dummy comment to indent the below code consistently
+        def testSeed(self):
+            self.assertNotError('seed 20')
+            num1 = self.getMsg('random')
+            num2 = self.getMsg('random')
 
-    def testSeedActuallySeeds(self):
-        # now to make sure things work repeatably
-        self.assertNotError('seed 20')
-        m1 = self.getMsg('random')
-        self.assertNotError('seed 20')
-        m2 = self.getMsg('random')
-        self.failUnlessEqual(m1, m2)
-        m3 = self.getMsg('random')
-        self.failIfEqual(m2, m3)
+            self.assertNotError('seed 20')
+            num1_again = self.getMsg('random')
 
-So we seed the RNG with 20, store the message, and then seed it at 20 again. We
-grab that message, and unless they are the same number when we compare the two,
-we fail. And then just to make sure our RNG is producing random numbers, we get
-another random number and make sure it is distinct from the prior one.
+            self.assertEqual(num1, num1_again)
+            self.assertNotEqual(num1, num2)
+
+Another common practice is to use regular expressions to match the output of
+a command:
+
+.. note::
+  The :func:`assertRegexp` defined in Limnoria is `not` the same as
+  :func:`assertRegex` from the standard unittest library. The latter
+  compares a regexp against a bare string, not the output of a bot command.
+  (For historical reasons, we have this confusing name.)
+
+::
+
+    # dummy comment to indent the below code consistently
+        def testSample(self):
+            self.assertError('sample 20 foo')  # can't sample 20 from only 1 element
+            self.assertResponse('sample 1 foo', 'foo')
+            self.assertRegexp('sample 2 foo bar', '... and ...')
+            self.assertRegexp('sample 3 foo bar baz', '..., ..., and ...')
+            # assertNotRegexp(commandWithArgs, regexp) also works as expected
+
+        def testDiceRoll(self):
+            self.assertActionRegexp('diceroll', 'rolls a \d')
 
 Conclusion
 ==========
-You are now very well-prepared to write Limnoria plugins. Now for a few words of
-wisdom with regards to Limnoria plugin-writing.
+You are now well prepared to write Limnoria plugins. A few words of wisdom:
 
 * Read other people's plugins, especially the included plugins and ones by
-  the core developers. We (the Limnoria dev team) can't possibly document
-  all the awesome things that Limnoria plugins can do, but we try.
-  Nevertheless there are some really cool things that can be done that
-  aren't very well-documented.
+  the core developers. We can't possibly document all the things that Limnoria
+  can do, though we try our best.
 
 * Hack new functionality into existing plugins first if writing a new
   plugin is too daunting.
@@ -441,6 +449,4 @@ wisdom with regards to Limnoria plugin-writing.
   and make Limnoria all that more attractive for other users so they will want
   to write their plugins for Limnoria as well.
 
-* Read, read, read all the documentation.
-
-* And of course, have fun writing your plugins.
+* And of course, have fun!

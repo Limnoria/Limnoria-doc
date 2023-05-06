@@ -1,3 +1,5 @@
+.. _plugin-testing-guide:
+
 ***********************
 Advanced Plugin Testing
 ***********************
@@ -227,6 +229,8 @@ But there is a more compact syntax, using context managers::
             with conf.supybot.commands.nested.context(False):
                 # stuff
 
+.. _plugin-test-methods:
+
 Plugin Test Methods
 ===================
   The full list of test methods and how to use them.
@@ -292,7 +296,7 @@ assertActionRegexp(query, regexp, flags=re.I)
 Utilities
 ---------
 
-feedMsg(query, to=None, frm=None) 
+feedMsg(query, to=None, frm=None)
     Simply feeds query to whoever is
     specified in to or to the bot itself if no one is specified. Can also
     optionally specify the hostmask of the sender with the frm keyword.
