@@ -279,6 +279,7 @@ sample of arbitrary size from a list provided by the user:
 .. code-block::
     :dedent: 0
 
+        @wrap(['int', many('anything')])
         def sample(self, irc, msg, args, n, items):
             """<number of items> <item1> [<item2> ...]
 
@@ -289,11 +290,10 @@ sample of arbitrary size from a list provided by the user:
             if n > len(items):
                 # Calling irc.error with Raise=True is an alternative early return
                 irc.error('<number of items> must be less than the number '
-                        'of arguments.', Raise=True)
+                          'of arguments.', Raise=True)
             sample = self.rng.sample(items, n)
             sample.sort()
             irc.reply(utils.str.commaAndify(sample))
-        sample = wrap(sample, ['int', many('anything')])
 
 The important thing to note is that list type arguments are rolled into one
 parameter in the command function by the ``many`` filter. Similar "multiplicity"
@@ -328,6 +328,7 @@ defaulting to 6:
 .. code-block::
     :dedent: 0
 
+        @wrap([additional(('int', 'number of sides'), 6)])
         def diceroll(self, irc, msg, args, n):
             """[<number of sides>]
 
@@ -336,7 +337,6 @@ defaulting to 6:
             """
             s = 'rolls a %s' % self.rng.randrange(1, n)
             irc.reply(s, action=True)
-        diceroll = wrap(diceroll, [additional(('int', 'number of sides'), 6)])
 
 The only new thing described here is that ``irc.reply(..., action=True)`` makes
 the bot perform a `/me`. There are some other flags described in the
