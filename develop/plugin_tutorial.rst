@@ -75,7 +75,7 @@ we'll leave it as is.
 
 Here is a list of attributes you should usually look at:
 
-* ``__version__``: the plugin version. We'll just make ours "0.1"
+* ``__version__``: the plugin version. We'll make ours `"0.1"`
 * ``__author__`` should be an instance of the :class:`supybot.Author` class.
   This optionally includes a full name, a short name (usually IRC nick), and
   an e-mail address::
@@ -148,9 +148,7 @@ the plugin, though this is not strictly required (the actual linkage is done by
 the ``Class = Random`` statement at the end of the file). It is helpful to fill
 in the plugin docstring with some more details on how to actually use the plugin
 too: this info can be shown on a live bot using the
-``plugin help <plugin name>`` command.
-
-::
+``plugin help <plugin name>`` command. ::
 
     class Random(callbacks.Plugin):
         """This plugin contains commands relating to random numbers, including random sampling from a list and a simple dice roller."""
@@ -202,7 +200,8 @@ arguments; they are as follows:
 
 - ``self``: refers to the class instance. It is common to keep local state
   for the plugin as instance variables within the plugin class.
-- ``irc``: refers to the IRC network instance the command was called on
+- ``irc``: a :class:`supybot.callbacks.ReplyIrcProxy` instance; refers to the
+  IRC network instance the command was called on
 - ``msg``: a :class:`supybot.ircmsgs.IrcMsg` instance; refers to the
   IRC message that triggered this command.
 - ``args``: a raw list of remaining unconverted arguments; new plugins that
@@ -218,7 +217,7 @@ it to make it look nice. This part should be fairly brief but sufficient to
 explain the function and what (if any) arguments it requires. Remember that this
 should fit in one IRC message which is typically around a 450 character limit.
 
-The :py:meth:`irc.reply <supybot.callbacks.NestedCommandsIrcProxy.reply>` call
+The :py:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>` call
 is a bit of magic: it issues a reply the same place as the message that
 triggered the command. i.e. this may be in a channel or in a private
 conversation with the bot.
@@ -303,16 +302,16 @@ We also update the docstring to use the ``[]`` convention when surrounding
 optional arguments.
 
 For this function's body,
-:py:meth:`irc.error <supybot.callbacks.NestedCommandsIrcProxy.error>`
+:py:meth:`irc.error <supybot.callbacks.ReplyIrcProxy.error>`
 is like
-:py:meth:`irc.replySuccess <supybot.callbacks.NestedCommandsIrcProxy.replySuccess>`
+:py:meth:`irc.replySuccess <supybot.callbacks.ReplyIrcProxy.replySuccess>`
 but for error messages. We prefer using this instead of ``irc.reply`` for error
 signaling because its behaviour can be configured specially. For example, you
 can force all errors to go in private by setting the ``reply.error.inPrivate``
 option, and this can help reduce noise on a busy channel.
 Also, ``irc.error()`` with no text will return a generic error message
 configured in ``supybot.replies.error``, but this is not a valid call to
-:py:meth:`irc.reply <supybot.callbacks.NestedCommandsIrcProxy.reply>`.
+:py:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>`.
 
 ``utils.str.commaAndify`` is a simple helper that takes a list of strings
 and turns it into "item1, item2, item3, item4, and item5" for an arbitrary
@@ -340,7 +339,7 @@ defaulting to 6:
 
 The only new thing described here is that ``irc.reply(..., action=True)`` makes
 the bot perform a `/me`. There are some other flags described in the
-:py:meth:`irc.reply <supybot.callbacks.NestedCommandsIrcProxy.reply>`
+:py:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>`
 documentation too: common ones include ``private=True``, which
 forces a private message, and ``notice=True``, which forces the reply to use
 NOTICE instead of PRIVMSG.
