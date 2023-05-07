@@ -154,10 +154,11 @@ it's an optional argument and if it is None, that signifies that nothing was
 there. Also, for another example, many("something") doesn't return the same
 thing that just "something" would return, but rather a list of "something"s.
 
+.. _wrap-converter-list:
+
 Converter List
 ==============
 
-.. _wrap-converter-list:
 Below is a list of all the available converters to use with wrap. If the
 converter accepts any arguments, they are listed after it and if they are
 optional, the default value is shown.
