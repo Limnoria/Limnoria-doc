@@ -177,9 +177,15 @@ an ``irc`` argument in addition to ``self``.
 Basic command handler
 ---------------------
 
-Our first command definition can immediately follow::
+Our first command definition can immediately follow:
 
-    # dummy comment to indent the below code consistently
+..
+    note: turn off automatic dedent so that the functions appear at the right
+    indent level relative to the class definition
+
+.. code-block::
+    :dedent: 0
+
         @wrap
         def random(self, irc, msg, args):
             """takes no arguments
@@ -225,9 +231,11 @@ Command handler with parameters
 -------------------------------
 
 Now let's create a command with some arguments and see how we use those in our
-plugin commands. This ``seed`` command lets the user pick a specific RNG seed::
+plugin commands. This ``seed`` command lets the user pick a specific RNG seed:
 
-    # dummy comment to indent the below code consistently
+.. code-block::
+    :dedent: 0
+
         @wrap(['float'])
         def seed(self, irc, msg, args, seed):
             """<seed>
@@ -266,9 +274,11 @@ we'll go include some more examples to illustrate common patterns.
 Command handler with list-type arguments
 ----------------------------------------
 The next sample command is named ``sample`` (no pun intended): it takes a random
-sample of arbitrary size from a list provided by the user::
+sample of arbitrary size from a list provided by the user:
 
-    # dummy comment to indent the below code consistently
+.. code-block::
+    :dedent: 0
+
         def sample(self, irc, msg, args, n, items):
             """<number of items> <item1> [<item2> ...]
 
@@ -279,7 +289,7 @@ sample of arbitrary size from a list provided by the user::
             if n > len(items):
                 # Calling irc.error with Raise=True is an alternative early return
                 irc.error('<number of items> must be less than the number '
-                          'of arguments.', Raise=True)
+                        'of arguments.', Raise=True)
             sample = self.rng.sample(items, n)
             sample.sort()
             irc.reply(utils.str.commaAndify(sample))
@@ -313,9 +323,11 @@ Command handler with optional arguments
 ---------------------------------------
 Now for the last command that we will add to our plugin.py. This ``diceroll``
 command will allow the bot users to roll an arbitrary n-sided die, with n
-defaulting to 6::
+defaulting to 6:
 
-    # dummy comment to indent the below code consistently
+.. code-block::
+    :dedent: 0
+
         def diceroll(self, irc, msg, args, n):
             """[<number of sides>]
 
@@ -384,9 +396,11 @@ the result will be::
 However, this is less true if you pre-seed the RNG, as then you're guaranteed
 a repeatable result. The following snippet introduces
 ``assertResponse(commandPlusArgs, expectedOutput)``, where ``commandPlusArgs``
-is the full bot command including arguments, all as one string::
+is the full bot command including arguments, all as one string:
 
-    # dummy comment to indent the below code consistently
+.. code-block::
+    :dedent: 0
+
         def testSeed(self):
             self.assertNotError('seed 20')
             self.assertResponse('random', '0.9056396761745207')
@@ -397,9 +411,11 @@ is the full bot command including arguments, all as one string::
             self.assertResponse('random', '0.9664535356921388')
 
 Alternatively, you can use ``getMsg(command)`` to fetch the output of a bot
-command as a string and reuse it::
+command as a string and reuse it:
 
-    # dummy comment to indent the below code consistently
+.. code-block::
+    :dedent: 0
+
         def testSeed(self):
             self.assertNotError('seed 20')
             num1 = self.getMsg('random')
@@ -420,9 +436,9 @@ a command:
   compares a regexp against a bare string, not the output of a bot command.
   (For historical reasons, we have this confusing name.)
 
-::
+.. code-block::
+    :dedent: 0
 
-    # dummy comment to indent the below code consistently
         def testSample(self):
             self.assertError('sample 20 foo')  # can't sample 20 from only 1 element
             self.assertResponse('sample 1 foo', 'foo')
