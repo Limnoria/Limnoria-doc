@@ -167,12 +167,10 @@ Numbers and time
 ----------------
 
 expiry
-
     Takes a number of seconds and adds it to the current time to create an
     expiration timestamp.
 
 id, kind="integer"
-
     Returns something that looks like an integer ID number. Takes an optional
     "kind" argument for you to state what kind of ID you are looking for,
     though this doesn't affect the integrity-checking. Basically requires that
@@ -180,109 +178,90 @@ id, kind="integer"
     a nice error message with the kind in it.
 
 index
-
     Basically ("int", "index"), but with a twist. This will take a 1-based
     index and turn it into a 0-based index (which is more useful in code). It
     doesn't transform 0, and it maintains negative indices as is (note that it
     does allow them!).
 
 int, type="integer", p=None
-
     Gets an integer. The "type" text can be used to customize the error message
     received when the argument is not an integer. "p" is an optional predicate
     to test the integer with. If p(i) fails (where i is the integer arg parsed
     out of the argument string), the arg will not be accepted.
 
 now
-
     Simply returns the current timestamp as an arg, does not reference or
     modify the argument list.
 
 long, type="long"
-
     Basically the same as int minus the predicate, except that it converts the
     argument to a long integer regardless of the size of the int.
 
 float, type="floating point number"
-
     Basically the same as int minus the predicate, except that it converts the
     argument to a float.
 
 nonInt, type="non-integer value"
-
     Accepts everything but integers, and returns them unchanged. The "type"
     value, as always, can be used to customize the error message that is
     displayed upon failure.
 
 positiveInt
-
     Accepts only positive integers.
 
 nonNegativeInt
-
     Accepts only non-negative integers.
 
 Channel
 -------
 
 channelDb
-
     Sets the channel appropriately in order to get to the databases for that
     channel (handles whether or not a given channel uses channel-specific
     databases and whatnot).
 
 channel
-
     Gets a channel to use the command in. If the channel isn't supplied, uses
     the channel the message was sent in. If using a different channel, does
     sanity-checking to make sure the channel exists on the current IRC network.
 
 inChannel
-
     Requires that the command be called from within any channel that the bot
     is currently in or with one of those channels used as an argument to the
     command.
 
 onlyInChannel
-
     Requires that the command be called from within any channel that the bot
     is currently in.
 
 callerInGivenChannel
-
     Takes the given argument as a channel and makes sure that the caller is in
     that channel.
 
 public
-
     Requires that the command be sent in a channel instead of a private
     message.
 
 private
-
     Requires that the command be sent in a private message instead of a
     channel.
 
 validChannel
-
     Gets a channel argument once it makes sure it's a valid channel.
 
 Words
 -----
 
 color
-
     Accepts arguments that describe a text color code (e.g., "black", "light
     blue") and returns the mIRC color code for that color. (Note that many
     other IRC clients support the mIRC color code scheme, not just mIRC)
 
 letter
-
     Looks for a single letter. (Technically, it looks for any one-element
     sequence).
 
 literal, literals, errmsg=None
-
     Takes a required sequence or string (literals) and any argument that
     uniquely matches the starting substring of one of the literals is
     transformed into the full literal. For example, with ``("literal", ("bar",
@@ -293,83 +272,66 @@ literal, literals, errmsg=None
     default argument error message is displayed.
 
 lowered
-
     Returns the argument lowered (NOTE: it is lowered according to IRC
     conventions, which does strange mapping with some punctuation characters).
 
 to
-
     Returns the string "to" if the arg is any form of "to" (case-insensitive).
 
 Network
 -------
 
 ip
-
     Checks and makes sure the argument looks like a valid IP and then returns
     it.
 
 url
-
     Checks for a valid URL.
 
 httpUrl
-
     Checks for a valid HTTP URL.
 
 Users, nicks, and permissions
 -----------------------------
 
 haveOp, action="do that"
-
     Simply requires that the bot have ops in the channel that the command is
     called in. The action parameter completes the error message: "I need to be
     opped to ...".
 
 nick
-
     Checks that the arg is a valid nick on the current IRC server.
 
 seenNick
-
     Checks that the arg is a nick that the bot has seen (NOTE: this is limited
     by the size of the history buffer that the bot has).
 
 nickInChannel
-
     Requires that the argument be a nick that is in the current channel, and
     returns that nick.
 
 capability
-
     Used to retrieve an argument that describes a capability.
 
 hostmask
-
     Returns the hostmask of any provided nick or hostmask argument.
 
 banmask
-
     Returns a generic banmask of the provided nick or hostmask argument.
 
 user
-
     Requires that the caller be a registered user.
 
 otherUser
-
     Returns the user specified by the username or hostmask in the argument.
 
 owner
-
     Requires that the command caller has the "owner" capability.
 
 admin
-
     Requires that the command caller has the "admin" capability.
 
 checkCapability, capability
-
     Checks to make sure that the caller has the specified capability.
 
 checkChannelCapability, capability
@@ -380,78 +342,65 @@ Matching
 --------
 
 anything
-
     Returns anything as is.
 
 something, errorMsg=None, p=None
-
     Takes anything but the empty string. errorMsg can be used to customize the
     error message. p is any predicate function that can be used to test the
     validity of the input.
 
 somethingWithoutSpaces
-
     Same as something, only with the exception of disallowing spaces of course.
 
 matches, regexp, errmsg
-
     Searches the args with the given regexp and returns the matches. If no
     match is found, errmsg is given.
 
 regexpMatcher
-
     Gets a matching regexp argument (m// or //).
 
 glob
-
     Gets a glob string. Basically, if there are no wildcards (``*``, ``?``) in
     the argument, returns ``*string*``, making a glob string that matches
     anything containing the given argument.
 
 regexpReplacer
-
     Gets a replacing regexp argument (s//).
 
 Other
 -----
 
 networkIrc, errorIfNoMatch=False
-
     Returns the IRC object of the specified IRC network. If one isn't
     specified, the IRC object of the IRC network the command was called on is
     returned.
 
 plugin, require=True
-
     Returns the plugin specified by the arg or None. If require is True, an
     error is raised if the plugin cannot be retrieved.
 
 boolean
-
     Converts the text string to a boolean value. Acceptable true values are:
     "1", "true", "on", "enable", or "enabled" (case-insensitive). Acceptable
     false values are: "0", false", "off", "disable", or "disabled"
     (case-insensitive).
 
 filename
-
     Used to get a filename argument.
 
 commandName
-
     Returns the canonical command name version of the given string (ie, the
     string is lowercased and dashes and underscores are removed).
 
 text
-
     Takes the rest of the arguments as one big string. Note that this differs
     from the "anything" context in that it clobbers the arg string when it's
     done.  Using any converters after this is most likely incorrect.
 
 Contexts List
 =============
-  What contexts are available for me to use?
 
+  What contexts are available for me to use?
 The list of available contexts is below. Unless specified otherwise, it can be
 assumed that the type returned by the context itself matches the type of the
 converter it is applied to.
