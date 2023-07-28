@@ -147,8 +147,10 @@ see configuration variables for plugins that are currently loaded or
 that you loaded in the past; if you've never loaded a plugin there's no
 way for the bot to know what configuration variables it registers.
 
-Channel-Specific Configuration
-------------------------------
+.. _channel-specific-configuration:
+
+Network- and Channel-Specific Configuration
+-------------------------------------------
 Many configuration variables can be specific to individual channels.
 The `Config` plugin provides an easy way to configure something for a
 specific channel; for instance, in order to set the prefix chars for a
@@ -162,6 +164,16 @@ sent to '!'.  Voila, channel-specific values!  Also, note that when
 using the `Config` plugin's ``list`` command, channel-specific values are
 preceeded by a '#' character to indicate such (similar to how '@' is
 used to indicate a group of values).
+
+Similarly, many configuration variables can be specific to individual
+networks. This works similarly by substituting ``channel`` with network::
+
+  <jemfinch|lambda> @config network supybot.reply.whenAddressedBy.chars !
+  <supybot> jemfinch|lambda: The operation succeeded.
+
+Network-specific configuration values are preceeded by a ':' character.
+As most (if not all) channel-specific values are also network-specific,
+they are preceeded by '#:'.
 
 
 Editing the Configuration Values by Hand
