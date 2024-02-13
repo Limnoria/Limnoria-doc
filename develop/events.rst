@@ -37,10 +37,10 @@ You can catch commands directly with “do-methods”: when the bot receives a
 ``PRIVMSG``, all ``doPrivmsg`` methods are called; when it gets a ``437``
 message, all ``do437`` methods are called, etc.
 
-These methods are called **before** Limnoria updates its internal state;
+These methods are called **after** Limnoria updates its internal state;
 so for example someone changes their nick from ``foo`` to ``bar`` (ie.
 ``:foo!~user@example.org NICK bar``), then ``doNick`` is called while
-``irc.state.channels[...].users`` still contains ``foo`` and not ``bar``.
+``irc.state.channels.[...].users`` already contains ``bar``.
 
 Those command take two arguments: an :ref:`Irc object <supybot-irclib-irc>`
 and a :ref:`IrcMsg object <supybot-ircmsgs>`.
