@@ -37,7 +37,12 @@ You can catch commands directly with “do-methods”: when the bot receives a
 ``PRIVMSG``, all ``doPrivmsg`` methods are called; when it gets a ``437``
 message, all ``do437`` methods are called, etc.
 
-Those command take two commands: an :ref:`Irc object <supybot-irclib-irc>`
+These methods are called **before** Limnoria updates its internal state;
+so for example someone changes their nick from ``foo`` to ``bar`` (ie.
+``:foo!~user@example.org NICK bar``), then ``doNick`` is called while
+``irc.state.channels[...].users`` still contains ``foo`` and not ``bar``.
+
+Those command take two arguments: an :ref:`Irc object <supybot-irclib-irc>`
 and a :ref:`IrcMsg object <supybot-ircmsgs>`.
 
 To get a list of all possible messages, check `IRC specifications
@@ -63,14 +68,6 @@ Commands handling
 
 Command dispatching
 -------------------
-
-.. note::
-    I wrote this subsection with the little knowledge I have of the
-    commands handling (all I know comes from hacks I made to write
-    the Aka plugin), so keep in mind some informations might
-    be wrong.
-    As for all the documentation, feel free to contact me to
-    correct/enhance it.
 
 * ``isCommandMethod`` takes a command name as a string (which may contain
   spaces) and returns a boolean telling if the plugin provides this command.
