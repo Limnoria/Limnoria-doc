@@ -135,14 +135,14 @@ nesting the hostmask command as the hostmask command gives your exact
 hostmask of that moment meaning ``nick!ident@host`` which means that you
 will get unidentified if you change your nickname.
 
-I (Mikaela) often specify hostmasks in two other forms depending on the
-situation which I go through in next subtopics.
+You can specify hostmasks in two other forms depending on the situation,
+or rely on network services (ie. NickServ).
 
 Wildcard nick
 ^^^^^^^^^^^^^
 
-In case my username and host stay the same or there aren't bots on same
-server which could get identified as me to other bots, I use::
+In case your username and host stay the same or there aren't bots on same
+server which could get identified as me to other bots, you can use::
 
     <user> user hostmask add myuser *!myident@myhost
     <supybot> The operation succeeded
@@ -153,9 +153,9 @@ network checks for it.
 Host only
 ^^^^^^^^^
 
-In case I am the only one who has the same host (cloaks/vhosts on many
+In case you are the only one who has the same host (cloaks/vhosts on many
 networks which have account in them, (for example Libera) or server where
-no one else has access and no bots share it either), I use::
+no one else has access and no bots share it either), you can use::
 
     <user> user hostmask add myuser *!*@mycloak
     <supybot> The operation succeeded
@@ -167,47 +167,8 @@ asking on help channel of your IRC network, in case of Libera that is
 ``/msg NickServ set cloak on``, but whatever your network users, you can 
 ask it on their help channel.
 
-Limnoria
---------
-
-Limnoria has two additional methods to identify, GPG and NickAuth, each
-provided as a plugin that you need to load (with the ``load`` command).
-
-GPG
-^^^
-
-First you must associate your GPG key with your Limnoria account. The gpg 
-add command takes two arguments, key id and key server.
-
-My key is 0x0C207F07B2F32B67 and it's on keyserver pool.sks-keyservers.net 
-so and now I add it to my bot::
-
-    <Mikaela> +gpg add 0x0C207F07B2F32B67 pool.sks-keyservers.net
-    <Yvzabevn> 1 key imported, 0 unchanged, 0 not imported.
-
-Now I can get token to sign so I can identify::
-
-    <Guest45020> +gpg gettoken
-    <Yvzabevn> Your token is: {03640620-97ea-4fdf-b0c3-ce8fb62f2dc5}. Please sign it with your GPG key, paste it somewhere, and call the 'auth' command with the URL to the (raw) file containing the signature.
-
-Then I follow the instructions and sign my token in terminal::
-
-    echo "{03640620-97ea-4fdf-b0c3-ce8fb62f2dc5}"|gpg --clearsign|curl -F 'sprunge=<-' http://sprunge.us
-
-Note that I sent the output to curl with flags to directly send the 
-clearsigned content to sprunge.us pastebin. Curl should be installed on
-most of distributions and comes with msysgit. If you remove the curl part,
-you get the output to terminal and can pastebin it to any pastebin of 
-your choice. Sprunge.us has only plain text and is easy so I used it in
-this example.
-
-And last I give the bot link to the plain text signature::
-
-    <Guest45020> +gpg auth http://sprunge.us/DUdd     
-    <Yvzabevn> You are now authenticated as Mikaela.
-
-NickAuth
-^^^^^^^^
+Using network services
+^^^^^^^^^^^^^^^^^^^^^^
 
 This requires you to load the NickAuth plugin (see next section of this 
 page for loading plugins).
