@@ -4,13 +4,7 @@
 Installing Limnoria on Windows
 ******************************
 
-This is the "easy to follow" guide to installing Limnoria. The installation
-documentation provided with the Limnoria distribution is really quite good
-already, but since people keep coming to IRC, asking a repeating pattern of
-questions, we thought it would be a good idea to expand it a bit to make it
-a little more of a "foolproof guide".
-
-This guide is only for Windows. If you don't want to install on Windows,
+This guide is for installing Limnoria on Windows. If you don't want to install on Windows,
 check out the :ref:`non-Windows install guide <use-install>`.
 
 
