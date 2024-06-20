@@ -303,9 +303,9 @@ Youtube has become so bloated it isn't.
 
 If you are ok with Limnoria fetching more data when users post URLs, you can use::
 
-    config supybot.protocols.http.peekSize 300000
+    config supybot.protocols.http.peekSize 1000000
 
-This will make it fetch 300kB from every link, instead of the default 8kB.
+This will make it fetch 1MB from every link, instead of the default 8kB.
 This should be enough for Youtube for now. If not enough for other websites,
 try increasing it further.
 
