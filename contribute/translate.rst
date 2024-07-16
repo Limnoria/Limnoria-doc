@@ -130,7 +130,7 @@ As you may know, I do some updates in Limnoria repository. ;)
 You need to have the latest version of the *messages.pot* files. So, you
 need to teach Git how to get this updates::
 
-    git remote add upstream https://github.com/ProgVal/Limnoria.git
+    git remote add upstream https://github.com/progval/Limnoria.git
 
 Now, every time you want to download updates, run::
 

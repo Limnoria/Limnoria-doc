@@ -1,3 +1,3 @@
 sphinx
 sphinx_rtd_theme
-git+https://github.com/ProgVal/Limnoria.git@testing
+git+https://github.com/progval/Limnoria.git

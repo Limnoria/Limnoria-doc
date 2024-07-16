@@ -80,7 +80,7 @@ date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.
 First, install Limnoria's optional dependencies (you can skip this
 step, but some features won't be available)::
 
-    sudo python3 -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --upgrade
+    sudo python3 -m pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --upgrade
 
 Then Limnoria itself::
 
@@ -104,7 +104,7 @@ Simply add ``--user`` to the end of both commands. First we install
 requirements (you can skip it, but some features won't be available)
 and then Limnoria itself.::
 
-    python3 -m pip install -r https://raw.githubusercontent.com/ProgVal/Limnoria/master/requirements.txt --user --upgrade
+    python3 -m pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --user --upgrade
     python3 -m pip install limnoria --user --upgrade
 
 You might need to add $HOME/.local/bin to your PATH.::
