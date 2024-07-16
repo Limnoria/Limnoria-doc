@@ -74,9 +74,6 @@ If you do not have root access, skip this section.
 If you are logged in as root, you can remove ``sudo`` from the install
 commands.
 
-If you want to use the testing branch which might be more up-to
-date BUT LESS TESTED, replace ``master`` with ``testing`` in the commands.
-
 First, install Limnoria's optional dependencies (you can skip this
 step, but some features won't be available)::
 

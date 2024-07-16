@@ -59,10 +59,10 @@ I won't have this write access).
 Then, open a console, and write (replace *YourName* by the name of your
 GitHub account)::
 
-    git clone https://github.com/<YourName>/Limnoria.git --branch=testing
+    git clone https://github.com/<YourName>/Limnoria.git
 
 If you are experienced with git, you can
-``git clone git@github.com:<YourName>/Limnoria.git --branch=testing``
+``git clone git@github.com:<YourName>/Limnoria.git``
 instead.
 
 This will create a new directory, called *Limnoria*, where all the code and
@@ -72,17 +72,6 @@ project history are copied. Now, cd to the directory::
 
 The things below affect to you only if you didn't specify the branch in
 the git clone command.
-
-Then, you need to checkout the *testing* branch. What does that mean? It means
-that there is differents stages in Limnoria: all changes are made in testing,
-and when I think *testing* is stable, I merge it into *master*.
-So, checking out *testing* means Git will use the code in *testing*, you
-will translate strings that are in *testing*, and changes you make will be
-in *testing*. Now, do it::
-
-    git checkout testing 
-
-Git will reply you that it understood what you mean by *testing*.
 
 Ok, now, you can translate.
 
@@ -118,7 +107,7 @@ Internet yet. To send it, run::
 Simple, isn't it?
 
 Now, go back to GitHub and your forked repository, and click the *Pull request*
-button. Then, set *testing* on the both side, and run *Update Commit Range*.
+button.
 I will by mailed that you asked me to merge your changes, and I will do it
 soon.
 
@@ -135,7 +124,7 @@ need to teach Git how to get this updates::
 Now, every time you want to download updates, run::
 
     git fetch upstream
-    git merge upstream/testing
+    git merge upstream/master
 
 Another way: mailing me your translations
 =========================================

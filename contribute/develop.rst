@@ -34,8 +34,7 @@ I learnt how to use Git with an ebook, also available as a real book:
 `Pro Git`_.
 
 Our preferred way of contributing is through GitHub pull requests to
-`Limnoria's repository`_. Please send your pull requests to the `testing`
-branch.
+`Limnoria's repository`_.
 
 .. _Pro Git: https://git-scm.com/book/
 .. _Limnoria's repository: https://github.com/ProgVal/Limnoria/
