@@ -297,15 +297,16 @@ Why doesn't the title snarfer announce links from a particular website (eg. Yout
 =====================================================================================
 
 Limnoria needs to fetch pages to get their title. But in order to avoid being
-overloaded by users, it only fetches the beginning (the first 8kB if I recall
-correctly). That's enough to find the title of most pages, but in the last years
-Youtube has become so bloated it isn't.
+overloaded by users, it only fetches the beginning (16kB as of 2024-07-27, 8kB for
+bots created before Limnoria v2022.10.28).
+That's enough to find the title of most pages, but in the last years Youtube
+has become so bloated it isn't.
 
 If you are ok with Limnoria fetching more data when users post URLs, you can use::
 
     config supybot.protocols.http.peekSize 1000000
 
-This will make it fetch 1MB from every link, instead of the default 8kB.
+This will make it fetch 1MB from every link, instead of the default 16kB.
 This should be enough for Youtube for now. If not enough for other websites,
 try increasing it further.
 
