@@ -97,12 +97,11 @@ Local installation (without root access)
 
 If you have followed the previous section, skip this one.
 
-Simply add ``--user`` to the end of both commands. First we install
-requirements (you can skip it, but some features won't be available)
+First we install requirements (you can skip it, but some features won't be available)
 and then Limnoria itself.::
 
-    python3 -m pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --user --upgrade
-    python3 -m pip install limnoria --user --upgrade
+    python3 -m pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --upgrade
+    python3 -m pip install limnoria --upgrade
 
 You might need to add $HOME/.local/bin to your PATH.::
 
