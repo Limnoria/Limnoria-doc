@@ -13,46 +13,36 @@ Ok, so you've decided to try out Limnoria.  That's great!  The more people who
 use Limnoria, the more people can submit bugs and help us to make it the best
 IRC bot in the world :)
 
-You should have already read through our install document (if you had to
-manually install) before reading any further.  Now we'll give you a whirlwind
-tour as to how you can get Limnoria setup and use Limnoria effectively.
+At this point, we assume you've already followed the steps to
+:ref:`install and configure <use-install>` Limnoria, and that the bot has
+connected to the network you specified.
 
-Initial Setup
-=============
+When the bot is in a channel, it will respond by default to messages prefixed by
+its nick (e.g. ``supybot: echo hi``), or any prefixes you configured inside the
+wizard (e.g. ``@echo hi``). If you haven't told it to join any channels,
+you can also send it direct messages, in which case no prefix is required.
 
-Now that you have Limnoria installed, you'll want to get it running.  The first
-thing you'll want to do is run ``supybot-wizard``.  Before running ``supybot-wizard``,
-you should be in the directory in which you want your bot-related files to
-reside.  The wizard will walk you through setting up a base config file for
-your Limnoria.  Once you've completed the wizard, you will have a config file
-called botname.conf.  In order to get the bot running, run ``supybot
-botname.conf``.
+Finding the bot's commands
+==========================
 
-Listing Commands
-================
-
-Ok, so let's assume your bot connected to the server and joined the channels
-you told it to join.  For now we'll assume you named your bot 'mybot' (you
-probably didn't, but it'll make it much clearer in the examples that follow to
-assume that you did).  We'll also assume that you told it to join #channel (a
-nice generic name for a channel, isn't it? :))  So what do you do with this
-bot that you just made to join your channel?  Try this in the channel::
+Limnoria uses a two tier system for its commands, where each command is
+registered under a plugin. The first step to navigating Limnoria is to run
+``list``, which will show you all the plugins loaded::
 
     <user> supybot: list
     <supybot> Admin, Channel, ChannelLogger, Config, Misc, Network, Owner, Plugin, User, and Utilities
 
 Replacing 'supybot' with the actual name you picked for your bot, of course.
-Your bot should reply with a list of the plugins it currently has loaded.  At
-least `Admin`, `Channel`, `Config`, `Misc`, `Owner`, and `User` should be
-there; if you used supybot-wizard to create your configuration file you may
-have many more plugins loaded.  The list command can also be used to list the
+At least `Admin`, `Channel`, `Config`, `Misc`, `Owner`, and `User` should be
+there; if you used ``supybot-wizard`` to create your configuration file you may
+have many more plugins loaded.  The ``list`` command can then be used to list the
 commands in a given plugin::
 
     <user> supybot: list Misc
     <supybot> user: apropos, clearmores, completenick, help, last, list, more, noticetell, ping, source, tell, and version
 
-This listed all the commands in the `Misc` plugin.  If you want to see the help
-for any command, just use the help command::
+This lists all the commands in the `Misc` plugin.  If you want to see the help
+for a specific command, you can then use the help command::
 
     <user> supybot: help help
     <supybot> user: (help [<plugin>] [<command>]) -- This command gives a useful description of what <command> does. <plugin> is only necessary if the command is in more than one plugin. You may also want to use the 'list' command to list all available plugins and commands.
@@ -61,23 +51,23 @@ for any command, just use the help command::
     <user> supybot: help load
     <supybot> user: (load <plugin>) -- Loads the plugin <plugin> from any of the directories in conf.supybot.directories.plugins; usually this includes the main installed directory and 'plugins' in the current directory.
 
-Sometimes more than one plugin will have a given command; for instance, the
-"list" command exists in both the Misc and Config plugins (both loaded by
-default).  List, in this case, defaults to the Misc plugin, but you may want
+Sometimes more than one plugin will register a given command; for instance, the
+``list`` command exists in both the Misc and Config plugins (both loaded by
+default).  ``list``, in this case, defaults to the Misc plugin, but you may want
 to get the help for the list command in the Config plugin.  In that case,
-you'll want to give your command like this::
+you can prefix your command with the name of the plugin::
 
     <user> supybot: help config list
     <supybot> user: (config list <group>) -- Returns the configuration variables available under the given configuration <group>. If a variable has values under it, it is preceded by an '@' sign.
 
 Anytime your bot tells you that a given command is defined in several plugins,
-you'll want to use this syntax ("plugin command") to disambiguate which
+you'll need to use this "plugin command" syntax to choose which
 plugin's command you wish to call.  For instance, if you wanted to call the
-Config plugin's list command, then you'd need to say::
+Config plugin's ``list`` command, then you'd need to say::
 
     <user> supybot: config list
 
-Rather than just 'list'.
+Rather than just ``list``.
 
 Making Limnoria Recognize You
 =============================
