@@ -153,6 +153,4 @@ Now to start the bot, run, still from within the 'runbot' directory::
 
 And watch the magic!
 
-For a tutorial on using and managing the bot from here on, see the `Supybook`_.
-
-.. _Supybook: https://hoxu.github.io/supybook/
+For a tutorial on using and managing the bot from here on, see the :ref:`Getting Started guide <getting-started>`.
