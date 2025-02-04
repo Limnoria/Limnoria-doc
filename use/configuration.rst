@@ -9,7 +9,8 @@ Much of Limnoria's behaviour, as well as those of its plugins, is configurable.
 
 Limnoria provides a hierarchical configuration system, which is usually managed
 via IRC using the `Config` plugin. By default, it will write back its configuration
-periodically to the same ``botname.conf`` file created by ``supybot-wizard``.
+periodically to the same ``botname.conf`` that the bot was started with.
+(In most cases, this will be the ``.conf`` file created by ``supybot-wizard``.)
 
 The main commands to interact with the config system are ``config``,
 ``config list``, and ``config help``, which are described in the following
