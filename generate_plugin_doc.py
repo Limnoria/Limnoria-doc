@@ -31,6 +31,8 @@ with open(os.path.join(OUTPUT_DIR, "index.rst"), "w") as fd:
     fd.write(
         textwrap.dedent(
             """
+            .. _builtin-plugins-reference:
+
             Built-in plugins reference
             ==========================
 

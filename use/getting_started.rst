@@ -63,147 +63,159 @@ you can prefix your command with the name of the plugin::
 Anytime your bot tells you that a given command is defined in several plugins,
 you'll need to use this "plugin command" syntax to choose which
 plugin's command you wish to call.  For instance, if you wanted to call the
-Config plugin's ``list`` command, then you'd need to say::
+Config plugin's ``list`` command, then you'd need to run::
 
     <user> supybot: config list
 
 Rather than just ``list``.
 
-Making Limnoria Recognize You
-=============================
+.. _login-to-bot:
 
-For making the bot to identify to services, please see :ref:`identifying to services. <identifying-to-services>`
+Logging in to Limnoria
+======================
 
-If you ran the wizard, then it is almost certainly the case that you already
-added an owner user for yourself.  If not, however, you can add one via the
-handy-dandy 'supybot-adduser' script.  You'll want to run it while the bot is
-not running (otherwise it could overwrite supybot-adduser's changes to your
-user database before you get a chance to reload them).  Just follow the
-prompts, and when it asks if you want to give the user any capabilities, say
-yes and then give yourself the 'owner' capability, restart the bot and you'll
-be ready to load some plugins!
+.. note::
+    For making the bot to identify to services, please see
+    :ref:`identifying to services. <identifying-to-services>`
 
-Now, in order for the bot to recognize you as your owner user, you'll have to
-identify with the bot.
+Most administrative tasks in Limnoria (loading plugins, adding networks) require
+you to be logged in to the bot as an ``owner`` user. If you used
+``supybot-wizard`` to configure the bot, you have probably added an owner user
+already. If not, shut off the bot and run the ``supybot-adduser`` script to
+create a user, and give yourself the ``owner`` capability when it prompts you
+to do so.
 
-Open up a query window in your irc client ('/query'
-should do it; if not, just know that you can't identify in a channel because
-it requires sending your password to the bot).  Then type this::
+To log in to the bot, use the ``identify`` command. This must be sent in a
+private message (i.e. ``/query``) to the bot, to avoid leaking your password
+to a channel::
 
     <user> help identify
     <supybot> (identify <name> <password>) -- Identifies the user as <name>. This command (and all other commands that include a password) must be sent to the bot privately, not in a channel.
 
-And follow the instructions; the command you send will probably look like
-this, with 'myowneruser' and 'myuserpassword' replaced::
+Replacing "myowneruser" and "myuserpassword" with your login details, you should
+run::
 
     <user> identify myowneruser myuserpassword
-    <supybot> The operation succeeded
+    <supybot> The operation succeeded.
 
-The bot told you 'The operation succeeded', meaning that you got the right name
-and password.  Now that you're identified, you can do anything that requires
-any privilege: that includes all the commands in the Owner and Admin plugins,
-which you may want to take a look at (using the list and help commands, of
-course).  One command in particular that you might want to use (it's from the
-User plugin) is the 'hostmask add' command: it lets you add a hostmask to your
-user record so the bot recognizes you by your hostmask instead of requiring
-you always to identify with it before it recognizes you.  Use the 'help'
-command to see how this command works.  Here's how I often use it::
+Once you are logged in as an owner user, you can run commands that require
+privileges. Many such administrative commands are located in the *Owner* and
+*Admin* plugins.
 
-    <user> hostmask add myuser [hostmask] mypassword
-    <supybot> The operation succeeded
+Automatic login (optional)
+--------------------------
 
-You may not have seen that '[hostmask]' syntax before.  Limnoria allows nested
-commands, which means that any command's output can be nested as an argument
-to another command.  The hostmask command from the User plugin returns the
-hostmask of a given nick, but if given no arguments, it returns the hostmask
-of the person giving the command. So the command above adds the hostmask I'm
-currently using to my user's list of recognized hostmasks.  I'm only required
-to give mypassword if I'm not already identified with the bot.
+If you wish to make managing the bot easier, there are a few ways to log in to
+the bot automatically.
 
-It might often be better to specify the hostmask by yourself instead of 
-nesting the hostmask command as the hostmask command gives your exact
-hostmask of that moment meaning ``nick!ident@host`` which means that you
-will get unidentified if you change your nickname.
+Automatic login using network services (NickAuth)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can specify hostmasks in two other forms depending on the situation,
-or rely on network services (ie. NickServ).
+On IRC networks that provide a modern NickServ implementation,
+Limnoria supports associating your bot account with a services account. This is
+often the easiest method, as it does not involve configuring hostmasks.
 
-Wildcard nick
-^^^^^^^^^^^^^
+To use this, you first need to load the **NickAuth** plugin (see the
+:ref:`loading plugins <loading-plugins>` section for details on how to do that).
 
-In case your username and host stay the same or there aren't bots on same
-server which could get identified as me to other bots, you can use::
-
-    <user> user hostmask add myuser *!myident@myhost
-    <supybot> The operation succeeded
-
-I only recommend this if there is ident server configured and the IRC
-network checks for it.
-
-Host only
-^^^^^^^^^
-
-In case you are the only one who has the same host (cloaks/vhosts on many
-networks which have account in them, (for example Libera) or server where
-no one else has access and no bots share it either), you can use::
-
-    <user> user hostmask add myuser *!*@mycloak
-    <supybot> The operation succeeded
-
-Mycloak at Libera is usually in format ``user/accountname``. You
-can usually request hostmasks using HostServ, ``/msg HostServ help``, or
-asking on help channel of your IRC network, in case of Libera that is
-#libera. OFTC is exception to this and uses 
-``/msg NickServ set cloak on``, but whatever your network users, you can 
-ask it on their help channel.
-
-Using network services
-^^^^^^^^^^^^^^^^^^^^^^
-
-This requires you to load the NickAuth plugin (see next section of this 
-page for loading plugins).
-
-NickAuth allows you to identify to the bot using your NickServ account. 
-First I add my NickServ account name which I can see with "/whois Mikaela Mikaela" (because my current nick is Mikaela). It gives me something like::
+To find your NickServ account name, run ``/whois <yournick>``, and you should see
+some output like this::
 
     [Mikaela] is logged in as Mikaela
 
-Now I tell the bot add my NickServ account Mikaela to my bot user on 
-Libera. The syntax is [<network>] <bot-username> <NickServ-account>::
+NickAuth logins are managed using the ``nickauth nick add`` and ``nickauth nick remove``
+commands. For clarity, ``<user>`` refers to your bot user, and ``<nick>`` refers
+to your NickServ account name::
 
-    <Mikaela> +nickauth nick add Libera Mikaela Mikaela
-    <Yvzabevn> OK.
+    <user> @help nickauth nick add
+    <Limnoria> (nick add [<network>] <user> <nick>) -- Add <nick> to the list of nicks owned by the <user> on the <network>. You have to register this nick to the network services to be authenticated. <network> defaults to the current network.
 
-Next time when I identify to NickServ I will get identified automatically
-if the bot sees that I was identified when I joined. This requires server
-to support extended-join and WHOX. Most of modern networks support
-them, but if your bot is using some bouncer, it might not support them.
+To add the NickServ account "Mikaela" to a bot account of the same name::
 
-Automatic identification doesn't work always even when it's supported, but
-when it fails, I can always use the NickAuth Auth command to identify to
-the bot::
+    <Mikaela> @nickauth nick add Mikaela Mikaela
+    <Limnoria> OK.
 
-    <Guest45020> +whoami
-    <Yvzabevn> I don't recognize you. You can messsage me either of these two commands: "user identify <username> <password>" to log in or "user register <username> <password>" to register.
-    <Guest45020> +nickauth auth
-    <Yvzabevn> You are now authenticated as Mikaela.
+On most networks, NickAuth will automatically activate when you log in to your
+services account or join a channel the bot is in. Note that this requires the
+`extended-join <https://ircv3.net/specs/extensions/extended-join>`_ and
+`WHOX <https://ircv3.net/specs/extensions/whox>`_ IRCv3 features to be supported
+by the IRC network.
+
+In places where this does not work, you can manually trigger a login
+attempt using the ``nickauth auth`` command::
+
+    <Guest45020> @whoami
+    <Limnoria> I don't recognize you. You can messsage me either of these two commands: "user identify <username> <password>" to log in or "user register <username> <password>" to register.
+    <Guest45020> @nickauth auth
+    <Limnoria> You are now authenticated as Mikaela.
+
+Automatic login using a hostmask
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An alternative to NickAuth that works everywhere is automatic login using your
+IRC hostmask (``nick!user@host``). This may be more work to set up as there is
+no one-size-fits-all hostmask to match someone; the best approach depends
+on the network you're on and the type of host you are connecting from.
+
+Hostmask login is configured using the ``user hostmask add`` and
+``user hostmask remove`` commands::
+
+    <user> @help hostmask add
+    <Limnoria> (hostmask add [<name>] [<hostmask>] [<password>]) -- Adds the hostmask <hostmask> to the user specified by <name>. The <password> may only be required if the user is not recognized by hostmask. <password> is also not required if an owner user is giving the command on behalf of some other user. If <hostmask> is not given, it defaults to your current hostmask. If <name> is not given, it defaults to your currently identified name. This message must be sent to the bot privately (not on a channel) since it may contain a password.
+
+.. warning::
+    Before adding a hostmask, double check that it is specific enough to only
+    match *you*. Giving permissions to wide hostmasks (e.g. ``nick!user@*``) is
+    a security risk, and could allow others to hijack your bot.
+
+If you're on a network that provides unique :ref:`cloaks/vhosts <cloak-examples>`
+based on your username, or have an otherwise dedicated static IP
+(e.g. on a server not shared with other people), you can use the "host" part of
+your hostmask for logging in::
+
+    <user> user hostmask add myuser *!*@mycloak
+    <Limnoria> The operation succeeded.
+
+On shared hosts that implement the `IDENT protocol <https://en.wikipedia.org/wiki/Ident_protocol>`_,
+you may want to add the username / ident field to the hostmask as well.
+Note that this only works well if the network also implements IDENT checking;
+otherwise, anyone can connect with anything in the username field::
+
+    <user> user hostmask add myuser *!myident@myhost
+    <Limnoria> The operation succeeded
+
+.. _cloak-examples:
+
+*mycloak* at Libera.chat, for instance, is usually in the format ``user/accountname``.
+On other networks, you may be able to request cloaks using HostServ (``/msg HostServ help``)
+or by asking a network operator. Note: OFTC is exception, and uses
+``/msg NickServ set cloak on`` instead.
+
+.. _loading-plugins:
 
 Loading Plugins
 ===============
 
-Let's take a look at loading other plugins.  If you didn't use supybot-wizard,
-though, you might do well to try it before playing around with loading plugins
-yourself: each plugin has its own configure function that the wizard uses to
-setup the appropriate registry entries if the plugin requires any.
+.. note::
+    To load plugins, you first need to be :ref:`logged in the the bot <login-to-bot>`.
 
-If you do want to play around with loading plugins, you're going to need to
-have the owner capability.
+Loading plugins is done with the ``load`` command::
 
-Remember earlier when I told you to try ``help load``?  That's the very command
-you'll be using. Basically, if you want to load, say, the Games plugin, then
-``load Games``.  Simple, right?  If you need a list of the plugins you can load,
-you'll have to list the directory the plugins are in (using whatever command
-is appropriate for your operating system, either 'ls' or 'dir').
+    <user> @help load
+    <Limnoria> user: (load <plugin>) -- Loads the plugin <plugin> from any of the directories in conf.supybot.directories.plugins; usually this includes the main installed directory and 'plugins' in the current directory.
+
+For example, to load the *Games* plugin, run::
+
+    <user> @load Games
+    <Limnoria> The operation succeeded.
+
+To unload a plugin, there is a corresponding ``unload`` command::
+
+    <user> @unload Games
+    <Limnoria> The operation succeeded.
+
+To find plugins to load, consult the :ref:`Built-in plugins reference <builtin-plugins-reference>`
+or the Plugins list on `limnoria.net <https://limnoria.net/plugins.xhtml>`_.
 
 Understanding the help syntax
 =============================
