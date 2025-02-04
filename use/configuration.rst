@@ -157,21 +157,22 @@ Note that channel-specific settings take precedence over network-specific ones.
 Finally, you can also unset any channel-specific or network-specific variables
 with the ``config reset channel`` and ``config reset network`` commands.
 
-Editing the Configuration Values by Hand
-----------------------------------------
+Editing the Config Manually
+---------------------------
 
-NOTE: **We don't recommend this; you should normally
-do everything with the commands in the Config plugin.**
+.. note::
+    We don't recommend this; you should normally do everything with the commands
+    in the Config plugin.
 
-To reload Limnoria's configuration from disk, use the ``config reload`` command.
+Before editing the config manually, you should either stop the bot or
+set the ``supybot.flush`` option to ``false`` to prevent Limnoria from
+writing its config out and overwriting your changes.
+
+Once you have made your changes, use the ``config reload`` command to reload
+Limnoria's configuration from disk.
 This will refresh the bot's main configuration as well as any user/channel/ignore
 databases, which are stored by default in separate files under the ``conf/``
 directory.
-
-Note that Limnoria writes its configuration files to disk periodically,
-so it may overwrite manual edits to configuration files.
-To prevent this, set the ``supybot.flush`` option to ``false`` while editing
-its config files to disable automatic flushing.
 
 If you cannot access the bot on IRC and your bot is running on a POSIX
 system, you can also send it a SIGHUP signal; it is exactly the same
