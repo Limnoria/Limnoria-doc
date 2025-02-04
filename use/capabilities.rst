@@ -7,150 +7,173 @@ Capabilities
 Introduction
 ------------
 
-Ok, some explanation of the capabilities system is probably in order.  With
-most IRC bots (including the ones I've written myself prior to this one) "what
-a user can do" is set in one of two ways.  On the *really* simple bots, each
-user has a numeric "level" and commands check to see if a user has a "high
-enough level" to perform some operation.  On bots that are slightly more
-complicated, users have a list of "flags" whose meanings are hardcoded, and the
-bot checks to see if a user possesses the necessary flag before performing some
-operation.  Both methods, IMO, are rather arbitrary, and force the user and the
-programmer to be unduly confined to less expressive constructs.
+Limnoria's access control feature is called the *capabilities* system. This behaves
+similarly to access flags, except the name of each flag reflects a command
+name in the bot. Compared to a traditional access scheme based on numeric levels
+or flags with hardcoded meanings, this system aims to be both more expressive
+and self-documenting.
 
-This bot is different.  Every user has a set of "capabilities" that is
-consulted every time they give the bot a command.  Commands, rather than
-checking for a user level of 100, or checking if the user has an 'o' flag, are
-instead able to check if a user has the 'owner' capability.  At this point such
-a difference might not seem revolutionary, but at least we can already tell
-that this method is self-documenting, and easier for users and developers to
-understand what's truly going on.
+Capabilities and Anticapabilities
+---------------------------------
 
-User Capabilities
------------------
-What the heck can these capabilities DO?
+Capabilities are automatically checked whenever someone runs a bot command.
+Each command implicitly has a **capability** and an **anticapability** based on
+its command name. For instance, the ``rot13`` command will have "rot13" as its
+capability and "-rot13" as its anticapability. This command does not require
+special privileges, so by default, everyone will have the "rot13" capability
+unless they also have the corresponding "-rot13" anticapability.
 
-If that was all, well, the capability system would be *cool*, but not many
-people would say it was *awesome*.  But it **is** awesome!  Several things are
-happening behind the scenes that make it awesome, and these are things that
-couldn't happen if the bot was using numeric userlevels or single-character
-flags.  First, whenever a user issues the bot a command, the command dispatcher
-checks to make sure the user doesn't have the "anticapability" for that
-command.  An anticapability is a capability that, instead of saying "what a
-user can do", says what a user *cannot* do.  It's formed rather simply by
-adding a dash ('-') to the beginning of a capability; 'rot13' is a capability,
-and '-rot13' is an anticapability.
+In short, capabilities declare what a user *can* do, while anticapabilities
+declare what a user *cannot* do.
 
-Anyway, when a user issues the bot a command, perhaps 'calc' or 'help', the bot
-first checks to make sure the user doesn't have the '-calc' or the '-help'
-(anti)capabilities before even considering responding to the user.  So commands
-can be turned on or off on a *per user* basis, offering fine-grained control
-not often (if at all!) seen in other bots.  This can be further refined by
-limiting the (anti)capability to a command in a specific plugin or even an
-entire plugin.  For example, the rot13 command is in the Filter plugin.  If a
-user should be able to use another rot13 command, but not the one in the Format
-plugin, they would simply need to be given '-Format.rot13' anticapability.
-Similarly, if a user were to be banned from using the Filter plugin altogether,
-they would simply need to be given the '-Filter' anticapability.
+Capabilities and anticapabilities may take many forms, to account for many
+plugins potentially having the same command name:
 
-Channel Capabilities
---------------------
-What if #linux wants completely different capabilities from #windows?
+- "rot13", "-rot13": applies to all commands named ``rot13``
+- "Filter.rot13", "-Filter.rot13": applies to only the *Filter* plugin's ``rot13`` command
+- "Filter", "-Filter": applies to all commands in the *Filter* plugin
 
-But that's not all!  The capabilities system also supports *channel*
-capabilities, which are capabilities that only apply to a specific channel;
-they're of the form '#channel,capability'.  Whenever a user issues a command to
-the bot in a channel, the command dispatcher also checks to make sure the user
-doesn't have the anticapability for that command *in that channel*, and if the
-user does, the bot won't respond to the user in the channel.  Thus now, in
-addition to having the ability to turn individual commands on or off for an
-individual user, we can now turn commands on or off for an individual user on
-an individual channel!
+Compound command names like ``user hostmask add`` are also supported, and can
+be matched many ways:
 
-So when a user 'foo' sends a command 'bar' to the bot on channel '#baz', first
-the bot checks to see if the user has the anticapability for the command by
-itself, '-bar'.  If so, it errors right then and there, telling the user that
-they lacks the 'bar' capability.  If the user doesn't have that anticapability,
-then the bot checks to see if the user issued the command over a channel, and
-if so, checks to see if the user has the antichannelcapability for that
-command, '#baz,-bar'.  If so, again, it tells the user that they lack the 'bar'
-capability.  If neither of these anticapabilities are present, then the bot
-just responds to the user like normal.
+- "add" (last part of command name)
+- "User" (plugin name)
+- "User.hostmask.add" (full command name)
+- "User.hostmask" (all commands under ``user hostmask``)
 
-Default Capabilities
---------------------
-So what capabilities am I dealing with already?
+Capabilities can be assigned to bot users either globally, or on a per-channel
+basis using "channel capabilities". The commands to do so are described in the
+:ref:`Managing capabilities <capabilities-manage>` section.
 
-There are several default capabilities the bot uses.  The most important of
-these is the 'owner' capability.  This capability allows the person having it
-to use *any* command.  It's best to keep this capability reserved to people who
-actually have access to the shell the bot is running on.  It's so important, in
-fact, that the bot will not allow you to add it with a command--you'll have you
-edit the users file directly to give it to someone.
+Channel capabilities
+^^^^^^^^^^^^^^^^^^^^
 
-There is also the 'admin' capability for non-owners that are highly trusted to
-administer the bot appropriately.  They can do things such as change the bot's
-nick, cause the bot to ignore a given user, make the bot join or part channels,
-etc. They generally cannot do administration related to channels, which is
-reserved for people with the next capability.
+In addition to global capabilities, Limnoria also defines channel-specific
+capabilities in the form "#channel,capability". These take the form of a
+regular (anti)capability, but with a channel name prefix.
 
-People who are to administer channels with the bot should have the
-'#channel,op' capability--whatever channel they are to administrate, they
-should have that channel capability for 'op'.  For example, since I want
-inkedmn to be an administrator in #supybot, I'll give them the '#supybot,op'
-capability.  This is in addition to their 'admin' capability, since the 'admin'
-capability doesn't give the person having it control over channels.
-'#channel,op' is used for such things as giving/receiving ops, kickbanning
-people, lobotomizing the bot, ignoring users in the channel, and managing the
-channel capabilities. The '#channel,op' capability is also basically the
-equivalent of the 'owner' capability for capabilities involving
-#channel--basically anyone with the #channel,op capability is considered to
-have all positive capabilities and no negative capabilities for #channel.
+For example, if someone runs the ``echo`` command in a channel named "#chat",
+the bot will check:
 
-One other globally important capability exists: 'trusted'.  This is a command
-that basically says "This user can be trusted not to try and crash the bot." It
-allows users to call commands like 'icalc' in the 'Math' plugin, which can
-cause the bot to begin a calculation that could potentially never return (a
-calculation like '10**10**10**10'). Another command that requires the 'trusted'
-capability is the 're' command in the 'Utilities' plugin, which (due to the
-regular expression implementation in Python (and any other language that uses
-NFA regular expressions, like Perl or Ruby or Lua or ...) which can allow a
-regular expression to take exponential time to process).  Consider what would
-happen if someone gave the bot the command 're [format join "" s/./ [dict go]
-/] [dict go]'  It would basically replace every character in the output of
-'dict go' (14,896 characters!) with the entire output of 'dict go', resulting
-in 221MB of memory allocated!  And that's not even the worst example!
+- Whether the caller has the global "-echo" anticapability
+- Whether the caller has the global "echo" capability
+- Whether the caller has the "#chat,-echo" anti-channel capability
+- Whether the caller has the "#chat,echo" channel capability
 
+These 4 checks will then be repeated for the "Utilities" and "Utilities.echo"
+capabilities, as the ``echo`` command is part of the *Utilities* plugin.
 
+Beyond solely restricting privileged commands, the capabilities system allows
+toggling access for all commands on a global or per-channel level. See the
+:ref:`Example section <capabilities-example>` for some examples on how to do
+this.
+
+Special Built-in Capabilities
+-----------------------------
+
+Limnoria includes some special built-in capabilities, which are described below:
+
+owner
+^^^^^
+
+"owner" is the highest-privilege capability inside Limnoria. It is typically
+reserved for the bot owner that also has shell access to the machine running
+Limnoria, and grants them access to *all* commands on the bot.
+By default, this also allows downloading third-party plugins and thus running
+arbitrary code as the bot's system user. (This can be further hardened, see the
+:ref:`Security <security>` page for more details.)
+
+The more technical definition is that users with the "owner" capability have
+all capabilities and override all anticapabilities.
+
+For security reasons, this capability cannot be added to users via IRC.
+Instead, you will need to run the ``supybot-adduser`` script or edit the
+configuration manually to add an owner user.
+
+admin
+^^^^^
+
+"admin" is the less-privileged capability for bot administrators. They can
+do things such as change the bot's nick, manage ignored users, make the bot
+join or part channels, etc. They cannot, however, load plugins or connect the
+bot to new networks.
+
+This capability does not automatically grant access to channel administration
+commands, which is instead included in the following capability.
+
+#channel,op
+^^^^^^^^^^^
+
+The "#channel,op" capability allows a caller to use channel administration
+commands such as ``op``, ``kban`` (kickban), and ``channel ignore add``
+(setting a channel-specific user to ignore). "#channel" should be replaced with
+the actual name of the channel, such as "#limnoria".
+
+The "#channel,op" capability implies all channel capabilities for a particular
+channel, and overrides any channel anticapabilities. (It is akin to the "owner"
+capability, but on a per-channel basis.)
+
+When the AutoMode plugin is loaded, the bot will automatically try to grant
+op (@) to users with this capability when they join.
+
+#channel,halfop
+^^^^^^^^^^^^^^^
+
+Grants access to the ``halfop`` command (i.e. asking the bot to give you halfop).
+
+When the AutoMode plugin is loaded, the bot will automatically try to grant
+halfop (%) to users with this capability when they join.
+
+#channel,voice
+^^^^^^^^^^^^^^
+
+Grants access to the ``voice`` command (i.e. asking the bot to give you voice).
+
+When the AutoMode plugin is loaded, the bot will automatically try to grant
+voice (+) to users with this capability when they join.
+
+trusted
+^^^^^^^
+
+The "trusted" capability grants people access to commands that may slow down or
+crash the bot, but do not otherwise demand special permissions. One example is
+the ``icalc`` command in the *Math* plugin, which allows trusted users to run
+large calculations even if they never complete (e.g. 10**10**10**10).
+
+.. _capabilities-manage:
 Managing capabilities
 ---------------------
 
-User Capabilities
-^^^^^^^^^^^^^^^^^
+Managing User and Channel Capabilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-User capabilities are controlled with the ``admin capability <add|remove>``
-and ``channel capability <add|remove>``. Their difference is that the 
-first one is only restricted to those who have the admin capability.
+User capabilities are controlled with the ``admin capability <add|remove>`` commands.
+These commands can only be used by admins (those who have the "admin" capability),
+and admins can only grant capabilities that they have themselves.
 
-To make user1 admin, I would run::
+To make user1 admin, run::
 
     admin capability add user1 admin
 
-If the bot joins on a channel where there should be ops who should't have
-power over any other channel, I would run::
+To undo this, run::
+
+    admin capability remove user1 admin
+
+Channel capabilities are managed with the  ``channel capability <add|remove>``
+commands. These commands require the ``#channel,op`` capability for a channel.
+
+To give user2 op privileges for #channel::
 
     channel capability add #channel user2 op
 
-Note that admins cannot give anyone capability which they don't have by
-themselves first, so user1 couldn't use ``channel capability add`` unless
-they were made #channel,op first. The command::
+The above command is equivalent to::
 
     admin capability add user2 #channel,op
 
-has the same effect as ``channel capability add``, but it requires user
-to have the admin capability in addition to #channel,op.
+but this requires the caller to have the ``admin`` capability in addition to ``#channel,op``.
 
-If there is abusive user who shouldn't have op capability but still does
-for one reason or another, I could run either::
+Anticapabilities override capabilities. For instance, if user3 had the "op"
+capability on #channel, this can be removed with either::
 
     channel capability add user3 -op
 
@@ -158,78 +181,65 @@ or::
 
     channel capability remove user3 op
 
-Anticapabilities are checked before normal capabilities so the first
-command would work even if user3 still had the op capability. Removing
-capability which isn't given to user or channel adds anti-capability
-automatically.
+Finally, user capabilities can be viewed with ``user capabilities`` command.
 
-User capabilities can be viewed with ``user capabilities`` command.
+Managing Default Capabilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Channel
-^^^^^^^
+Default capabilities affect everyone, whether they are logged in the the bot or
+not. They are controlled by the ``owner defaultcapability <add|remove>`` command.
 
-Channel capabilities affect everyone on the current channel including
-unidentified users. They are controlled with the ``channel capability <set|unset>`` commands.
+As mentioned in the introduction, normally commands that do not require
+special privileges are accessible by everyone. You can disable certain commands
+by default by adding default anticapabilities. For instance, to disallow
+users from registering new bot accounts::
 
-If I wanted to make everyone on the channel able to voice themselves or get
-automatically voiced by the AutoMode plugin, I would start by unsetting the
-default anticapability and setting the capability.::
+    defaultcapability add -user.register
+
+To undo this::
+
+    defaultcapability remove -user.register
+
+Default capabilities can be restored to default with the following command::
+
+    config setdefault capabilities
+
+Managing Channel Default Capabilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Default channel capabilities affect everyone on a specific channel.
+They are controlled with the ``channel capability <set|unset>`` commands.
+
+For instance, to make everyone on the channel able to voice themselves and get
+automatically voiced by the AutoMode plugin, unset the default anticapability
+and set the capability::
 
     channel capability unset -voice
     channel capability set voice
 
-Now anyone on the channel can voice themselves or if AutoMode plugin is
-configured to voice voiced people, the will automatically get voiced on
-join.
-
-If there was unwanted plugin or plugin which output was causing spam, Games
-for example, I could add anticapability for it and prevent the whole plugin
-from being used.::
+If there was some unwanted plugin or plugin whose output was causing spam, Games
+for example, a channel default anticapability can be added which prevents the
+whole plugin from being used::
 
     channel capability set -Games
 
-Note that I didn't specify any separate command after Games.
+.. _capabilities-example:
 
-Default
-^^^^^^^
+Example: limiting noisy commands
+--------------------------------
 
-Default capabilities affect everyone whether they are identified or not.
-They are controlled by the ``owner defaultcapability <add|remove>`` command
-and they arecommonly used for preventing users from adding/removing akas,
-using Unix Progstats which disabling is asked about in supybot-wizard or
-registering to the bot using anticapabilities.::
-
-    defaultcapability add -aka.add
-    defaultcapability add -aka.remove
-    defaultcapability add -user.register
-    defaultcapability add -unix.progstats
-
-To undo this I would simply do the opposite.::
-
-    defaultcapability remove -aka.add
-    defaultcapability remove -aka.remove
-    defaultcapability remove -user.register
-    defaultcapability remove -unix.progstats
-
-Defaultcapabilities can be restored with either of these two commands::
-
-    config setdefault capabilities
-    config capabilities [config default capabilities]
-
-
-Example
--------
-
-To make all this less abstract, here is a popular example of what
+To make this less abstract, here is a popular example of what
 capabilities are used for: disabling a plugin or command for everyone
-but a select group of people
+but a select group of people.
+
+Disallowing everyone from using the ``Games`` plugin, globally::
+
+    defaultcapability add -games
 
 Allowing only user ``foo`` to use the ``Games`` plugin, globally::
 
-    defaultcapability add -games
     admin capability add foo games
 
-And to undo it::
+To undo all this::
 
     defaultcapability remove -Games
     admin capability remove foo Games
@@ -251,16 +261,13 @@ entire plugin, you would use the same commands, but with ``-games.dice`` and
 Final Word
 ----------
 
-From a programmer's perspective, capabilities are flexible and easy to use.  Any
-command can check if a user has any capability, even ones not thought of when
-the bot was originally written. Plugins can easily add their own
-capabilities--it's as easy as just checking for a capability and documenting
-somewhere that a user needs that capability to do something.
+From a programmer's perspective, capabilities are flexible and easy to use.
+The bulk of permission checking is abstracted away from the plugin itself,
+so fine-grained access control is possible without extra code in each plugin.
+Plugins may also check for custom capabilities - this only requires checking
+for a specific capability name, and documenting somewhere how it is used.
 
-From an user's perspective, capabilities remove a lot of the mystery and
-esotery of bot control, in addition to giving a bot owner absolutely
-finegrained control over what users are allowed to do with the bot.
-Additionally, defaults can be set by the bot owner for both individual channels
-and for the bot as a whole, letting an end-user set the policy they want the bot
-to follow for users that haven't yet registered in their user database.  It's
-really a revolution!
+From an bot owner's perspective, capabilities provide fine-grained access control
+for both admins and regular users. Default capabilities can also be set for both
+individual channels and the bot as a whole, allowing owners to set policies even
+for users that are not registered with the bot.
