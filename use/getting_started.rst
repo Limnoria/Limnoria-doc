@@ -220,8 +220,8 @@ or the Plugins list on `limnoria.net <https://limnoria.net/plugins.xhtml>`_.
 Understanding the help syntax
 =============================
 
-The syntax of a command describes how to run a command.
-The syntax is given by the help command.
+This section further explains the help syntax given by the ``help`` command.
+
 Some examples:
 
 help [<plugin>] [<command>]
@@ -230,9 +230,9 @@ help [<plugin>] [<command>]
     The chevrons mean you have to replace <plugin> and <command> by a plugin
     name and a command name.
 
-    The brackets mean the argument they wrap is **optional**.
+    The square brackets mean the arguments they wrap are **optional**.
 
-    So, the fellowing commands are correct::
+    So, the following commands are correct::
 
         <user> help
         <user> help PluginName
@@ -249,7 +249,7 @@ join <channel> [<key>]
 
     It requires a channel name, and the channel key is optional.
 
-    This two commands are ok::
+    These two commands are ok::
 
         <user> join #limnoria
         <user> join #limnoria MySecretKey
