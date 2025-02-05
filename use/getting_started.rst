@@ -262,52 +262,39 @@ utilities last <text> [<text> ...]
     You have to give at least one argument, but you can give as many as you
     wish.
 
-Getting More From Your Limnoria
-===============================
+Pagination: Getting More From Your Limnoria
+===========================================
 
-Another command you might find yourself needing somewhat often is the 'more'
-command.  The IRC protocol limits messages to 512 bytes, 60 or so of which
-must be devoted to some bookkeeping.  Sometimes, however, Limnoria wants to
-send a message that's longer than that.  What it does, then, is break it into
-"chunks" and send the first one, following it with ``(X more messages)`` where
-X is how many more chunks there are.  To get to these chunks, use the `more`
-command.  One way to try is to look at the default value of
-`supybot.replies.genericNoCapability` -- it's so long that it'll stretch
-across two messages::
+Limnoria automatically splits messages that are too long for IRC into multiple
+chunks (aka "mores"). By default, it will send only the first chunk, followed by
+``(X more messages)``. To view the remaining parts of a response, run the
+``more`` command, repeating it as necessary.
 
-    <jemfinch|lambda> $config default
-                      supybot.replies.genericNoCapability
-    <lambdaman> jemfinch|lambda: You're missing some capability
-                you need. This could be because you actually
-                possess the anti-capability for the capability
-                that's required of you, or because the channel
-                provides that anti-capability by default, or
-                because the global capabilities include that
-                anti-capability. Or, it could be because the
-                channel or the global defaultAllow is set to
-                False, meaning (1 more message)
-    <jemfinch|lambda> $more
-    <lambdaman> jemfinch|lambda: that no commands are allowed
-                unless explicitly in your capabilities. Either
-                way, you can't do what you want to do.
+Example::
 
-So basically, the bot keeps, for each person it sees, a list of "chunks" which
-are "released" one at a time by the `more` command.  In fact, you can even get
-the more chunks for another user: if you want to see another chunk in the last
-command jemfinch gave, for instance, you would just say `more jemfinch` after
-which, his "chunks" now belong to you.  So, you would just need to say `more`
-to continue seeing chunks from jemfinch's initial command.
+    <jemfinch> $config default supybot.replies.genericNoCapability
+    <Limnoria> jemfinch: You're missing some capability you need. This could be because you actually possess the anti-capability for the capability that's required of you, or because the channel provides that anti-capability by default, or because the global capabilities include that anti-capability. Or, it could be because the channel or the global defaultAllow is set to False, meaning (1 more message)
+    <jemfinch> $more
+    <Limnoria> jemfinch: that no commands are allowed unless explicitly in your capabilities. Either way, you can't do what you want to do.
+
+Chunked messages are stored by user, and you can view "mores" directed at
+some else by specifying their nick in the command, e.g. ``more jemfinch``.
+After doing this, any further responses are redirected to you, so they can be
+displayed via ``more`` (without any extra argument).
+
+If you want the bot to display more pages automatically, you can also
+:ref:`configure <configuration-guide>` the following option::
+
+    <jlu5> @config help reply.mores.instant
+    <Limnoria> Determines how many mores will be sent instantly (i.e., without the use of the more command, immediately when they are formed). Defaults to 1, which means that a more command will be required for all but the first chunk.  (Current value: 5)
 
 Final Word
 ==========
 
-You should now have a solid foundation for using Limnoria.  You can use the
-`list` command to see what plugins your bot has loaded and what commands are
-in those plugins; you can use the 'help' command to see how to use a specific
-command, and you can use the 'more' command to continue a long response from
-the bot.  With these three commands, you should have a strong basis with which
-to discover the rest of the features of Limnoria!
+You should now have a solid foundation for using Limnoria! In summary, use the
+``list`` command to see what plugins your bot has loaded and what commands are
+in those plugins, the ``help`` command to see how to use a command, and
+the ``more`` command to continue a long response from the bot.
 
-Do be sure to read our other documentation and make use of the resources we
-provide for assistance; this website and, of course, #limnoria on
+Do be sure to read the rest of the documentation, and visit #limnoria on
 irc.libera.chat if you run into any trouble!
