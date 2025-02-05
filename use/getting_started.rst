@@ -197,7 +197,7 @@ Loading Plugins
 ===============
 
 .. note::
-    To load plugins, you first need to be :ref:`logged in the the bot <login-to-bot>`.
+    To load plugins, you first need to be :ref:`logged in to the bot as an owner user <login-to-bot>`.
 
 Loading plugins is done with the ``load`` command::
 
@@ -233,7 +233,7 @@ help [<plugin>] [<command>]
     The brackets mean the argument they wrap is **optional**.
 
     So, the fellowing commands are correct::
-    
+
         <user> help
         <user> help PluginName
         <user> help PluginName CommandName
@@ -246,7 +246,7 @@ ping takes no arguments
 
 join <channel> [<key>]
     This is the help for :ref:`command-admin-join`.
-    
+
     It requires a channel name, and the channel key is optional.
 
     This two commands are ok::
