@@ -114,7 +114,7 @@ This will return data in the type that the config variable was declared as
 If it is a channel-specific variable, you should pass in additional ``channel``
 and ``network`` arguments like this::
 
-    self.registryValue('attackTargets.air', '#channel', irc.network)
+    self.registryValue('attackTargets.air', msg.channel, irc.network)
 
 .. note::
 
@@ -246,7 +246,7 @@ for custom registry types:
   sequence (using custom splitter/joiner functions), and whether or not
   the sequence is to be sorted.  See the following example, or the definitions
   of registry.SpaceSeparatedListOfStrings and
-  registry.CommaSeparatedListOfStrings in ``src/registry.py``
+  registry.CommaSeparatedListOfStrings in :file:`src/registry.py`
 
 Using a Custom Registry Type
 ----------------------------
