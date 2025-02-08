@@ -217,6 +217,7 @@ To unload a plugin, there is a corresponding ``unload`` command::
 To find plugins to load, consult the :ref:`Built-in plugins reference <builtin-plugins-reference>`
 or the Plugins list on `limnoria.net <https://limnoria.net/plugins.xhtml>`_.
 
+.. _help-syntax:
 Understanding the help syntax
 =============================
 

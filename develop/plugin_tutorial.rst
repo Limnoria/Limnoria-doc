@@ -9,14 +9,12 @@ Introduction
 
 This page is a top-down guide on how to write new plugins for Limnoria.
 
-Before you start, you should be more-or-less familiar with how to use and
-manage a Limnoria instance (loading plugins, configuring options, etc.).
-You should also install a copy of Limnoria on the machine you intend to develop
-plugins on, as it includes some additional scripts like
+Before you start, you should install a copy of Limnoria on the machine you
+intend to develop plugins on, as it includes some additional scripts like
 :command:`supybot-plugin-create` to generate the plugin skeleton.
 
-We'll go through this tutorial by actually writing a new plugin, named Random
-with just a few commands.
+We'll go through this tutorial by writing a new plugin, named Random with a
+few commands.
 
 Generating the Plugin template
 ==============================
@@ -50,35 +48,19 @@ Here's an example session::
     commands relating to random numbers, including random sampling from a list
     and a simple dice roller.
 
-README.md
-==========
+.. _init-py:
+Plugin metadata (__init__.py)
+=============================
+The first file we'll look at is :file:`__init__.py`. This is the "glue" that
+makes a directory a Python package, and sets up how the plugin is actually
+loaded.
 
-This is the README page people will see when they download your plugin or view
-it from a source control website. It's helpful to include a brief summary of
-what the plugin does here, as well as list any third-party dependencies.
+For Limnoria plugins specifically, there are some metadata fields you may wish
+to fill in:
 
-The :command:`supybot-plugin-create` wizard should have already filled in the
-README with the summary you provided.
-
-__init__.py
-===========
-The next file we'll look at is :file:`__init__.py`. If you're not so familiar
-with the Python import mechanism, think of it as sort of the "glue" file that
-pulls all the files in the plugin directory together when you load it.
-There are also a few administrative items here that can be queried from the bot,
-such as the plugin's author and contact info.
-
-At the top of the file you'll see the copyright header, with your name added as
-prompted in :command:`supybot-plugin-create`. Feel free to use whatever
-license you choose: the default is the bot's 3-clause BSD. For our example,
-we'll leave it as is.
-
-Here is a list of attributes you should usually look at:
-
-* ``__version__``: the plugin version. We'll make ours `"0.1"`
-* ``__author__`` should be an instance of the :class:`supybot.Author` class.
-  This optionally includes a full name, a short name (usually IRC nick), and
-  an e-mail address::
+* ``__version__``: the plugin version (optional)
+* ``__author__`` describes the author of the plugin, in the form of a
+  :class:`supybot.Author` instance::
 
     __author__ = supybot.Author(name='Daniel DiPaolo', nick='Strike',
                                 email='somewhere@someplace.xxx')
@@ -86,14 +68,15 @@ Here is a list of attributes you should usually look at:
 * ``__contributors__`` is a dictionary mapping :class:`supybot.Author`
   instances to lists of things they contributed. See e.g. `in the Plugin plugin
   <https://github.com/progval/Limnoria/blob/master/plugins/Plugin/__init__.py#L42-L49>`_.
-  For now we have no contributors, so we'll leave it blank.
+  This is most useful if a plugin has had multiple authors / contributors in
+  its history.
 
 * ``__url__`` references the download URL for the plugin. Since this is just an
   example, we'll leave this blank.
 
-The rest of :file:`__init__.py` shouldn't be touched unless you are
-using third-party modules in your plugin. If you are, then you need to add
-additional import statements and ``reload`` calls to all those modules, so that
+The rest of :file:`__init__.py` can be left alone unless you are using
+third-party modules in your plugin. If you are, you may wish to add
+additional import statements and ``reload`` calls to those modules, so that
 they get reloaded with the rest of the plugin::
 
     from . import config
@@ -104,12 +87,18 @@ they get reloaded with the rest of the plugin::
     # to be reloaded when this plugin is reloaded.  Don't forget to
     # import them as well!
 
-config.py
-=========
-:file:`config.py` is, unsurprisingly, where all the configuration stuff
-related to your plugin goes. For this tutorial, the Random plugin is simple
-enough that it doesn't need any config variables, so this file can be left as
-is.
+.. note::
+  If your plugin has any third-party dependencies, you may want to list them in
+  the README and add a `requirements.txt <https://pip.pypa.io/en/stable/reference/requirements-file-format/>`_
+  file for easy installation (via ``pip install -r requirements.txt``).
+
+.. _config-py:
+Configuration (config.py)
+=========================
+:file:`config.py` defines the configuration variables for a plugin.
+For this tutorial, the Random plugin is simple enough that it doesn't
+have any config variables, so the template can be left as is. Writing plugin
+configuration is explained in depth in the :ref:`Plugin Config Tutorial <configuration-tutorial>`.
 
 To briefly outline this file's structure: the ``configure`` function is used by
 the :command:`supybot-wizard` wizard and allows users to configure the plugin
@@ -118,21 +107,19 @@ this is seldomly used by third-party plugins as they're generally installed
 *after* configuring the bot.)
 
 The following line registers an entry for the plugin in Limnoria's config
-registry, followed by any configuration groups and variable definitions::
+registry, followed by an example of how to register a config variable::
 
     Random = conf.registerPlugin('Random')
     # This is where your configuration variables (if any) should go.  For example:
     # conf.registerGlobalValue(Random, 'someConfigVariableName',
     #     registry.Boolean(False, _("""Help for someConfigVariableName.""")))
 
-Writing plugin configuration is explained in depth
-in the :ref:`Advanced Plugin Config Tutorial <configuration-tutorial>`.
-
-plugin.py
-=========
-``plugin.py`` includes the core code for the plugin. For most plugins this will
-include command handlers, as well as anything else that's relevant to its
-particular use case (database queries,
+.. _plugin-py:
+Plugin commands (plugin.py)
+===========================
+``plugin.py`` includes the core functionality of the plugin. For most plugins this will
+include command handlers, as well as anything else relevant to its
+purpose (database queries,
 :ref:`HTTP server endpoints <http_plugins>`,
 :ref:`IRC command triggers <do-method-handlers>`, etc.)
 
@@ -145,9 +132,8 @@ template::
 The bulk of the plugin definition then resides in a subclass of
 :class:`callbacks.Plugin`. By convention, the class name is equal to the name of
 the plugin, though this is not strictly required (the actual linkage is done by
-the ``Class = Random`` statement at the end of the file). It is helpful to fill
-in the plugin docstring with some more details on how to actually use the plugin
-too: this info can be shown on a live bot using the
+the ``Class = Random`` statement at the end of the file). Note that the docstring
+of a plugin class also can be shown using the
 ``plugin help <plugin name>`` command. ::
 
     class Random(callbacks.Plugin):
@@ -161,7 +147,7 @@ too: this info can be shown on a live bot using the
 
 For this sample plugin, we define a custom constructor (``__init__``) that
 instantiates a random number generator instance and pre-seeds it. This isn't
-technically necessary for Python's ``random`` module, but it helps outline
+technically necessary when using Python's ``random`` module, but it helps outline
 how to write a similar constructor. Notice in particular how you must pass in
 an ``irc`` argument in addition to ``self``.
 
@@ -195,8 +181,8 @@ Our first command definition can immediately follow:
 .. note::
     All functions used as commands must have an all lowercase name.
 
-A command function taking in no arguments from IRC will still require 4
-arguments; they are as follows:
+A command function taking in no arguments from IRC requires 4 arguments at base;
+they are as follows:
 
 - ``self``: refers to the class instance. It is common to keep local state
   for the plugin as instance variables within the plugin class.
@@ -208,29 +194,31 @@ arguments; they are as follows:
   use :ref:`@wrap <using-wrap>` for automatic argument type conversion should
   never need to interact with ``args`` directly.
 
-The function docstring is expected to be in a particular format. First, the very
-first line dictates the argument list to be displayed when someone calls the
-``help`` command on this command (i.e., ``help random``). Then, leave a blank
-line and start the actual help string for the function. Don't worry about the
-fact that it's tabbed in or anything like that, as the help command normalizes
-it to make it look nice. This part should be fairly brief but sufficient to
-explain the function and what (if any) arguments it requires. Remember that this
-should fit in one IRC message which is typically around a 450 character limit.
+The function docstring is shown in the ``help`` command, and is expected to be
+in a specific format:
+
+- The first line shows the :ref:`argument list <help-syntax>` when someone calls the
+  ``help`` command on this command (i.e., ``help random``).
+- The second line is blank.
+- Everything afterwards is the actual description of the command. This should be
+  brief enough to ideally fit in one IRC message, which is around a 450 character limit.
+  Indentation and line breaks are normalized by the ``help`` command, so it is fine
+  to wrap longer text onto multiple lines.
 
 The :py:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>` call
 is a bit of magic: it issues a reply the same place as the message that
 triggered the command. i.e. this may be in a channel or in a private
 conversation with the bot.
 
-Lastly, notice that commands go through the :ref:`@wrap <using-wrap>`
-decorator for automatic argument type conversion. For commands that require no
-parameters, calling ``@wrap`` with no arguments is enough.
+Lastly, command functions are registered with the bot using the :ref:`@wrap <using-wrap>`
+decorator. For commands that require no parameters, calling ``@wrap`` with no
+arguments is sufficient.
 
 Command handler with parameters
 -------------------------------
 
-Now let's create a command with some arguments and see how we use those in our
-plugin commands. This ``seed`` command lets the user pick a specific RNG seed:
+Now let's create a command with an argument.
+The ``seed`` command lets the user pick a specific RNG seed:
 
 .. code-block::
     :dedent: 0
@@ -245,9 +233,7 @@ plugin commands. This ``seed`` command lets the user pick a specific RNG seed:
             self.rng.seed(seed)
             irc.replySuccess()
 
-For functions that use ``@wrap`` (described further in the
-:ref:`Using commands.wrap tutorial <using-wrap>`), additional command arguments
-are handled by:
+Command arguments are declared by:
 
 1. Adding :ref:`type converters <wrap-converter-list>`, one for each parameter,
    to the list passed into ``@wrap``
@@ -256,12 +242,12 @@ are handled by:
    ``def seed(self, irc, msg, args)``)
 
 We also modify the docstring to document this function. Note the syntax
-on the first line: by convention, required arguments go in ``<>`` and optional
+on the first line: :ref:`by convention <help-syntax>`, required arguments go in ``<>`` and optional
 arguments should be surrounded by ``[]``.
 
 The function body includes a new method
 :py:meth:`irc.replySuccess <supybot.callbacks.RichReplyMethods.replySuccess>`.
-This is just a generic "I succeeded" command which responds with whatever the
+This is a generic "I succeeded" command which responds with whatever the
 bot owner has configured in ``config supybot.replies.success``.
 Also, by using ``@wrap``, we don't need to do any type checking inside the
 function itself - this is handled separately, and invalid argument values will
@@ -272,7 +258,7 @@ we'll go include some more examples to illustrate common patterns.
 
 Command handler with list-type arguments
 ----------------------------------------
-The next sample command is named ``sample`` (no pun intended): it takes a random
+The next command is named ``sample``: it takes a random
 sample of arbitrary size from a list provided by the user:
 
 .. code-block::
@@ -313,7 +299,7 @@ Also, ``irc.error()`` with no text will return a generic error message
 configured in ``supybot.replies.error``, but this is not a valid call to
 :py:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>`.
 
-``utils.str.commaAndify`` is a simple helper that takes a list of strings
+``utils.str.commaAndify`` is a helper that takes a list of strings
 and turns it into "item1, item2, item3, item4, and item5" for an arbitrary
 length. Limnoria has accumulated many such helpers in its lifetime, many of
 which are described in the :ref:`Using Utils <using-utils>` page.
@@ -344,8 +330,9 @@ documentation too: common ones include ``private=True``, which
 forces a private message, and ``notice=True``, which forces the reply to use
 NOTICE instead of PRIVMSG.
 
-test.py
-=======
+.. _test-py:
+Unit tests (test.py)
+====================
 The easy way to test any plugin would be to start up a bot, load the plugin, and
 run all the commands a few times to verify that they work. But this takes time,
 and as a project grows larger, starts to be a tedious and error-prone process...
