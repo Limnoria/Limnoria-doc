@@ -8,6 +8,14 @@ logs/
 backup/
 data/
 tmp/
+doc-conf/
+doc-data/
+doc-logs/
 
 # auto-generated:
 use/plugins/
+
+# IDE metadata
+.vscode
+*.iml
+.idea
