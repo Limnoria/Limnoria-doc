@@ -112,3 +112,72 @@ Regular expression triggered events
 
 The :class:`supybot.callbacks.PluginRegexp` class provides some utilities
 for creating plugins that act on regular expression matching.
+
+URL Snarfing
+------------
+
+Limnoria's ``urlSnarfer`` provides many useful features including avoiding loops with other bots and ignoring private messages.
+
+.. code-block:: python
+
+    # An example plugin using urlSnarfer
+    # https://docs.limnoria.net/develop/commands.html#supybot.commands.urlSnarfer
+
+    from supybot import utils, plugins, ircutils, callbacks
+    from supybot.commands import *
+    from supybot.i18n import PluginInternationalization
+
+    _ = PluginInternationalization('ExampleSnarfer')
+
+    class ExampleSnarfer(callbacks.PluginRegexp):
+        """ Example URL snarfer """
+        # Note the class uses callbacks.PluginRegexp
+        # https://docs.limnoria.net/develop/callbacks.html#pluginregexp
+        
+        # Specify the handler method
+        regexps = ['snarfer_handler']
+        
+        # urlSnarfer() stops calling handlers once a message has been replied to
+        # Call this plugin before others that use urlSnarfer()
+        callBefore = ["Web"]
+        
+        @urlSnarfer
+        def snarfer_handler(self, irc, msg, match):
+            r'https://example\.com(/(\S*)|\s|$)'
+            # Messages that include a match to the regex are passed to this method
+            #  https://example.com
+            #  https://example.com/
+            #  https://example.com/anything/else/here 
+
+            channel = msg.channel
+            network = irc.network
+            
+            # To disable snarfing on the current channel only:
+            #  @config channel plugins.examplesnarfer.enabled false
+            # To revert to the global value:
+            #  @config reset channel plugins.examplesnarfer.enabled
+            if not self.registryValue('enabled', channel=channel, network=network):
+                return
+
+            full_match    = match.group(0)
+            capture_group = match.group(2)
+
+            irc.reply(f'ExampleSnarfer matched: {full_match}')
+
+            if capture_group:
+                irc.reply(f'and used a capture group to extract: {capture_group}')
+
+    Class = ExampleSnarfer
+
+Add to ``config.py``:
+
+.. code-block:: python
+
+    # This is a channel-specific value
+    # https://docs.limnoria.net/develop/advanced_plugin_config.html#channel-specific-values
+    conf.registerChannelValue(ExampleSnarfer, "enabled",
+        registry.Boolean(True,
+            _("""Enable example snarfing""")
+        )
+    )
+
