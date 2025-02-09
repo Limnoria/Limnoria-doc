@@ -68,6 +68,7 @@ toggling access for all commands on a global or per-channel level. See the
 :ref:`Example section <capabilities-example>` for some examples on how to do
 this.
 
+.. _built-in-capabilities:
 Special Built-in Capabilities
 -----------------------------
 
@@ -101,6 +102,7 @@ bot to new networks.
 This capability does not automatically grant access to channel administration
 commands, which is instead included in the following capability.
 
+.. _built-in-capabilities-channel-op:
 #channel,op
 ^^^^^^^^^^^
 

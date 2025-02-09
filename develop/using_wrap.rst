@@ -120,8 +120,7 @@ In this case, ``nums`` will be a *list* of numbers.
 
 A :ref:`list of contexts <wrap-context-list>` is provided in this page.
 
-.. _wrap-converter-list:
-
+.. _wrap-converters-for-state:
 Using Converters to Check State
 ===============================
 
@@ -164,6 +163,7 @@ state checks::
 - **commalist('nickInChannel')** verifies that each nick passed in the list corresponds to
   someone currently in the channel.
 
+.. _wrap-converter-list:
 Converter List
 ==============
 
