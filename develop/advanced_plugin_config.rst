@@ -34,7 +34,7 @@ arguments are as follows:
 ::
 
     conf.registerGlobalValue(WorldDom, 'globalWorldDominationRequires',
-        registry.String('', """Determines the capability required to perform world domination."""))
+        registry.String('worldDom', """Determines the capability required to perform world domination."""))
 
 The full name of the above config value will be
 ``supybot.plugins.WorldDom.globalWorldDominationRequires``, or
@@ -45,7 +45,7 @@ more variables underneath them. This can be useful as it allows extending existi
 config variables without changing their type::
 
     conf.registerGlobalValue(WorldDom.globalWorldDominationRequires, 'weekends',
-        registry.String('', """Determines the capability required to perform world domination on weekends."""))
+        registry.String('worldDomWeekends', """Determines the capability required to perform world domination on weekends."""))
 
 Nested configuration variables must be declared *after* their parent.
 
