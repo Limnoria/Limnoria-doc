@@ -19,6 +19,7 @@ this up, e.g.::
 
     WorldDom = conf.registerPlugin('WorldDom')
 
+.. _conf-dev-register-global-value:
 Creating Configuration Variables
 --------------------------------
 
@@ -48,6 +49,7 @@ config variables without changing their type::
 
 Nested configuration variables must be declared *after* their parent.
 
+.. _conf-dev-register-group:
 Creating Configuration Groups
 -----------------------------
 
@@ -64,6 +66,7 @@ Adding values to a group is the same as adding one under another config variable
 Variations
 ----------
 
+.. _conf-dev-register-channel-value:
 Channel-specific values
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -75,6 +78,7 @@ These are defined using :func:`conf.registerChannelValue`::
     conf.registerChannelValue(WorldDom.attackTargets, 'air',
         registry.SpaceSeparatedListOfStrings('', """Contains the list of air targets."""))
 
+.. _conf-dev-register-network-value:
 Network-specific values
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -83,6 +87,7 @@ Network-specific variables are defined using :func:`conf.registerNetworkValue`::
     conf.registerNetworkValue(WorldDom, 'exempt',
         registry.Boolean(False, """Determines whether the network will be exempt from world domination (for now...)"""))
 
+.. _conf-dev-private-values:
 Private values
 ^^^^^^^^^^^^^^
 
