@@ -5,17 +5,19 @@ Plugin Configuration for Developers
 ***********************************
 
 This page describes how to use Limnoria's config system when developing plugins.
-For the user guide, see the :ref:`Configuration page <configuration-guide>` instead.
 
 .. contents::
 
 Adding Plugin Configuration (config.py)
 =======================================
 
-Limnoria's configuration is hierarchical. In most cases, plugins will register
-its configuration under a group reflecting its name: ``supybot.plugins.<pluginname>``.
-The default template provided by :command:`supybot-plugin-doc` will already set
-this up, e.g.::
+As discussed in the :ref:`Configuration user guide <configuration-guide>`,
+Limnoria's configuration is hierarchical. Each plugin will register its config
+options in a separate group reflecting its name: ``supybot.plugins.<pluginname>``.
+This design ensures that the every plugin's options are properly namespaced.
+
+The default template provided by :command:`supybot-plugin-create` will already set
+up the plugin's config group, e.g.::
 
     WorldDom = conf.registerPlugin('WorldDom')
 
