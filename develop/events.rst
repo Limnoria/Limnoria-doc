@@ -116,7 +116,7 @@ for creating plugins that act on regular expression matching.
 Reacting to URLs
 ----------------
 
-Limnoria's ``urlSnarfer`` checks incoming messages against a given regex. It avoids loops with other bots and ignores private messages.
+Using Limnoria's ``urlSnarfer`` will avoid loops with other bots and ignore private messages.
 
 .. code-block:: python
 
