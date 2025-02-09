@@ -113,10 +113,10 @@ Regular expression triggered events
 The :class:`supybot.callbacks.PluginRegexp` class provides some utilities
 for creating plugins that act on regular expression matching.
 
-URL Snarfing
-------------
+Reacting to URLs
+----------------
 
-Limnoria's ``urlSnarfer`` provides many useful features including avoiding loops with other bots and ignoring private messages.
+Limnoria's ``urlSnarfer`` checks incoming messages against a given regex. It avoids loops with other bots and ignores private messages.
 
 .. code-block:: python
 
