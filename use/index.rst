@@ -12,6 +12,8 @@ User Guide
     getting_started.rst
     configuration.rst
     identifying_to_services.rst
+    command_parsing.rst
+    custom_commands.rst
     capabilities.rst
     security.rst
     httpserver.rst
