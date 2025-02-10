@@ -167,15 +167,12 @@ Is there a way to load all the plugins Limnoria has?
 Is there a command that can tell me what capability another command requires?
 =============================================================================
 
-  No, there isn't, and there probably never will be.
+  No, and there probably never will be.
 
-  Commands have the flexibility to check any capabilities they wish to
-  check; while this flexibility is useful, it also makes it hard to
-  guess what capability a certain command requires. We could make a
-  solution that would work in a large majority of cases, but it wouldn't
-  (and couldn't!) be absolutely correct in all circumstances, and since
-  we're anal and we hate doing things halfway, we probably won't ever
-  add this partial solution.
+  Commands are allowed to check any capability at runtime, so it's impossible
+  to answer this definitively without switching to a more restrictive mechanism.
+  Your best bet may be to inspect the source code, and especially the command's
+  :ref:`converters <wrap-converter-list>` list for any capability checks.
 
 .. _user-faq-karma-not-working:
 
