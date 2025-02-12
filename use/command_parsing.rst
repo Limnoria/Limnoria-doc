@@ -83,12 +83,12 @@ There are a few differences between ``echo`` and ``reply``:
 
 Note that the bot will always add spaces around the output of a nested
 command. To work around this, you may want to use the
-:ref:`Filter squish <command-filter-squish>` command to remove stray spaces::
+:ref:`concat <command-format-concat>` command to join two outputs without a space::
 
   <jlu5> @echo Random percent value: [dice 1d100]%
   <Limnoria> Random percent value: 56 %
 
-  <jlu5> @echo Random percent value: [squish [dice 1d100]%]
+  <jlu5> @echo Random percent value: [concat [dice 1d100]%]
   <Limnoria> Random percent value: 78%
 
 The above example shows how commands can be nested more than once as well; this
