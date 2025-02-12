@@ -150,14 +150,46 @@ command. It additionally uses the :ref:`plugin-Math` plugin's
 Replacing an existing command with your own
 -------------------------------------------
 
-TODO
+Using the :ref:`defaultplugin <command-owner-defaultplugin>` command, it is possible to "replace"
+an existing command in the bot by defining an alias with the same name and running::
 
-Limitations, and when to write a plugin instead
------------------------------------------------
+  @defaultplugin <command> Aka
 
-TODO
+As an example, you can replace the default :ref:`ping <command-misc-ping>`
+reply from the Misc plugin with a silly response::
+
+  <jlu5> @aka add ping "reply I don't respond to ping requests."
+  <Limnoria> The operation succeeded.
+  <jlu5> @defaultplugin ping Aka
+  <Limnoria> The operation succeeded.
+  <jlu5> @ping
+  <Limnoria> jlu5: I don't respond to ping requests.
+
+The old command will still be accessible via its full name::
+
+  <jlu5> @misc ping
+  <Limnoria> pong
+
+If you want to remove access for a command entirely, you should configure
+:ref:`default capabilities <capabilities-managing-defaults>` instead.
+
+Limitations, and when to write a plugin
+---------------------------------------
+
+Aliases and nested commands are *not* designed to replace plugins in all cases.
+If you need any of the following, it's probably easier to
+:ref:`write a custom plugin <plugin-tutorial>` instead:
+
+* Persistent state (databases, etc.)
+* For, while loops
+* Access to web APIs or external Python libraries
+* Fine-grained permission checks
+* Threads / processes for slow or long-running tasks
 
 Final notes
 -----------
 
-TODO: interaction with capabilities
+* :ref:`capabilities` apply to aliases as well as the commands they call.
+  To run an alias successfully, a caller needs to have access to all commands
+  called by the alias as well - keep this in mind if you declare a strict set of
+  :ref:`default capabilities <capabilities-managing-defaults>`.

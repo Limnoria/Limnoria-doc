@@ -185,6 +185,7 @@ or::
 
 Finally, user capabilities can be viewed with ``user capabilities`` command.
 
+.. _capabilities-managing-defaults:
 Managing Default Capabilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
