@@ -155,10 +155,13 @@ Here is an example plugin that creates a new snarfer for example.com, gated behi
             full_match = match.group(0)
             capture_group = match.group(2)
 
-            irc.reply(f'ExampleSnarfer matched: {full_match}')
-
             if capture_group:
-                irc.reply(f'and used a capture group to extract: {capture_group}')
+                irc.reply(
+                    _('ExampleSnarfer matched: %s and used a capture group to extract: %s')
+                    % (full_match, capture_group)
+                )
+            else:
+                irc.reply(_('ExampleSnarfer matched: %s') % (full_match,))
 
     Class = ExampleSnarfer
 
