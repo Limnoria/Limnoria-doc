@@ -112,3 +112,64 @@ Regular expression triggered events
 
 The :class:`supybot.callbacks.PluginRegexp` class provides some utilities
 for creating plugins that act on regular expression matching.
+
+Reacting to URLs
+----------------
+
+As a special case of :class:`supybot.callbacks.PluginRegexp`, :func:`supybot.commands.urlSnarfer` can be used to act on people sending URLs.  It avoids loops with other bots and ignores private messages.
+
+Here is an example plugin that creates a new snarfer for example.com, gated behind a config variable ``plugins.examplesnarfer.enabled``
+
+.. code-block:: python
+
+    from supybot import utils, plugins, ircutils, callbacks
+    from supybot.commands import *
+    from supybot.i18n import PluginInternationalization
+
+    _ = PluginInternationalization('ExampleSnarfer')
+
+    class ExampleSnarfer(callbacks.PluginRegexp):
+        """ Example URL snarfer """
+        # Note the class uses callbacks.PluginRegexp
+
+        # Specify the handler method
+        regexps = ['snarfer_handler']
+        
+        # urlSnarfer() stops calling handlers once a message has been replied to
+        # Call this plugin before others that use urlSnarfer()
+        callBefore = ["Web"]
+        
+        @urlSnarfer
+        def snarfer_handler(self, irc, msg, match):
+            r'https://example\.com(/(\S*)|\s|$)'
+            # Messages that include a match to the regex are passed to this method
+            #  https://example.com
+            #  https://example.com/
+            #  https://example.com/anything/else/here 
+            
+            if not self.registryValue('enabled', channel=msg.channel, network=irc.network):
+                return
+
+            full_match = match.group(0)
+            capture_group = match.group(2)
+
+            if capture_group:
+                irc.reply(
+                    _('ExampleSnarfer matched: %s and used a capture group to extract: %s')
+                    % (full_match, capture_group)
+                )
+            else:
+                irc.reply(_('ExampleSnarfer matched: %s') % (full_match,))
+
+    Class = ExampleSnarfer
+
+Add the :ref:`channel specific value <conf-dev-register-channel-value>` to ``config.py``:
+
+.. code-block:: python
+
+    conf.registerChannelValue(ExampleSnarfer, "enabled",
+        registry.Boolean(True,
+            _("""Enable example snarfing""")
+        )
+    )
+
