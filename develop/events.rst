@@ -165,12 +165,10 @@ Here is an example plugin that creates a new snarfer for example.com, gated behi
 
     Class = ExampleSnarfer
 
-Add to ``config.py``:
+Add the :ref:`channel specific value <conf-dev-register-channel-value>` to ``config.py``:
 
 .. code-block:: python
 
-    # This is a channel-specific value
-    # https://docs.limnoria.net/develop/advanced_plugin_config.html#channel-specific-values
     conf.registerChannelValue(ExampleSnarfer, "enabled",
         registry.Boolean(True,
             _("""Enable example snarfing""")
