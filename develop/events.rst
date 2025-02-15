@@ -122,8 +122,6 @@ Here is an example plugin that creates a new snarfer for example.com, gated behi
 
 .. code-block:: python
 
-    # An example plugin using urlSnarfer
-
     from supybot import utils, plugins, ircutils, callbacks
     from supybot.commands import *
     from supybot.i18n import PluginInternationalization
