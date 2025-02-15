@@ -116,12 +116,13 @@ for creating plugins that act on regular expression matching.
 Reacting to URLs
 ----------------
 
-Using Limnoria's ``urlSnarfer`` will avoid loops with other bots and ignore private messages.
+As a special case of :class:`supybot.callbacks.PluginRegexp`, :func:`supybot.commands.urlSnarfer` can be used to act on people sending URLs.  It avoids loops with other bots and ignores private messages.
+
+Here is an example plugin that creates a new snarfer for example.com, gated behind a config variable ``plugins.examplesnarfer.enabled``
 
 .. code-block:: python
 
     # An example plugin using urlSnarfer
-    # https://docs.limnoria.net/develop/commands.html#supybot.commands.urlSnarfer
 
     from supybot import utils, plugins, ircutils, callbacks
     from supybot.commands import *
@@ -132,8 +133,7 @@ Using Limnoria's ``urlSnarfer`` will avoid loops with other bots and ignore priv
     class ExampleSnarfer(callbacks.PluginRegexp):
         """ Example URL snarfer """
         # Note the class uses callbacks.PluginRegexp
-        # https://docs.limnoria.net/develop/callbacks.html#pluginregexp
-        
+
         # Specify the handler method
         regexps = ['snarfer_handler']
         
@@ -148,18 +148,11 @@ Using Limnoria's ``urlSnarfer`` will avoid loops with other bots and ignore priv
             #  https://example.com
             #  https://example.com/
             #  https://example.com/anything/else/here 
-
-            channel = msg.channel
-            network = irc.network
             
-            # To disable snarfing on the current channel only:
-            #  @config channel plugins.examplesnarfer.enabled false
-            # To revert to the global value:
-            #  @config reset channel plugins.examplesnarfer.enabled
-            if not self.registryValue('enabled', channel=channel, network=network):
+            if not self.registryValue('enabled', channel=msg.channel, network=irc.network):
                 return
 
-            full_match    = match.group(0)
+            full_match = match.group(0)
             capture_group = match.group(2)
 
             irc.reply(f'ExampleSnarfer matched: {full_match}')
