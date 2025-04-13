@@ -87,10 +87,6 @@ Command dispatching
 Pre-command-call callbacks
 --------------------------
 
-.. note::
-    Until stock Supybot and Gribble merge this feature, this section
-    only applies to Limnoria
-
 If you want a function of your plugin to be called before every command call,
 you can add it to the ``pre_command_callback`` attribute of your plugin
 (actually, it is a static class attribute, so make sure you *add* it to the

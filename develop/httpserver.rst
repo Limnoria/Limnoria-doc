@@ -7,10 +7,6 @@ Using Limnoria's HTTP server in your plugins
 Introduction
 ============
 
-.. note::
-    This feature is specific to Limnoria and not available in stock Supybot
-    or Gribble.
-
 Limnoria provides an HTTP server to plugins. This is not relevant for most
 plugins, but some of them have to start a server (either for serving a website
 or for being remotely called).

@@ -1,8 +1,8 @@
 .. _getting-started:
 
-*************************************
-Getting Started with Limnoria/Supybot
-*************************************
+*****************************
+Getting Started with Limnoria
+*****************************
 
 .. highlight:: irc
 
