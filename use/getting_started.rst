@@ -39,17 +39,17 @@ have many more plugins loaded.  The ``list`` command can then be used to list th
 commands in a given plugin::
 
     <user> supybot: list Misc
-    <supybot> user: apropos, clearmores, completenick, help, last, list, more, noticetell, ping, source, tell, and version
+    <supybot> apropos, clearmores, completenick, help, last, list, more, noticetell, ping, source, tell, and version
 
 This lists all the commands in the `Misc` plugin.  If you want to see the help
 for a specific command, you can then use the help command::
 
     <user> supybot: help help
-    <supybot> user: (help [<plugin>] [<command>]) -- This command gives a useful description of what <command> does. <plugin> is only necessary if the command is in more than one plugin. You may also want to use the 'list' command to list all available plugins and commands.
+    <supybot> (help [<plugin>] [<command>]) -- This command gives a useful description of what <command> does. <plugin> is only necessary if the command is in more than one plugin. You may also want to use the 'list' command to list all available plugins and commands.
     <user> supybot: help list
-    <supybot> user: (list [--unloaded] [<plugin>]) -- Lists the commands available in the given plugin. If no plugin is given, lists the public plugins available. If --unloaded is given, it will list available plugins that are not loaded.
+    <supybot> (list [--unloaded] [<plugin>]) -- Lists the commands available in the given plugin. If no plugin is given, lists the public plugins available. If --unloaded is given, it will list available plugins that are not loaded.
     <user> supybot: help load
-    <supybot> user: (load <plugin>) -- Loads the plugin <plugin> from any of the directories in conf.supybot.directories.plugins; usually this includes the main installed directory and 'plugins' in the current directory.
+    <supybot> (load <plugin>) -- Loads the plugin <plugin> from any of the directories in conf.supybot.directories.plugins; usually this includes the main installed directory and 'plugins' in the current directory.
 
 Sometimes more than one plugin will register a given command; for instance, the
 ``list`` command exists in both the Misc and Config plugins (both loaded by
@@ -58,7 +58,7 @@ to get the help for the list command in the Config plugin.  In that case,
 you can prefix your command with the name of the plugin::
 
     <user> supybot: help config list
-    <supybot> user: (config list <group>) -- Returns the configuration variables available under the given configuration <group>. If a variable has values under it, it is preceded by an '@' sign.
+    <supybot> (config list <group>) -- Returns the configuration variables available under the given configuration <group>. If a variable has values under it, it is preceded by an '@' sign.
 
 Anytime your bot tells you that a given command is defined in several plugins,
 you'll need to use this "plugin command" syntax to choose which
@@ -202,7 +202,7 @@ Loading Plugins
 Loading plugins is done with the ``load`` command::
 
     <user> @help load
-    <Limnoria> user: (load <plugin>) -- Loads the plugin <plugin> from any of the directories in conf.supybot.directories.plugins; usually this includes the main installed directory and 'plugins' in the current directory.
+    <Limnoria> (load <plugin>) -- Loads the plugin <plugin> from any of the directories in conf.supybot.directories.plugins; usually this includes the main installed directory and 'plugins' in the current directory.
 
 For example, to load the *Games* plugin, run::
 
