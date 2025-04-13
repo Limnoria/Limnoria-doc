@@ -61,13 +61,17 @@ you can prefix your command with the name of the plugin::
     <supybot> (config list <group>) -- Returns the configuration variables available under the given configuration <group>. If a variable has values under it, it is preceded by an '@' sign.
 
 Anytime your bot tells you that a given command is defined in several plugins,
-you'll need to use this "plugin command" syntax to choose which
+you'll need to use the "plugin command" syntax to choose which
 plugin's command you wish to call.  For instance, if you wanted to call the
 Config plugin's ``list`` command, then you'd need to run::
 
     <user> supybot: config list
 
-Rather than just ``list``.
+Finally, you can also search for commands by name using the ``apropos``
+command::
+
+    <user> supybot: apropos ping
+    <supybot>: Misc ping, Unix ping, and Unix ping6
 
 .. _login-to-bot:
 
