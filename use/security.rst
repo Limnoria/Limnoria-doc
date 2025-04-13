@@ -107,9 +107,14 @@ Fingerprint checking
 --------------------
 
 Alternatively, for networks that do not use a CA, you can give Limnoria
-the list of fingerprints of certificates used by the network::
+the list of certificate fingerprints used by the network::
 
     @config supybot.networks.NETWORKNAME.ssl.serverFingerprints: <fingerprint1> <fingerprint2> ...
+
+Fingerprints can be of any hash type supported by Python
+(e.g. SHA256, SHA512), and the list currently supported by your Python
+installation will be listed in the help text for that config option.
+Fingerprints are case-insensitive, and any colons (:) will be ignored.
 
 Adding fingerprints will disable CA verifications (useful if you do not
 want to trust CAs).
