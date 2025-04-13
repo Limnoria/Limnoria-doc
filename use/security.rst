@@ -116,15 +116,6 @@ want to trust CAs).
 
 Note that you are responsible for giving the correct list of fingerprints.
 
-.. _ssl-python-versions:
-
-Supported python versions
--------------------------
-
-Fingerprint checking and CA validation are available in all Python versions
-supported by Limnoria.
-
-
 Flooding via command abuse
 ==========================
 
