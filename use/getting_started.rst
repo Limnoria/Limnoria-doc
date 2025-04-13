@@ -106,6 +106,8 @@ Once you are logged in as an owner user, you can run commands that require
 privileges. Many such administrative commands are located in the *Owner* and
 *Admin* plugins.
 
+.. _automatic-login:
+
 Automatic login (optional)
 --------------------------
 

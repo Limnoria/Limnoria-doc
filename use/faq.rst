@@ -24,20 +24,12 @@ Why does my bot not recognize me or tell me that I don't have the 'owner' capabi
   Because you've not given it anything to recognize you from!
 
   You'll need to identify to the bot (``help identify`` to see how
-  that works) or add your hostmask to your user record (``help hostmask
-  add`` to see how that works) for it to know that you're you.
+  that works) or configure some type of :ref:`automatic login <automatic-login>`:
 
-  You may wish to note that ``hostmask add`` can accept a password; rather
-  than identify, you can send the command::
+  For example, you can link your network services account with your bot account
+  by logging into the bot, loading the ``NickAuth`` plugin, and running::
 
-    hostmask add myOwnerUser [hostmask] myOwnerUserPassword
-
-  and the bot will add your current hostmask to your owner user (of
-  course, you should change myOwnerUser and myOwnerUserPassword
-  appropriately for your bot).
-
-  For additional ways to identify to your bot, you may want to see
-  :ref:`getting-started`.
+    nickauth nick add <services account name>
 
 .. _user-faq-hostmask:
 
