@@ -14,6 +14,7 @@ User Guide
     identifying_to_services.rst
     command_parsing.rst
     custom_commands.rst
+    messageparser.rst
     capabilities.rst
     security.rst
     httpserver.rst

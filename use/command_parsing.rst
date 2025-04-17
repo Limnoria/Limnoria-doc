@@ -6,8 +6,8 @@ Command parsing primer
 This page discusses some of the details and features in Limnoria's command
 parser, such as the ability to nest commands. This is mainly useful
 when building :ref:`custom commands <custom-commands>` or
-message triggers using the :ref:`Aka <plugin-aka>` and
-:ref:`MessageParser <plugin-messageparser>` plugins.
+:ref:`message triggers <custom-regex-triggers>` using the
+:ref:`Aka <plugin-aka>` and :ref:`MessageParser <plugin-messageparser>` plugins.
 
 .. _quoting-commands:
 Quoting command arguments
