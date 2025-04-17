@@ -343,23 +343,8 @@ that abstracts away all the dependencies of live testing (i.e. the IRC
 client and server) and allows you to cover your entire plugin's functionality
 within a few seconds.
 
-How it works
-------------
-
-Plugin test cases inherit from
-:class:`supybot.test.PluginTestCase` or
-:class:`supybot.test.ChannelPluginTestCase` and include
-:ref:`several methods <plugin-test-methods>` to interact with a simulated
-instance of the bot, in addition to the
-`standard assertion functions <https://docs.python.org/3/library/unittest.html#assert-methods>`_
-provided by the unittest library.
-
-Running the tests for a Limnoria plugin is done using the
-:command:`supybot-test` command: i.e. ``supybot-test /path/to/your/Plugin``
-
-The structure of these test classes, as well
-as interactions with features like Limnoria's config system are described in
-detail in the :ref:`Advanced Plugin Testing guide <plugin-testing-guide>`.
+Writing plugin tests is described in the
+:ref:`Advanced Plugin Testing guide <plugin-testing-guide>`.
 
 Functional testing examples
 ---------------------------
