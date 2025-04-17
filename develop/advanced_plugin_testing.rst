@@ -64,10 +64,12 @@ As with Python's unittest module in general, test methods must begin with
 ``test``. When adding helper methods in this class, they should start with
 something else.
 
-We recommend keeping each test method short and targeted to a specific feature,
-so that running the test file will clearly show which checks passed or failed.
-It is fine to give test methods longer, more specific names
-(e.g. ``testOnlyRespondToRegisteredUsers``) to achieve this.
+When writing your actual test methods, we recommend keeping each one short and
+targeted towards a specific feature. This will allow you to easily find which
+checks failed just by looking at a failed test's name, instead of having to
+sort through line numbers inside ``test.py``. To keep test functions
+unambiguous, it is fine to give them longer, more specific names to compensate
+(e.g. ``testOnlyRespondToRegisteredUsers`` instead of ``testRegistered``).
 
 Including Extra Setup
 ---------------------
