@@ -33,7 +33,7 @@ most of the documentation there applies to plugin tests too.
 
 Note that instead
 of ``python -m unittest``, Limnoria plugin tests are run using the
-:command:`supybot-test` command: e.g. ``supybot-test /path/to/your/Plugin``
+:command:`limnoria-test` command: e.g. ``limnoria-test /path/to/your/Plugin``
 
 Plugin Test Case Example
 ------------------------
@@ -82,7 +82,7 @@ Python's unittest module:
             # Important! This sets up the bot's simulated IRC network for testing
             super().setUp()
 
-            # Create a user to send IRC messages from
+            # Define the identity of the user who we send messages as
             self.prefix = 'foo!bar@baz'
 
             # Send a message to the simulated IRC network, in this case to register
