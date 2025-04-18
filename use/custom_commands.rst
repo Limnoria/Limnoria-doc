@@ -13,6 +13,9 @@ Before proceeding through this page, we recommend reading the
 :ref:`command-parsing-primer`, which discusses many of the details that apply
 to building custom commands.
 
+If you want to create custom message triggers that aren't bot commands, see the
+:ref:`MessageParser guide <custom-regex-triggers>` instead.
+
 .. contents::
 
 Creating & managing aliases
@@ -173,6 +176,7 @@ The old command will still be accessible via its full name::
 If you want to remove access for a command entirely, you should configure
 :ref:`default capabilities <capabilities-managing-defaults>` instead.
 
+.. _custom-command-limitations:
 Limitations, and when to write a plugin
 ---------------------------------------
 
