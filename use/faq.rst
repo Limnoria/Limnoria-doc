@@ -217,12 +217,12 @@ How can I make my Limnoria log my IRC channel?
 Can Limnoria connect through a proxy server?
 ============================================
 
-  Limnoria can connect to specific network using socks proxy, simply set 
+  Limnoria can connect to specific network using socks proxy, simply set
   the configuration variable `supybot.networks.<network>.socksproxy`. For
   specifying proxy which is used for HTTP requests, set the configuration
   variable `supybot.protocols.http.proxy`.
-  
-  Limnoria also works with transparent proxy server helpers like tsocks_ 
+
+  Limnoria also works with transparent proxy server helpers like tsocks_
   that are designed to proxy-enable all network applications, and Limnoria
   does work with these.
 
@@ -236,7 +236,7 @@ Why can't Limnoria find the plugin I want to load?
 
   First, make sure you are typing the plugin name correctly.  ``@load
   foo`` may not be the same as ``@load Foo`` depending on your Limnoria
-  version  [#plugindir]_.  If that is not the problem, 
+  version  [#plugindir]_.  If that is not the problem,
 
 .. [#plugindir] Yes, it used to be the same, but then we moved to using
    directories for plugins instead of a single file.  Apparently, that
