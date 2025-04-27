@@ -59,12 +59,15 @@ My bot can't handle nicks with brackets in them!
   `supybot.commands.nested.brackets` to some other value (like ``<>``,
   which can't occur in IRC nicks).
 
+  For a full writeup on how Limnoria parses commands, see the
+  :ref:`command-parsing-primer`.
+
 .. _user-faq-create-command:
 
 How do I create a command?
 ==========================
 
-  You can create simple commands with the Aka plugin, like this::
+  You can create simple commands with the :ref:`plugin-aka` plugin, like this::
 
     <admin> @aka add "rules" "echo Here are the rules of the channel."
     <bot> Ok.
@@ -72,7 +75,7 @@ How do I create a command?
     <user> @rules
     <bot> Here are the rules of the channel.
 
-  You can also make the bot reply on arbitrary words, MessageParser::
+  You can also make the bot reply on arbitrary words with :ref:`plugin-messageparser`::
 
     <admin> @messageparser add "some words" "echo Blah blah"
     <bot> Ok
@@ -82,12 +85,11 @@ How do I create a command?
 
   Both these examples assume you have the Utilities plugin loaded
   (it provides the ``echo`` command).
+  For more examples, see the :ref:`custom-commands` and
+  :ref:`custom-regex-triggers` guides.
 
-  See the help of ``aka add``, ``messageparser add``, and ``echo``
-  to see more advanced uses of these commands
-  (command arguments, regular expressions, variables, etc.)
-
-  While powerful, Aka and MessageParser cannot do everything.
+  While powerful, Aka and MessageParser
+  :ref:`cannot do everything <custom-command-limitations>`.
   For the most advanced commands, you will need to
   :ref:`write your own plugin in Python <develop-plugins>`.
 
