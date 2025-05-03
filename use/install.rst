@@ -42,12 +42,11 @@ If you followed the section above, skip this one.
 Dependencies
 ------------
 
-The only mandatory dependency is Python 3.4 or greater.
+We require at least Python 3.9, and recommend using the latest Python stable
+release available for your OS.
 
 You may also install chardet and feedparser, which are used by Limnoria if
 they are available.
-
-The remaining of this guide will assume you have Python 3.
 
 .. _Python: https://www.python.org/
 
