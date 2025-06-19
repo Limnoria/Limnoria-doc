@@ -347,6 +347,39 @@ website, or get the current one, with this command::
 
     config supybot.networks.<NETWORK>.servers
 
+Do you support feature "X" from Eggdrop?
+========================================
+
+Limnoria's goal is not to replicate Eggdrop. But since many people ask anyways,
+here is a short list:
+
+- **Botnets**: No. Limnoria natively supports
+  :ref:`connecting to multiple networks <user-faq-multi-servers>`,
+  so in most scenarios you only need to run one instance of the bot.
+
+- **Party line**: No. If you want to talk with other bot admins, just use a
+  private channel or server.
+
+- **DCC Chat**: No, and hardly any other bot supports this nowadays.
+  Limnoria is managed via standard private messages.
+
+- **Flood protection & ban management**: Yes, via third party plugins such as
+  `AttackProtector <https://github.com/progval/Supybot-plugins/tree/master/AttackProtector>`_
+  and `ChanTracker <https://github.com/ncoevoet/ChanTracker/>`_. Note that these
+  are *not* designed to be drop-in replacements for Eggdrop functionality.
+
+- **Interactive terminal access**: No, but there is an
+  `open feature request <https://github.com/progval/Limnoria/issues/1252>`_.
+
+- **TLS**: Yes.
+
+- **IPv6**: Yes.
+
+- **Associating bot accounts with services accounts**: Yes, see the
+  :ref:`NickAuth plugin <automatic-login>`.
+
+- **User flags / permissions**: Yes, we use a set of long-form flags called
+  :ref:`capabilities <capabilities>`.
 
 .. _blocks: https://libera.chat/guides/usermodes#main
 .. _tsocks: http://tsocks.sourceforge.net
