@@ -7,7 +7,7 @@ Frequently Asked Questions
 This section tries to cover all questions you may have as a Limnoria user or
 administrator.
 (For questions about plugin development, check out the
-:ref:`Developer FAQ <user-faq>` instead.)
+:ref:`Developer FAQ <developer-faq>` instead.)
 
 .. _user-faq-multi-servers:
 
