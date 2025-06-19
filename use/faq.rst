@@ -358,7 +358,8 @@ here is a short list:
   so in most scenarios you only need to run one instance of the bot.
 
 - **Party line**: No. If you want to talk with other bot admins, just use a
-  private channel or server.
+  private channel or server. And you can configure the bot entirely by
+  issuing commands in channel or in private messages
 
 - **DCC Chat**: No, and hardly any other bot supports this nowadays.
   Limnoria is managed via standard private messages.
