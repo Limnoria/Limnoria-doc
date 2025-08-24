@@ -65,39 +65,6 @@ way of installing Python software.
 
 .. _pip: https://pip.readthedocs.org/en/latest/installing.html#install-pip
 
-Global installation (with root access)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you do not have root access, skip this section.
-
-If you are logged in as root, you can remove ``sudo`` from the install
-commands.
-
-First, you need to setup a virtualenv, which is the directory where we
-will install Limnoria's code (but not its configuration)::
-
-    sudo python3 -m venv /opt/venvs/limnoria  # creates a virtualenv at the given path
-
-Install Limnoria's optional dependencies (you can skip this
-step, but some features won't be available)::
-
-    sudo /opt/venvs/limnoria/bin/pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --upgrade
-
-Then Limnoria itself::
-
-    sudo /opt/venvs/limnoria/bin/pip install limnoria --upgrade
-
-Add the virtualenv's bin directory to your PATH, so your shell knows where
-to find Limnoria::
-
-    echo 'PATH="$PATH:/opt/venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
-    source ~/.$(basename $SHELL)rc
-
-Local installation (without root access)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you followed the previous section, skip this one.
-
 First, you need to setup a virtualenv, which is the directory where we
 will install Limnoria's code (but not its configuration)::
 
