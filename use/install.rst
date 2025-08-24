@@ -73,48 +73,52 @@ If you do not have root access, skip this section.
 If you are logged in as root, you can remove ``sudo`` from the install
 commands.
 
-First, install Limnoria's optional dependencies (you can skip this
+First, you need to setup a virtualenv, which is the directory where we
+will install Limnoria's code (but not its configuration)::
+
+    sudo python3 -m venv /opt/venvs/limnoria  # creates a virtualenv at the given path
+
+Install Limnoria's optional dependencies (you can skip this
 step, but some features won't be available)::
 
-    sudo python3 -m pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --upgrade
+    sudo /opt/venvs/limnoria/bin/pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --upgrade
 
 Then Limnoria itself::
 
-    sudo python3 -m pip install limnoria --upgrade
+    sudo /opt/venvs/limnoria/bin/pip install limnoria --upgrade
 
-If you have an error saying ``No module named pip``, install ``pip`` using
-your package manager (the package is usually named ``python3-pip``).
+Add the virtualenv's bin directory to your PATH, so your shell knows where
+to find Limnoria::
 
-If you have an error about ``externally-managed-environment``, you need to setup
-a virtualenv first, then re-run the commands above::
-
-    python3 -m venv /opt/venvs/limnoria  # creates a virtualenv at the given path
-    . /opt/venvs/limnoria/bin/activate   # enables the virtualenv in the current shell
+    echo 'PATH="$PATH:/opt/venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
+    source ~/.$(basename $SHELL)rc
 
 Local installation (without root access)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have followed the previous section, skip this one.
+If you followed the previous section, skip this one.
 
-First we install requirements (you can skip it, but some features won't be available)
-and then Limnoria itself.::
+First, you need to setup a virtualenv, which is the directory where we
+will install Limnoria's code (but not its configuration)::
 
-    python3 -m pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --upgrade
-    python3 -m pip install limnoria --upgrade
+    mkdir -p $HOME/.venvs/
+    python3 -m venv $HOME/.venvs/limnoria  # creates a virtualenv at the given path
+    . $HOME/.venvs/limnoria/bin/activate   # enables the virtualenv in the current shell
 
-You might need to add $HOME/.local/bin to your PATH.::
+Install Limnoria's optional dependencies (you can skip this
+step, but some features won't be available)::
 
-    echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
-    source ~/.$(echo $SHELL|cut -d/ -f3)rc
+    pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --upgrade
 
-If you have an error saying ``No module named pip``, install ``pip`` using this
-guide: https://pip.pypa.io/en/stable/installing/
+Then Limnoria itself::
 
-If you have an error about ``externally-managed-environment``, you need to setup
-a virtualenv first, then re-run the commands above::
+    pip install limnoria --upgrade
 
-    python3 -m venv ~/.venvs/limnoria  # creates a virtualenv at the given path
-    . ~/.venvs/limnoria/bin/activate   # enables the virtualenv in the current shell
+Add the virtualenv's bin directory to your PATH, so your shell knows where
+to find Limnoria::
+
+    echo 'PATH="$PATH:$HOME/.venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
+    source ~/.$(basename $SHELL)rc
 
 .. _initial-configuration:
 
