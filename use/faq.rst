@@ -9,6 +9,8 @@ administrator.
 (For questions about plugin development, check out the
 :ref:`Developer FAQ <developer-faq>` instead.)
 
+If you did not find your answer here, see :ref:`asking-for-help`.
+
 .. _user-faq-multi-servers:
 
 How do I make my Limnoria connect to multiple servers?
