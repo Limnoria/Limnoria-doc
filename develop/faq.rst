@@ -7,6 +7,8 @@ Frequently Asked Questions
 This section tries to cover all questions you may have as a plugin developer.
 (If you are a user, check out the :ref:`User FAQ <user-faq>` instead.)
 
+If you did not find your answer here, see :ref:`asking-for-help`.
+
 
 Where can I find the user who called a command?
 ===============================================

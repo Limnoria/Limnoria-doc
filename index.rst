@@ -25,6 +25,7 @@ Contents:
     use/index.rst
     develop/index.rst
     contribute/index.rst
+    asking-for-help.rst
     glossary.rst
 
 Indices and tables
