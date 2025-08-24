@@ -87,6 +87,12 @@ Then Limnoria itself::
 
     sudo /opt/venvs/limnoria/bin/pip install limnoria --upgrade
 
+Add the virtualenv's bin directory to your PATH, so your shell knows where
+to find Limnoria::
+
+    echo 'PATH="$PATH:/opt/venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
+    source ~/.$(echo $SHELL|cut -d/ -f3)rc
+
 Local installation (without root access)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
