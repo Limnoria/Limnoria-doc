@@ -7,9 +7,10 @@ not to be accepted into the Limnoria core.
 
 * Read :pep:`8` (Guido's Style Guide) and know that we use almost all the
   same style guidelines.
-  - We use a maximum of 79 characters per line and 4 spaces per indentation level
-  - Exception: method and function names generally use camelCase for consistency
-  with existing code.
+    * We use a maximum of 79 characters per line and 4 spaces per indentation
+      level
+    * Exception: method and function names generally use camelCase for
+      consistency with existing code.
 
 * Raw strings (``r''`` or ``r""``) should be used for regular expressions.
 
