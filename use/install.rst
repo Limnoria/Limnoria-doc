@@ -91,7 +91,7 @@ Add the virtualenv's bin directory to your PATH, so your shell knows where
 to find Limnoria::
 
     echo 'PATH="$PATH:/opt/venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
-    source ~/.$(echo $SHELL|cut -d/ -f3)rc
+    source ~/.$(basename $SHELL)rc
 
 Local installation (without root access)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -118,7 +118,7 @@ Add the virtualenv's bin directory to your PATH, so your shell knows where
 to find Limnoria::
 
     echo 'PATH="$PATH:$HOME/.venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
-    source ~/.$(echo $SHELL|cut -d/ -f3)rc
+    source ~/.$(basename $SHELL)rc
 
 .. _initial-configuration:
 
