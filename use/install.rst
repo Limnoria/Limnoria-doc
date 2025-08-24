@@ -111,7 +111,7 @@ Then Limnoria itself::
 Add the virtualenv's bin directory to your PATH, so your shell knows where
 to find Limnoria::
 
-    echo 'PATH="$HOME/.venvs/limnoria/bin:$PATH"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
+    echo 'PATH="$PATH:$HOME/.venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(echo $SHELL|cut -d/ -f3)rc
 
 .. _initial-configuration:
