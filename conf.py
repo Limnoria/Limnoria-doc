@@ -38,7 +38,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode',
     'sphinxcontrib.jquery',  # needed by sphinx_rtd_theme's search page
 ]
 
