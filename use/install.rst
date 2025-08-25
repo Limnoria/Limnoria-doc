@@ -57,35 +57,31 @@ Python will usually come by installed by default in your distribution. If not,
 grab the appropriate packages from the distribution's repository, or download
 it from https://python.org.
 
+Install pipx
+------------
+
+This is a tool for installing Python applications. Follow the `install instructions`_ for your operating system. 
+
+.. _install instructions: https://pipx.pypa.io/latest/#install-pipx
+
+For example, on a system with the apt package manager::
+
+    sudo apt update
+    sudo apt install pipx
+    pipx ensurepath
+
 Install Limnoria
 ----------------
 
-In the next section of this guide we will use `pip`_, which is a generic
-way of installing Python software.
+::
 
-.. _pip: https://pip.readthedocs.org/en/latest/installing.html#install-pip
-
-First, you need to setup a virtualenv, which is the directory where we
-will install Limnoria's code (but not its configuration)::
-
-    mkdir -p $HOME/.venvs/
-    python3 -m venv $HOME/.venvs/limnoria  # creates a virtualenv at the given path
-    . $HOME/.venvs/limnoria/bin/activate   # enables the virtualenv in the current shell
+    pipx install limnoria
 
 Install Limnoria's optional dependencies (you can skip this
 step, but some features won't be available)::
 
-    pip install -r https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt --upgrade
+    curl https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt | grep -o '^[^#]*' | xargs pipx inject limnoria
 
-Then Limnoria itself::
-
-    pip install limnoria --upgrade
-
-Add the virtualenv's bin directory to your PATH, so your shell knows where
-to find Limnoria::
-
-    echo 'PATH="$PATH:$HOME/.venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
-    source ~/.$(basename $SHELL)rc
 
 .. _initial-configuration:
 
