@@ -60,15 +60,16 @@ it from https://python.org.
 Install pipx
 ------------
 
-This is a tool for installing Python applications. Follow the `install instructions`_ for your operating system. 
-
-.. _install instructions: https://pipx.pypa.io/latest/#install-pipx
-
-For example, on a system with the apt package manager::
+This is a tool for installing Python applications. If you use an APT-based distribution (eg. Debian or Ubuntu)::
 
     sudo apt update
     sudo apt install pipx
     pipx ensurepath
+
+Otherwise, follow the `install instructions`_ for your operating system. 
+
+.. _install instructions: https://pipx.pypa.io/latest/#install-pipx
+
 
 Install Limnoria
 ----------------
