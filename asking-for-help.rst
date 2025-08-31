@@ -58,12 +58,10 @@ Give us the list of plugins loaded (using the ``list``) command.
 If the bot does not start
 -------------------------
 
-Run this in the same shell as you are trying to start the bot from:
+Run this in the same shell as you are trying to start the bot from::
 
-```bash
-which limnoria
-head -n 1 $(which limnoria)
-```
+    which limnoria
+    head -n 1 $(which limnoria)
 
 and tell us what this returns.
 
