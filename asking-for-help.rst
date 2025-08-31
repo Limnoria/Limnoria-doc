@@ -12,9 +12,9 @@ read on.
 Where to ask
 ============
 
-`#limnoria on Libera.Chat <ircs://irc.libera.chat:6697/#limnoria>`
+`#limnoria on Libera.Chat <ircs://irc.libera.chat:6697/#limnoria>`_
 (main channel, in English) or
-`#limnoria-fr on Libera.Chat <ircs://irc.libera.chat:6697/#limnoria-fr>`
+`#limnoria-fr on Libera.Chat <ircs://irc.libera.chat:6697/#limnoria-fr>`_
 (French, significantly less active)
 
 
