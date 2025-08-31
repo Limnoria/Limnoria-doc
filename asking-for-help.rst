@@ -5,7 +5,7 @@ Asking for help
 ***************
 
 First, check out the Frequently Asked Questions for :ref:`users <user-faq>`
-or :ref:`developers <develop-faq>`. If you cannot find your answer there,
+or :ref:`developers <developer-faq>`. If you cannot find your answer there,
 read on.
 
 
