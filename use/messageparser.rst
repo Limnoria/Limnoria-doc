@@ -74,13 +74,13 @@ relay bot that sends text in the format::
 
 You could add a MessageParser trigger like this::
 
-    <user> @messageparser add "^\[.*?\] <.*?> !(.*)$" "apply $1"
+    <user> @messageparser add "^\[.*?\] <.*?> !(.*)$" "$1"
     <Limnoria> Done.
     <RelayBot> [othernetwork] <user> !echo hello world
     <Limnoria> hello world
 
 This would read all messages sent over the relay bot that start with a "!", and
-run them as a command via :ref:`command-utilities-apply`.
+run them as a command.
 
 Note that in this case, all relayed commands will be treated as if RelayBot
 itself ran it, so there is no fine grained access control.
