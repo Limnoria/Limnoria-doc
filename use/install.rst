@@ -79,6 +79,8 @@ step, but some features won't be available)::
 
     curl https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt | grep -o '^[^#]*' | xargs pipx inject limnoria
 
+If you wish to use any other dependencies or 3rd party plugins, install them with the ``pipx inject`` command. For example, to make the ``beautifulsoup4`` package available to Limnoria: ``pipx inject limnoria beautifulsoup4``
+
 Install Limnoria via pip (manually managed virtualenv)
 ------------------------------------------------------
 
