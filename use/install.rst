@@ -57,10 +57,34 @@ Python will usually come by installed by default in your distribution. If not,
 grab the appropriate packages from the distribution's repository, or download
 it from https://python.org.
 
-Install Limnoria
-----------------
+Install Limnoria via pipx
+-------------------------
 
-In the next section of this guide we will use `pip`_, which is a generic
+pipx is a tool for installing Python applications. If you use an APT-based distribution (eg. Debian or Ubuntu)::
+
+    sudo apt update
+    sudo apt install pipx
+    pipx ensurepath
+
+Otherwise, follow the `pipx install instructions`_ for your operating system. 
+
+.. _pipx install instructions: https://pipx.pypa.io/latest/#install-pipx
+
+Install Limnoria::
+
+    pipx install limnoria
+
+Install Limnoria's optional dependencies (you can skip this
+step, but some features won't be available)::
+
+    curl https://raw.githubusercontent.com/progval/Limnoria/master/requirements.txt | grep -o '^[^#]*' | xargs pipx inject limnoria
+
+If you wish to use any other dependencies or 3rd party plugins, install them with the ``pipx inject`` command. For example, to make the ``beautifulsoup4`` package available to Limnoria: ``pipx inject limnoria beautifulsoup4``
+
+Install Limnoria via pip (manually managed virtualenv)
+------------------------------------------------------
+
+Alternatively you can install using `pip`_, which is a generic
 way of installing Python software.
 
 .. _pip: https://pip.readthedocs.org/en/latest/installing.html#install-pip
@@ -86,6 +110,7 @@ to find Limnoria::
 
     echo 'PATH="$PATH:$HOME/.venvs/limnoria/bin"' >> ~/.$(echo $SHELL|cut -d/ -f3)rc
     source ~/.$(basename $SHELL)rc
+
 
 .. _initial-configuration:
 
