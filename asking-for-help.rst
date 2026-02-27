@@ -5,16 +5,16 @@ Asking for help
 ***************
 
 First, check out the Frequently Asked Questions for :ref:`users <user-faq>`
-or :ref:`developers <develop-faq>`. If you cannot find your answer there,
+or :ref:`developers <developer-faq>`. If you cannot find your answer there,
 read on.
 
 
 Where to ask
 ============
 
-`#limnoria on Libera.Chat <ircs://irc.libera.chat:6697/#limnoria>`
+`#limnoria on Libera.Chat <ircs://irc.libera.chat:6697/#limnoria>`_
 (main channel, in English) or
-`#limnoria-fr on Libera.Chat <ircs://irc.libera.chat:6697/#limnoria-fr>`
+`#limnoria-fr on Libera.Chat <ircs://irc.libera.chat:6697/#limnoria-fr>`_
 (French, significantly less active)
 
 
@@ -58,12 +58,10 @@ Give us the list of plugins loaded (using the ``list``) command.
 If the bot does not start
 -------------------------
 
-Run this in the same shell as you are trying to start the bot from:
+Run this in the same shell as you are trying to start the bot from::
 
-```bash
-which limnoria
-head -n 1 $(which limnoria)
-```
+    which limnoria
+    head -n 1 $(which limnoria)
 
 and tell us what this returns.
 
