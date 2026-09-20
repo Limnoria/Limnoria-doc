@@ -43,8 +43,8 @@ quote it and escape any double quotes::
 
 You can use quotes to express an empty argument::
 
-  <jlu5> @format replace a "" abacadabra
-  <Limnoria> bcdbr
+  <jlu5> @format replace a "" abracadabra
+  <Limnoria> brcdbr
 
 And also to expand non-printable characters::
 

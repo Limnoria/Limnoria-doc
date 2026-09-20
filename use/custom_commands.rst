@@ -47,7 +47,7 @@ Alias with nested commands
 Add an alias, ``randpercent``, which returns a random percentage value.
 This requires the :ref:`plugin-filter` and :ref:`plugin-games` plugins for
 :ref:`squish <command-filter-squish>` and :ref:`dice <command-games-dice>`
-respetively::
+respectively::
 
   <jlu5> @aka add randpercent "squish [dice 1d100]%"
   <Limnoria> The operation succeeded.
