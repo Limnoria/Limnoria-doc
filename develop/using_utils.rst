@@ -8,20 +8,25 @@ module, this tutorial describes these utilities and shows you how to use them.
 
 str.py
 ======
+
+The ``supybot.utils.str module`` provides a bunch of utility functions for
+handling string values.
+
 The Format Function
 -------------------
 
-The supybot.utils.str module provides a bunch of utility functions for
-handling string values. This section contains a quick rundown of all of the
-functions available, along with descriptions of the arguments they take. First
-and foremost is the format function, which provides a lot of capability in
-just one function that uses string-formatting style to accomplish a lot. So
-much so that it gets its own section in this tutorial. All other functions
-will be in other sections. format takes several arguments - first, the format
-string (using the format characters described below), and then after that,
-each individual item to be formatted. Do not attempt to use the % operator to
-do the formatting because that will fall back on the normal string formatting
-operator. The format function uses the following string formatting characters.
+.. note::
+    For historical reasons, Limnoria provides a ``format()`` function that
+    overrides (and predates) the :py:func:`Python builtin <format>`
+    of the same name.
+
+    We would like to `get rid of this patching <https://github.com/progval/Limnoria/issues/1535>`_,
+    but it is hard to do so without breaking existing plugins.
+
+The Supybot version of ``format()`` formats strings using percent substitutions,
+similar to Python's ``%`` operator but with different format codes. Note
+you have to call ``format()`` explicitly to use it; f-strings and the ``%``
+operator will not run this code.
 
 * % - literal ``%``
 * i - integer
@@ -35,9 +40,9 @@ operator. The format function uses the following string formatting characters.
 * q - quoted (takes a string)
 * n - n items (takes a 2-tuple of (n, item) or a 3-tuple of (n, between, item))
 * S - a human-readable size (takes an int)
-* t - time, formatted (takes an int)
+* t - time, formatted according to ``config reply.format.time`` (takes an int)
 * T - time delta, formatted (takes an int)
-* u - url, wrapped in braces
+* u - url, formatted according to ``config reply.format.url``
 * v - void, takes one or many arguments, but doesn't display it
   (useful for translation)
 
@@ -67,19 +72,11 @@ Here are a few examples to help elaborate on the above descriptions::
               len(ops), "op", ops)
   'The following 3 users have the op capability: foo, bar, and baz'
 
-As you can see, you can combine all sorts of combinations of formatting
-strings into one. In fact, that was the major motivation behind format. We
-have specific functions that you can use individually for each of those
-formatting types, but it became much easier just to use special formatting
-chars and the format function than concatenating a bunch of strings that were
-the result of other utils.str functions.
 
 The Other Functions
 -------------------
 
-These are the functions that can't be handled by format. They are sorted in
-what I perceive to be the general order of usefulness (and I'm leaving the
-ones covered by format for the next section).
+These functions are not covered by ``format()``.
 
 * ellipsisify(s, n) - Returns a shortened version of a string. Produces up to
   the first n chars at the nearest word boundary.
@@ -109,10 +106,7 @@ ones covered by format for the next section).
 
   - s: the string to determine the boolean value for
 
-* rsplit(s, sep=None, maxsplit=-1) - functionally the same as str.split in the
-  Python standard library except splitting from the right instead of the left.
-  Python 2.4 has str.rsplit (which this function defers to for those versions
-  >= 2.4), but Python 2.3 did not.
+* rsplit(s, sep=None, maxsplit=-1) - historical alias to :py:meth:`str.rsplit`
 
   - s: the string to be split
   - sep: the separator to split on, defaults to whitespace
@@ -153,9 +147,8 @@ ones covered by format for the next section).
 The Commands Format Already Covers
 ----------------------------------
 
-These commands aren't necessary because you can achieve them more easily by
-using the format command, but they exist if you decide you want to use them
-anyway though it is greatly discouraged for general use.
+These commands are also accessible via the ``format`` function, but they exist
+if you want to use them separately as well.
 
 * commaAndify(seq, comma=",", And="and") - transforms a list of items into a
   comma separated list with an "and" preceding the last element. For example,
