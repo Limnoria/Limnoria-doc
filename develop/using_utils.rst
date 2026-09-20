@@ -192,24 +192,22 @@ if you want to use them separately as well.
 
 structures.py
 =============
-Intro
------
 
-This module provides a number of useful data structures that aren't found in
-the standard Python library. For the most part they were created as needed for
-the bot and plugins themselves, but they were created in such a way as to be
-of general use for anyone who needs a data structure that performs a like
-duty. As usual in this document, I'll try and order these in order of
-usefulness, starting with the most useful.
+This module provides some custom data structures used by plugins and the bot
+itself.
 
-The queue classes
------------------
+Simple queue classes
+--------------------
 
-The structures module provides two general-purpose queue classes for you to
-use. The "queue" class is a robust full-featured queue that scales up to
-larger sized queues. The "smallqueue" class is for queues that will contain
-fewer (less than 1000 or so) items. Both offer the same common interface,
-which consists of:
+.. warning::
+    The ``queue`` and ``smallqueue`` classes are historical and predate many of
+    the standard library queues in Python. We recommend using the
+    :py:class:`collections.deque` class or :mod:`queue` module instead.
+
+The structures module provides two general-purpose queue classes.
+The "queue" class is a full-featured queue that scales up to larger sizes.
+The "smallqueue" class is for queues that will contain fewer (less than 1000 or so)
+items. These offer a common interface:
 
 * a constructor which will optionally accept a sequence to start the queue off
   with
@@ -218,10 +216,11 @@ which consists of:
 * peek() - returns the item from the front of the queue without removing it
 * reset() - empties the queue entirely
 
-In addition to these general-use queue classes, there are two other more
-specialized queue classes as well. The first is the "TimeoutQueue" which holds
-a queue of items until they reach a certain age and then they are removed from
-the queue. It features the following:
+Special queues
+--------------
+
+TimeoutQueue holds a queue of items until they reach a certain age and then they
+are removed from the queue:
 
 * TimeoutQueue(timeout, queue=None) - you must specify the timeout (in
   seconds) in the constructor. Note that you can also optionally pass it a
@@ -233,9 +232,7 @@ the queue. It features the following:
   - reset(), enqueue(item), dequeue() - all same as above queue classes
   - setTimeout(secs) - allows you to change the timeout value
 
-And for the final queue class, there's the "MaxLengthQueue" class. As you may
-have guessed, it's a queue that is capped at a certain specified length. It
-features the following:
+MaxLengthQueue is a queue that is capped at a certain specified length:
 
 * MaxLengthQueue(length, seq=()) - the constructor naturally requires that you
   set the max length and it allows you to optionally pass in a sequence to be
@@ -247,14 +244,12 @@ features the following:
     not return this item to you)
   - all the standard methods from the queue class are inherited for this class
 
-The Other Structures
---------------------
+RingBuffer
+----------
 
-The most useful of the other structures is actually very similar to the
-"MaxLengthQueue". It's the "RingBuffer", which is essentially a MaxLengthQueue
-which fills up to its maximum size and then circularly replaces the old
-contents as new entries are added instead of dequeuing.  It features the
-following:
+RingBuffer is essentially a MaxLengthQueue which fills up to its maximum size
+and then circularly replaces the old contents as new entries are added instead
+of dequeuing.
 
 * RingBuffer(size, seq=()) - as with the MaxLengthQueue you specify the size
   of the RingBuffer and optionally give it a sequence.
@@ -266,9 +261,11 @@ following:
   - extend(seq) - append the items from the provided sequence onto the end of
     the RingBuffer
 
-The next data structure is the TwoWayDictionary, which as the name implies is
-a dictionary in which key-value pairs have mappings going both directions. It
-features the following:
+Dictionary classes
+------------------
+
+TwoWayDictionary is a dictionary in which key-value pairs have mappings
+going both directions.
 
 * TwoWayDictionary(seq=(), \**kwargs) - Takes an optional sequence of (key,
   value) pairs as well as any key=value pairs specified in the constructor as
@@ -280,10 +277,15 @@ features the following:
     Elements are still accessed the same way you always do with Python
     'dict's.
 
-There is also a MultiSet class available, but it's very unlikely that it will
-serve your purpose, so I won't go into it here. The curious coder can go check
-the source and see what it's all about if they wish (it's only used once in our
-code, in the Relay plugin).
+* ExpiringDict: TODO
+
+* TimeoutDict: TODO
+
+Set classes
+------------------
+
+* MultiSet: TODO
+* TruncatableSet: TODO
 
 web.py
 ======
