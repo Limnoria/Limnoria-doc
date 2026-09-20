@@ -123,6 +123,16 @@ purpose (database queries,
 :ref:`HTTP server endpoints <http_plugins>`,
 :ref:`IRC command triggers <do-method-handlers>`, etc.)
 
+.. warning::
+    For historical reasons, Limnoria provides different versions of the
+    :py:func:`format` and :py:func:`any` functions. You can remove the ``any``
+    import by replacing the ``from supybot.commands import *`` import with a
+    more specific import, but the ``format`` override is currently hardcoded
+    (see issue `#1535 <https://github.com/progval/Limnoria/issues/1535>`_).
+
+    We would like to fix this drift, but it is hard to do so without breaking
+    third-party plugins.
+
 As with any Python module, you'll need to import any dependencies you want,
 in addition to the standard ``supybot`` imports included in the plugin
 template::
