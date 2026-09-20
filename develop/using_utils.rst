@@ -291,8 +291,7 @@ web.py
 ======
 The web portion of Supybot's utils module is mainly used for retrieving data
 from websites but it also has some utility functions pertaining to HTML and
-email text as well. The functions in web are listed below, once again in order
-of usefulness.
+email text as well.
 
 * getUrl(url, size=None, headers=None) - gets the data at the URL provided and
   returns it as one large string
@@ -330,12 +329,6 @@ of usefulness.
 
 The Best of the Rest
 ====================
-Intro
------
-
-Rather than document each of the remaining portions of the supybot.utils
-module, I've elected to just pick out the choice bits from specific parts and
-document those instead. Here they are, broken out by module name.
 
 supybot.utils.file - file utilities
 -----------------------------------
@@ -405,7 +398,7 @@ How does it work? This is quite simple: ``dynamic.channel`` is a shortcut
 for ``supybot.dynamicScope.DynamicScope.__getattr__('channel')``, which
 browse the call stack backwards, looking for a variable named ``channel``,
 and then returns is as far as it finds it (and returns ``None`` if there
-is no such variale).
+is no such variable).
 
 Note that you don't have to import ``dynamicScope``, the ``dynamic`` object
 is automatically set as a global variable when Supybot starts.
