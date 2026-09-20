@@ -384,6 +384,11 @@ supybot.utils.iter - iterable utilities
 supybot.dynamicScope / dynamic - accessing variables in the stack
 -----------------------------------------------------------------
 
+.. warning::
+    Using ``dynamicScope`` without an import is deprecated as of 2025-05.
+
+    Please import it explicitly with ``from supybot.dynamicScope import dynamic``.
+
 This feature is not in `supybot.utils` but still deserves to be documented
 as a utility.
 
