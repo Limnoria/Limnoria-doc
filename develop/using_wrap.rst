@@ -85,7 +85,7 @@ Contexts: Optional Parameters and Multiple Values
 
 Whereas converters specify how to parse an individual argument, **converter
 contexts** control the multiplicity and placement of a variable. This is akin
-to ``nargs`` in :py:class:`argparse.ArgumentParser`, and allows defining
+to ``nargs`` in :class:`argparse.ArgumentParser`, and allows defining
 things like optional arguments.
 
 An example, making the number of repetitions **optional** in the ``repeat`` command::

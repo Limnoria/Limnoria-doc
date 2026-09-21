@@ -2159,7 +2159,7 @@ msgstr ""
 
 #: ../../develop/irclib.rst:40
 msgid ""
-"Used mainly as the `state` attribute of :py:class:`supybot.irclib.Irc` "
+"Used mainly as the `state` attribute of :class:`supybot.irclib.Irc` "
 "objects."
 msgstr ""
 
@@ -2198,7 +2198,7 @@ msgstr ""
 #: ../../develop/irclib.rst:52
 msgid ""
 "Used mainly as the `channels['#chan']` attribute of "
-":py:class:`supybot.irclib.Irc` objects."
+":class:`supybot.irclib.Irc` objects."
 msgstr ""
 
 #: of supybot.irclib.ChannelState:1

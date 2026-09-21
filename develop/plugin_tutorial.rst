@@ -125,7 +125,7 @@ purpose (database queries,
 
 .. warning::
     For historical reasons, Limnoria provides different versions of the
-    :py:func:`format` and :py:func:`any` functions. You can remove the ``any``
+    :func:`format` and :func:`any` functions. You can remove the ``any``
     import by replacing the ``from supybot.commands import *`` import with a
     more specific import, but the ``format`` override is currently hardcoded
     (see issue `#1535 <https://github.com/progval/Limnoria/issues/1535>`_).
@@ -215,7 +215,7 @@ in a specific format:
   Indentation and line breaks are normalized by the ``help`` command, so it is fine
   to wrap longer text onto multiple lines.
 
-The :py:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>` call
+The :meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>` call
 is a bit of magic: it issues a reply the same place as the message that
 triggered the command. i.e. this may be in a channel or in a private
 conversation with the bot.
@@ -256,7 +256,7 @@ on the first line: :ref:`by convention <help-syntax>`, required arguments go in 
 arguments should be surrounded by ``[]``.
 
 The function body includes a new method
-:py:meth:`irc.replySuccess <supybot.callbacks.RichReplyMethods.replySuccess>`.
+:meth:`irc.replySuccess <supybot.callbacks.RichReplyMethods.replySuccess>`.
 This is a generic "I succeeded" command which responds with whatever the
 bot owner has configured in ``config supybot.replies.success``.
 Also, by using ``@wrap``, we don't need to do any type checking inside the
@@ -298,16 +298,16 @@ We also update the docstring to use the ``[]`` convention when surrounding
 optional arguments.
 
 For this function's body,
-:py:meth:`irc.error <supybot.callbacks.ReplyIrcProxy.error>`
+:meth:`irc.error <supybot.callbacks.ReplyIrcProxy.error>`
 is like
-:py:meth:`irc.replySuccess <supybot.callbacks.ReplyIrcProxy.replySuccess>`
+:meth:`irc.replySuccess <supybot.callbacks.ReplyIrcProxy.replySuccess>`
 but for error messages. We prefer using this instead of ``irc.reply`` for error
 signaling because its behaviour can be configured specially. For example, you
 can force all errors to go in private by setting the ``reply.error.inPrivate``
 option, and this can help reduce noise on a busy channel.
 Also, ``irc.error()`` with no text will return a generic error message
 configured in ``supybot.replies.error``, but this is not a valid call to
-:py:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>`.
+:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>`.
 
 ``utils.str.commaAndify`` is a helper that takes a list of strings
 and turns it into "item1, item2, item3, item4, and item5" for an arbitrary
@@ -335,7 +335,7 @@ defaulting to 6:
 
 The only new thing described here is that ``irc.reply(..., action=True)`` makes
 the bot perform a `/me`. There are some other flags described in the
-:py:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>`
+:meth:`irc.reply <supybot.callbacks.ReplyIrcProxy.reply>`
 documentation too: common ones include ``private=True``, which
 forces a private message, and ``notice=True``, which forces the reply to use
 NOTICE instead of PRIVMSG.

@@ -21,7 +21,7 @@ It is usually the `irc` object given to plugin commands.
 IrcState
 ========
 
-Used mainly as the ``state`` attribute of :py:class:`supybot.irclib.Irc` objects.
+Used mainly as the ``state`` attribute of :class:`supybot.irclib.Irc` objects.
 
 .. autoclass:: supybot.irclib.IrcState
     :members:
@@ -34,7 +34,7 @@ Used mainly as the ``state`` attribute of :py:class:`supybot.irclib.Irc` objects
 IrcStateFsm
 ===========
 
-Used as the ``fsm`` attribute of :py:class:`supybot.irclib.IrcState` objects
+Used as the ``fsm`` attribute of :class:`supybot.irclib.IrcState` objects
 
 .. autoclass:: supybot.irclib.IrcStateFsm
     :members:
@@ -47,7 +47,7 @@ ChannelState
 ============
 
 Used mainly as the ``.state.channels['#chan']`` attribute of
-:py:class:`supybot.irclib.Irc` objects.
+:class:`supybot.irclib.Irc` objects.
 
 .. autoclass:: supybot.irclib.ChannelState
     :members:

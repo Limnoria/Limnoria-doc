@@ -14,17 +14,17 @@ Where can I find the user who called a command?
 ===============================================
 
 The ``msg`` object passed to all event method as well as command methods is an
-:py:class:`supybot.ircmsgs.IrcMsg` object, which stores the content of the
+:class:`supybot.ircmsgs.IrcMsg` object, which stores the content of the
 message, the nick and hostname of its author, etc. Check the documentation of
-:py:class:`supybot.ircmsgs.IrcMsg` to see all available attributes.:w
+:class:`supybot.ircmsgs.IrcMsg` to see all available attributes.:w
 
 
 Where can I find the hostname from a user's nick?
 =================================================
 
 The ``irc`` object passed to all event method as well as command methods is an
-:py:class:`supybot.irclib.Irc` object, use
-:py:meth:`irc.state.nickToHostmask <supybot.irclib.IrcState.nickToHostmask>`
+:class:`supybot.irclib.Irc` object, use
+:meth:`irc.state.nickToHostmask <supybot.irclib.IrcState.nickToHostmask>`
 
 How do I get channel modes when writing a plugin?
 =================================================

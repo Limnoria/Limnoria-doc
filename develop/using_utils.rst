@@ -17,7 +17,7 @@ The Format Function
 
 .. note::
     For historical reasons, Limnoria provides a ``format()`` function that
-    overrides (and predates) the :py:func:`Python builtin <format>`
+    overrides (and predates) the :func:`Python builtin <format>`
     of the same name.
 
     We would like to `get rid of this patching <https://github.com/progval/Limnoria/issues/1535>`_,
@@ -106,7 +106,7 @@ These functions are not covered by ``format()``.
 
   - s: the string to determine the boolean value for
 
-* rsplit(s, sep=None, maxsplit=-1) - historical alias to :py:meth:`str.rsplit`
+* rsplit(s, sep=None, maxsplit=-1) - historical alias to :meth:`str.rsplit`
 
   - s: the string to be split
   - sep: the separator to split on, defaults to whitespace
@@ -202,7 +202,7 @@ Simple queue classes
 .. warning::
     The ``queue`` and ``smallqueue`` classes are historical and predate many of
     the standard library queues in Python. We recommend using the
-    :py:class:`collections.deque` class or :mod:`queue` module instead.
+    :class:`collections.deque` class or :mod:`queue` module instead.
 
 The structures module provides two general-purpose queue classes.
 The "queue" class is a full-featured queue that scales up to larger sizes.
